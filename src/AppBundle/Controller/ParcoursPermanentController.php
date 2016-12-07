@@ -74,6 +74,10 @@ class ParcoursPermanentController extends Controller
           $em->flush();
         }
         catch (UniqueConstraintViolationException $e){
+          $this->get('session')->getFlashBag()->add(
+            'error',
+            'La carte '.$carte->getNom().' n\'a pas pu être créée, une erreur est survenue.'
+          );
           return $this->render(
             'user/session/register.html.twig',
             array('form' => $form->createView(),
@@ -84,7 +88,10 @@ class ParcoursPermanentController extends Controller
           );
         }
 
-        //Ajout d'un message d'enregistrement effectué
+        $this->get('session')->getFlashBag()->add(
+          'success',
+          'La carte '.$carte->getNom().' a été créée.'
+        );
 
         return $this->redirect('/admin/parcours/'.$carte->getId());
       }
@@ -124,6 +131,10 @@ class ParcoursPermanentController extends Controller
           $em->flush();
         }
         catch (UniqueConstraintViolationException $e){
+          $this->get('session')->getFlashBag()->add(
+            'error',
+            'La carte '.$carte->getNom().' n\'a pas pu être modifiée, une erreur est survenue.'
+          );
           return $this->render(
             'user/session/register.html.twig',
             array('form' => $form->createView(),
@@ -134,8 +145,10 @@ class ParcoursPermanentController extends Controller
           );
         }
 
-        //Ajout d'un message d'enregistrement effectué
-
+        $this->get('session')->getFlashBag()->add(
+          'success',
+          'La carte '.$carte->getNom().' a été modifiée.'
+        );
         return $this->redirect('/admin/parcours/'.$id);
       }
 
@@ -160,6 +173,11 @@ class ParcoursPermanentController extends Controller
       $carte = $repository->findOneBy(array('id' => $id));
       $em->remove($carte);
       $em->flush();
+
+      $this->get('session')->getFlashBag()->add(
+        'success',
+        'La carte '.$carte->getNom().' a été supprimée.'
+      );
 
       return $this->redirect('/admin/parcours/');
     }

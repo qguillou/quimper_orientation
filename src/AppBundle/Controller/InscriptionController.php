@@ -142,4 +142,17 @@ class InscriptionController extends Controller
 				'form' => $form->createView(),
 		]);
 	}
+
+	/**
+	* @Route("/admin/inscription/archive/")
+	*/
+	public function archive(){
+		$session = $this->get('app.session');
+		return $this->render('admin/inscription/archive.html.twig', [
+			'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
+			'user' => $this->getUser(),
+			'isConnected' => $session->isAuthenticated(),
+			'isAdmin' => $session->isAdmin(),
+		]);
+	}
 }

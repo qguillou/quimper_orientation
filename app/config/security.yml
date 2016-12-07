@@ -14,7 +14,7 @@ security:
         ROLE_ADMIN:           [ROLE_USER, ROLE_WEBMASTER]
 
     access_control:
-        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/admin, roles: [ROLE_ADMIN, ROLE_WEBMASTER] }
 
     providers:
         our_db_provider:
