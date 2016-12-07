@@ -35,6 +35,7 @@ class AccountController extends Controller
     {
 				$session = $this->get('app.session');
 				$user = $this->getUser();
+				$session->onlyUserAccess();
 
 				$user_form = $this->createForm(UserUpdate::class, $user);
 				$user_form->handleRequest($request);

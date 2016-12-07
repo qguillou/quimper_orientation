@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Controller\DefaultController;
+use AppBundle\Entity\Tarif;
 
 class ClubController extends Controller
 {
@@ -28,12 +29,17 @@ class ClubController extends Controller
 	*/
 	public function rejoindreAction()
 	{
+		$em = $this->getDoctrine()->getManager();
+    $repository = $em->getRepository('AppBundle:Tarif');
+
+    $licences = $repository->findAll();
 		$session = $this->get('app.session');
 		return $this->render('user/club/rejoindre.html.twig', [
 			'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
 			'user' => $this->getUser(),
 			'isConnected' => $session->isAuthenticated(),
 			'isAdmin' => $session->isAdmin(),
+			'licences' => $licences,
 		]);
 	}
 

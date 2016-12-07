@@ -5,6 +5,8 @@ TODOList
 - Gestion des rôles des utilisateurs
   * ROLE_ADMIN : uniquement Quentin, permet l'accès à toutes les options
   * ROLE_WEBMASTER : permet d'éditer le contenu du site
-- Modifier la page register
+- Modifier la page about
 - Voir le problème lié au glyphicon
 - Voir pour les checkbox (les rendre plus jolie)
+- Modifier le lien vers le fichier de la fiche d'adhésion
+- Faire la page club -> contact
