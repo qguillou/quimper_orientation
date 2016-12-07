@@ -1,0 +1,16 @@
+.navbar-content {
+  line-height: 50px;
+  color: white;
+  text-align: center;
+}
+
+.footer-page {
+  text-align: center;
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+  color: gray;
+}
+
+.footer-page a {
+  color: gray;
+}
