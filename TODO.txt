@@ -8,5 +8,4 @@ TODOList
 - Modifier la page about
 - Voir le problème lié au glyphicon
 - Voir pour les checkbox (les rendre plus jolie)
-- Modifier le lien vers le fichier de la fiche d'adhésion
 - Faire la page club -> contact
