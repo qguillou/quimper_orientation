@@ -2,7 +2,9 @@ TODOList
 
 - Lors d'une suppression de compte afficher un message (alert) sur la page d'accueil
 - Ajout des paramètres options
-- Mise en page à revoir
 - Gestion des rôles des utilisateurs
   * ROLE_ADMIN : uniquement Quentin, permet l'accès à toutes les options
   * ROLE_WEBMASTER : permet d'éditer le contenu du site
+- Modifier la page register
+- Voir le problème lié au glyphicon
+- Voir pour les checkbox (les rendre plus jolie)

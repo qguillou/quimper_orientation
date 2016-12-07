@@ -6,6 +6,7 @@
   <link rel="icon" type="image/x-icon" href="{{ asset('favicon.png') }}" />
   <link href="{{ asset( 'css/bootstrap.css' ) }}" rel="stylesheet" type="text/css" />
   <link href="{{ asset( 'css/style.css' ) }}" rel="stylesheet" type="text/css" />
+  <link href="{{ asset( 'css/responsive.css' ) }}" rel="stylesheet" type="text/css" />
 
   <link href="{{ asset( 'css/font-awesome.css' ) }}" rel="stylesheet" type="text/css" />
 
@@ -45,9 +46,72 @@
 
         </ul>
 
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#">Link</a></li>
-        </ul>
+        {% if isConnected %}
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <i class="fa fa-user"></i>
+                {{user.username}}
+                <span class="badge" title="Nombre de course à venir, où vous êtes inscrits">
+                  0
+                </span>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="/account/parameter">
+                    <i class="fa fa-cog"></i> Paramètres
+                  </a>
+                </li>
+                <li>
+                  <a href="/account/calendar">
+                    <i class="fa fa-calendar"></i> Mon calendrier
+                  </a>
+                </li>
+                {% if isAdmin %}
+                <li class="divider"></li>
+                <li>
+                  <a href="/account/mail">
+                    <i class="fa fa-envelope"></i> Ma messagerie (0)
+                  </a>
+                </li>
+                <li>
+                  <a href="/document">
+                    <i class="fa fa-folder"></i> Mes documents
+                  </a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                  <a href="/admin">
+                    <i class="fa fa-terminal"></i> Passer en administrateur
+                  </a>
+                </li>
+                {% endif %}
+
+                <li class="divider"></li>
+                <li>
+                  <a href="/logout">
+                    <i class="fa fa-sign-out"></i> Se déconnecter
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          {% else %}
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="/login" class="navbar-link">
+                <i class="fa fa-sign-in"></i> S'identifier
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="/register" class="navbar-link">
+                    <i class="fa fa-sign-in"></i> Créer un compte
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          {% endif %}
       </div>
     </div>
   </nav>

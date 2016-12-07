@@ -1,3 +1,7 @@
+h3 {
+  margin-top: 0;
+}
+
 .navbar-content {
   line-height: 50px;
   color: white;
@@ -13,4 +17,16 @@
 
 .footer-page a {
   color: gray;
+}
+
+.information-account h3 {
+  margin-top: 30px;
+}
+
+.information-account li {
+  list-style: none;
+}
+
+.row-divider {
+  height: 2em;
 }

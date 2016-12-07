@@ -1341,11 +1341,11 @@ mark,
   color: #999999;
 }
 .text-primary {
-  color: #68b211;
+  color: #2780e3;
 }
 a.text-primary:hover,
 a.text-primary:focus {
-  color: #538e0d;
+  color: #1967be;
 }
 .text-success {
   color: #ffffff;
@@ -1377,7 +1377,7 @@ a.text-danger:focus {
 }
 .bg-primary {
   color: #fff;
-  background-color: #68b211;
+  background-color: #2780e3;
 }
 a.bg-primary:hover,
 a.bg-primary:focus {
@@ -2979,15 +2979,13 @@ select[multiple].input-lg {
 .form-horizontal .checkbox {
   min-height: 32px;
 }
-.form-horizontal .form-group {
+/*.form-horizontal .form-group {
   margin-left: -15px;
   margin-right: -15px;
-}
+}*/
 @media (min-width: 768px) {
   .form-horizontal .control-label {
-    text-align: right;
     margin-bottom: 0;
-    padding-top: 11px;
   }
 }
 .form-horizontal .has-feedback .form-control-feedback {
@@ -3008,6 +3006,7 @@ select[multiple].input-lg {
 .btn {
   display: inline-block;
   margin-bottom: 0;
+  margin-left: 15px;
   font-weight: normal;
   text-align: center;
   vertical-align: middle;
@@ -3120,18 +3119,18 @@ fieldset[disabled] .btn-default.focus {
 }
 .btn-primary {
   color: #ffffff;
-  background-color: #68b211;
-  border-color: #68b211;
+  background-color: #2780e3;
+  border-color: #2780e3;
 }
 .btn-primary:focus,
 .btn-primary.focus {
   color: #ffffff;
-  background-color: #538e0d;
+  background-color: #1967be;
   border-color: #10427b;
 }
 .btn-primary:hover {
   color: #ffffff;
-  background-color: #538e0d;
+  background-color: #1967be;
   border-color: #1862b5;
 }
 .btn-primary:active,
