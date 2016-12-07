@@ -1,0 +1,198 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<header class="major">
+    <h2>Les paramètres</h2>
+  </header>
+  <div class="col-md-3" id="main-content">
+    <div class="list-group nav nav-tabs">
+      <a href="#profil" class="list-group-item" data-toggle="tab" aria-expanded="true">
+        <i class="fa fa-user"></i> Mon profil
+      </a>
+      <a href="#compte" class="list-group-item" data-toggle="tab" aria-expanded="true">
+        <i class="fa fa-user-plus"></i> Mon compte
+      </a>
+      <a href="#notification" class="list-group-item" data-toggle="tab" aria-expanded="true">
+        <i class="fa fa-bell"></i> Les notifications
+      </a>
+      <a href="#option" class="list-group-item" data-toggle="tab" aria-expanded="true">
+        <i class="fa fa-check-square-o"></i> Les options
+      </a>
+    </div>
+  </div>
+  <div class="col-md-8 tab-content">
+
+    {% for successMessage in app.session.flashbag.get('success') %}
+      <div class="alert alert-dismissible alert-success">
+          {{ successMessage }}
+      </div>
+    {% endfor %}
+
+    {% for errorMessage in app.session.flashbag.get('error') %}
+      <div class="alert alert-dismissible alert-danger">
+          {{ errorMessage }}
+      </div>
+    {% endfor %}
+
+    <div class="tab-pane fade in active" id="profil">
+      {{ form_start(user_form, {'attr': {'class': 'form-horizontal'}}) }}
+          <fieldset>
+      		<legend>Modification du profil</legend>
+          	{{ form_errors(user_form) }}
+
+      	    <div class="row">
+      		    <div class="form-group">
+      		    	{{ form_label(user_form.username, "Pseudo", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+      		    	<div class="col-sm-4">
+      		        	{{ form_widget(user_form.username, {'attr': {'class': 'form-control'}}) }}
+      		        	{{ form_errors(user_form.username) }}
+      		      	</div>
+      			</div>
+      		</div>
+      		<div class="row">
+      		    <div class="form-group">
+      		    	{{ form_label(user_form.email, "Adresse mail", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+      		    	<div class="col-sm-4">
+      		        	{{ form_widget(user_form.email, {'attr': {'class': 'form-control'}}) }}
+      		        	{{ form_errors(user_form.email) }}
+      		      	</div>
+      			</div>
+      		</div>
+
+      		<div class="row">
+      		    <div class="form-group">
+      		    	{{ form_label(user_form.plainPassword.first, "Mot de passe", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+      		    	<div class="col-sm-4">
+      		        	{{ form_widget(user_form.plainPassword.first, {'attr': {'class': 'form-control'}}) }}
+      		        	{{ form_errors(user_form.plainPassword.first) }}
+      		      	</div>
+      			</div>
+      		</div>
+
+      		<div class="row">
+      		    <div class="form-group">
+      		    	{{ form_label(user_form.plainPassword.second, "Confirmation du mot de passe", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+      		    	<div class="col-sm-4">
+      		        	{{ form_widget(user_form.plainPassword.second, {'attr': {'class': 'form-control'}}) }}
+      		        	{{ form_errors(user_form.plainPassword.second) }}
+      		      	</div>
+      			</div>
+      		</div>
+
+      		<div class="row">
+      		    <div class="form-group">
+      		    	{{ form_label(user_form.license, "Numéro de licence FFCO", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+      		    	<div class="col-sm-4">
+      		        	{{ form_widget(user_form.license, {'attr': {'class': 'form-control'}}) }}
+      		        	{{ form_errors(user_form.license) }}
+      		      	</div>
+      			</div>
+      		</div>
+
+      		<div class="row">
+      		    <div class="form-group">
+      		    	{{ form_label(user_form.nom, "Nom", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+      		    	<div class="col-sm-4">
+      		        	{{ form_widget(user_form.nom, {'attr': {'class': 'form-control'}}) }}
+      		        	{{ form_errors(user_form.nom) }}
+      		      	</div>
+      			</div>
+      		</div>
+
+      		<div class="row">
+      		    <div class="form-group">
+      		    	{{ form_label(user_form.prenom, "Prénom", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+      		    	<div class="col-sm-4">
+      		        	{{ form_widget(user_form.prenom, {'attr': {'class': 'form-control'}}) }}
+      		        	{{ form_errors(user_form.prenom) }}
+      		      	</div>
+      			</div>
+      		</div>
+
+      	    <div class="row">
+              <button class="btn btn-default" type="reset">Annuler</button>
+      	    	<button class="btn btn-success" type="submit">Enregistrer les modifications</button>
+      	    </div>
+      	</fieldset>
+      {{ form_end(user_form) }}
+    </div>
+
+
+    <div class="tab-pane fade" id="compte">
+      {{ form_start(delete_form, {'attr': {'class': 'form-horizontal'}}) }}
+          <fieldset>
+      		<legend>Suppression du compte</legend>
+          	{{ form_errors(delete_form) }}
+
+      	    <div class="row">
+      		    <div class="form-group">
+      		    	{{ form_label(delete_form.username, "Pseudo", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+      		    	<div class="col-sm-4">
+      		        	{{ form_widget(delete_form.username, {'attr': {'class': 'form-control'}}) }}
+      		        	{{ form_errors(delete_form.username) }}
+      		      	</div>
+      			</div>
+      		</div>
+
+      		<div class="row">
+      		    <div class="form-group">
+      		    	{{ form_label(delete_form.plainPassword, "Mot de passe", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+      		    	<div class="col-sm-4">
+      		        	{{ form_widget(delete_form.plainPassword, {'attr': {'class': 'form-control'}}) }}
+      		        	{{ form_errors(delete_form.plainPassword) }}
+      		      	</div>
+      			</div>
+      		</div>
+
+      	    <div class="row">
+              <button class="btn btn-default" type="reset">Annuler</button>
+      	    	<button class="btn btn-danger" type="submit">Supprimer le compte</button>
+      	    </div>
+      	</fieldset>
+      {{ form_end(delete_form) }}
+    </div>
+
+
+    <div class="tab-pane fade" id="notification">
+      {{ form_start(notification_form, {'attr': {'class': 'form-horizontal'}}) }}
+          <fieldset>
+      		<legend>Gestion des notifications</legend>
+          	{{ form_errors(notification_form) }}
+
+      	    <div class="row">
+      		    <div class="form-group">
+      		    	{{ form_label(notification_form.newsletter, "Recevoir la newsletter", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+      		    	<div class="col-sm-4">
+      		        	{{ form_widget(notification_form.newsletter, {'attr': {'class': 'form-control'}}) }}
+      		        	{{ form_errors(notification_form.newsletter) }}
+      		      	</div>
+      			</div>
+      		</div>
+
+      	    <div class="row">
+              <button class="btn btn-default" type="reset">Annuler</button>
+      	    	<button class="btn btn-success" type="submit">Enregistrer les modifications</button>
+      	    </div>
+      	</fieldset>
+      {{ form_end(notification_form) }}
+    </div>
+
+
+    <div class="tab-pane fade" id="option">
+
+    </div>
+  </div>
+{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
