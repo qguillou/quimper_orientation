@@ -8,3 +8,6 @@ TODOList
 - Voir le problème lié au glyphicon
 - Voir pour les checkbox (les rendre plus jolie)
 - Faire la page club -> contact
+- parcours permanent ajout d'un message de création ou modification réalisé
+- parcours permanent gestion de la sauvegarde et de la suppression des fichiers
+- Ajouter les champs supplémentaire à parcours permanent

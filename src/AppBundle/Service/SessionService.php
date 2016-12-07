@@ -26,7 +26,7 @@ class SessionService
 
     public function onlyUserAccess(){
       if(!($this->security->isGranted('ROLE_USER'))){
-        
+        throw new AccessDeniedException('Unauthorised access!');
       }
     }
 }

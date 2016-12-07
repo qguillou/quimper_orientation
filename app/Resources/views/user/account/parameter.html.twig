@@ -2,9 +2,7 @@
 
 {% block body %}
 <div class="col-md-12">
-  <header class="major">
-    <h2>Les paramètres</h2>
-  </header>
+  <h1>Les paramètres</h1>
 </div>
 <div class="col-md-3">
   <div class="list-group nav nav-tabs">
@@ -43,7 +41,7 @@
   <div class="tab-pane fade in active" id="profil">
     {{ form_start(user_form, {'attr': {'class': 'form-horizontal'}}) }}
     <fieldset>
-      <h3>Modification du profil</h3>
+      <h2>Modification du profil</h2>
       {{ form_errors(user_form) }}
 
       <div class="row">
@@ -134,7 +132,7 @@
   <div class="tab-pane fade" id="compte">
     {{ form_start(delete_form, {'attr': {'class': 'form-horizontal'}}) }}
     <fieldset>
-      <h3>Suppression du compte</h3>
+      <h2>Suppression du compte</h2>
       {{ form_errors(delete_form) }}
 
       <div class="row">
@@ -171,7 +169,7 @@
   <div class="tab-pane fade" id="notification">
     {{ form_start(notification_form, {'attr': {'class': 'form-horizontal'}}) }}
     <fieldset>
-      <h3>Gestion des notifications</h3>
+      <h2>Gestion des notifications</h2>
       {{ form_errors(notification_form) }}
 
       <div class="row">
