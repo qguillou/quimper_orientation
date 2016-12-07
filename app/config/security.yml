@@ -10,7 +10,7 @@ security:
     # ...
 
     role_hierarchy:
-        ROLE_WEBMASTER:       [ROLE_USER, ROLE_EVENT_CREATE]
+        ROLE_WEBMASTER:       [ROLE_USER]
         ROLE_ADMIN:           [ROLE_USER, ROLE_WEBMASTER]
 
     providers:

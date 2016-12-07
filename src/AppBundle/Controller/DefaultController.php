@@ -13,11 +13,12 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
+        $session = $this->get('app.session');
         return $this->render('user/default/index.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
             'user' => $this->getUser(),
-            'isConnected' => $this->isAuthenticated(),
-            'isAdmin' => $this->isAdmin(),
+            'isConnected' => $session->isAuthenticated(),
+            'isAdmin' => $session->isAdmin(),
         ]);
     }
 
@@ -26,23 +27,12 @@ class DefaultController extends Controller
      */
     public function aboutAction(Request $request)
     {
+        $session = $this->get('app.session');
         return $this->render('user/default/about.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
             'user' => $this->getUser(),
-            'isConnected' => $this->isAuthenticated(),
-            'isAdmin' => $this->isAdmin(),
+            'isConnected' => $session->isAuthenticated(),
+            'isAdmin' => $session->isAdmin(),
         ]);
-    }
-
-    private function isAuthenticated(){
-      return $this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED');
-    }
-
-    private function isAdmin(){
-      if(!$this->isAuthenticated())
-        return false;
-      $user = $this->getUser();
-      $roles = $user->getRoles();
-      return in_array("ROLE_ADMIN", $roles);
     }
 }

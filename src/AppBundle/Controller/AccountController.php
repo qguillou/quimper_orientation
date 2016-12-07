@@ -19,11 +19,12 @@ class AccountController extends Controller
      */
     public function account()
     {
+				$session = $this->get('app.session');
         return $this->render('user/account/account.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
 						'user' => $this->getUser(),
-						'isConnected' => $this->isAuthenticated(),
-						'isAdmin' => $this->isAdmin(),
+						'isConnected' => $session->isAuthenticated(),
+            'isAdmin' => $session->isAdmin(),
         ]);
     }
 
@@ -32,6 +33,7 @@ class AccountController extends Controller
      */
     public function parameters(Request $request)
     {
+				$session = $this->get('app.session');
 				$user = $this->getUser();
 
 				$user_form = $this->createForm(UserUpdate::class, $user);
@@ -64,8 +66,8 @@ class AccountController extends Controller
 											'delete_form' => $delete_form->createView(),
 											'notification_form' => $notification_form->createView(),
 											'user' => $this->getUser(),
-											'isConnected' => $this->isAuthenticated(),
-											'isAdmin' => $this->isAdmin(),
+											'isConnected' => $session->isAuthenticated(),
+					            'isAdmin' => $session->isAdmin(),
 										)
 								);
 						}
@@ -121,8 +123,8 @@ class AccountController extends Controller
 										'delete_form' => $delete_form->createView(),
 										'notification_form' => $notification_form->createView(),
 										'user' => $this->getUser(),
-										'isConnected' => $this->isAuthenticated(),
-										'isAdmin' => $this->isAdmin(),
+										'isConnected' => $session->isAuthenticated(),
+				            'isAdmin' => $session->isAdmin(),
 									)
 							);
 					}
@@ -131,23 +133,11 @@ class AccountController extends Controller
 				return $this->render('user/account/parameter.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
 						'user' => $this->getUser(),
-						'isConnected' => $this->isAuthenticated(),
-						'isAdmin' => $this->isAdmin(),
+						'isConnected' => $session->isAuthenticated(),
+            'isAdmin' => $session->isAdmin(),
 						'user_form' => $user_form->createView(),
 						'delete_form' => $delete_form->createView(),
 						'notification_form' => $notification_form->createView(),
         ]);
-    }
-
-		private function isAuthenticated(){
-      return $this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED');
-    }
-
-    private function isAdmin(){
-      if(!$this->isAuthenticated())
-        return false;
-      $user = $this->getUser();
-      $roles = $user->getRoles();
-      return in_array("ROLE_ADMIN", $roles);
     }
 }

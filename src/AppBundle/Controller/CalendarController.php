@@ -12,9 +12,12 @@ class CalendarController extends Controller
      */
     public function calendar()
     {
-        return $this->render('user/calendar/calendar.html.twig', [
+				$session = $this->get('app.session');
+				return $this->render('user/calendar/calendar.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-        	'isConnected' => false,
+						'user' => $this->getUser(),
+						'isConnected' => $session->isAuthenticated(),
+            'isAdmin' => $session->isAdmin(),
         ]);
     }
 }
