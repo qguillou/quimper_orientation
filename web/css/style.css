@@ -105,3 +105,123 @@ h3 {
 .dropdown:hover .dropdown-toggle {
   background-color: #538e0d;
 }
+
+/** CALENDAR */
+.responsive-calendar .controls {
+  text-align: center;
+}
+.responsive-calendar .controls a {
+  cursor: pointer;
+}
+.responsive-calendar .controls h4 {
+  display: inline;
+  font-size: 20px;
+  letter-spacing: 0px;
+}
+.responsive-calendar .day-headers,
+.responsive-calendar .days {
+  font-size: 0;
+}
+.responsive-calendar .day {
+  display: inline-block;
+  position: relative;
+  font-size: 14px;
+  width: 14.285714285714286%;
+  text-align: center;
+}
+.responsive-calendar .day a {
+  color: #000000;
+  display: block;
+  cursor: pointer;
+  padding: 20% 0 20% 0;
+}
+.responsive-calendar .day a:hover {
+  background-color: #eee;
+  text-decoration: none;
+}
+.responsive-calendar .day.header {
+  border-bottom: 1px gray solid;
+}
+.responsive-calendar .day.active a {
+  background-color: #68b211;
+  color: #ffffff;
+}
+.responsive-calendar .day.active a:hover {
+  background-color: #68b211;
+}
+.responsive-calendar .day.active .not-current {
+  background-color: #8fcaef;
+  color: #ffffff;
+}
+.responsive-calendar .day.active .not-current:hover {
+  background-color: #bcdff5;
+}
+.responsive-calendar .day.not-current a {
+  color: #ddd;
+}
+.responsive-calendar .day .badge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  z-index: 1;
+}
+.responsive-calendar .day.today a {
+  color: black;
+}
+.responsive-calendar .today a {
+  color: #00aaff;
+  font-weight: bold;
+}
+.nav-month {
+  background: none;
+  color: #68b211;
+  border-color: #68b211;
+  padding: 5px;
+  margin-top: -5px;
+}
+.nav-month:hover{
+  color: white;
+  background-color: #68b211;
+  border-color: #68b211;
+}
+.calendar-badge {
+  padding: 1;
+}
+.badge-orange {
+  background-color: #E9A030;
+}
+.badge-red {
+  background-color: #E94430;
+}
+.responsive-calendar .day.active.calendar-stripes a{
+  background: repeating-linear-gradient(
+    45deg,
+    #68b211,
+    #68b211 10px,
+    #00aaff 10px,
+    #00aaff 20px
+    );
+}
+.titre {
+  margin-top: 1em;
+  font-size: 17px;
+  font-weight: bold;
+}
+.active {
+  width: 36px;
+  height: 34px;
+  float: left;
+  background-color: #68b211;
+}
+.stripes {
+  width: 36px;
+  height: 34px;
+  float: left;
+  background: repeating-linear-gradient(
+    45deg,
+    white,
+    white 10px,
+    #00aaff 10px,
+    #00aaff 20px
+    );
+}

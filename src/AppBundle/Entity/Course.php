@@ -38,6 +38,13 @@ class Course
     /**
      * @var string
      *
+     * @ORM\Column(name="site", type="string", length=255, nullable=true)
+     */
+    private $site;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="type", type="string", length=255, nullable=true)
      */
     private $type;
@@ -134,6 +141,30 @@ class Course
     public function getLieu()
     {
         return $this->lieu;
+    }
+
+    /**
+     * Set site
+     *
+     * @param string $site
+     *
+     * @return Course
+     */
+    public function setSite($site)
+    {
+        $this->site = $site;
+
+        return $this;
+    }
+
+    /**
+     * Get site
+     *
+     * @return string
+     */
+    public function getSite()
+    {
+        return $this->site;
     }
 
     /**
@@ -280,4 +311,3 @@ class Course
         return $this->organisateur;
     }
 }
-

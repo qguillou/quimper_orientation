@@ -13,6 +13,7 @@
 <div class="col-md-9">
   <h2>La liste des événements</h2>
 
+  {% for course in courses %}
   <div class="row">
     <div class="col-md-3" style="text-align:center">
       <h3>Jeudi<br/>
@@ -20,18 +21,21 @@
       Décembre</h3>
     </div>
     <div class="col-md-9">
-      <h3>Ecole de CO semaine 49</h3>
+      <h3>{{course.getNom()}}</h3>
       <ul class="text-list">
-        <li><i class="fa fa-map-marker"></i> Lieu <b>Bois d'amour</b></li>
-        <li><i class="fa fa-tag"></i> Type <b>Ecole de CO</b></li>
-        <li><i class="fa fa-user"></i> Organisé par <b>Quimper Orientation 2904BR</b></li>
-        <li><i class="fa fa-sign-in"></i> Inscription <b>Sur le site jusqu'au vendredi 09 décembre à 19:59:59</b></li>
+        <li><i class="fa fa-map-marker"></i> Lieu <b>{{course.getLieu()}}</b></li>
+        <li><i class="fa fa-tag"></i> Type <b>{{course.getType()}}</b></li>
+        <li><i class="fa fa-user"></i> Organisé par <b>{{course.getOrganisateur()}}</b></li>
+        {% if course.getInscription() == '1' %}
+        <li><i class="fa fa-sign-in"></i> Inscription <b>Sur le site jusqu'au {{course.getModification() | date('d/m/Y à H:i:s')}}</b></li>
+        {% else %}
+        <li><i class="fa fa-sign-in"></i> Inscription <b>Voir avec l'organisateur</b></li>
+        {% endif %}
       </ul>
       <div class="row">
         <a href="" class="btn btn-square-toround btn-bordered-primary"><span class="fa fa-info"></span> Site Internet</a>
         <a href="" class="btn btn-square-toround btn-bordered-info"><span class="fa fa-flag"></span> Annonce de course</a>
-        <a href="" class="btn btn-square-toround btn-bordered-success"><span class="fa fa-user-plus"></span> S'inscrire</a>
-        <a href="/calendrier/1/" class="btn btn-square-toround btn-bordered-danger"><span class="fa fa-caret-square-o-down"></span> Plus d'informations</a>
+        <a href="/calendrier/1/" class="btn btn-square-toround btn-bordered-success"><span class="fa fa-caret-square-o-down"></span> Plus d'informations</a>
         <a href="" class="btn btn-square-toround btn-bordered-warning"><span class="fa fa-leaf"></span> Horaires de départs par club</a>
         <a href="" class="btn btn-square-toround btn-bordered-warning"><span class="fa fa-leaf"></span> Horaires de départs par circuit</a>
       </div>
@@ -39,7 +43,8 @@
   </div>
 
   <div class="row-divider"></div>
-  
+  {% endfor %}
+
 </div>
 {% endblock %}
 
