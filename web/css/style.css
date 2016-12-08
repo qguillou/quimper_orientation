@@ -97,3 +97,11 @@ h3 {
 .btn-bordered-warning:hover{color:#FFFFFF;background:#F0AD4E;border:2px solid #FFFFFF}
 .btn-bordered-danger{color:#D9534F;background:#FFFFFF;border:2px solid #D9534F}
 .btn-bordered-danger:hover{color:#FFFFFF;background:#D9534F;border:2px solid #FFFFFF}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown:hover .dropdown-toggle {
+  background-color: #538e0d;
+}
