@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Form\User\UserView;
 use AppBundle\Entity\User;
+use AppBundle\Entity\Role;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 
 class InscriptionController extends Controller
@@ -141,6 +142,35 @@ class InscriptionController extends Controller
 				'active' => $id,
 				'form' => $form->createView(),
 		]);
+	}
+
+	/**
+	* @Route("/admin/inscription/utilisateur/{id}/webmaster")
+	*/
+	public function promoteToWebmaster($id)
+	{
+		$em = $this->getDoctrine()->getManager();
+		$repository = $em->getRepository('AppBundle:User');
+		$user = $repository->findOneBy(array('id' => $id));
+
+		try {
+			$role = new Role();
+			$role->setUser($user->getUsername());
+			$role->setRole('ROLE_WEBMASTER');
+			$em->persist($role);
+			$em->flush();
+			$this->get('session')->getFlashBag()->add(
+				'success',
+				'L\'utilisateur '.$user->getUsername().' a obtenu les droits d\'administration.'
+			);
+		}
+		catch (UniqueConstraintViolationException $e){
+			$this->get('session')->getFlashBag()->add(
+				'error',
+				'L\'utilisateur '.$user->getUsername().' a déjà les droits d\'administration.'
+			);
+		}
+		return $this->redirect('/admin/inscription/utilisateur/'.$user->getId().'/');
 	}
 
 	/**

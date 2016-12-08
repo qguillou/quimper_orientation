@@ -19,10 +19,22 @@
 
 <div class="col-md-6">
   <div class="row">
+    {% for successMessage in app.session.flashbag.get('success') %}
+    <div class="alert alert-dismissible alert-success">
+      {{ successMessage }}
+    </div>
+    {% endfor %}
+
+    {% for errorMessage in app.session.flashbag.get('error') %}
+    <div class="alert alert-dismissible alert-danger">
+      {{ errorMessage }}
+    </div>
+    {% endfor %}
+
     {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
     <fieldset>
       <h2>Consultation d'un profil utilisateur</h2>
-      <p class="lead">Vous pouvez uniquement supprimer un utilisateur.</p>
+      <p class="lead">Vous pouvez uniquement supprimer un utilisateur ou lui donner les droits d'administration.</p>
       {{ form_errors(form) }}
 
       <div class="row">
@@ -81,6 +93,9 @@
 
       <div class="row">
         <button class="btn btn-danger" type="submit">Supprimer l'utilisateur</button>
+        {% if active %}
+        <a href="/admin/inscription/utilisateur/{{active}}/webmaster" class="btn btn-primary" type="submit">Donner les droits d'administration</a>
+        {% endif %}
       </div>
     </fieldset>
     {{ form_end(form) }}
