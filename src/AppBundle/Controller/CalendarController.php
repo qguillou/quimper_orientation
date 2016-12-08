@@ -7,7 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 class CalendarController extends Controller
 {
-	/**
+		/**
      * @Route("/calendrier/")
      */
     public function calendar()
@@ -20,4 +20,18 @@ class CalendarController extends Controller
             'isAdmin' => $session->isAdmin(),
         ]);
     }
+
+		/**
+		 *@Route("/calendrier/{id}/")
+		 */
+		 public function course()
+		 {
+			 $session = $this->get('app.session');
+			 return $this->render('user/calendar/course.html.twig', [
+					 'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
+					 'user' => $this->getUser(),
+					 'isConnected' => $session->isAuthenticated(),
+					 'isAdmin' => $session->isAdmin(),
+			 ]);
+		 }
 }

@@ -1,6 +1,46 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+<div class="col-md-12">
+  <h1>Le calendrier</h1>
+  <p class="lead">
+    Consultez les évenements à venir, et trouvez toutes les informations importantes.
+  </p>
+</div>
+
+{% include 'user/calendar/calendar.html' %}
+
+<div class="col-md-9">
+  <h2>La liste des événements</h2>
+
+  <div class="row">
+    <div class="col-md-3" style="text-align:center">
+      <h3>Jeudi<br/>
+      8<br/>
+      Décembre</h3>
+    </div>
+    <div class="col-md-9">
+      <h3>Ecole de CO semaine 49</h3>
+      <ul class="text-list">
+        <li><i class="fa fa-map-marker"></i> Lieu <b>Bois d'amour</b></li>
+        <li><i class="fa fa-tag"></i> Type <b>Ecole de CO</b></li>
+        <li><i class="fa fa-user"></i> Organisé par <b>Quimper Orientation 2904BR</b></li>
+        <li><i class="fa fa-sign-in"></i> Inscription <b>Sur le site jusqu'au vendredi 09 décembre à 19:59:59</b></li>
+      </ul>
+      <div class="row">
+        <a href="" class="btn btn-square-toround btn-bordered-primary"><span class="fa fa-info"></span> Site Internet</a>
+        <a href="" class="btn btn-square-toround btn-bordered-info"><span class="fa fa-flag"></span> Annonce de course</a>
+        <a href="" class="btn btn-square-toround btn-bordered-success"><span class="fa fa-user-plus"></span> S'inscrire</a>
+        <a href="/calendrier/1/" class="btn btn-square-toround btn-bordered-danger"><span class="fa fa-caret-square-o-down"></span> Plus d'informations</a>
+        <a href="" class="btn btn-square-toround btn-bordered-warning"><span class="fa fa-leaf"></span> Horaires de départs par club</a>
+        <a href="" class="btn btn-square-toround btn-bordered-warning"><span class="fa fa-leaf"></span> Horaires de départs par circuit</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="row-divider"></div>
+  
+</div>
 {% endblock %}
 
 {% block stylesheets %}
