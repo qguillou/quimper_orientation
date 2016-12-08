@@ -1,7 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<h1>Les parcours permanents</h1>
+<div class="col-md-12">
+  <h1>Les parcours permanents</h1>
+  <p class="lead">Vous souhaitez vous entrainer ? Téléchargez le carte d'un de nos parcours permaents et partez à l'aventure !</p>
+</div>
+
 {% for carte in cartes %}
 <div class="col-md-3">
   <div class="box">

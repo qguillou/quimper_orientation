@@ -42,6 +42,7 @@
     {{ form_start(user_form, {'attr': {'class': 'form-horizontal'}}) }}
     <fieldset>
       <h2>Modification du profil</h2>
+      <p class="lead">N'oubliez pas d'enregistrer vos modifications !</p>
       {{ form_errors(user_form) }}
 
       <div class="row">
@@ -133,6 +134,7 @@
     {{ form_start(delete_form, {'attr': {'class': 'form-horizontal'}}) }}
     <fieldset>
       <h2>Suppression du compte</h2>
+      <p class="lead">Attention, la suppression est définitive.</p>
       {{ form_errors(delete_form) }}
 
       <div class="row">
@@ -170,6 +172,7 @@
     {{ form_start(notification_form, {'attr': {'class': 'form-horizontal'}}) }}
     <fieldset>
       <h2>Gestion des notifications</h2>
+      <p class="lead">La newsletter est réservée au licencié du Quimper Orientation</p>
       {{ form_errors(notification_form) }}
 
       <div class="row">
