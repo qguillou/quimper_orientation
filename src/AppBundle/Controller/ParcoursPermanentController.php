@@ -79,12 +79,13 @@ class ParcoursPermanentController extends Controller
             'La carte '.$carte->getNom().' n\'a pas pu être créée, une erreur est survenue.'
           );
           return $this->render(
-            'user/session/register.html.twig',
+            'admin/parcours/parcours.html.twig',
             array('form' => $form->createView(),
             'user' => $this->getUser(),
             'isConnected' => $session->isAuthenticated(),
             'isAdmin' => $session->isAdmin(),
-            'active' => 0)
+            'active' => 0,
+            'cartes' => $cartes)
           );
         }
 
@@ -136,12 +137,13 @@ class ParcoursPermanentController extends Controller
             'La carte '.$carte->getNom().' n\'a pas pu être modifiée, une erreur est survenue.'
           );
           return $this->render(
-            'user/session/register.html.twig',
+            'admin/parcours/parcours.html.twig',
             array('form' => $form->createView(),
             'user' => $this->getUser(),
             'isConnected' => $session->isAuthenticated(),
             'isAdmin' => $session->isAdmin(),
-            'active' => $id)
+            'active' => $id,
+            'cartes' => $cartes)
           );
         }
 
