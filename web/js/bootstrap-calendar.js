@@ -81,7 +81,6 @@
           time = this.splitDateString(dateString);
           day = this.$element.find('[data-year="' + time.year + '"][data-month="' + (time.month + 1) + '"][data-day="' + time.day + '"]').parent('.day');
           day.removeClass('active');
-          day.find('.badge').remove();
           day.find('a').removeAttr('href');
           if (this.currentMonth === time.month || this.options.activateNonCurrentMonths) {
             _results.push(this.makeActive(day, dayEvents));
@@ -100,7 +99,6 @@
           time = this.splitDateString(dateString);
           day = this.$element.find('[data-year="' + time.year + '"][data-month="' + (time.month + 1) + '"][data-day="' + time.day + '"]').parent('.day');
           day.removeClass('active');
-          day.find('.badge').remove();
           _results.push(day.find('a').removeAttr('href'));
         }
         return _results;
@@ -113,7 +111,6 @@
         for (i = _i = 0, _len = days.length; _i < _len; i = ++_i) {
           day = days[i];
           $(day).removeClass('active');
-          $(day).find('.badge').remove();
           _results.push($(day).find('a').removeAttr('href'));
         }
         return _results;
@@ -160,20 +157,8 @@
         return null;
       },
       addOthers: function(day, dayEvents) {
-        var badge;
         if (typeof dayEvents === "object") {
-          if (dayEvents.number != null) {
-            if(dayEvents.number == 1)
-              badge = $("<span></span>").html(dayEvents.number).addClass("badge calendar-badge");
-            else if(dayEvents.number == 2)
-              badge = $("<span></span>").html(dayEvents.number).addClass("badge calendar-badge badge-orange");
-            else
-              badge = $("<span></span>").html(dayEvents.number).addClass("badge calendar-badge badge-red");
-            if (dayEvents.badgeClass != null) {
-              badge.addClass(dayEvents.badgeClass);
-            }
-            day.append(badge);
-          }
+
           if (dayEvents.url) {
             day.find("a").attr("href", dayEvents.url);
             day.attr("data-toggle", "popover");

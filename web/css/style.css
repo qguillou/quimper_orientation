@@ -143,7 +143,6 @@ h3 {
   border-bottom: 1px gray solid;
 }
 .responsive-calendar .day.active a {
-  background-color: #68b211;
   color: #ffffff;
 }
 .responsive-calendar .day.active a:hover {
@@ -159,12 +158,7 @@ h3 {
 .responsive-calendar .day.not-current a {
   color: #ddd;
 }
-.responsive-calendar .day .badge {
-  position: absolute;
-  top: 2px;
-  right: 2px;
-  z-index: 1;
-}
+
 .responsive-calendar .day.today a {
   color: black;
 }
@@ -184,15 +178,7 @@ h3 {
   background-color: #68b211;
   border-color: #68b211;
 }
-.calendar-badge {
-  padding: 1;
-}
-.badge-orange {
-  background-color: #E9A030;
-}
-.badge-red {
-  background-color: #E94430;
-}
+
 .responsive-calendar .day.active.calendar-stripes a{
   background: repeating-linear-gradient(
     45deg,
@@ -202,21 +188,15 @@ h3 {
     #00aaff 20px
     );
 }
-.titre {
-  margin-top: 1em;
-  font-size: 17px;
-  font-weight: bold;
-}
 .active {
   width: 36px;
   height: 34px;
-  float: left;
   background-color: #68b211;
+  color: white;
 }
 .stripes {
   width: 36px;
   height: 34px;
-  float: left;
   background: repeating-linear-gradient(
     45deg,
     white,
