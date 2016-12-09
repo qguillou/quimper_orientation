@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Form\Carte\CarteType;
 use AppBundle\Entity\Cartes;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
+use Symfony\Component\Form\Form;
 
 class ParcoursPermanentController extends Controller
 {
@@ -44,10 +45,10 @@ class ParcoursPermanentController extends Controller
 			$em->flush();
 		}
 		catch (UniqueConstraintViolationException $e){
-			return $this->redirect('/files/cartes/'.$id.'/carte.pdf');
+			return $this->redirect('/files/cartes/'.$id.'.pdf');
 		}
 
-		return $this->redirect('/files/cartes/'.$id.'/carte.pdf');
+		return $this->redirect('/files/cartes/'.$id.'.pdf');
 	}
 
 	/**
@@ -89,9 +90,9 @@ class ParcoursPermanentController extends Controller
 
 		if ($form->isSubmitted() && $form->isValid()) {
 			if($form->get('save')->isClicked())
-				return $this->save($carte);
+			return $this->save($carte, $form);
 			else
-				return $this->delete($carte);
+			return $this->delete($carte);
 		}
 
 		return $this->render('admin/parcours/parcours.html.twig', [
@@ -110,7 +111,7 @@ class ParcoursPermanentController extends Controller
 	* @param Carte $carte the map entity to save into database
 	* @return the redirect view
 	*/
-	private function save(Cartes $carte)
+	private function save(Cartes $carte, Form $form)
 	{
 		try {
 			$carte->setDateModification(new \DateTime());
@@ -119,6 +120,10 @@ class ParcoursPermanentController extends Controller
 			$em = $this->getDoctrine()->getManager();
 			$em->persist($carte);
 			$em->flush();
+
+			if($form->get('file')->getData()){
+				$form->get('file')->getData()->move($this->getParameter('cartes'), $carte->getId() . '.pdf');
+			}
 		}
 		catch (UniqueConstraintViolationException $e){
 			$this->get('session')->getFlashBag()->add(
@@ -150,8 +155,13 @@ class ParcoursPermanentController extends Controller
 	*/
 	private function delete(Cartes $carte){
 		$em = $this->getDoctrine()->getManager();
+		$file = $this->getParameter('cartes').'/'.$carte->getId().'.pdf';
 		$em->remove($carte);
 		$em->flush();
+
+		if(file_exists($file)){
+			unlink($file);
+		}
 
 		$this->get('session')->getFlashBag()->add(
 			'success',
