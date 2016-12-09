@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Course
@@ -84,6 +85,14 @@ class Course
      */
     private $organisateur;
 
+    /**
+    * @ORM\OneToMany(targetEntity="AppBundle\Entity\Inscrit", mappedBy="course")
+    */
+    private $inscrits;
+
+    public function __construct() {
+        $this->inscrits = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -309,5 +318,29 @@ class Course
     public function getOrganisateur()
     {
         return $this->organisateur;
+    }
+
+    /**
+     * Set inscrits
+     *
+     * @param string $inscrits
+     *
+     * @return Course
+     */
+    public function setInscrits($inscrits)
+    {
+        $this->inscrits = $inscrits;
+
+        return $this;
+    }
+
+    /**
+     * Get inscrits
+     *
+     * @return array Inscrit
+     */
+    public function getInscrits()
+    {
+        return $this->inscrits;
     }
 }

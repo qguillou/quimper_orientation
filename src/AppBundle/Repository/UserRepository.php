@@ -1,11 +1,8 @@
 <?php
-
-namespace AppBundle\Entity;
-
+namespace AppBundle\Repository;
 use Symfony\Bridge\Doctrine\Security\User\UserLoaderInterface;
 use Doctrine\ORM\EntityRepository;
 use AppBundle\Entity\Role;
-
 class UserRepository extends EntityRepository implements UserLoaderInterface
 {
     public function loadUserByUsername($username)
@@ -17,7 +14,6 @@ class UserRepository extends EntityRepository implements UserLoaderInterface
             ->getQuery()
             ->getOneOrNullResult();
     }
-
     public function findAdminUser(){
       return $this->createQueryBuilder('u')
             ->select('u.prenom, u.nom, r.role')
