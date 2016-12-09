@@ -7,7 +7,7 @@
 
 <div class="col-md-3">
   <div class="list-group">
-    <a href="/admin/club/contact/" class="list-group-item {% if active == '0' %}active{% endif %}">
+    <a href="/admin/club/contact/" class="list-group-item {% if active == null %}active{% endif %}">
       <i class="fa fa-plus-circle"></i> Nouveau contact
     </a>
     {% for contact in contacts %}
@@ -121,9 +121,9 @@
 
       <div class="row">
         <button class="btn btn-default" type="reset">Annuler</button>
-        <button class="btn btn-success" type="submit">Enregistrer les modifications</button>
+        {{ form_widget(form.save, {'attr': {'class': 'btn btn-success'}}) }}
         {% if active %}
-        <a class="btn btn-danger" href="/admin/club/contact/delete/{{active}}/">Supprimer le contact</a>
+        <button class="btn btn-danger" type="submit">Supprimer le contact</a>
         {% endif %}
       </div>
     </fieldset>

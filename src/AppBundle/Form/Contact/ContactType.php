@@ -8,6 +8,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class ContactType extends AbstractType
 {
@@ -20,7 +21,8 @@ class ContactType extends AbstractType
             ->add('adresse', TextType::class, array('label' => 'Adresse', 'required' => false))
             ->add('mail', EmailType::class, array('label' => 'Adresse E-mail'))
             ->add('portable', TextType::class, array('label' => 'Portable', 'required' => false))
-            ->add('telephone', TextType::class, array('label' => 'Téléphone', 'required' => false));
+            ->add('telephone', TextType::class, array('label' => 'Téléphone', 'required' => false))
+            ->add('save', SubmitType::class, array('label' => 'Enregistrer les modifications'));
     }
 
     public function configureOptions(OptionsResolver $resolver)
