@@ -49,15 +49,10 @@ class InscriptionAdminController extends Controller
 		$form->handleRequest($request);
 
 		if ($form->isSubmitted() && $form->isValid()) {
-			$em = $this->getDoctrine()->getManager();
-      $repository = $em->getRepository('AppBundle:User');
-      $user = $repository->findOneBy(array('id' => $user->getId()));
-      $em->remove($user);
-      $em->flush();
-
-			//Ajout d'un message d'enregistrement effectué
-
-			return $this->redirect('/admin/inscription/utilisateur/');
+      if($form->get('delete')->isClicked())
+			return $this->delete($user);
+			else
+			return $this->promote($user);
 		}
 
 		return $this->render('admin/inscription/utilisateur.html.twig', [
@@ -72,13 +67,53 @@ class InscriptionAdminController extends Controller
 	}
 
 	/**
-	* @Route("/admin/inscription/utilisateur/{id}/webmaster")
+	* @Route("/admin/inscription/archive/")
 	*/
-	public function promoteToWebmaster($id)
+	public function archive(){
+		$session = $this->get('app.session');
+		return $this->render('admin/inscription/archive.html.twig', [
+			'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
+			'user' => $this->getUser(),
+			'isConnected' => $session->isAuthenticated(),
+			'isAdmin' => $session->isAdmin(),
+		]);
+	}
+
+  /**
+	* Function to delete an user
+	* @param User $user the user entity to delete into database
+	* @return the redirect view
+	*/
+	private function delete(User $user)
 	{
-		$em = $this->getDoctrine()->getManager();
-		$repository = $em->getRepository('AppBundle:User');
-		$user = $repository->findOneBy(array('id' => $id));
+    if($user->getId() != null){
+      $em = $this->getDoctrine()->getManager();
+      $em->remove($user);
+      $em->flush();
+
+      $this->get('session')->getFlashBag()->add(
+        'success',
+        'L\'utilisateur '.$user->getUsername().' a été supprimée.'
+      );
+    }
+    else {
+      $this->get('session')->getFlashBag()->add(
+        'error',
+        'Veuillez sélectionner un utilisateur.'
+      );
+    }
+
+		return $this->redirect('/admin/inscription/utilisateur/');
+	}
+
+  /**
+	* Function to promote an user
+	* @param User $user the user entity to delete into database
+	* @return the redirect view
+	*/
+	private function promote(User $user)
+	{
+    $em = $this->getDoctrine()->getManager();
 
 		try {
 			$role = new Role();
@@ -94,22 +129,9 @@ class InscriptionAdminController extends Controller
 		catch (UniqueConstraintViolationException $e){
 			$this->get('session')->getFlashBag()->add(
 				'error',
-				'L\'utilisateur '.$user->getUsername().' a déjà les droits d\'administration.'
+				'L\'utilisateur '.$user->getUsername().' avait déjà les droits d\'administration.'
 			);
 		}
-		return $this->redirect('/admin/inscription/utilisateur/'.$user->getId().'/');
-	}
-
-	/**
-	* @Route("/admin/inscription/archive/")
-	*/
-	public function archive(){
-		$session = $this->get('app.session');
-		return $this->render('admin/inscription/archive.html.twig', [
-			'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-			'user' => $this->getUser(),
-			'isConnected' => $session->isAuthenticated(),
-			'isAdmin' => $session->isAdmin(),
-		]);
-	}
+    return $this->redirect('/admin/inscription/utilisateur/'.$user->getId());
+  }
 }

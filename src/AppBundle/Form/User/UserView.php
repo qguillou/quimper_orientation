@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class UserView extends AbstractType
 {
@@ -20,7 +21,8 @@ class UserView extends AbstractType
             ->add('username', TextType::class, array('label' => 'Login', 'disabled' => true))
             ->add('license', NumberType::class, array('label' => 'N° de licence', 'required' => false, 'disabled' => true))
             ->add('nom', TextType::class, array('label' => 'Nom', 'disabled' => true))
-            ->add('prenom', TextType::class, array('label' => 'Prénom', 'disabled' => true));
+            ->add('prenom', TextType::class, array('label' => 'Prénom', 'disabled' => true))
+            ->add('delete', SubmitType::class, array('label' => 'Supprimer l\'utilisateur'));;
     }
 
     public function configureOptions(OptionsResolver $resolver)

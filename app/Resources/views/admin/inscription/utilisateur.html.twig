@@ -92,9 +92,9 @@
       </div>
 
       <div class="row">
-        <button class="btn btn-danger" type="submit">Supprimer l'utilisateur</button>
+        {{ form_widget(form.delete, {'attr': {'class': 'btn btn-danger'}}) }}
         {% if active %}
-        <a href="/admin/inscription/utilisateur/{{active}}/webmaster" class="btn btn-primary" type="submit">Donner les droits d'administration</a>
+        <button class="btn btn-primary" type="submit">Donner les droits d'administration</button>
         {% endif %}
       </div>
     </fieldset>
