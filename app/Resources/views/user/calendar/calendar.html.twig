@@ -1,35 +1,28 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<div class="col-md-12">
+<div class="col-md-9">
   <h1>Le calendrier</h1>
   <p class="lead">
     Consultez les évenements à venir, et trouvez toutes les informations importantes.
   </p>
-</div>
-
-{% include 'user/calendar/calendar.html' %}
-
-<div class="col-md-9">
-  <h2>La liste des événements</h2>
-
   {% for course in courses %}
   <div class="row">
     <div class="col-md-3" style="text-align:center">
-      <h3>{{course.getDate() | date("l")}}<br/>
+      <h3 style="color:{{course.getType().getColor()}}; font-weight:bold">{{strftime(course.getDate() | date("Y-m-d"), "%A")}}<br/>
       {{course.getDate() | date("d")}}<br/>
-      {{course.getDate() | date("F")}}</h3>
+      {{strftime(course.getDate() | date("Y-m-d"), "%B")}}</h3>
     </div>
     <div class="col-md-9">
-      <h3>{{course.getNom()}}</h3>
-      <ul class="text-list">
-        <li><i class="fa fa-map-marker"></i> Lieu <b>{{course.getLieu()}}</b></li>
-        <li><i class="fa fa-tag"></i> Type <b>{{course.getType()}}</b></li>
-        <li><i class="fa fa-user"></i> Organisé par <b>{{course.getOrganisateur()}}</b></li>
+      <h3 style="color:{{course.getType().getColor()}};font-weight:bold">{{course.getNom()}}</h3>
+      <ul class="text-list information" style="border-color: {{course.getType().getColor()}}">
+        <li><i class="fa fa-map-marker"></i> Lieu <b style="color:{{course.getType().getColor()}}">{{course.getLieu()}}</b></li>
+        <li><i class="fa fa-tag"></i> Type <b style="color:{{course.getType().getColor()}}">{{course.getType().getNom()}}</b></li>
+        <li><i class="fa fa-user"></i> Organisé par <b style="color:{{course.getType().getColor()}}">{{course.getOrganisateur()}}</b></li>
         {% if course.getInscription() == '1' %}
-        <li><i class="fa fa-sign-in"></i> Inscription <b>Sur le site jusqu'au {{course.getModification() | date('d/m/Y à H:i:s')}}</b></li>
+        <li><i class="fa fa-sign-in"></i> Inscription <b style="color:{{course.getType().getColor()}}">Sur le site jusqu'au {{course.getModification() | date('d/m/Y à H:i:s')}}</b></li>
         {% else %}
-        <li><i class="fa fa-sign-in"></i> Inscription <b>Voir avec l'organisateur</b></li>
+        <li><i class="fa fa-sign-in"></i> Inscription <b style="color:{{course.getType().getColor()}}">Voir avec l'organisateur</b></li>
         {% endif %}
       </ul>
       <div class="row">
@@ -43,7 +36,7 @@
 
         {% for file in get_horaires(course.getId()) %}
           {% if is_file(file) %}
-          <a href="/files/courses/{{course.getId()}}/horaires/{{basename(file)}}" target="_BLANK" class="btn btn-square-toround btn-bordered-warning"><span class="fa fa-leaf"></span> Horaires de départs</a>
+          <a href="/files/courses/{{course.getId()}}/horaires/{{basename(file, '')}}" target="_BLANK" class="btn btn-square-toround btn-bordered-warning"><span class="fa fa-leaf"></span> {{basename(file, '.*')}}</a>
           {% endif %}
         {% endfor %}
 
@@ -56,6 +49,8 @@
   {% endfor %}
 
 </div>
+
+{% include 'user/calendar/calendar.html' %}
 {% endblock %}
 
 {% block stylesheets %}

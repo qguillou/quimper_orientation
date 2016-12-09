@@ -49,11 +49,7 @@
               {% for course in courses %}
               "{{course.getDate() | date('Y-m-d')}}": {
                 "url": "/calendrier/{{course.getid()}}",
-                "id": "{{course.getId()}}",
-                "number": "1",
-                "participation": "0",
-                "title": "{{course.getNom()}}",
-                "limite": "passée"
+                "participation": "0"
               },
               {% endfor %}
             }

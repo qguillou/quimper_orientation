@@ -5,3 +5,4 @@ TODOList
 - Voir le problème lié au glyphicon
 - Voir pour les checkbox (les rendre plus jolie
 - Ajouter le traitement pour l'administration de l'archive fédérale
+- Gérer le chargement des inscrits pour la page calendar

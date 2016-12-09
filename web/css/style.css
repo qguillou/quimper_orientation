@@ -28,7 +28,7 @@ h3 {
 }
 
 .row-divider {
-  height: 2em;
+  height: 1.2em;
 }
 
 .box {
@@ -207,4 +207,9 @@ h3 {
     #00aaff 10px,
     #00aaff 20px
     );
+}
+
+ul.text-list.information {
+  border-left: 3px solid #68b211;
+  padding-left: 20px;
 }

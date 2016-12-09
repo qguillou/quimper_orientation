@@ -161,11 +161,6 @@
 
           if (dayEvents.url) {
             day.find("a").attr("href", dayEvents.url);
-            day.attr("data-toggle", "popover");
-            if(dayEvents.participation > 0)
-              day.popover({title: dayEvents.title, content: "Limite d'inscription "+dayEvents.limite, trigger: "hover", placement: "left", template: "<div class=\"popover \"><div class=\"arrow\"></div><div class=\"popover-inner\"><h3 class=\"popover-title\"></h3><div class=\"popover-content\"><p></p></div></div></div>"});
-            else
-              day.popover({title: dayEvents.title, content: "Limite d'inscription "+dayEvents.limite, trigger: "hover", placement: "left"});
           }
           if (dayEvents.id) {
             day.find("a").attr("id", dayEvents.id);

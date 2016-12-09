@@ -42,11 +42,11 @@ class Course
      */
     private $site;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="type", type="string", length=255, nullable=true)
-     */
+
+     /**
+      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Type")
+      * @ORM\JoinColumn(name="type_id", referencedColumnName="id")
+      */
     private $type;
 
     /**

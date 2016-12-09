@@ -27,8 +27,15 @@ class AssetExistsExtension extends \Twig_Extension
                 'is_file' => new \Twig_SimpleFunction("is_file", function ($path) {
                     return is_file($path);
                 }),
-                'basename' => new \Twig_SimpleFunction("basename", function ($path) {
-                     return basename($path);
+                'basename' => new \Twig_SimpleFunction("basename", function ($path, $ext) {
+                     return basename($path, $ext);
+                }),
+                'strftime' => new \Twig_SimpleFunction("strftime", function ($date, $format) {
+                     setlocale (LC_TIME, 'fr_FR.utf8','fra');
+                     return strftime($format, strtotime($date));
+                }),
+                'is_past' => new \Twig_SimpleFunction("is_past", function ($date) {
+                     return $date < date("Y-m-d H:i:s");
                 }),
         );
     }
