@@ -85,6 +85,11 @@ class ClubAdminController extends Controller
         'error',
         'Le tarif '.$tarif->getNom().' n\'a pas pu être modifiée, une erreur est survenue.'
       );
+
+			$em = $this->getDoctrine()->getManager();
+			$repository = $em->getRepository('AppBundle:Tarif');
+			$tarifs = $repository->findAll();
+
       return $this->render(
         'admin/club/tarif.html.twig',
         array('form' => $form->createView(),
@@ -193,6 +198,11 @@ class ClubAdminController extends Controller
         'error',
         'Le contact '.$contact->getNom().' n\'a pas pu être modifiée, une erreur est survenue.'
       );
+
+			$em = $this->getDoctrine()->getManager();
+			$repository = $em->getRepository('AppBundle:Contact');
+			$contacts = $repository->findAll();
+
       return $this->render(
         'admin/club/contact.html.twig',
         array('form' => $form->createView(),

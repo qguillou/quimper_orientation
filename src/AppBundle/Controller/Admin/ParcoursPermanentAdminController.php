@@ -91,6 +91,11 @@ class ParcoursPermanentAdminController extends Controller
 				'error',
 				'La carte '.$carte->getNom().' n\'a pas pu être modifiée, une erreur est survenue.'
 			);
+
+			$em = $this->getDoctrine()->getManager();
+			$repository = $em->getRepository('AppBundle:Cartes');
+			$cartes = $repository->findAll();
+
 			return $this->render(
 				'admin/parcours/parcours.html.twig',
 				array('form' => $form->createView(),
