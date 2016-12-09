@@ -19,53 +19,8 @@ class ClubAdminController extends Controller
 	*/
 	public function adminTarif(Request $request)
 	{
-		$em = $this->getDoctrine()->getManager();
-		$repository = $em->getRepository('AppBundle:Tarif');
-		$tarifs = $repository->findAll();
-		$session = $this->get('app.session');
-
 		$tarif = new Tarif();
-		$form = $this->createForm(TarifType::class, $tarif);
-		$form->handleRequest($request);
-
-		if ($form->isSubmitted() && $form->isValid()) {
-			try {
-				$em->persist($tarif);
-				$em->flush();
-			}
-			catch (UniqueConstraintViolationException $e){
-				$this->get('session')->getFlashBag()->add(
-					'error',
-					'Le tarif '.$tarif->getNom().' n\'a pas pu être créée, une erreur est survenue.'
-				);
-				return $this->render(
-					'admin/club/tarif.html.twig',
-					array('form' => $form->createView(),
-					'user' => $this->getUser(),
-					'isConnected' => $session->isAuthenticated(),
-					'isAdmin' => $session->isAdmin(),
-					'active' => 0,
-					'tarifs' => $tarifs)
-				);
-			}
-
-			$this->get('session')->getFlashBag()->add(
-				'success',
-				'Le tarif '.$tarif->getNom().' a été créée.'
-			);
-
-			return $this->redirect('/admin/club/tarif/'.$tarif->getId());
-		}
-
-		return $this->render('admin/club/tarif.html.twig', [
-				'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-				'user' => $this->getUser(),
-				'isConnected' => $session->isAuthenticated(),
-				'isAdmin' => $session->isAdmin(),
-				'tarifs' => $tarifs,
-				'active' => 0,
-				'form' => $form->createView(),
-		]);
+		return $this->renderTarifAdminPage($request, $tarif);
 	}
 
 	/**
@@ -74,41 +29,32 @@ class ClubAdminController extends Controller
 	public function adminTarifById($id, Request $request)
 	{
 		$em = $this->getDoctrine()->getManager();
+    $repository = $em->getRepository('AppBundle:Tarif');
+		$tarif = $repository->findOneBy(array('id' => $id));
+		return $this->renderTarifAdminPage($request, $tarif);
+	}
+
+  /**
+	* Function to render the page
+	* @param Request $request
+	* @param Tarif $tarif
+	*/
+	private function renderTarifAdminPage(Request $request, Tarif $tarif)
+	{
+    $session = $this->get('app.session');
+    $em = $this->getDoctrine()->getManager();
 		$repository = $em->getRepository('AppBundle:Tarif');
 		$tarifs = $repository->findAll();
-		$session = $this->get('app.session');
 
-		$tarif = $repository->findOneBy(array('id' => $id));
+
 		$form = $this->createForm(TarifType::class, $tarif);
 		$form->handleRequest($request);
 
 		if ($form->isSubmitted() && $form->isValid()) {
-			try {
-				$em = $this->getDoctrine()->getManager();
-				$em->persist($tarif);
-				$em->flush();
-			}
-			catch (UniqueConstraintViolationException $e){
-				$this->get('session')->getFlashBag()->add(
-					'error',
-					'Le tarif '.$tarif->getNom().' n\'a pas pu être modifiée, une erreur est survenue.'
-				);
-				return $this->render(
-					'admin/club/tarif.html.twig',
-					array('form' => $form->createView(),
-					'user' => $this->getUser(),
-					'isConnected' => $session->isAuthenticated(),
-					'isAdmin' => $session->isAdmin(),
-					'active' => $id,
-					'tarifs' => $tarifs)
-				);
-			}
-
-			$this->get('session')->getFlashBag()->add(
-				'success',
-				'Le tarif '.$tarif->getNom().' a été modifiée.'
-			);
-			return $this->redirect('/admin/club/tarif/'.$id);
+      if($form->get('save')->isClicked())
+			return $this->save($tarif);
+			else
+			return $this->delete($tarif);
 		}
 
 		return $this->render('admin/club/tarif.html.twig', [
@@ -117,19 +63,54 @@ class ClubAdminController extends Controller
 				'isConnected' => $session->isAuthenticated(),
 				'isAdmin' => $session->isAdmin(),
 				'tarifs' => $tarifs,
-				'active' => $id,
+				'active' => $tarif->getId(),
 				'form' => $form->createView(),
 		]);
-	}
+  }
 
-	/**
-	*@Route("/admin/club/tarif/delete/{id}/")
+  /**
+  * Function to save a tarif
+	* @param Tarif $tarif the tarif entity to save into database
+	* @return the redirect view
+  */
+  private function save($tarif)
+  {
+    try {
+      $em = $this->getDoctrine()->getManager();
+      $em->persist($tarif);
+      $em->flush();
+    }
+    catch (UniqueConstraintViolationException $e){
+      $this->get('session')->getFlashBag()->add(
+        'error',
+        'Le tarif '.$tarif->getNom().' n\'a pas pu être modifiée, une erreur est survenue.'
+      );
+      return $this->render(
+        'admin/club/tarif.html.twig',
+        array('form' => $form->createView(),
+        'user' => $this->getUser(),
+        'isConnected' => $session->isAuthenticated(),
+        'isAdmin' => $session->isAdmin(),
+        'active' => $tarif->getId(),
+        'tarifs' => $tarifs)
+      );
+    }
+
+    $this->get('session')->getFlashBag()->add(
+      'success',
+      'Le tarif '.$tarif->getNom().' a été modifiée.'
+    );
+    return $this->redirect('/admin/club/tarif/'.$tarif->getId());
+  }
+
+  /**
+	* Function to delete a tarif
+	* @param Tarif $tarif the tarif entity to delete into database
+	* @return the redirect view
 	*/
-	public function deleteTarif($id)
+	private function delete(Tarif $tarif)
 	{
 		$em = $this->getDoctrine()->getManager();
-		$repository = $em->getRepository('AppBundle:Tarif');
-		$tarif = $repository->findOneBy(array('id' => $id));
 		$em->remove($tarif);
 		$em->flush();
 

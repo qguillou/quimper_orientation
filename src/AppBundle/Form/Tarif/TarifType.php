@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class TarifType extends AbstractType
 {
@@ -14,7 +15,8 @@ class TarifType extends AbstractType
     {
         $builder
             ->add('nom', TextType::class, array('label' => 'Nom'))
-            ->add('prix', NumberType::class, array('label' => 'Prix'));
+            ->add('prix', NumberType::class, array('label' => 'Prix'))
+            ->add('save', SubmitType::class, array('label' => 'Enregistrer les modifications'));
     }
 
     public function configureOptions(OptionsResolver $resolver)
