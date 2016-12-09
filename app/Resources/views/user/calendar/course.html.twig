@@ -73,7 +73,7 @@
       </thead>
       <tbody>
         {% set i = 0 %}
-        {% for inscrit in inscrits %}
+        {% for inscrit in course.getInscrits() %}
         {% set i = i + 1 %}
         <tr>
           <td>{{i}}</td>
