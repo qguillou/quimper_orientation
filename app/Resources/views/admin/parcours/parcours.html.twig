@@ -6,7 +6,7 @@
 </div>
 <div class="col-md-3">
   <div class="list-group">
-    <a href="/admin/parcours/" class="list-group-item {% if active == '0' %}active{% endif %}">
+    <a href="/admin/parcours/" class="list-group-item {% if active == null %}active{% endif %}">
       <i class="fa fa-plus-circle"></i> Nouvelle carte
     </a>
     {% for carte in cartes %}
@@ -43,7 +43,7 @@
 
       <div class="row">
         <div class="form-group">
-          {{ form_label(form.nom, "Nom de la carte", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+          {{ form_label(form.nom, null, {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
 
           <div class="col-sm-6">
             {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
@@ -53,10 +53,32 @@
       </div>
 
       <div class="row">
+        <div class="form-group">
+          {{ form_label(form.file, null, {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+
+          <div class="col-sm-6">
+            {{ form_widget(form.file, {'attr': {'class': ''}}) }}
+            {{ form_errors(form.file) }}
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group">
+          {{ form_label(form.alert, null, {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+
+          <div class="col-sm-6">
+            {{ form_widget(form.alert, {'attr': {'class': ''}}) }}
+            {{ form_errors(form.alert) }}
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
         <button class="btn btn-default" type="reset">Annuler</button>
-        <button class="btn btn-success" type="submit">Enregistrer les modifications</button>
+        {{ form_widget(form.save, {'attr': {'class': 'btn btn-success'}}) }}
         {% if active %}
-        <a class="btn btn-danger" href="/admin/parcours/delete/{{active}}/">Supprimer la carte</a>
+        <button class="btn btn-danger" type="submit">Supprimer la carte</button>
         {% endif %}
       </div>
     </fieldset>

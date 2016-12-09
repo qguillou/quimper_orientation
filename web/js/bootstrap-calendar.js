@@ -183,6 +183,7 @@
               day.addClass(eventClass);
             }
           } else {
+            day.addClass("legend");
             day.addClass("active");
             if(dayEvents.participation > 0){
               day.addClass("calendar-stripes");

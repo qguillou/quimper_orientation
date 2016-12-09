@@ -188,15 +188,18 @@ h3 {
     #00aaff 20px
     );
 }
-.active {
-  width: 36px;
-  height: 34px;
+
+.legend.legend-box {
+  width: 30px;
+  height: 32px;
+}
+
+.legend.active {
   background-color: #68b211;
   color: white;
 }
-.stripes {
-  width: 36px;
-  height: 34px;
+
+.legend.stripes {
   background: repeating-linear-gradient(
     45deg,
     white,
