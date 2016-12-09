@@ -28,8 +28,9 @@
       <p class="lead" style="color:{{course.getType().getColor()}}; font-weight:bold">Voir avec l'organisateur</p>
       {% endif %}
     </li>
-
+    {% if course.getGPS() != null %}
     <li><i class="fa fa-location-arrow"></i> Coordonnées GPS <p class="lead"  style="color:{{course.getType().getColor()}}; font-weight:bold">{{course.getGPS()}}</p></li>
+    {% endif %}
   </ul>
 </div>
 
@@ -48,13 +49,11 @@
     <a href="/files/courses/{{course.getId()}}/annonce.pdf" target="_BLANK" class="btn btn-square-toround btn-bordered-info"><span class="fa fa-flag"></span> Annonce de course</a>
     {% endif %}
 
-    {% for file in get_horaires(course.getId()) %}
+    {% for file in get_files(course.getId()) %}
     {% if is_file(file) %}
-    <a href="/files/courses/{{course.getId()}}/horaires/{{basename(file, '')}}" target="_BLANK" class="btn btn-square-toround btn-bordered-warning"><span class="fa fa-leaf"></span> {{basename(file, '.*')}}</a>
+    <a href="/files/courses/{{course.getId()}}/autres/{{basename(file, '')}}" target="_BLANK" class="btn btn-square-toround btn-bordered-warning"><span class="fa fa-leaf"></span> {{basename(file, '.*')}}</a>
     {% endif %}
     {% endfor %}
-
-    <a href="/calendrier/{{course.getId()}}/" class="btn btn-square-toround btn-bordered-success"><span class="fa fa-caret-square-o-down"></span> Plus d'informations</a>
   </div>
 
   <div class="row-divider"></div>

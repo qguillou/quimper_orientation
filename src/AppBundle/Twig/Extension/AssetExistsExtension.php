@@ -20,9 +20,13 @@ class AssetExistsExtension extends \Twig_Extension
                   $path = realpath($this->kernel->getRootDir() . '/../web/files/courses/'.$id.'/annonce.pdf');
                   return file_exists($path);
                  }),
-                'get_horaires' => new \Twig_SimpleFunction("get_horaires", function ($id) {
-                   $path = realpath($this->kernel->getRootDir() . '/../web/files/courses/'.$id.'/horaires/');
+                'get_files' => new \Twig_SimpleFunction("get_files", function ($id) {
+                   $path = realpath($this->kernel->getRootDir() . '/../web/files/courses/'.$id.'/autres/');
                    return glob($path."/*.pdf");
+                }),
+                'has_other_file' => new \Twig_SimpleFunction("has_other_file", function ($id) {
+                   $path = realpath($this->kernel->getRootDir() . '/../web/files/courses/'.$id.'/autres/');
+                   return sizeof(glob($path."/*.pdf"));
                 }),
                 'is_file' => new \Twig_SimpleFunction("is_file", function ($path) {
                     return is_file($path);
