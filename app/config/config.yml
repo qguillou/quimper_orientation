@@ -8,6 +8,7 @@ imports:
 parameters:
     locale: fr
     cartes: '%kernel.root_dir%/../web/files/cartes'
+    courses: '%kernel.root_dir%/../web/files/courses'
 
 framework:
     #esi:             ~

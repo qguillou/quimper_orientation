@@ -2,7 +2,6 @@ TODOList
 
 - Lors d'une suppression de compte afficher un message (alert) sur la page d'accueil
 - Ajout des paramètres options
-- parcours permanent afficher une alert quand modification en cours
 - Voir le problème lié au glyphicon
 - Voir pour les checkbox (les rendre plus jolie
 - Ajouter le traitement pour l'administration de l'archive fédérale

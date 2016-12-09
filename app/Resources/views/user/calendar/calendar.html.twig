@@ -16,9 +16,9 @@
   {% for course in courses %}
   <div class="row">
     <div class="col-md-3" style="text-align:center">
-      <h3>Jeudi<br/>
-      8<br/>
-      Décembre</h3>
+      <h3>{{course.getDate() | date("l")}}<br/>
+      {{course.getDate() | date("d")}}<br/>
+      {{course.getDate() | date("F")}}</h3>
     </div>
     <div class="col-md-9">
       <h3>{{course.getNom()}}</h3>
@@ -33,11 +33,21 @@
         {% endif %}
       </ul>
       <div class="row">
-        <a href="" class="btn btn-square-toround btn-bordered-primary"><span class="fa fa-info"></span> Site Internet</a>
-        <a href="" class="btn btn-square-toround btn-bordered-info"><span class="fa fa-flag"></span> Annonce de course</a>
-        <a href="/calendrier/1/" class="btn btn-square-toround btn-bordered-success"><span class="fa fa-caret-square-o-down"></span> Plus d'informations</a>
-        <a href="" class="btn btn-square-toround btn-bordered-warning"><span class="fa fa-leaf"></span> Horaires de départs par club</a>
-        <a href="" class="btn btn-square-toround btn-bordered-warning"><span class="fa fa-leaf"></span> Horaires de départs par circuit</a>
+        {% if course.getSite() != null %}
+        <a href="{{course.getSite()}}" class="btn btn-square-toround btn-bordered-primary"><span class="fa fa-info"></span> Site Internet</a>
+        {% endif %}
+
+        {% if annonce_exists(course.getId()) %}
+        <a href="/files/courses/{{course.getId()}}/annonce.pdf" target="_BLANK" class="btn btn-square-toround btn-bordered-info"><span class="fa fa-flag"></span> Annonce de course</a>
+        {% endif %}
+
+        {% for file in get_horaires(course.getId()) %}
+          {% if is_file(file) %}
+          <a href="/files/courses/{{course.getId()}}/horaires/{{basename(file)}}" target="_BLANK" class="btn btn-square-toround btn-bordered-warning"><span class="fa fa-leaf"></span> Horaires de départs</a>
+          {% endif %}
+        {% endfor %}
+
+        <a href="/calendrier/{{course.getId()}}/" class="btn btn-square-toround btn-bordered-success"><span class="fa fa-caret-square-o-down"></span> Plus d'informations</a>
       </div>
     </div>
   </div>
