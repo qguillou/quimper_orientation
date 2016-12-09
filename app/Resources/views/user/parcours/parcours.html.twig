@@ -14,18 +14,22 @@
     </div>
     <div class="info">
       <h2 class="text-center">{{carte.getNom()}}</h2>
-
-        <ul class="text-list nopadding">
-          <li>
-            <b>Date de modification </b> Le {{carte.getDateModification() | date('d/m/Y à G:i')}}
-          </li>
-          <li>
-            <b>Taille du fichier </b>
-          </li>
-          <li>
-            <b>Téléchargé </b>{{carte.getNbTelechargement()}} fois
-          </li>
-        </ul>
+      {% if carte.getAlert() %}
+      <div class="alert alert-danger">
+        Attention, ce parcours est actuellement en cours de modification.
+      </div>
+      {% endif %}
+      <ul class="text-list nopadding">
+        <li>
+          <b>Date de modification </b> Le {{carte.getDateModification() | date('d/m/Y à G:i')}}
+        </li>
+        <li>
+          <b>Taille du fichier </b>
+        </li>
+        <li>
+          <b>Téléchargé </b>{{carte.getNbTelechargement()}} fois
+        </li>
+      </ul>
 
       <a href="/parcours/{{carte.getId()}}" target="_BLANK" class="btn btn-success">
         <i class="fa fa-download"></i> Télécharger la carte

@@ -2,12 +2,7 @@ TODOList
 
 - Lors d'une suppression de compte afficher un message (alert) sur la page d'accueil
 - Ajout des paramètres options
-- Gestion des rôles des utilisateurs
-  * ROLE_ADMIN : uniquement Quentin, permet l'accès à toutes les options
-  * ROLE_WEBMASTER : permet d'éditer le contenu du site
+- parcours permanent afficher une alert quand modification en cours
 - Voir le problème lié au glyphicon
-- Voir pour les checkbox (les rendre plus jolie)
-- parcours permanent ajout d'un message de création ou modification réalisé
-- parcours permanent gestion de la sauvegarde et de la suppression des fichiers
-- Ajouter les champs supplémentaire à parcours permanent
+- Voir pour les checkbox (les rendre plus jolie
 - Ajouter le traitement pour l'administration de l'archive fédérale
