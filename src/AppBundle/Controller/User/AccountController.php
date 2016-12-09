@@ -8,6 +8,7 @@ use AppBundle\Form\User\UserUpdate;
 use AppBundle\Form\User\UserDelete;
 use AppBundle\Form\User\UserNotification;
 use AppBundle\Entity\User;
+use AppBundle\Entity\Role;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\FormError;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
@@ -110,6 +111,12 @@ class AccountController extends Controller
 			if(($encoder->isPasswordValid($user->getPassword(),$user->getPlainPassword(),$user->getSalt()))){
 				$this->get("security.token_storage")->setToken(null);
 				$em = $this->getDoctrine()->getManager();
+
+				$repository = $em->getRepository('AppBundle:Role');
+	  		$role = $repository->findOneBy(array('user' => $user->getUsername()));
+	      if($role)
+	        $em->remove($role);
+
 				$em->remove($user);
 				$em->flush();
 				$this->get('session')->getFlashBag()->add(

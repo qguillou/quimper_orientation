@@ -88,6 +88,12 @@ class InscriptionAdminController extends Controller
 	{
     if($user->getId() != null){
       $em = $this->getDoctrine()->getManager();
+
+      $repository = $em->getRepository('AppBundle:Role');
+  		$role = $repository->findOneBy(array('user' => $user->getUsername()));
+      if($role)
+        $em->remove($role);
+
       $em->remove($user);
       $em->flush();
 
