@@ -153,7 +153,8 @@ class ParcoursPermanentController extends Controller
 	* @param Carte $carte the map entity to delete into database
 	* @return the redirect view
 	*/
-	private function delete(Cartes $carte){
+	private function delete(Cartes $carte)
+	{
 		$em = $this->getDoctrine()->getManager();
 		$file = $this->getParameter('cartes').'/'.$carte->getId().'.pdf';
 		$em->remove($carte);
