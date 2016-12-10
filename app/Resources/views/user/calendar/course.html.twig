@@ -32,7 +32,7 @@
     <li><i class="fa fa-location-arrow"></i> Coordonnées GPS <p class="lead"  style="color:{{course.getType().getColor()}}; font-weight:bold">{{course.getGPS()}}</p></li>
     {% endif %}
 
-    {% if course.getCircuits() != null %}
+    {% if sizeof(course.getCircuits()) > 0 %}
     <li><i class="fa fa-map-signs"></i> Circuits
       <p class="lead"  style="color:{{course.getType().getColor()}}; font-weight:bold">
         {% for circuit in course.getCircuits() %}
@@ -106,11 +106,11 @@
         {% set i = 0 %}
         {% for inscrit in course.getInscrits() %}
         {% set i = i + 1 %}
-        <tr {% if 1 and inscrit.getCircuit() == null %}class="warning"{% endif %}>
+        <tr {% if sizeof(course.getCircuits()) > 0 and inscrit.getCircuit() == null %}class="warning"{% endif %}>
           <td>{{i}}</td>
           <td>{{inscrit.getNom()}}</td>
           <td>{{inscrit.getPrenom()}}</td>
-          <td>{{inscrit.getCircuit().getNom()}}</td>
+          <td>{% if inscrit.getCircuit() != null %}{{inscrit.getCircuit().getNom()}}{% endif %}</td>
           <td>{{inscrit.getCommentaire()}}</td>
           <td>
             {% if user == inscrit.getUser() %}
@@ -121,11 +121,17 @@
         {% endfor %}
       </tbody>
     </table>
+    {% if is_past(course.getModification() | date("Y-m-d H:i:s")) == false %}
     {% if isConnected %}
-    <button data-toggle="modal" data-target="#InscriptionRapideModal" class="btn btn-square-toround btn-bordered-success"><span class="fa fa-user-plus"></span> Inscription rapide</button>
+    <button data-toggle="modal"
+            data-target="#InscriptionRapideModal"
+            class="btn btn-square-toround btn-bordered-success">
+      <span class="fa fa-user-plus"></span> Inscription rapide
+    </button>
     {% endif %}
     <a href="" class="btn btn-square-toround btn-bordered-success"><span class="fa fa-user-plus"></span> S'inscrire</a>
     <a href="/inscription/modification" class="btn btn-square-toround btn-bordered-primary"><span class="fa fa-pencil-square-o"></span> Modifier ses inscriptions</a>
+    {% endif %}
   </div>
 
   <div class="row-divider"></div>
@@ -137,6 +143,7 @@
   </div>
 </div>
 
+{% if is_past(course.getModification() | date("Y-m-d H:i:s")) == false %}
 <div class="modal fade" id="InscriptionRapideModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -186,6 +193,7 @@
     </div>
   </div>
 </div>
+{% endif %}
 {% endblock %}
 
 {% block stylesheets %}

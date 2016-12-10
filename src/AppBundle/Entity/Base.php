@@ -17,63 +17,63 @@ class Base
    *
    * @ORM\Column(name="id", type="integer")
    * @ORM\Id
-   * @ORM\GeneratedValue(strategy="AUTO")
+   * @ORM\GeneratedValue(strategy="NONE")
    */
    private $id;
 
    /**
     * @var int
     *
-    * @ORM\Column(name="puce", type="integer")
+    * @ORM\Column(name="puce", type="integer", nullable=true)
     */
     private $puce;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="string", length=255)
+     * @ORM\Column(name="nom", type="string", length=255, nullable=true)
      */
     private $nom;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="prenom", type="string", length=255)
+     * @ORM\Column(name="prenom", type="string", length=255, nullable=true)
      */
     private $prenom;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="ne", type="string", length=5)
+     * @ORM\Column(name="ne", type="string", length=5, nullable=true)
      */
     private $ne;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="sexe", type="string", length=1)
+     * @ORM\Column(name="sexe", type="string", length=1, nullable=true)
      */
     private $sexe;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nom_club", type="string", length=255)
+     * @ORM\Column(name="nom_club", type="string", length=255, nullable=true)
      */
     private $nomclub;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="ville", type="string", length=255)
+     * @ORM\Column(name="ville", type="string", length=255, nullable=true)
      */
     private $ville;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="categorie", type="string", length=255)
+     * @ORM\Column(name="categorie", type="string", length=255, nullable=true)
      */
     private $categorie;
 
@@ -278,5 +278,19 @@ class Base
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set id
+     *
+     * @param string $id
+     *
+     * @return Base
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
     }
 }

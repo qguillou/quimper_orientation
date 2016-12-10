@@ -41,6 +41,9 @@ class AssetExistsExtension extends \Twig_Extension
                 'is_past' => new \Twig_SimpleFunction("is_past", function ($date) {
                      return $date < date("Y-m-d H:i:s");
                 }),
+                'sizeof' => new \Twig_SimpleFunction("sizeof", function ($array) {
+                     return sizeof($array);
+                }),
         );
     }
 }
