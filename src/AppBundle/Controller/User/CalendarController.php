@@ -58,7 +58,8 @@ class CalendarController extends Controller
 			$em->persist($inscrit);
 		}
 
-		$form = $this->createForm(InscritType::class, $inscrit);
+		$form = $this->createForm(InscritType::class, $inscrit, array('course'=>$id));
+
 		$form->handleRequest($request);
 
 		if ($form->isSubmitted() && $form->isValid()) {

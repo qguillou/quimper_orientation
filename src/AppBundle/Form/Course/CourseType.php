@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Doctrine\ORM\EntityRepository;
 
 class CourseType extends AbstractType
 {
@@ -22,7 +23,10 @@ class CourseType extends AbstractType
             ->add('date', DateTimeType::class, array('label' => 'Date de la course'))
             ->add('lieu', TextType::class, array('label' => 'Lieu'))
             ->add('organisateur', TextType::class, array('label' => 'Organisateur'))
-            ->add('type', EntityType::class, array('label' => 'Type', 'class' => 'AppBundle\Entity\Type', 'choice_label' => 'nom', 'required' => false))
+            ->add('type', EntityType::class, array('label' => 'Type', 'class' => 'AppBundle\Entity\Type', 'choice_label' => 'nom', 'required' => false, 'query_builder' => function (EntityRepository $er) {
+                return $er->createQueryBuilder('t')
+                  ->orderBy('t.nom', 'ASC');
+                  },))
             ->add('gps', TextType::class, array('label' => 'Coordonnées GPS'))
             ->add('inscription', CheckboxType::class, array('label' => 'Activer le système d\'inscription'))
             ->add('modification', DateTimeType::class, array('label' => 'Date limite d\'inscription'))
@@ -33,6 +37,7 @@ class CourseType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'AppBundle\Entity\Course',
+            'course' => null,
         ));
     }
 }

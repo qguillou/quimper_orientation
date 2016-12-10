@@ -36,7 +36,7 @@
     <li><i class="fa fa-map-signs"></i> Circuits
       <p class="lead"  style="color:{{course.getType().getColor()}}; font-weight:bold">
         {% for circuit in course.getCircuits() %}
-        {{circuit.getNom()}} - {{circuit.getInformation()}}
+        {{circuit.getNom()}} {% if circuit.getInformation() != null %}- {{circuit.getInformation()}} {% endif %}
         {% endfor %}
       </p>
     </li>
@@ -135,7 +135,7 @@
     {% endif %}
   </div>
   {% endif %}
-  
+
   <div class="row-divider"></div>
 
   <div class="row">
@@ -172,7 +172,6 @@
               <th>Puce</th>
               <th>Circuit</th>
               <th>Commentaire</th>
-              <th></th>
             </tr>
           </thead>
           <tbody>
