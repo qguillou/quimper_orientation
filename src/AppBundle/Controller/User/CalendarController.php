@@ -23,7 +23,7 @@ class CalendarController extends Controller
 		$session = $this->get('app.session');
 		$em = $this->getDoctrine()->getManager();
 		$repository = $em->getRepository('AppBundle:Course');
-		$courses = $repository->findAll();
+		$courses = $repository->findFutureCourse();
 		return $this->render('user/calendar/calendar.html.twig', [
 			'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
 			'user' => $this->getUser(),

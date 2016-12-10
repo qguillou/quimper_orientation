@@ -10,4 +10,12 @@ namespace AppBundle\Repository;
  */
 class CourseRepository extends \Doctrine\ORM\EntityRepository
 {
+  public function findFutureCourse(){
+    return $this->createQueryBuilder('c')
+        ->where('c.date >= :date')
+        ->setParameter('date', new \Datetime(date('d-m-Y')))
+        ->orderBy('c.date', 'ASC')
+        ->getQuery()
+        ->getResult();
+  }
 }

@@ -45,7 +45,7 @@ class CalendarAdminController extends Controller
       $session = $this->get('app.session');
       $em = $this->getDoctrine()->getManager();
       $repository = $em->getRepository('AppBundle:Course');
-      $courses = $repository->findAll();
+      $courses = $repository->findFutureCourse();
 
       $form = $this->createForm(CourseType::class, $course);
       $form->handleRequest($request);
@@ -88,7 +88,7 @@ class CalendarAdminController extends Controller
 
 				$em = $this->getDoctrine()->getManager();
 				$repository = $em->getRepository('AppBundle:Course');
-				$courses = $repository->findAll();
+				$courses = $repository->findFutureCourse();
 
 				return $this->render(
 					'admin/parcours/parcours.html.twig',

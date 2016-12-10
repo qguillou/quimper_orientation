@@ -4,7 +4,7 @@ TODOList
 - Ajout des paramètres options
 - Voir le problème lié au glyphicon
 - Voir pour ajouter une option de mémorisation de la connexion (cookies)
-- Ajouter le traitement pour l'administration de l'archive fédérale
 - course ajouter un booleen pour limiter les inscriptions aux personnes du club
 - trouver une solution pour limiter l'usage mémoire avec la table Base...
 - Modifier les fields datetime par quelque chose de plus jolie
+- Calendrier : gérer l'affichage des courses uniquement à venir
