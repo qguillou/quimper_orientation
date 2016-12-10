@@ -90,6 +90,11 @@ class Course
     */
     private $inscrits;
 
+    /**
+    * @ORM\OneToMany(targetEntity="AppBundle\Entity\Circuit", mappedBy="course")
+    */
+    private $circuits;
+
     public function __construct() {
         $this->inscrits = new ArrayCollection();
     }
@@ -342,5 +347,29 @@ class Course
     public function getInscrits()
     {
         return $this->inscrits;
+    }
+
+    /**
+     * Set circuits
+     *
+     * @param string $circuits
+     *
+     * @return Circuit
+     */
+    public function setCircuits($circuits)
+    {
+        $this->circuits = $circuits;
+
+        return $this;
+    }
+
+    /**
+     * Get circuits
+     *
+     * @return array Circuit
+     */
+    public function getCircuits()
+    {
+        return $this->circuits;
     }
 }

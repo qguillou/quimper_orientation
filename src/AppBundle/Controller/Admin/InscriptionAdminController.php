@@ -9,6 +9,8 @@ use AppBundle\Form\User\UserView;
 use AppBundle\Entity\User;
 use AppBundle\Entity\Role;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
+use AppBundle\Entity\Base;
+use AppBundle\Form\Archive\ArchiveForm;
 
 class InscriptionAdminController extends Controller
 {
@@ -69,13 +71,26 @@ class InscriptionAdminController extends Controller
 	/**
 	* @Route("/admin/inscription/archive/")
 	*/
-	public function archive(){
+	public function archive(Request $request){
 		$session = $this->get('app.session');
+
+		$em = $this->getDoctrine()->getManager();
+		$repository = $em->getRepository('AppBundle:Base');
+
+		$base = new Base();
+		$form = $this->createForm(ArchiveForm::class, $base);
+		$form->handleRequest($request);
+
+		if ($form->isSubmitted() && $form->isValid()) {
+			copy("http://licences.ffcorientation.fr/licencesFFCO.csv", "archive.csv");
+		}
+
 		return $this->render('admin/inscription/archive.html.twig', [
 			'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
 			'user' => $this->getUser(),
 			'isConnected' => $session->isAuthenticated(),
 			'isAdmin' => $session->isAdmin(),
+			'form' => $form->createView(),
 		]);
 	}
 

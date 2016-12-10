@@ -5,4 +5,6 @@ INSERT INTO `quimpero`.`course` (`id`, `type_id`, `nom`, `lieu`, `site`, `date`,
 INSERT INTO `quimpero`.`role` (`id`, `user`, `role`) VALUES (NULL, 'Quentin', 'ROLE_ADMIN');
 
 INSERT INTO `quimpero`.`user` (`id`, `username`, `password`, `email`, `is_active`, `newsletter`, `base_id`, `nom`, `prenom`) VALUES
-(1, 'Quentin', '$2y$13$7i6BeNBlozrVav/lNuFbRO1rFcsxoaVfrOanK.nmvoaykCiSUqF6y', 'guillou.quentin.29@gmail.com', 1, 1, NULL, 'Guillou', 'Quentin')
+(1, 'Quentin', '$2y$13$7i6BeNBlozrVav/lNuFbRO1rFcsxoaVfrOanK.nmvoaykCiSUqF6y', 'guillou.quentin.29@gmail.com', 1, 1, NULL, 'Guillou', 'Quentin');
+
+INSERT INTO `quimpero`.`circuit` (`id`, `course_id`, `nom`, `information`) VALUES (NULL, '1', 'A', 'Niveau noir 10Km');

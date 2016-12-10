@@ -69,7 +69,8 @@ class Inscrit
     /**
      * @var int
      *
-     * @ORM\Column(name="circuit", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Circuit", inversedBy="inscrits")
+     * @ORM\JoinColumn(name="circuit_id", referencedColumnName="id")
      */
     private $circuit;
 

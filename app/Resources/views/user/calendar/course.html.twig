@@ -31,6 +31,17 @@
     {% if course.getGPS() != null %}
     <li><i class="fa fa-location-arrow"></i> Coordonnées GPS <p class="lead"  style="color:{{course.getType().getColor()}}; font-weight:bold">{{course.getGPS()}}</p></li>
     {% endif %}
+
+    {% if course.getCircuits() != null %}
+    <li><i class="fa fa-map-signs"></i> Circuits
+      <p class="lead"  style="color:{{course.getType().getColor()}}; font-weight:bold">
+        {% for circuit in course.getCircuits() %}
+        {{circuit.getNom()}} - {{circuit.getInformation()}}
+        {% endfor %}
+      </p>
+    </li>
+    {% endif %}
+
   </ul>
 </div>
 
@@ -99,7 +110,7 @@
           <td>{{i}}</td>
           <td>{{inscrit.getNom()}}</td>
           <td>{{inscrit.getPrenom()}}</td>
-          <td>{{inscrit.getCircuit()}}</td>
+          <td>{{inscrit.getCircuit().getNom()}}</td>
           <td>{{inscrit.getCommentaire()}}</td>
           <td>
             {% if user == inscrit.getUser() %}

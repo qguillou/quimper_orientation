@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class InscritType extends AbstractType
 {
@@ -17,7 +18,7 @@ class InscritType extends AbstractType
         $builder
             ->add('nom', TextType::class, array('label' => 'Nom', 'disabled' => 'disabled'))
             ->add('prenom', TextType::class, array('label' => 'Prénom', 'disabled' => 'disabled'))
-            ->add('circuit', TextType::class, array('label' => 'Circuit', 'required' => false))
+            ->add('circuit', EntityType::class, array('label' => 'Circuit', 'class' => 'AppBundle\Entity\Circuit', 'choice_label' => 'nom', 'required' => false))
             ->add('commentaire', TextType::class, array('label' => 'Commentaire', 'required' => false))
             ->add('puce', NumberType::class, array('label' => 'N° de Puce', 'required' => false))
             ->add('save', SubmitType::class, array('label' => 'Enregistrer les modifications'));
