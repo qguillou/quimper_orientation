@@ -1,0 +1,188 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block body %}
+<div class="col-md-12">
+  <h1>Administration des courses</h1>
+</div>
+
+<div class="col-md-3">
+  <div class="list-group">
+    <a href="/admin/calendrier" class="list-group-item {% if active == null %}active{% endif %}">
+      <i class="fa fa-plus-circle"></i> Nouvelle course
+    </a>
+    {% for course in courses %}
+    <a href="/admin/calendrier/{{course.getId()}}/" class="list-group-item {% if active == course.getId() %}active{% endif %}">
+      {{course.getNom()}}
+    </a>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="col-md-1">
+</div>
+
+<div class="col-md-6">
+  <div class="row">
+
+    {% for successMessage in app.session.flashbag.get('success') %}
+    <div class="alert alert-dismissible alert-success">
+      {{ successMessage }}
+    </div>
+    {% endfor %}
+
+    {% for errorMessage in app.session.flashbag.get('error') %}
+    <div class="alert alert-dismissible alert-danger">
+      {{ errorMessage }}
+    </div>
+    {% endfor %}
+
+    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+    <fieldset>
+      <h2>Modification de la course</h2>
+      <p class="lead">N'oubliez pas d'enregistrer !</p>
+      {{ form_errors(form) }}
+
+      <ul class="nav nav-tabs">
+        <li class="active">
+          <a href="#general" data-toggle="tab" aria-expanded="false" style="color:gray;">Général</a>
+        </li>
+        <li class="">
+          <a href="#inscription" data-toggle="tab" aria-expanded="true" style="color:gray;">Inscription</a>
+        </li>
+        <li class="">
+          <a href="#circuit" data-toggle="tab" aria-expanded="true" style="color:gray;">Circuits</a>
+        </li>
+        <li class="">
+          <a href="#fichier" data-toggle="tab" aria-expanded="true" style="color:gray;">Fichiers</a>
+        </li>
+      </ul>
+
+      <div id="formulaire" class="tab-content">
+        <div class="tab-pane fade active in" id="general">
+          <div class="row-divider"></div>
+
+          <div class="row">
+            <div class="form-group">
+              {{ form_label(form.nom, null, {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+
+              <div class="col-sm-6">
+                {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.nom) }}
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group">
+              {{ form_label(form.date, null, {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+
+              <div class="col-sm-6">
+                {{ form_widget(form.date, {'attr': {'class': ''}}) }}
+                {{ form_errors(form.date) }}
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group">
+              {{ form_label(form.lieu, null, {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+
+              <div class="col-sm-6">
+                {{ form_widget(form.lieu, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.lieu) }}
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group">
+              {{ form_label(form.type, null, {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+
+              <div class="col-sm-6">
+                {{ form_widget(form.type, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.type) }}
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group">
+              {{ form_label(form.organisateur, null, {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+
+              <div class="col-sm-6">
+                {{ form_widget(form.organisateur, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.organisateur) }}
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group">
+              {{ form_label(form.gps, null, {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+
+              <div class="col-sm-6">
+                {{ form_widget(form.gps, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.gps) }}
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="tab-pane fade" id="inscription">
+          <div class="row-divider"></div>
+
+          <div class="row">
+            <div class="form-group">
+              {{ form_label(form.inscription, null, {'label_attr': {'class': 'col-sm-6 control-label'}}) }}
+              <div class="col-sm-6 material-switch pull-right">
+                {{ form_widget(form.inscription, {'attr': {'class': 'form-control'}}) }}
+                <label for="course_inscription" class="label-switch"></label>
+                {{ form_errors(form.inscription) }}
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group">
+              {{ form_label(form.modification, null, {'label_attr': {'class': 'col-sm-6 control-label'}}) }}
+
+              <div class="col-sm-6">
+                {{ form_widget(form.modification, {'attr': {'class': ''}}) }}
+                {{ form_errors(form.modification) }}
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="tab-pane fade" id="circuit">
+          <div class="row-divider"></div>
+
+        </div>
+
+
+        <div class="tab-pane fade" id="fichier">
+          <div class="row-divider"></div>
+
+        </div>
+
+      </div>
+
+      <div class="row">
+        <button class="btn btn-default" type="reset">Annuler</button>
+        {{ form_widget(form.save, {'attr': {'class': 'btn btn-success'}}) }}
+        {% if active %}
+        <button class="btn btn-danger" type="submit">Supprimer la course</a>
+          {% endif %}
+        </div>
+      </fieldset>
+      {{ form_end(form) }}
+    </div>
+  </div>
+
+  {% endblock %}
+
+  {% block stylesheets %}
+  {% endblock %}

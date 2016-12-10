@@ -67,6 +67,7 @@
     {% endfor %}
   </div>
 
+  {% if course.getInscription() %}
   <div class="row-divider"></div>
 
   <div class="row">
@@ -133,7 +134,8 @@
     <a href="/inscription/modification" class="btn btn-square-toround btn-bordered-primary"><span class="fa fa-pencil-square-o"></span> Modifier ses inscriptions</a>
     {% endif %}
   </div>
-
+  {% endif %}
+  
   <div class="row-divider"></div>
 
   <div class="row">
