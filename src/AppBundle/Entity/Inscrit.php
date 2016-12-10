@@ -3,12 +3,14 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Inscrit
  *
  * @ORM\Table(name="inscrit")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\InscritRepository")
+ * @UniqueEntity(fields={"course","licence","nom","prenom"})
  */
 class Inscrit
 {
@@ -38,7 +40,8 @@ class Inscrit
     /**
      * @var int
      *
-     * @ORM\Column(name="licence", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Base")
+     * @ORM\JoinColumn(name="base_id", referencedColumnName="id", nullable=true)
      */
     private $licence;
 
@@ -69,6 +72,12 @@ class Inscrit
      * @ORM\Column(name="circuit", type="integer", nullable=true)
      */
     private $circuit;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=true)
+     */
+   private $user;
 
 
     /**
@@ -247,5 +256,29 @@ class Inscrit
     public function getCircuit()
     {
         return $this->circuit;
+    }
+
+    /**
+     * Set user
+     *
+     * @param string user
+     *
+     * @return Course
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return string
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

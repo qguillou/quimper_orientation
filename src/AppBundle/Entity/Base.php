@@ -2,55 +2,80 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * Base
+ *
+ * @ORM\Table(name="base")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\BaseRepository")
  */
 class Base
 {
-    /**
-     * @var integer
-     */
+  /**
+   * @var int
+   *
+   * @ORM\Column(name="id", type="integer")
+   * @ORM\Id
+   * @ORM\GeneratedValue(strategy="AUTO")
+   */
+   private $id;
+
+   /**
+    * @var int
+    *
+    * @ORM\Column(name="puce", type="integer")
+    */
     private $puce;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=255)
      */
     private $nom;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="prenom", type="string", length=255)
      */
     private $prenom;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="ne", type="string", length=5)
      */
     private $ne;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="sexe", type="string", length=1)
      */
     private $sexe;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="nom_club", type="string", length=255)
      */
     private $nomclub;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="ville", type="string", length=255)
      */
     private $ville;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="categorie", type="string", length=255)
      */
     private $categorie;
-
-    /**
-     * @var integer
-     */
-    private $id;
 
 
     /**
@@ -255,4 +280,3 @@ class Base
         return $this->id;
     }
 }
-

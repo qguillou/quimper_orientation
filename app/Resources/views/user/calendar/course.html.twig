@@ -61,6 +61,25 @@
   <div class="row">
     <h2>Les inscrits</h2>
     <p class="lead">Ils sont déjà inscrits à cette course.</p>
+    {% for successMessage in app.session.flashbag.get('success') %}
+    <div class="alert alert-dismissible alert-success">
+      {{ successMessage }}
+    </div>
+    {% endfor %}
+
+    {% for errorMessage in app.session.flashbag.get('error') %}
+    <div class="alert alert-dismissible alert-danger">
+      {{ errorMessage }}
+    </div>
+    {% endfor %}
+
+    {% if form.vars.errors is not empty %}
+    <div class="alert alert-dismissible alert-danger">
+      L'inscription n'a pas pu être effectuée. Vérifiez les valeurs que vous avez saisies.<br/>
+      Peut-être que vous êtes déjà inscrit sur cette course ?
+      {{ form_errors(form) }}
+    </div>
+    {% endif %}
     <table class="table table-striped table-hover ">
       <thead>
         <tr>
@@ -85,6 +104,9 @@
         {% endfor %}
       </tbody>
     </table>
+    {% if isConnected %}
+    <button data-toggle="modal" data-target="#InscriptionRapideModal" class="btn btn-square-toround btn-bordered-success"><span class="fa fa-user-plus"></span> Inscription rapide</button>
+    {% endif %}
     <a href="" class="btn btn-square-toround btn-bordered-success"><span class="fa fa-user-plus"></span> S'inscrire</a>
     <a href="/inscription/modification" class="btn btn-square-toround btn-bordered-primary"><span class="fa fa-pencil-square-o"></span> Modifier ses inscriptions</a>
   </div>
@@ -95,6 +117,52 @@
     <h2>Comment s'y rendre ?</h2>
     <p class="lead">Le plan d'accès vous montre le localisation du point d'accueil de l'événement.</p>
 
+  </div>
+</div>
+
+<div class="modal fade" id="InscriptionRapideModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h1 class="modal-title" id="myModalLabel">S'inscrire à {{course.getNom()}}</h1>
+        <p class="lead">Du {{strftime(course.getDate() | date("Y-m-d H:i:s"), "%A %d %B à %H:%M:%S")}}
+      </div>
+      <div class="modal-body">
+        <p class="lead">Vérifiez les informations ci-dessous et enregistrez !</p>
+        {{ form_errors(form) }}
+        <table class="table table-striped table-hover ">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Nom</th>
+              <th>Prénom</th>
+              <th>Puce</th>
+              <th>Circuit</th>
+              <th>Commentaire</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td></td>
+              <td>{{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}</td>
+              <td>{{ form_widget(form.prenom, {'attr': {'class': 'form-control'}}) }}</td>
+              <td>{{ form_widget(form.puce, {'attr': {'class': 'form-control'}}) }}</td>
+              <td>{{ form_widget(form.circuit, {'attr': {'class': 'form-control'}}) }}</td>
+              <td>{{ form_widget(form.commentaire, {'attr': {'class': 'form-control'}}) }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+        {{ form_widget(form.save, {'attr': {'class': 'btn btn-success'}}) }}
+      </div>
+      {{ form_end(form) }}
+    </div>
   </div>
 </div>
 {% endblock %}

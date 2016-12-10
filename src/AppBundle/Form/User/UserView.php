@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class UserView extends AbstractType
 {
@@ -19,7 +20,7 @@ class UserView extends AbstractType
         $builder
             ->add('email', EmailType::class, array('label' => 'Adresse mail', 'disabled' => true))
             ->add('username', TextType::class, array('label' => 'Login', 'disabled' => true))
-            ->add('license', NumberType::class, array('label' => 'N° de licence', 'required' => false, 'disabled' => true))
+            ->add('license', EntityType::class, array('label' => 'N° de licence', 'class' => 'AppBundle\Entity\Base', 'choice_label' => 'id', 'required' => false, 'disabled' => 'disabled'))
             ->add('nom', TextType::class, array('label' => 'Nom', 'disabled' => true))
             ->add('prenom', TextType::class, array('label' => 'Prénom', 'disabled' => true))
             ->add('delete', SubmitType::class, array('label' => 'Supprimer l\'utilisateur'));;

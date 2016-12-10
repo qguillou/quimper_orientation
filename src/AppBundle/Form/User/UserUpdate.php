@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class UserUpdate extends AbstractType
 {
@@ -23,7 +24,7 @@ class UserUpdate extends AbstractType
                 'type' => PasswordType::class,
                 'first_options'  => array('label' => 'Mot de passe', 'required' => false),
                 'second_options' => array('label' => 'Confirmation du mot de passe', 'required' => false)))
-            ->add('license', NumberType::class, array('label' => 'N° de licence', 'required' => false))
+            ->add('license', EntityType::class, array('label' => 'N° de licence', 'class' => 'AppBundle\Entity\Base', 'choice_label' => 'id', 'required' => false))
             ->add('nom', TextType::class, array('label' => 'Nom'))
             ->add('prenom', TextType::class, array('label' => 'Prénom'));
     }
