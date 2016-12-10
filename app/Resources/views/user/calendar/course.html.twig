@@ -88,18 +88,24 @@
           <th>Prénom</th>
           <th>Circuit</th>
           <th>Commentaire</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
         {% set i = 0 %}
         {% for inscrit in course.getInscrits() %}
         {% set i = i + 1 %}
-        <tr>
+        <tr {% if 1 and inscrit.getCircuit() == null %}class="warning"{% endif %}>
           <td>{{i}}</td>
           <td>{{inscrit.getNom()}}</td>
           <td>{{inscrit.getPrenom()}}</td>
           <td>{{inscrit.getCircuit()}}</td>
           <td>{{inscrit.getCommentaire()}}</td>
+          <td>
+            {% if user == inscrit.getUser() %}
+            <i class="fa fa-times" style="color: red;cursor:pointer;"></i>
+            {% endif %}
+          </td>
         </tr>
         {% endfor %}
       </tbody>
@@ -129,7 +135,10 @@
           <span aria-hidden="true">&times;</span>
         </button>
         <h1 class="modal-title" id="myModalLabel">S'inscrire à {{course.getNom()}}</h1>
-        <p class="lead">Du {{strftime(course.getDate() | date("Y-m-d H:i:s"), "%A %d %B à %H:%M:%S")}}
+        <p class="lead">
+          Du {{strftime(course.getDate() | date("Y-m-d H:i:s"), "%A %d %B à %H:%M:%S")}}
+          <br>À {{course.getLieu()}}
+        </p>
       </div>
       <div class="modal-body">
         <p class="lead">Vérifiez les informations ci-dessous et enregistrez !</p>
@@ -143,6 +152,7 @@
               <th>Puce</th>
               <th>Circuit</th>
               <th>Commentaire</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>

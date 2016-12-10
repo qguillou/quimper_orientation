@@ -66,9 +66,9 @@
       <div class="row">
         <div class="form-group">
           {{ form_label(form.alert, null, {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
-
-          <div class="col-sm-6">
-            {{ form_widget(form.alert, {'attr': {'class': ''}}) }}
+          <div class="col-sm-6 material-switch">
+            {{ form_widget(form.alert, {'attr': {'class': 'form-control'}}) }}
+            <label for="carte_alert" class="label-switch"></label>
             {{ form_errors(form.alert) }}
           </div>
         </div>

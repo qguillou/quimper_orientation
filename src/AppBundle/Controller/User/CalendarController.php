@@ -46,15 +46,17 @@ class CalendarController extends Controller
 
 		$inscrit = new Inscrit();
 		$inscrit->setCourse($course);
-		$inscrit->setUser($this->getUser());
-		$inscrit->setNom($this->getUser()->getNom());
-		$inscrit->setPrenom($this->getUser()->getPrenom());
-		if($this->getUser()->getLicense()){
-			$inscrit->setPuce($this->getUser()->getLicense()->getPuce());
-			$inscrit->setLicence($this->getUser()->getLicense());
-		}
+		if($session->isAuthenticated()){
+			$inscrit->setUser($this->getUser());
+			$inscrit->setNom($this->getUser()->getNom());
+			$inscrit->setPrenom($this->getUser()->getPrenom());
+			if($this->getUser()->getLicense()){
+				$inscrit->setPuce($this->getUser()->getLicense()->getPuce());
+				$inscrit->setLicence($this->getUser()->getLicense());
+			}
 
-		$em->persist($inscrit);
+			$em->persist($inscrit);
+		}
 
 		$form = $this->createForm(InscritType::class, $inscrit);
 		$form->handleRequest($request);
