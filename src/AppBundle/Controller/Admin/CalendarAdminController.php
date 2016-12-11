@@ -79,6 +79,15 @@ class CalendarAdminController extends Controller
 				$em = $this->getDoctrine()->getManager();
 				$em->persist($course);
 				$em->flush();
+
+				if($form->get('annonce')->getData()){
+					$form->get('annonce')->getData()->move($this->getParameter('courses').'/'.$course->getId(), 'annonce.pdf');
+				}
+				if($form->get('files')->getData()){
+					foreach($form->get('files')->getData() as $file){
+						$file->move($this->getParameter('courses').'/'.$course->getId().'/autres', $file->getClientOriginalName());
+					}
+				}
 			}
 			catch (UniqueConstraintViolationException $e){
 				$this->get('session')->getFlashBag()->add(
@@ -116,8 +125,11 @@ class CalendarAdminController extends Controller
 		private function delete(Course $course)
 		{
 			$em = $this->getDoctrine()->getManager();
+			$id = $course->getId();
 			$em->remove($course);
 			$em->flush();
+
+			$this->deleteFile($id);
 
 			$this->get('session')->getFlashBag()->add(
 				'success',
@@ -125,5 +137,27 @@ class CalendarAdminController extends Controller
 			);
 
 			return $this->redirect('/admin/calendrier/');
+		}
+
+		/**
+		* Function to delete file and folder associate to a course
+		*/
+		private function deleteFile($id)
+		{
+				$src = "web/files/courses/".$id;
+				$dir = opendir($src);
+		    while(false !== ( $file = readdir($dir)) ) {
+		        if (( $file != '.' ) && ( $file != '..' )) {
+		            $full = $src . '/' . $file;
+		            if ( is_dir($full) ) {
+		                rrmdir($full);
+		            }
+		            else {
+		                unlink($full);
+		            }
+		        }
+		    }
+		    closedir($dir);
+		    rmdir($src);
 		}
 }

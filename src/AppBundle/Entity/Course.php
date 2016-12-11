@@ -46,7 +46,7 @@ class Course
 
      /**
       * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Type")
-      * @ORM\JoinColumn(name="type_id", referencedColumnName="id")
+      * @ORM\JoinColumn(name="type_id", referencedColumnName="id", nullable=true)
       */
     private $type;
 

@@ -85,28 +85,27 @@ class InscriptionAdminController extends Controller
 			copy("http://licences.ffcorientation.fr/licencesFFCO.csv", "archive.csv");
 
 			$db = $this->getDoctrine()->getManager()->getConnection();
-			$sql = "LOAD DATA INFILE 'archive.csv'
-					REPLACE
-					INTO TABLE base
-					FIELDS TERMINATED BY ';'
-					ENCLOSED BY '\"'
-					LINES TERMINATED BY '\r\n'
-					IGNORE 1 LINES
-					(@col1, @col2, @col3, @col4, @col5, @col6, @col7, @col8, @col9, @col10, @col11, @col12, @col13, @col14, @col15, @col16, @col17, @col18, @col19, @col20, @col21, @col22, @col23, @col24, @col25, @col26, @col27, @col28, @col29, @col30)
-					SET id = @col1,
-					puce = @col2,
-					nom = @col3,
-					prenom = @col4,
-					ne = @col5,
-					sexe = @col6,
-					nom_club = @col8,
-					ville = @col9,
-					categorie = @col12
-				;";
+			$sql = "SET foreign_key_checks = 0;
+							LOAD DATA INFILE 'archive.csv'
+								REPLACE
+								INTO TABLE base
+								FIELDS TERMINATED BY ';'
+								ENCLOSED BY '\"'
+								LINES TERMINATED BY '\r\n'
+								IGNORE 1 LINES
+								(@col1, @col2, @col3, @col4, @col5, @col6, @col7, @col8, @col9, @col10, @col11, @col12, @col13, @col14, @col15, @col16, @col17, @col18, @col19, @col20, @col21, @col22, @col23, @col24, @col25, @col26, @col27, @col28, @col29, @col30)
+								SET id = @col1,
+								puce = @col2,
+								nom = @col3,
+								prenom = @col4,
+								ne = @col5,
+								sexe = @col6,
+								nom_club = @col8,
+								ville = @col9,
+								categorie = @col12;
+							SET foreign_key_checks = 1;";
 			$stmt = $db->prepare($sql);
 			$stmt->execute();
-
-			unlink("archive.csv");
 		}
 
 		return $this->render('admin/inscription/archive.html.twig', [

@@ -44,6 +44,10 @@ class AssetExistsExtension extends \Twig_Extension
                 'sizeof' => new \Twig_SimpleFunction("sizeof", function ($array) {
                      return sizeof($array);
                 }),
+                'get_date_archive' => new \Twig_SimpleFunction("get_date_archive", function () {
+                    setlocale (LC_TIME, 'fr_FR.utf8','fra');
+                    return strftime("%A %d %B à %H:%M:%S", filemtime('archive.csv'));
+                }),
         );
     }
 }

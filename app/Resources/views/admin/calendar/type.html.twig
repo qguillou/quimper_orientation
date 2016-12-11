@@ -59,6 +59,11 @@
 
           <div class="col-sm-6">
             {{ form_widget(form.color, {'attr': {'class': 'form-control'}}) }}
+            <span class="help-block">
+              Permet de personnaliser la couleur d'affichage dans le calendrier, noir par défaut si non renseigné.
+              <br>
+              La couleur est au format héxadécimal exemple: #68b211
+            </span>
             {{ form_errors(form.color) }}
           </div>
         </div>

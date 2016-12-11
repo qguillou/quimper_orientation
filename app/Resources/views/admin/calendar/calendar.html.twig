@@ -160,11 +160,33 @@
         <div class="tab-pane fade" id="circuit">
           <div class="row-divider"></div>
 
+          
+
         </div>
 
 
         <div class="tab-pane fade" id="fichier">
           <div class="row-divider"></div>
+          <div class="row">
+            <div class="form-group">
+              {{ form_label(form.annonce, null, {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+              <div class="col-sm-6">
+                {{ form_widget(form.annonce, {'attr': {'class': ''}}) }}
+                {{ form_errors(form.annonce) }}
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group">
+              {{ form_label(form.files, null, {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+
+              <div class="col-sm-6">
+                {{ form_widget(form.files, {'attr': {'class': ''}}) }}
+                {{ form_errors(form.files) }}
+              </div>
+            </div>
+          </div>
 
         </div>
 

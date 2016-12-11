@@ -8,3 +8,4 @@ TODOList
 - trouver une solution pour limiter l'usage mémoire avec la table Base...
 - Modifier les fields datetime par quelque chose de plus jolie
 - Calendrier : gérer l'affichage des courses uniquement à venir
+- problèmes avec le select files de calendar quand aucun files
