@@ -1,0 +1,8 @@
+TODOList
+
+- Ajout des paramètres options
+- Ajouter un bouton mot de passe perdu permettant de récupérer un nouveau mot de passe par mail
+- course ajouter un booleen pour limiter les inscriptions aux personnes du club
+- trouver une solution pour limiter l'usage mémoire avec la table Base...
+- Ajout des circuits lors de la création d'un event
+- Gérer l'envoi du mail pour reset password

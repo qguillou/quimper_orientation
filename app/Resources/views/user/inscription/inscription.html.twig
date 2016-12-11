@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+{% if isConnected %}
+{% else %}
+	<div class="alert alert-dismissible alert-warning">
+		<button type="button" class="close" data-dismiss="alert">×</button>
+		<strong>Information - Connexion </strong>
+		<b> Vous êtes actuellement déconnecté.</b>
+		<br> Vous ne pouvez pas bénificier de toutes les options du site.
+		<br>Pensez à vous inscrire avec le bouton 'S'identifier', et suivre les instructions du formulaire, ou s'identifier si vous possédez déjà un compte.
+	</div>
+{% endif %}
+
+<div class="col-md-8">
+	<header class="major">
+		<h2>Inscription en ligne</h2>
+	</header>
+
+	<div class="texte-presentation">
+		<i class="fa fa-user"></i>
+		Le système d'inscription en ligne permet aux utilisateurs enregistrés ou non de s'inscrire aux courses proposées, simplement et rapidement, en vous proposant des options pour vous permettre d'optimiser les fonctions du site.
+	</div>
+	<div class="texte-presentation">
+		<i class="fa fa-key"></i>
+		Le site vous permet d'effectuer vos inscriptions de façon sécurisées pour les personnes enregistrées. Ainsi, vous vous assurez que personne d'autre que vous ou un administrateur ne peut modifier vos inscriptions.
+	</div>
+	<div class="texte-presentation">
+		<i class="fa fa-hourglass-end"></i>
+		Les administrateurs peuvent paramètrer une date limite d'inscription, pour empêcher des inscriptions au delàs de cette date. Ainsi, il est inutile de consulter le fichier d'inscription quelques heures avant l'évènement.
+	</div>
+	<div class="texte-presentation">
+		<i class="fa fa-bell"></i>
+		Le système dispose d'un dispositif de notification, permettant de vous signaler par e-mail lors d'une inscription à votre nom n'est pas compléte (Exemple: il manque le circuit).
+	</div>
+</div>
+
+<div class="col-md-1">
+</div>
+
+<div class="col-md-3">
+	TODO
+	{% include 'user/inscription/calendar.html' %}
+</div>
+
+{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}

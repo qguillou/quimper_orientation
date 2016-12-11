@@ -1,0 +1,20 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+parameters:
+#    parameter_name: value
+  fuz_tools.twig.asset_exists_extension.class: AppBundle\Twig\Extension\AssetExistsExtension
+
+services:
+#    service_name:
+#        class: AppBundle\Directory\ClassName
+#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    app.session:
+        class:     AppBundle\Service\SessionService
+        calls:
+            - [setSecurity, ['@security.authorization_checker']]
+
+    fuz_tools.twig.asset_exists_extension:
+        class: '%fuz_tools.twig.asset_exists_extension.class%'
+        arguments: ['@kernel']
+        tags:
+          - { name: twig.extension }

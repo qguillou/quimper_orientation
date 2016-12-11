@@ -1,0 +1,29 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block body %}
+<div class="col-md-12">
+<h1>Espace administration</h1>
+</div>
+
+{% include 'admin/default/information.html' %}
+
+<div class="col-md-1">
+</div>
+
+<div class="col-md-6">
+  <div class="row">
+    <h2>Ils sont administrateurs</h2>
+    <p class="lead">Ils ont donc également accès à cette espace.</p>
+    <ul class="text-list">
+      {% for admin in admins %}
+      <li>{{admin['prenom']}} {{admin['nom']}} <i>({{admin['role']}})</i></li>
+      {% endfor %}
+    </ul>
+  </div>
+
+</div>
+
+{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}

@@ -1,0 +1,63 @@
+<div class="col-md-3 hidden-phone">
+  <div class="box">
+    <div class="box-icon-actu">
+      <span class="fa fa-2x fa-calendar"></span>
+    </div>
+    <div class="info contact">
+      <h3 class="text-center">&Eacute;vènements en </h3>
+
+      <script src="{{ asset( 'js/bootstrap-calendar.js' ) }}"></script>
+
+      <div class="responsive-calendar" id="calendar">
+        <div class="controls">
+          <a class="pull-left" data-go="prev">
+            <div class="btn btn-primary nav-month">
+              <
+            </div>
+          </a>
+          <h4><span data-head-month></span> <span data-head-year></span></h4>
+          <a class="pull-right" data-go="next">
+            <div class="btn btn-primary nav-month">
+              >
+            </div>
+          </a>
+        </div><br/><br/>
+        <div class="day-headers">
+          <div class="day header">Lun</div>
+          <div class="day header">Mar</div>
+          <div class="day header">Mer</div>
+          <div class="day header">Jeu</div>
+          <div class="day header">Ven</div>
+          <div class="day header">Sam</div>
+          <div class="day header">Dim</div>
+        </div>
+        <div class="days" data-group="days">
+
+        </div>
+      </div>
+
+      <h4>Légende</h4>
+      <div class="legend legend-box active pull-left"></div> <p>&nbsp;&Eacute;vénement</p>
+      <div class="legend legend-box stripes pull-left"></div> <p>&nbsp;Vous êtes inscrit</p>
+
+      <script type="text/javascript">
+      $(document).ready(function () {
+        $(".responsive-calendar").responsiveCalendar(
+          {
+            time: '2016-12',
+            events: {
+              {% for course in courses %}
+              "{{course.getDate() | date('Y-m-d')}}": {
+                "url": "/calendrier/{{course.getid()}}",
+                "participation": "0"
+              },
+              {% endfor %}
+            }
+          }
+        );
+      });
+      </script>
+
+    </div>
+  </div>
+</div>

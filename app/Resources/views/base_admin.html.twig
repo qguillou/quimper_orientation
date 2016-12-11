@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>{% block title %}Quimper Orientation Coatarmor 29{% endblock %}</title>
+  <link rel="icon" type="image/x-icon" href="{{ asset('favicon.png') }}" />
+  <link href="{{ asset( 'css/bootstrap.css' ) }}" rel="stylesheet" type="text/css" />
+  <link href="{{ asset( 'css/style.css' ) }}" rel="stylesheet" type="text/css" />
+  <link href="{{ asset( 'css/responsive.css' ) }}" rel="stylesheet" type="text/css" />
+
+  <link href="{{ asset( 'css/font-awesome.css' ) }}" rel="stylesheet" type="text/css" />
+
+  <script src="{{ asset( 'js/jquery.js' ) }}"></script>
+  <script src="{{ asset( 'js/bootstrap.js' ) }}"></script>
+  <script src="{{ asset( 'js/bootstrap-tab.js' ) }}"></script>
+</head>
+<body>
+
+
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/admin/">Quimper Orientation</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+        <ul class="nav navbar-nav">
+
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Le club <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/admin/club/tarif">Tarifs des licences</a></li>
+              <li><a href="/admin/club/contact">Contacts</a></li>
+            </ul>
+          </li>
+
+          <li class="dropdown">
+            <a href="/admin/calendrier/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Courses <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/admin/calendrier/">Calendrier</a></li>
+              <li><a href="/admin/type/">Type des courses</a></li>
+            </ul>
+          </li>
+
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Inscription <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/admin/inscription/utilisateur">Utilisateur</a></li>
+              <li><a href="/admin/inscription/archive">Archive fédérale</a></li>
+            </ul>
+          </li>
+
+          <li><a href="/admin/parcours">Parcours permanents</a></li>
+
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-user"></i>
+              {{user.username}}
+              <span class="badge" title="Nombre de course à venir, où vous êtes inscrits">
+                0
+              </span>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="/account/mail">
+                  <i class="fa fa-envelope"></i> Ma messagerie (0)
+                </a>
+              </li>
+              <li>
+                <a href="/document">
+                  <i class="fa fa-folder"></i> Mes documents
+                </a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a href="/">
+                  <i class="fa fa-terminal"></i> Passer en utilisateur
+                </a>
+              </li>
+
+              <li class="divider"></li>
+              <li>
+                <a href="/logout">
+                  <i class="fa fa-sign-out"></i> Se déconnecter
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="row">
+      {% block body %}{% endblock %}
+    </div>
+  </div>
+
+  {% block javascripts %}{% endblock %}
+
+  <div class="logo-bottom">
+
+  </div>
+  <div class="footer-page">
+    <div>
+      <img src="{{ asset( 'images/logo/logo-club.gif' ) }}" style="width:120px;height:100px;">
+      <img src="{{ asset( 'images/logo/logo-ffco.png' ) }}" style="width:150px;height:100px;">
+    </div>
+    <a href="/help">Aide</a> |
+    <a href="/about">A propos</a> |
+    <a href="/contacter/webmaster">Contacter le Webmaster</a>
+  </div>
+
+  <nav class="navbar navbar-inverse">
+    <div class="navbar-content">
+      Site du Quimper Orientation - Version {{ nVersion }} ({{ dVersion }}) - {{ author }}
+    </div>
+  </nav>
+</body>
+</html>

@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="col-md-12">
+  <h1>Les parcours permanents</h1>
+  <p class="lead">Vous souhaitez vous entrainer ? Téléchargez le carte d'un de nos parcours permaents et partez à l'aventure !</p>
+</div>
+
+{% for carte in cartes %}
+<div class="col-md-3">
+  <div class="box">
+    <div class="box-icon">
+      <span class="fa fa-3x fa-map-o"></span>
+    </div>
+    <div class="info">
+      <h2 class="text-center">{{carte.getNom()}}</h2>
+      {% if carte.getAlert() %}
+      <div class="alert alert-danger">
+        Attention, ce parcours est actuellement en cours de modification.
+      </div>
+      {% endif %}
+      <ul class="text-list nopadding">
+        <li>
+          <b>Date de modification </b> Le {{carte.getDateModification() | date('d/m/Y à G:i')}}
+        </li>
+        <li>
+          <b>Taille du fichier </b>
+        </li>
+        <li>
+          <b>Téléchargé </b>{{carte.getNbTelechargement()}} fois
+        </li>
+      </ul>
+
+      <a href="/parcours/{{carte.getId()}}" target="_BLANK" class="btn btn-success">
+        <i class="fa fa-download"></i> Télécharger la carte
+      </a>
+    </div>
+  </div>
+</div>
+{% endfor %}
+{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
