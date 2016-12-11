@@ -83,7 +83,7 @@ class RegistrationController extends Controller
     }
 
     $u = $repository->findOneBy(array('license' => $user->getLicense()));
-    if($u && $user->getLicense() != null && $user->getLicense() != ""){
+    if($u && $user->getLicense() !== null && $user->getLicense() !== ""){
       $error = new FormError("Ce numéro de licence est déjà utilisée.");
       $form->get('license')->addError($error);
       $error = true;

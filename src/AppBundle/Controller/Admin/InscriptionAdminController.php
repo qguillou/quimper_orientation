@@ -124,7 +124,7 @@ class InscriptionAdminController extends Controller
 	*/
 	private function delete(User $user)
 	{
-    if($user->getId() != null){
+    if($user->getId() !== null){
       $em = $this->getDoctrine()->getManager();
 
       $repository = $em->getRepository('AppBundle:Role');

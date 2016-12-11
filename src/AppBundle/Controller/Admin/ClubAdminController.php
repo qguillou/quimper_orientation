@@ -26,11 +26,7 @@ class ClubAdminController extends Controller
 	/**
 	* @Route("/admin/club/tarif/{id}/")
 	*/
-<<<<<<< HEAD
 	public function adminTarifByIdAction($id, Request $request)
-=======
-	public function adminTarifById($id, Request $request)
->>>>>>> aef0c4db24fe2be0cdbb7faecf0e9b3e59bc768b
 	{
 		$em = $this->getDoctrine()->getManager();
     $repository = $em->getRepository('AppBundle:Tarif');
@@ -134,11 +130,7 @@ class ClubAdminController extends Controller
   /**
   * @Route("/admin/club/contact/")
   */
-<<<<<<< HEAD
   public function adminContactAction(Request $request)
-=======
-  public function adminContact(Request $request)
->>>>>>> aef0c4db24fe2be0cdbb7faecf0e9b3e59bc768b
   {
     $contact = new Contact();
     return $this->renderContactAdminPage($request, $contact);
