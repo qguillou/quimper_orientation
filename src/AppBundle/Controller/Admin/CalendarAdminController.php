@@ -85,7 +85,8 @@ class CalendarAdminController extends Controller
 				}
 				if($form->get('files')->getData()){
 					foreach($form->get('files')->getData() as $file){
-						$file->move($this->getParameter('courses').'/'.$course->getId().'/autres', $file->getClientOriginalName());
+						if($file)
+							$file->move($this->getParameter('courses').'/'.$course->getId().'/autres', $file->getClientOriginalName());
 					}
 				}
 			}
