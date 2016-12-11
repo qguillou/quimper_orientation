@@ -19,7 +19,11 @@ class AccountController extends Controller
 		/**
      * @Route("/account/")
      */
+<<<<<<< HEAD
     public function accountAction()
+=======
+    public function account()
+>>>>>>> aef0c4db24fe2be0cdbb7faecf0e9b3e59bc768b
     {
 				$session = $this->get('app.session');
         return $this->render('user/account/account.html.twig', [

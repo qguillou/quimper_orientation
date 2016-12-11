@@ -26,12 +26,10 @@ class SessionController extends Controller
     $form->handleRequest($request);
     $form_password = $this->createForm(UserPassword::class, $user);
     $form_password->handleRequest($request);
-
     if ($form->isSubmitted() && $form->isValid()) {
       $password = $this->get('security.password_encoder')
       ->encodePassword($user, $user->getPlainPassword());
       $user->setPassword($password);
-
       return $this->loginValidation($form, $form_password, $user, $request);
     }
 

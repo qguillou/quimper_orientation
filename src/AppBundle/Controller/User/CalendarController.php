@@ -18,7 +18,11 @@ class CalendarController extends Controller
 	/**
 	* @Route("/calendrier/")
 	*/
+<<<<<<< HEAD
 	public function calendarAction()
+=======
+	public function calendar()
+>>>>>>> aef0c4db24fe2be0cdbb7faecf0e9b3e59bc768b
 	{
 		$session = $this->get('app.session');
 		$em = $this->getDoctrine()->getManager();
