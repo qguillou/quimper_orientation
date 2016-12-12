@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Form\Course;
+namespace AppBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -13,7 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-use AppBundle\Form\Circuit\CircuitType;
+use AppBundle\Form\Type\CircuitType;
 
 class CourseType extends AbstractType
 {

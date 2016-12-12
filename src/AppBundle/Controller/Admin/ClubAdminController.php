@@ -7,8 +7,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Entity\Tarif;
 use AppBundle\Entity\Contact;
 use Symfony\Component\HttpFoundation\Request;
-use AppBundle\Form\Tarif\TarifType;
-use AppBundle\Form\Contact\ContactType;
+use AppBundle\Form\Type\TarifType;
+use AppBundle\Form\Type\ContactType;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 
 class ClubAdminController extends Controller

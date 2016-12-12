@@ -5,7 +5,7 @@ namespace AppBundle\Controller\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Entity\Inscrit;
-use AppBundle\Form\Inscrit\InscritType;
+use AppBundle\Form\Type\InscritType;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 
