@@ -4,9 +4,9 @@ namespace AppBundle\Controller\User;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use AppBundle\Form\User\UserUpdate;
-use AppBundle\Form\User\UserDelete;
-use AppBundle\Form\User\UserNotification;
+use AppBundle\Form\Type\UserUpdate;
+use AppBundle\Form\Type\UserDelete;
+use AppBundle\Form\Type\UserNotification;
 use AppBundle\Entity\User;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\FormError;

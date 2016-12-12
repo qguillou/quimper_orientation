@@ -5,12 +5,12 @@ namespace AppBundle\Controller\Admin;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
-use AppBundle\Form\User\UserView;
+use AppBundle\Form\Type\UserView;
 use AppBundle\Entity\User;
 use AppBundle\Entity\Role;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use AppBundle\Entity\Base;
-use AppBundle\Form\Archive\ArchiveForm;
+use AppBundle\Form\Type\ArchiveForm;
 
 class InscriptionAdminController extends Controller
 {

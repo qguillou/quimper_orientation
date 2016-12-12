@@ -2,8 +2,8 @@
 
 namespace AppBundle\Controller\User;
 
-use AppBundle\Form\LoginForm;
-use AppBundle\Form\User\UserPassword;
+use AppBundle\Form\Type\LoginForm;
+use AppBundle\Form\Type\UserPassword;
 use AppBundle\Entity\User;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\FormError;
@@ -119,7 +119,7 @@ class SessionController extends Controller
         'success',
         'Un email vient de vous être envoyé avec un nouveau mot de passe.'
       );
-      
+
       return $this->redirectToRoute('user_login');
     }
 

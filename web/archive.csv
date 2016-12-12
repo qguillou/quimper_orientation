@@ -596,8 +596,13 @@ Ident. base de données;Puce;Nom;Prénom;Né;S;N° club;Nom;Ville;Nat;N° cat.;Court;
 27691;225135;BELLENGIER;Marie;2007;F;6208;6208NO;B.A;France;110;D10;D10;;;;;;;;;;;;;;;;;0
 25382;1620852;BELLENGIER;Rémi;2001;H;6208;6208NO;B.A;France;16;H16;H16;;;;;;;;;;;;;;;;;0
 25381;1620864;BELLENGIER;Sabine;1973;F;6208;6208NO;B.A;France;140;D40;D40;;;;;;;;;;;;;;;;;0
+34258;;BELLET;Claire-Marie;2009;F;4705;4705AQ;N.O.R.D.;France;110;D10;D10;;;;;;;;;;;;;;;;;0
 31528;2037278;BELLET;Clémentine;2000;F;3810;3810RA;ORIENTALP;France;116;D16;D16;;;;;;;;;;;;;;;;;0
+34257;;BELLET;Emilie;2006;F;4705;4705AQ;N.O.R.D.;France;110;D10;D10;;;;;;;;;;;;;;;;;0
 33254;;BELLET;Lise;2002;F;3810;3810RA;ORIENTALP;France;114;D14;D14;;;;;;;;;;;;;;;;;0
+34256;;BELLET;Louis;2011;H;4705;4705AQ;N.O.R.D.;France;10;H10;H10;;;;;;;;;;;;;;;;;0
+34253;;BELLET;philippe;1968;H;4705;4705AQ;N.O.R.D.;France;45;H45;H45;;;;;;;;;;;;;;;;;0
+34255;;BELLET;Violaine;1979;F;4705;4705AQ;N.O.R.D.;France;135;D35;D35;;;;;;;;;;;;;;;;;0
 32130;;BELLOUR;Annaïg;1975;F;5604;5604BR;COL;France;140;D40;D40;;;;;;;;;;;;;;;;;0
 14840;40312;BELMON;Christophe;1972;H;1207;1207MP;SCA;France;40;H40;H40;;;;;;;;;;;;;;;;;0
 31767;2098497;BELMONT;Chloe;2005;F;3811;3811RA;GUC-CO;France;112;D12;D12;;;;;;;;;;;;;;;;;0
@@ -1122,7 +1127,7 @@ Ident. base de données;Puce;Nom;Prénom;Né;S;N° club;Nom;Ville;Nat;N° cat.;Court;
 27677;2052668;BOURGERIE;Bénédicte;1957;F;3105;3105MP;TOAC Orientatio;France;155;D55;D55;;;;;;;;;;;;;;;;;0
 27678;2053808;BOURGERIE;Xavier;1956;H;3105;3105MP;TOAC Orientatio;France;60;H60;H60;;;;;;;;;;;;;;;;;0
 34000;;BOURGET;Timothée;1988;H;4601;4601MP;FiNO46;France;21;H21;H21;;;;;;;;;;;;;;;;;0
-13760;1590022;BOURGOGNE;Gaëtan;1988;H;5907;5907NO;T.A.D.;France;21;H21;H21;;;;;;;;;;;;;;;;;0
+13760;1590745;BOURGOGNE;Gaëtan;1988;H;5907;5907NO;T.A.D.;France;21;H21;H21;;;;;;;;;;;;;;;;;0
 25738;1423686;BOURGOIN;Olivier;1967;H;3502;3502BR;CRCO;France;45;H45;H45;;;;;;;;;;;;;;;;;0
 32855;;BOURGON;Gabriel;1989;H;7409;7409RA;Arve'nture;France;21;H21;H21;;;;;;;;;;;;;;;;;0
 32524;1130333;BOURHIS;Charlotte;1977;F;1303;1303PZ;MARCO;France;135;D35;D35;;;;;;;;;;;;;;;;;0
@@ -1180,7 +1185,7 @@ Ident. base de données;Puce;Nom;Prénom;Né;S;N° club;Nom;Ville;Nat;N° cat.;Court;
 26224;229879;BOUVET;Arnaud;2005;H;2604;2604RA;CROCO;France;12;H12;H12;;;;;;;;;;;;;;;;;0
 33680;239550;BOUVET;Cléa;2001;F;2605;2605RA;VSO;France;116;D16;D16;;;;;;;;;;;;;;;;;0
 31239;;BOUVIER;Marine;2001;F;3812;3812RA;BOL D'AIR;France;116;D16;D16;;;;;;;;;;;;;;;;;0
-34127;;BOUVIER;Matthieu;2001;H;5907;5907NO;T.A.D.;France;16;H16;H16;;;;;;;;;;;;;;;;;0
+34127;1590045;BOUVIER;Matthieu;2001;H;5907;5907NO;T.A.D.;France;16;H16;H16;;;;;;;;;;;;;;;;;0
 32851;;BOUVIER;Noann;2001;F;3502;3502BR;CRCO;France;116;D16;D16;;;;;;;;;;;;;;;;;0
 11398;522630;BOUVIER;William;1971;H;1905;1905LI;BriveCorrèzeCO;France;45;H45;H45;;;;;;;;;;;;;;;;;0
 33775;;BOUVIER ;Enora;2003;F;1905;1905LI;BriveCorrèzeCO;France;114;D14;D14;;;;;;;;;;;;;;;;;0
@@ -4015,8 +4020,8 @@ Ident. base de données;Puce;Nom;Prénom;Né;S;N° club;Nom;Ville;Nat;N° cat.;Court;
 31490;;GUERIN;Florian;1990;H;5116;5116CA;ASO Sillery;France;21;H21;H21;;;;;;;;;;;;;;;;;0
 10809;1780728;GUERIN;Franck;1958;H;7807;7807IF;GO78;France;55;H55;H55;;;;;;;;;;;;;;;;;0
 25892;;GUERIN;Martin;2005;H;7716;7716IF;BALISE 77;France;12;H12;H12;;;;;;;;;;;;;;;;;0
-20630;1331914;GUERIN;Stéphane;1971;H;3319;3319AQ;SMOG;France;45;H45;H45;;;;;;;;;;;;;;;;;0
 33723;;GUERIN;Stéphane;1974;H;3502;3502BR;CRCO;France;40;H40;H40;;;;;;;;;;;;;;;;;0
+20630;1331914;GUERIN;Stéphane;1971;H;3319;3319AQ;SMOG;France;45;H45;H45;;;;;;;;;;;;;;;;;0
 33590;;GUERIN;Thibault;2004;H;6911;6911RA;ASUL SPORTS NAT;France;12;H12;H12;;;;;;;;;;;;;;;;;0
 27021;1508341;GUERINI;Alice;2006;F;7719;7719IF;ERCO;France;110;D10;D10;;;;;;;;;;;;;;;;;0
 27019;;GUERINI;Jean-Philippe;1974;H;7719;7719IF;ERCO;France;40;H40;H40;;;;;;;;;;;;;;;;;0
@@ -5255,8 +5260,8 @@ Ident. base de données;Puce;Nom;Prénom;Né;S;N° club;Nom;Ville;Nat;N° cat.;Court;
 22375;2005655;LEROUILLY;Stéphane;1969;H;6307;6307AU;Balise 63;France;45;H45;H45;;;;;;;;;;;;;;;;;0
 7409;1331800;LE ROUX;Anne-Francoise;1958;F;3318;3318AQ;ASM CO;France;155;D55;D55;;;;;;;;;;;;;;;;;0
 23652;9783553;LE ROUX;Eric;1982;H;7807;7807IF;GO78;France;21;H21;H21;;;;;;;;;;;;;;;;;0
-8899;1000070;LE ROUX;Erwan;1994;H;3318;3318AQ;ASM CO;France;21;H21;H21;;;;;;;;;;;;;;;;;0
 33560;349745;LE ROUX;Erwan;2010;H;7807;7807IF;GO78;France;10;H10;H10;;;;;;;;;;;;;;;;;0
+8899;1000070;LE ROUX;Erwan;1994;H;3318;3318AQ;ASM CO;France;21;H21;H21;;;;;;;;;;;;;;;;;0
 7410;1331801;LE ROUX;Isabelle;1988;F;3318;3318AQ;ASM CO;France;121;D21;D21;;;;;;;;;;;;;;;;;0
 2857;304809;LE ROUX;Jacques;1948;H;3502;3502BR;CRCO;France;65;H65;H65;;;;;;;;;;;;;;;;;0
 33561;338962;LE ROUX;Jean;2011;H;7807;7807IF;GO78;France;10;H10;H10;;;;;;;;;;;;;;;;;0
@@ -5463,8 +5468,8 @@ Ident. base de données;Puce;Nom;Prénom;Né;S;N° club;Nom;Ville;Nat;N° cat.;Court;
 900727;38723;LOUVET;Line;1950;F;2517;2517FC;OTB;France;165;D65;D65;;;;;;;;;;;;;;;;;0
 17085;34779;LOUVET;Theo;2000;H;1905;1905LI;BriveCorrèzeCO;France;16;H16;H16;;;;;;;;;;;;;;;;;0
 26331;2050006;LOZE;Claire;1972;F;2407;2407AQ;POP;France;140;D40;D40;;;;;;;;;;;;;;;;;0
-17246;1137404;LUCAS;Baptiste;1986;H;7404;7404RA;ASO;France;21;H21;H21;;;;;;;;;;;;;;;;;0
 33232;1680455;LUCAS;Baptiste;2002;H;6804;6804AL;COColmar;France;14;H14;H14;;;;;;;;;;;;;;;;;0
+17246;1137404;LUCAS;Baptiste;1986;H;7404;7404RA;ASO;France;21;H21;H21;;;;;;;;;;;;;;;;;0
 30938;;LUCAS;Cécile;1966;F;3502;3502BR;CRCO;France;150;D50;D50;;;;;;;;;;;;;;;;;0
 31841;;LUCAS;Philippe;2002;H;5604;5604BR;COL;France;14;H14;H14;;;;;;;;;;;;;;;;;0
 31547;;LUCAT;Antoine;2008;H;8807;8807LO;LO Sanchey;France;10;H10;H10;;;;;;;;;;;;;;;;;0
@@ -5813,8 +5818,8 @@ Ident. base de données;Puce;Nom;Prénom;Né;S;N° club;Nom;Ville;Nat;N° cat.;Court;
 34088;;MASSON;Mathilde;2001;F;5116;5116CA;ASO Sillery;France;116;D16;D16;;;;;;;;;;;;;;;;;0
 4317;1210510;MASSON;Michel;1950;H;2105;2105BO;ADOChenôve;France;65;H65;H65;;;;;;;;;;;;;;;;;0
 2439;40748;MASSON;Patricia;1957;F;4902;4902PL;ANGERS NATURE O;France;155;D55;D55;;;;;;;;;;;;;;;;;0
-11564;8260961;MASSON;Philippe;1961;H;3502;3502BR;CRCO;France;55;H55;H55;;;;;;;;;;;;;;;;;0
 2440;1600550;MASSON;Philippe;1955;H;4902;4902PL;ANGERS NATURE O;France;60;H60;H60;;;;;;;;;;;;;;;;;0
+11564;8260961;MASSON;Philippe;1961;H;3502;3502BR;CRCO;France;55;H55;H55;;;;;;;;;;;;;;;;;0
 33183;;MASSON;Prune;2007;F;2108;2108BO;Talant SO;France;110;D10;D10;;;;;;;;;;;;;;;;;0
 19579;573606;MASSON;Thierry;1960;H;3605;3605CE;ASPTT O'BERRY;France;55;H55;H55;;;;;;;;;;;;;;;;;0
 17673;1040409;MASSOT;Bertrand;1973;H;0404;0404PZ;Balise 04;France;40;H40;H40;;;;;;;;;;;;;;;;;0
@@ -7207,7 +7212,7 @@ Ident. base de données;Puce;Nom;Prénom;Né;S;N° club;Nom;Ville;Nat;N° cat.;Court;
 5708;1460132;RAMBLIERE;Frédéric;1966;H;4601;4601MP;FiNO46;France;50;H50;H50;;;;;;;;;;;;;;;;;0
 19854;9879789;RAMBLIERE;Martin;2000;H;4601;4601MP;FiNO46;France;16;H16;H16;;;;;;;;;;;;;;;;;0
 19856;9424101;RAMBLIERE;Théo;1996;H;4601;4601MP;FiNO46;France;20;H20;H20;;;;;;;;;;;;;;;;;0
-34103;;RAMILLON;Vincent;2001;H;5907;5907NO;T.A.D.;France;16;H16;H16;;;;;;;;;;;;;;;;;0
+34103;1590038;RAMILLON;Vincent;2001;H;5907;5907NO;T.A.D.;France;16;H16;H16;;;;;;;;;;;;;;;;;0
 29495;;RAMOGNINO;Lionel;1964;H;9214;9214IF;DSS;France;50;H50;H50;;;;;;;;;;;;;;;;;0
 25445;2043636;RAMOND;Isabelle;1958;F;1705;1705PC;CMO;France;155;D55;D55;;;;;;;;;;;;;;;;;0
 33047;1330889;RAMOS;Niobé;2007;F;3308;3308AQ;SAGC CESTAS;France;110;D10;D10;;;;;;;;;;;;;;;;;0
@@ -7514,8 +7519,8 @@ Ident. base de données;Puce;Nom;Prénom;Né;S;N° club;Nom;Ville;Nat;N° cat.;Court;
 30689;1841477;RODRIGUEZ;Jean-Luc;1959;H;8404;8404PZ;OPA;France;55;H55;H55;;;;;;;;;;;;;;;;;0
 32400;;RODRIGUEZ;Lilé;2002;F;8404;8404PZ;OPA;France;114;D14;D14;;;;;;;;;;;;;;;;;0
 32399;;RODRIGUEZ;Lou;2000;F;8404;8404PZ;OPA;France;116;D16;D16;;;;;;;;;;;;;;;;;0
-16865;8102002;RODRIGUEZ;Lucas;2002;H;4709;4709AQ;PSNO;France;14;H14;H14;;;;;;;;;;;;;;;;;0
 30102;;RODRIGUEZ;Lucas;2002;H;1905;1905LI;BriveCorrèzeCO;France;14;H14;H14;;;;;;;;;;;;;;;;;0
+16865;8102002;RODRIGUEZ;Lucas;2002;H;4709;4709AQ;PSNO;France;14;H14;H14;;;;;;;;;;;;;;;;;0
 18071;8002004;RODRIGUEZ;Mattéo;2004;H;4709;4709AQ;PSNO;France;12;H12;H12;;;;;;;;;;;;;;;;;0
 29873;1841457;RODRIGUEZ;Noé;2004;H;8404;8404PZ;OPA;France;12;H12;H12;;;;;;;;;;;;;;;;;0
 5691;8001969;RODRIGUEZ;Stéphane;1969;H;4709;4709AQ;PSNO;France;45;H45;H45;;;;;;;;;;;;;;;;;0
