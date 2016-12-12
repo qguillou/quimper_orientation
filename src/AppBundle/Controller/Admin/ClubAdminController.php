@@ -138,7 +138,7 @@ class ClubAdminController extends Controller
   /**
   * @Route("/admin/club/contact/{id}/")
   */
-  public function adminContactById($id, Request $request)
+  public function adminContactByIdAction($id, Request $request)
   {
     $em = $this->getDoctrine()->getManager();
     $repository = $em->getRepository('AppBundle:Contact');
