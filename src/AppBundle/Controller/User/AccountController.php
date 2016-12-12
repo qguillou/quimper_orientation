@@ -35,7 +35,6 @@ class AccountController extends Controller
     public function parametersAction(Request $request)
     {
 				$session = $this->get('app.session');
-				$session->onlyUserAccess();
 
 				$user = $this->getUser();
 

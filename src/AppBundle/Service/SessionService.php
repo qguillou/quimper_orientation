@@ -23,10 +23,4 @@ class SessionService
     public function isAuthenticated(){
       return $this->security->isGranted('IS_AUTHENTICATED_REMEMBERED');
     }
-
-    public function onlyUserAccess(){
-      if(!($this->security->isGranted('ROLE_USER'))){
-        throw new AccessDeniedException('Unauthorised access!');
-      }
-    }
 }
