@@ -16,7 +16,6 @@ class ParcoursPermanentController extends Controller
 		$em = $this->getDoctrine()->getManager();
 		$repository = $em->getRepository('AppBundle:Cartes');
 		$cartes = $repository->findAll();
-		$session = $this->get('app.session');
 		return $this->render('user/parcours/parcours.html.twig', [
 			'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
 			'cartes' => $cartes,

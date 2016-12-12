@@ -12,8 +12,6 @@ class ResultatController extends Controller
 	*/
 	public function resultsAction()
 	{
-		$session = $this->get('app.session');
-
 		return $this->render('user/results/results.html.twig', [
 			'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
 		]);

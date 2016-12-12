@@ -18,8 +18,6 @@ class RegistrationController extends Controller
   */
   public function registerAction(Request $request)
   {
-    $session = $this->get('app.session');
-
     $user = new User();
     $form = $this->createForm(UserType::class, $user);
 
