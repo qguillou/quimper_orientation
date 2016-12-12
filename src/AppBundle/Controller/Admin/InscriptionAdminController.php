@@ -67,7 +67,7 @@ class InscriptionAdminController extends Controller
 	}
 
 	/**
-	* @Route("/admin/inscription/archive/")
+	* @Route("/admin/inscription/archive/", name="admin_archive")
 	* @Method({"GET", "POST"})
 	*/
 	public function archiveAction(Request $request){
@@ -100,6 +100,7 @@ class InscriptionAdminController extends Controller
 							SET foreign_key_checks = 1;";
 			$stmt = $db->prepare($sql);
 			$stmt->execute();
+			return $this->redirectToRoute('admin_archive');
 		}
 
 		return $this->render('admin/inscription/archive.html.twig', [

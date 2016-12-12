@@ -32,7 +32,7 @@ class InscriptionController extends Controller
 
 	/**
 	* @Route("/inscription/inscrire/")
-	* @Method({"GET", "POST"})
+	* @Method({"GET"})
 	*/
 	public function inscrireAction()
 	{
@@ -43,7 +43,7 @@ class InscriptionController extends Controller
 
 	/**
 	* @Route("/inscription/modification/")
-	* @Method({"GET", "POST"})
+	* @Method({"GET"})
 	*/
 	public function modificationAction()
 	{
@@ -54,7 +54,7 @@ class InscriptionController extends Controller
 
 	/**
 	* @Route("/inscription/recuperation/")
-	* @Method({"GET", "POST"})
+	* @Method({"GET"})
 	*/
 	public function recuperationAction()
 	{
