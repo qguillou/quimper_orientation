@@ -221,7 +221,7 @@ class User implements UserInterface, \Serializable
     *
     * @return User
     */
-    public function setIsActive($isActive)
+    public function setActive($isActive)
     {
       $this->isActive = $isActive;
 
@@ -233,7 +233,7 @@ class User implements UserInterface, \Serializable
     *
     * @return boolean
     */
-    public function getIsActive()
+    public function isActive()
     {
       return $this->isActive;
     }
