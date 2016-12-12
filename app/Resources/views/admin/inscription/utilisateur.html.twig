@@ -7,7 +7,7 @@
 <div class="col-md-3">
   <div class="list-group">
     {% for u in users %}
-    <a href="/admin/inscription/utilisateur/{{u.getId()}}/" class="list-group-item {% if active == u.getId() %}active{% endif %}">
+    <a href="/admin/inscription/utilisateur/{{u.getId()}}/" class="list-group-item {% if form.vars.data.id == u.getId() %}active{% endif %}">
       {{u.getUsername()}}
     </a>
     {% endfor %}
@@ -93,7 +93,7 @@
 
       <div class="row">
         {{ form_widget(form.delete, {'attr': {'class': 'btn btn-danger'}}) }}
-        {% if active %}
+        {% if form.vars.data.id %}
         <button class="btn btn-primary" type="submit">Donner les droits d'administration</button>
         {% endif %}
       </div>

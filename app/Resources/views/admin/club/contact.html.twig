@@ -7,11 +7,11 @@
 
 <div class="col-md-3">
   <div class="list-group">
-    <a href="/admin/club/contact/" class="list-group-item {% if active == null %}active{% endif %}">
+    <a href="/admin/club/contact/" class="list-group-item {% if form.vars.data.id == null %}active{% endif %}">
       <i class="fa fa-plus-circle"></i> Nouveau contact
     </a>
     {% for contact in contacts %}
-    <a href="/admin/club/contact/{{contact.getId()}}/" class="list-group-item {% if active == contact.getId() %}active{% endif %}">
+    <a href="/admin/club/contact/{{contact.getId()}}/" class="list-group-item {% if form.vars.data.id == contact.getId() %}active{% endif %}">
       {{contact.getFonction()}}
     </a>
     {% endfor %}
@@ -122,7 +122,7 @@
       <div class="row">
         <button class="btn btn-default" type="reset">Annuler</button>
         {{ form_widget(form.save, {'attr': {'class': 'btn btn-success'}}) }}
-        {% if active %}
+        {% if form.vars.data.id %}
         <button class="btn btn-danger" type="submit">Supprimer le contact</a>
         {% endif %}
       </div>

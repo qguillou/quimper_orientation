@@ -61,7 +61,6 @@ class CalendarAdminController extends Controller
           'user' => $this->getUser(),
           'isAdmin' => $session->isAdmin(),
           'courses' => $courses,
-          'active' => $course->getId(),
           'form' => $form->createView(),
       ]);
     }
@@ -103,7 +102,6 @@ class CalendarAdminController extends Controller
 					array('form' => $form->createView(),
 					'user' => $this->getUser(),
 					'isAdmin' => $session->isAdmin(),
-					'active' => $course->getId(),
 					'courses' => $courses)
 				);
 			}

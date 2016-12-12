@@ -6,11 +6,11 @@
 </div>
 <div class="col-md-3">
   <div class="list-group">
-    <a href="/admin/parcours/" class="list-group-item {% if active == null %}active{% endif %}">
+    <a href="/admin/parcours/" class="list-group-item {% if form.vars.data.id == null %}active{% endif %}">
       <i class="fa fa-plus-circle"></i> Nouvelle carte
     </a>
     {% for carte in cartes %}
-    <a href="/admin/parcours/{{carte.getId()}}/" class="list-group-item {% if active == carte.getId() %}active{% endif %}">
+    <a href="/admin/parcours/{{carte.getId()}}/" class="list-group-item {% if form.vars.data.id == carte.getId() %}active{% endif %}">
       {{carte.getNom()}}
     </a>
     {% endfor %}
@@ -77,7 +77,7 @@
       <div class="row">
         <button class="btn btn-default" type="reset">Annuler</button>
         {{ form_widget(form.save, {'attr': {'class': 'btn btn-success'}}) }}
-        {% if active %}
+        {% if form.vars.data.id %}
         <button class="btn btn-danger" type="submit">Supprimer la carte</button>
         {% endif %}
       </div>

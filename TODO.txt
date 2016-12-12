@@ -7,3 +7,4 @@ TODOList
 - Ajout des circuits lors de la création d'un event
 - Gérer l'envoi du mail pour reset password
 - Affichage d'un message quand mise à jour de l'archive terminé
+- Gérer le lien entre Role et User, supprimer le isAdmin de chaque render

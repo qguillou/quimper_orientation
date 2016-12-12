@@ -61,7 +61,6 @@ class TypeAdminController extends Controller
 			'user' => $this->getUser(),
 			'isAdmin' => $session->isAdmin(),
 			'types' => $types,
-			'active' => $type->getId(),
 			'form' => $form->createView(),
 		]);
 	}
@@ -94,7 +93,6 @@ class TypeAdminController extends Controller
 				array('form' => $form->createView(),
 				'user' => $this->getUser(),
 				'isAdmin' => $session->isAdmin(),
-				'active' => $type->getId(),
 				'types' => $types)
 			);
 		}

@@ -7,11 +7,11 @@
 
 <div class="col-md-3">
   <div class="list-group">
-    <a href="/admin/type" class="list-group-item {% if active == null %}active{% endif %}">
+    <a href="/admin/type" class="list-group-item {% if form.vars.data.id == null %}active{% endif %}">
       <i class="fa fa-plus-circle"></i> Nouveau type
     </a>
     {% for type in types %}
-    <a href="/admin/type/{{type.getId()}}/" class="list-group-item {% if active == type.getId() %}active{% endif %}">
+    <a href="/admin/type/{{type.getId()}}/" class="list-group-item {% if form.vars.data.id == type.getId() %}active{% endif %}">
       {{type.getNom()}}
     </a>
     {% endfor %}
@@ -72,7 +72,7 @@
       <div class="row">
         <button class="btn btn-default" type="reset">Annuler</button>
         {{ form_widget(form.save, {'attr': {'class': 'btn btn-success'}}) }}
-        {% if active %}
+        {% if form.vars.data.id %}
         <button class="btn btn-danger" type="submit">Supprimer le type</a>
         {% endif %}
       </div>

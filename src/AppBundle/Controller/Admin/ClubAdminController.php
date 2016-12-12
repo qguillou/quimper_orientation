@@ -61,7 +61,6 @@ class ClubAdminController extends Controller
 				'user' => $this->getUser(),
 				'isAdmin' => $session->isAdmin(),
 				'tarifs' => $tarifs,
-				'active' => $tarif->getId(),
 				'form' => $form->createView(),
 		]);
   }
@@ -93,7 +92,6 @@ class ClubAdminController extends Controller
         array('form' => $form->createView(),
         'user' => $this->getUser(),
         'isAdmin' => $session->isAdmin(),
-        'active' => $tarif->getId(),
         'tarifs' => $tarifs)
       );
     }
@@ -172,7 +170,6 @@ class ClubAdminController extends Controller
         'user' => $this->getUser(),
         'isAdmin' => $session->isAdmin(),
         'contacts' => $contacts,
-        'active' => $contact->getId(),
         'form' => $form->createView(),
     ]);
   }
@@ -204,7 +201,6 @@ class ClubAdminController extends Controller
         array('form' => $form->createView(),
         'user' => $this->getUser(),
         'isAdmin' => $session->isAdmin(),
-        'active' => $contact->getId(),
         'contacts' => $contacts)
       );
     }

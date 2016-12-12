@@ -62,7 +62,6 @@ class InscriptionAdminController extends Controller
 				'user' => $this->getUser(),
 				'isAdmin' => $session->isAdmin(),
 				'users' => $users,
-				'active' => $user->getId(),
 				'form' => $form->createView(),
 		]);
 	}

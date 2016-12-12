@@ -61,7 +61,6 @@ class ParcoursPermanentAdminController extends Controller
 			'user' => $this->getUser(),
 			'isAdmin' => $session->isAdmin(),
 			'cartes' => $cartes,
-			'active' => $carte->getId(),
 			'form' => $form->createView(),
 		]);
 	}
@@ -100,7 +99,6 @@ class ParcoursPermanentAdminController extends Controller
 				array('form' => $form->createView(),
 				'user' => $this->getUser(),
 				'isAdmin' => $session->isAdmin(),
-				'active' => $carte->getId(),
 				'cartes' => $cartes)
 			);
 		}
