@@ -10,11 +10,13 @@ use Symfony\Component\Form\FormError;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken,
 Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 class RegistrationController extends Controller
 {
   /**
   * @Route("/register/", name="user_registration")
+  * @Method({"GET", "POST"})
   */
   public function registerAction(Request $request)
   {

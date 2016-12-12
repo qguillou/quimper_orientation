@@ -2,6 +2,8 @@
 
 namespace AppBundle\Repository;
 
+use AppBundle\Entity\User;
+
 /**
  * CourseRepository
  *
@@ -14,6 +16,20 @@ class CourseRepository extends \Doctrine\ORM\EntityRepository
     return $this->createQueryBuilder('c')
         ->where('c.date >= :date')
         ->setParameter('date', new \Datetime(date('d-m-Y')))
+        ->orderBy('c.date', 'ASC')
+        ->getQuery()
+        ->getResult();
+  }
+
+  public function findCourseWhereUserIsRegistered(User $user)
+  {
+    return $this->createQueryBuilder('c')
+        ->select('c')
+        ->from('AppBundle\Entity\Inscrit', 'i')
+        ->where('c.date >= :date')
+        ->andWhere('i.course = c.id')
+        ->andWhere('i.user = :user')
+        ->setParameters(array('date' => new \Datetime(date('d-m-Y')), 'user' => $user->getId()))
         ->orderBy('c.date', 'ASC')
         ->getQuery()
         ->getResult();

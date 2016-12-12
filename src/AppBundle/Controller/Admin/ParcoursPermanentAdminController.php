@@ -9,11 +9,13 @@ use AppBundle\Form\Type\CarteType;
 use AppBundle\Entity\Cartes;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Symfony\Component\Form\Form;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 class ParcoursPermanentAdminController extends Controller
 {
 	/**
 	* @Route("/admin/parcours/")
+	* @Method({"GET", "POST"})
 	*/
 	public function adminParcoursAction(Request $request)
 	{
@@ -23,6 +25,7 @@ class ParcoursPermanentAdminController extends Controller
 
 	/**
 	* @Route("/admin/parcours/{id}/")
+	* @Method({"GET", "POST"})
 	*/
 	public function adminParcoursByIdAction($id, Request $request)
 	{

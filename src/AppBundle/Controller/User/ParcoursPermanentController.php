@@ -5,11 +5,13 @@ namespace AppBundle\Controller\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 class ParcoursPermanentController extends Controller
 {
 	/**
 	* @Route("/parcours/")
+	* @Method({"GET"})
 	*/
 	public function parcoursAction()
 	{
@@ -24,6 +26,7 @@ class ParcoursPermanentController extends Controller
 
 	/**
 	* @Route("/parcours/{id}/")
+	* @Method({"GET"})
 	*/
 	public function getParcoursAction($id)
 	{

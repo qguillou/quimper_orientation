@@ -4,12 +4,14 @@ namespace AppBundle\Controller\User;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 class ClubController extends Controller
 {
 
 	/**
 	* @Route("/club/presentation/")
+	* @Method({"GET"})
 	*/
 	public function presentationAction()
 	{
@@ -20,6 +22,7 @@ class ClubController extends Controller
 
 	/**
 	* @Route("/club/rejoindre/")
+	* @Method({"GET"})
 	*/
 	public function rejoindreAction()
 	{
@@ -35,6 +38,7 @@ class ClubController extends Controller
 
 	/**
 	* @Route("/club/ecole/")
+	* @Method({"GET"})
 	*/
 	public function ecoleAction()
 	{
@@ -45,6 +49,7 @@ class ClubController extends Controller
 
 	/**
 	* @Route("/club/contact/")
+	* @Method({"GET"})
 	*/
 	public function contactAction()
 	{

@@ -9,11 +9,13 @@ use AppBundle\Form\Type\TypeType;
 use AppBundle\Entity\Type;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Symfony\Component\Form\Form;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 class TypeAdminController extends Controller
 {
 	/**
 	* @Route("/admin/type/")
+	* @Method({"GET", "POST"})
 	*/
 	public function adminTypeAction(Request $request)
 	{
@@ -23,6 +25,7 @@ class TypeAdminController extends Controller
 
 	/**
 	* @Route("/admin/type/{id}/")
+	* @Method({"GET", "POST"})
 	*/
 	public function adminTypeByIdAction($id, Request $request)
 	{

@@ -11,11 +11,13 @@ use AppBundle\Entity\Role;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use AppBundle\Entity\Base;
 use AppBundle\Form\Type\ArchiveForm;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 class InscriptionAdminController extends Controller
 {
 	/**
 	* @Route("/admin/inscription/utilisateur/")
+	* @Method({"GET", "POST"})
 	*/
 	public function utilisateurAction(Request $request)
 	{
@@ -25,6 +27,7 @@ class InscriptionAdminController extends Controller
 
 	/**
 	* @Route("/admin/inscription/utilisateur/{id}/")
+	* @Method({"GET", "POST"})
 	*/
 	public function utilisateurByIdAction($id, Request $request)
 	{
@@ -65,6 +68,7 @@ class InscriptionAdminController extends Controller
 
 	/**
 	* @Route("/admin/inscription/archive/")
+	* @Method({"GET", "POST"})
 	*/
 	public function archiveAction(Request $request){
 		$base = new Base();

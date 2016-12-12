@@ -4,11 +4,13 @@ namespace AppBundle\Controller\User;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 class InscriptionController extends Controller
 {
 	/**
 	* @Route("/inscription/")
+	* @Method({"GET"})
 	*/
 	public function inscriptionAction()
 	{
@@ -19,6 +21,7 @@ class InscriptionController extends Controller
 
 	/**
 	* @Route("/inscription/consultation/")
+	* @Method({"GET"})
 	*/
 	public function consultationAction()
 	{
@@ -29,6 +32,7 @@ class InscriptionController extends Controller
 
 	/**
 	* @Route("/inscription/inscrire/")
+	* @Method({"GET", "POST"})
 	*/
 	public function inscrireAction()
 	{
@@ -39,6 +43,7 @@ class InscriptionController extends Controller
 
 	/**
 	* @Route("/inscription/modification/")
+	* @Method({"GET", "POST"})
 	*/
 	public function modificationAction()
 	{
@@ -49,6 +54,7 @@ class InscriptionController extends Controller
 
 	/**
 	* @Route("/inscription/recuperation/")
+	* @Method({"GET", "POST"})
 	*/
 	public function recuperationAction()
 	{

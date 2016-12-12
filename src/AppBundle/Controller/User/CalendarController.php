@@ -8,11 +8,13 @@ use AppBundle\Entity\Inscrit;
 use AppBundle\Form\Type\InscritType;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 class CalendarController extends Controller
 {
 	/**
 	* @Route("/calendrier/")
+	* @Method({"GET"})
 	*/
 	public function calendarAction()
 	{
@@ -27,6 +29,7 @@ class CalendarController extends Controller
 
 	/**
 	*@Route("/calendrier/{id}/")
+	* @Method({"GET", "POST"})
 	*/
 	public function courseAction($id, Request $request)
 	{

@@ -4,11 +4,13 @@ namespace AppBundle\Controller\User;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 class ResultatController extends Controller
 {
 	/**
 	* @Route("/resultat/")
+	* @Method({"GET"})
 	*/
 	public function resultsAction()
 	{

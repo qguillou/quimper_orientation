@@ -5,11 +5,13 @@ namespace AppBundle\Controller\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 class DefaultController extends Controller
 {
     /**
      * @Route("/", name="homepage")
+     * @Method({"GET"})
      */
     public function indexAction(Request $request)
     {
@@ -24,6 +26,7 @@ class DefaultController extends Controller
 
     /**
      * @Route("/about")
+     * @Method({"GET"})
      */
     public function aboutAction(Request $request)
     {

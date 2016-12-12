@@ -11,11 +11,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken,
 Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 class SessionController extends Controller
 {
   /**
   * @Route("/login/", name="user_login")
+  * @Method({"GET", "POST"})
   */
   public function loginAction(Request $request)
   {
@@ -131,6 +133,7 @@ class SessionController extends Controller
 
 /**
 * @Route("/logout/", name="user_logout")
+* @Method({"GET", "POST"})
 */
 public function logoutAction()
 {

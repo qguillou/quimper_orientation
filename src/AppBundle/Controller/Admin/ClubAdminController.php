@@ -10,11 +10,13 @@ use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Form\Type\TarifType;
 use AppBundle\Form\Type\ContactType;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 class ClubAdminController extends Controller
 {
 	/**
 	* @Route("/admin/club/tarif/")
+	* @Method({"GET", "POST"})
 	*/
 	public function adminTarifAction(Request $request)
 	{
@@ -24,6 +26,7 @@ class ClubAdminController extends Controller
 
 	/**
 	* @Route("/admin/club/tarif/{id}/")
+	* @Method({"GET", "POST"})
 	*/
 	public function adminTarifByIdAction($id, Request $request)
 	{
@@ -119,6 +122,7 @@ class ClubAdminController extends Controller
 
   /**
   * @Route("/admin/club/contact/")
+	* @Method({"GET", "POST"})
   */
   public function adminContactAction(Request $request)
   {
@@ -128,6 +132,7 @@ class ClubAdminController extends Controller
 
   /**
   * @Route("/admin/club/contact/{id}/")
+	* @Method({"GET", "POST"})
   */
   public function adminContactByIdAction($id, Request $request)
   {

@@ -12,21 +12,13 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\FormError;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Symfony\Component\Form\Form;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 class AccountController extends Controller
 {
 		/**
-     * @Route("/account/")
-     */
-    public function accountAction()
-    {
-        return $this->render('user/account/account.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-        ]);
-    }
-
-		/**
      * @Route("/account/parameter/")
+		 * @Method({"GET", "POST"})
      */
     public function parametersAction(Request $request)
     {
@@ -121,5 +113,19 @@ class AccountController extends Controller
 				$delete_form->get('plainPassword')->addError($error);
 				return false;
 			}
+		}
+
+		/**
+		* @Route("account/calendar/")
+		* @Method({"GET"})
+		*/
+		public function accountCalendarAction(){
+			$em = $this->getDoctrine()->getManager();
+			$repository = $em->getRepository('AppBundle:Course');
+			$courses = $repository->findCourseWhereUserIsRegistered($this->getUser());
+			return $this->render('user/calendar/calendar.html.twig', [
+				'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
+				'courses' => $courses,
+			]);
 		}
 }

@@ -9,11 +9,13 @@ use AppBundle\Form\Type\CourseType;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Symfony\Component\Form\Form;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 class CalendarAdminController extends Controller
 {
 	   /**
      * @Route("/admin/calendrier/")
+		 * @Method({"GET", "POST"})
      */
     public function calendarAction(Request $request)
     {
@@ -23,6 +25,7 @@ class CalendarAdminController extends Controller
 
     /**
   	* @Route("/admin/calendrier/{id}/")
+		* @Method({"GET", "POST"})
   	*/
   	public function adminParcoursByIdAction($id, Request $request)
   	{

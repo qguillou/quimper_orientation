@@ -14,6 +14,7 @@ class UserRepository extends EntityRepository implements UserLoaderInterface
             ->getQuery()
             ->getOneOrNullResult();
     }
+    
     public function findAdminUser(){
       return $this->createQueryBuilder('u')
             ->select('u.prenom, u.nom, r.role')
