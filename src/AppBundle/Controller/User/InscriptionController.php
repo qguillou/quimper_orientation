@@ -4,11 +4,6 @@ namespace AppBundle\Controller\User;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\HttpFoundation\Request;
-use AppBundle\Form\User\UserView;
-use AppBundle\Entity\User;
-use AppBundle\Entity\Role;
-use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 
 class InscriptionController extends Controller
 {

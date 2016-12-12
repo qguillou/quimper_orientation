@@ -4,11 +4,7 @@ namespace AppBundle\Controller\User;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\HttpFoundation\Request;
-use AppBundle\Form\Carte\CarteType;
-use AppBundle\Entity\Cartes;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
-use Symfony\Component\Form\Form;
 
 class ParcoursPermanentController extends Controller
 {

@@ -4,13 +4,6 @@ namespace AppBundle\Controller\User;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use AppBundle\Controller\DefaultController;
-use AppBundle\Entity\Tarif;
-use AppBundle\Entity\Contact;
-use Symfony\Component\HttpFoundation\Request;
-use AppBundle\Form\Tarif\TarifType;
-use AppBundle\Form\Contact\ContactType;
-use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 
 class ClubController extends Controller
 {

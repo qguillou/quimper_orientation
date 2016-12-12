@@ -7,11 +7,9 @@ use AppBundle\Form\User\UserPassword;
 use AppBundle\Entity\User;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\FormError;
-use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\EventDispatcher\EventDispatcher,
-Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken,
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken,
 Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 
 class SessionController extends Controller

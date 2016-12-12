@@ -4,7 +4,6 @@ namespace AppBundle\Controller\Admin;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use AppBundle\Entity\User;
 use AppBundle\Entity\Course;
 use AppBundle\Form\Course\CourseType;
 use Symfony\Component\HttpFoundation\Request;

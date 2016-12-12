@@ -4,14 +4,10 @@ namespace AppBundle\Controller\User;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use AppBundle\Entity\Course;
-use AppBundle\Entity\Type;
 use AppBundle\Entity\Inscrit;
 use AppBundle\Form\Inscrit\InscritType;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
-use Symfony\Component\Validator\ConstraintViolation;
-use Symfony\Component\Form\Form;
 
 class CalendarController extends Controller
 {

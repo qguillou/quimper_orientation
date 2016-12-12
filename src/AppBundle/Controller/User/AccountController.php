@@ -8,7 +8,6 @@ use AppBundle\Form\User\UserUpdate;
 use AppBundle\Form\User\UserDelete;
 use AppBundle\Form\User\UserNotification;
 use AppBundle\Entity\User;
-use AppBundle\Entity\Role;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\FormError;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
