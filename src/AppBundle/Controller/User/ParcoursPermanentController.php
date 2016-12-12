@@ -26,7 +26,7 @@ class ParcoursPermanentController extends Controller
 
 	/**
 	* @Route("/parcours/{id}/")
-	* @Method({"GET"})
+	* @Method({"GET", "POST"})
 	*/
 	public function getParcoursAction($id)
 	{
