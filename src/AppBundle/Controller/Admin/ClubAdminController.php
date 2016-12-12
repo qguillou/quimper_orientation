@@ -40,7 +40,6 @@ class ClubAdminController extends Controller
 	*/
 	private function renderTarifAdminPage(Request $request, Tarif $tarif)
 	{
-    $session = $this->get('app.session');
     $em = $this->getDoctrine()->getManager();
 		$repository = $em->getRepository('AppBundle:Tarif');
 		$tarifs = $repository->findAll();
@@ -145,11 +144,9 @@ class ClubAdminController extends Controller
   */
   private function renderContactAdminPage(Request $request, Contact $contact)
   {
-    $session = $this->get('app.session');
     $em = $this->getDoctrine()->getManager();
     $repository = $em->getRepository('AppBundle:Contact');
     $contacts = $repository->findAll();
-
 
     $form = $this->createForm(ContactType::class, $contact);
     $form->handleRequest($request);

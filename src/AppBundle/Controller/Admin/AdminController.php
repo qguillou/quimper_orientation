@@ -12,7 +12,6 @@ class AdminController extends Controller
      */
     public function adminAction()
     {
-				$session = $this->get('app.session');
 				$em = $this->getDoctrine()->getManager();
 				$repository = $em->getRepository('AppBundle:User');
 				$users = $repository->findAdminUser();

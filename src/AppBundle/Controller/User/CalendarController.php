@@ -11,14 +11,11 @@ use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 
 class CalendarController extends Controller
 {
-	private $session;
-
 	/**
 	* @Route("/calendrier/")
 	*/
 	public function calendarAction()
 	{
-		$this->session = $this->get('app.session');
 		$em = $this->getDoctrine()->getManager();
 		$repository = $em->getRepository('AppBundle:Course');
 		$courses = $repository->findFutureCourse();
@@ -33,13 +30,12 @@ class CalendarController extends Controller
 	*/
 	public function courseAction($id, Request $request)
 	{
-		$this->session = $this->get('app.session');
 		$em = $this->getDoctrine()->getManager();
 		$repository = $em->getRepository('AppBundle:Course');
 
 		$inscrit = new Inscrit();
 		$inscrit->setCourse($repository->findOneBy(array('id' => $id)));
-		if($this->session->isAuthenticated()){
+		if($this->get('app.session')->isAuthenticated()){
 			$inscrit->setUser($this->getUser());
 			$inscrit->setNom($this->getUser()->getNom());
 			$inscrit->setPrenom($this->getUser()->getPrenom());

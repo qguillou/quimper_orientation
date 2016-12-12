@@ -45,7 +45,6 @@ class InscriptionAdminController extends Controller
 		$em = $this->getDoctrine()->getManager();
 		$repository = $em->getRepository('AppBundle:User');
 		$users = $repository->findAll();
-		$session = $this->get('app.session');
 
 		$form = $this->createForm(UserView::class, $user);
 		$form->handleRequest($request);
@@ -68,8 +67,6 @@ class InscriptionAdminController extends Controller
 	* @Route("/admin/inscription/archive/")
 	*/
 	public function archiveAction(Request $request){
-		$session = $this->get('app.session');
-
 		$base = new Base();
 		$form = $this->createForm(ArchiveForm::class, $base);
 		$form->handleRequest($request);

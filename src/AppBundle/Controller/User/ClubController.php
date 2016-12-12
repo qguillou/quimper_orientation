@@ -13,7 +13,6 @@ class ClubController extends Controller
 	*/
 	public function presentationAction()
 	{
-		$session = $this->get('app.session');
 		return $this->render('user/club/presentation.html.twig', [
 			'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
 		]);
@@ -28,7 +27,6 @@ class ClubController extends Controller
     $repository = $em->getRepository('AppBundle:Tarif');
 
     $licences = $repository->findAll();
-		$session = $this->get('app.session');
 		return $this->render('user/club/rejoindre.html.twig', [
 			'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
 			'licences' => $licences,
@@ -40,7 +38,6 @@ class ClubController extends Controller
 	*/
 	public function ecoleAction()
 	{
-		$session = $this->get('app.session');
 		return $this->render('user/club/ecole.html.twig', [
 			'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
 		]);
@@ -55,7 +52,6 @@ class ClubController extends Controller
     $repository = $em->getRepository('AppBundle:Contact');
 
     $contacts = $repository->findAll();
-		$session = $this->get('app.session');
 		return $this->render('user/club/contact.html.twig', [
 			'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
 			'contacts' => $contacts,

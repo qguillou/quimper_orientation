@@ -41,7 +41,6 @@ class CalendarAdminController extends Controller
   	*/
   	private function renderCalendarAdminPage(Request $request, Course $course)
   	{
-      $session = $this->get('app.session');
       $em = $this->getDoctrine()->getManager();
       $repository = $em->getRepository('AppBundle:Course');
       $courses = $repository->findFutureCourse();

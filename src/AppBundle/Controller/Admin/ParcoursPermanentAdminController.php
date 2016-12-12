@@ -40,8 +40,6 @@ class ParcoursPermanentAdminController extends Controller
 	*/
 	private function renderMapAdminPage(Request $request, Cartes $carte)
 	{
-		$session = $this->get('app.session');
-
 		$em = $this->getDoctrine()->getManager();
 		$repository = $em->getRepository('AppBundle:Cartes');
 		$cartes = $repository->findAll();

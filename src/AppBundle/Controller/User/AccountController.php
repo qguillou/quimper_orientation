@@ -20,7 +20,6 @@ class AccountController extends Controller
      */
     public function accountAction()
     {
-				$session = $this->get('app.session');
         return $this->render('user/account/account.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
         ]);
@@ -31,8 +30,6 @@ class AccountController extends Controller
      */
     public function parametersAction(Request $request)
     {
-				$session = $this->get('app.session');
-
 				$user = $this->getUser();
 
 				$delete_form = $this->createForm(UserDelete::class, $user);

@@ -40,8 +40,6 @@ class TypeAdminController extends Controller
 	*/
 	private function renderTypeAdminPage(Request $request, Type $type)
 	{
-		$session = $this->get('app.session');
-
 		$em = $this->getDoctrine()->getManager();
 		$repository = $em->getRepository('AppBundle:Type');
 		$types = $repository->findAll();
@@ -70,7 +68,6 @@ class TypeAdminController extends Controller
 	*/
 	private function save(Type $type, Form $form)
 	{
-    $session = $this->get('app.session');
 		try {
 			$em = $this->getDoctrine()->getManager();
 			$em->persist($type);
