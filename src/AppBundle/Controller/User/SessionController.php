@@ -40,7 +40,7 @@ class SessionController extends Controller
       'user/session/login.html.twig',
       array('form' => $form->createView(),
       'form_password' => $form_password->createView(),
-      'isConnected' => false)
+      'user' => $this->getUser(),)
     );
   }
 
@@ -81,7 +81,7 @@ class SessionController extends Controller
       'user/session/login.html.twig',
       array('form' => $form->createView(),
       'form_password' => $form_password->createView(),
-      'isConnected' => false)
+      'user' => $this->getUser(),)
     );
   }
 
@@ -135,7 +135,7 @@ class SessionController extends Controller
       'user/session/login.html.twig',
       array('form' => $form->createView(),
       'form_password' => $form_password->createView(),
-      'isConnected' => false)
+      'user' => $this->getUser(),)
     );
 }
 

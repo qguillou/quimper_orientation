@@ -11,20 +11,21 @@ use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 
 class CalendarController extends Controller
 {
+	private $session;
+
 	/**
 	* @Route("/calendrier/")
 	*/
 	public function calendarAction()
 	{
-		$session = $this->get('app.session');
+		$this->session = $this->get('app.session');
 		$em = $this->getDoctrine()->getManager();
 		$repository = $em->getRepository('AppBundle:Course');
 		$courses = $repository->findFutureCourse();
 		return $this->render('user/calendar/calendar.html.twig', [
 			'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
 			'user' => $this->getUser(),
-			'isConnected' => $session->isAuthenticated(),
-			'isAdmin' => $session->isAdmin(),
+			'isAdmin' => $this->session->isAdmin(),
 			'courses' => $courses,
 		]);
 	}
@@ -34,15 +35,13 @@ class CalendarController extends Controller
 	*/
 	public function courseAction($id, Request $request)
 	{
-		$session = $this->get('app.session');
+		$this->session = $this->get('app.session');
 		$em = $this->getDoctrine()->getManager();
 		$repository = $em->getRepository('AppBundle:Course');
-		$course = $repository->findOneBy(array('id' => $id));
-		$inscrits = array();
 
 		$inscrit = new Inscrit();
-		$inscrit->setCourse($course);
-		if($session->isAuthenticated()){
+		$inscrit->setCourse($repository->findOneBy(array('id' => $id)));
+		if($this->session->isAuthenticated()){
 			$inscrit->setUser($this->getUser());
 			$inscrit->setNom($this->getUser()->getNom());
 			$inscrit->setPrenom($this->getUser()->getPrenom());
@@ -65,10 +64,8 @@ class CalendarController extends Controller
 		return $this->render('user/calendar/course.html.twig', [
 			'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
 			'user' => $this->getUser(),
-			'isConnected' => $session->isAuthenticated(),
-			'isAdmin' => $session->isAdmin(),
-			'course' => $course,
-			'inscrits' => $inscrits,
+			'isAdmin' => $this->session->isAdmin(),
+			'course' => $inscrit->getCourse(),
 			'form' => $form->createView(),
 		]);
 	}

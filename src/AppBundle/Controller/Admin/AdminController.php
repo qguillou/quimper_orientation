@@ -20,7 +20,6 @@ class AdminController extends Controller
 				return $this->render('admin/default/index.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
 						'user' => $this->getUser(),
-						'isConnected' => $session->isAuthenticated(),
             'isAdmin' => $session->isAdmin(),
 						'admins' => $users,
         ]);

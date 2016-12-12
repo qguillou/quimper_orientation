@@ -59,7 +59,6 @@ class CalendarAdminController extends Controller
       return $this->render('admin/calendar/calendar.html.twig', [
           'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
           'user' => $this->getUser(),
-          'isConnected' => $session->isAuthenticated(),
           'isAdmin' => $session->isAdmin(),
           'courses' => $courses,
           'active' => $course->getId(),
@@ -103,7 +102,6 @@ class CalendarAdminController extends Controller
 					'admin/calendar/calendar.html.twig',
 					array('form' => $form->createView(),
 					'user' => $this->getUser(),
-					'isConnected' => $session->isAuthenticated(),
 					'isAdmin' => $session->isAdmin(),
 					'active' => $course->getId(),
 					'courses' => $courses)

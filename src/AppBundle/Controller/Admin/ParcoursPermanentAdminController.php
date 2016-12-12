@@ -59,7 +59,6 @@ class ParcoursPermanentAdminController extends Controller
 		return $this->render('admin/parcours/parcours.html.twig', [
 			'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
 			'user' => $this->getUser(),
-			'isConnected' => $session->isAuthenticated(),
 			'isAdmin' => $session->isAdmin(),
 			'cartes' => $cartes,
 			'active' => $carte->getId(),
@@ -100,7 +99,6 @@ class ParcoursPermanentAdminController extends Controller
 				'admin/parcours/parcours.html.twig',
 				array('form' => $form->createView(),
 				'user' => $this->getUser(),
-				'isConnected' => $session->isAuthenticated(),
 				'isAdmin' => $session->isAdmin(),
 				'active' => $carte->getId(),
 				'cartes' => $cartes)

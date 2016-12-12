@@ -133,7 +133,7 @@
       </tbody>
     </table>
     {% if is_past(course.getModification() | date("Y-m-d H:i:s")) == false %}
-    {% if isConnected %}
+    {% if user != null %}
     <button data-toggle="modal"
             data-target="#InscriptionRapideModal"
             class="btn btn-square-toround btn-bordered-success">

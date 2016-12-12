@@ -19,8 +19,4 @@ class SessionService
     public function isWebmaster(){
       return $this->security->isGranted('ROLE_WEBMASTER');
     }
-
-    public function isAuthenticated(){
-      return $this->security->isGranted('IS_AUTHENTICATED_REMEMBERED');
-    }
 }

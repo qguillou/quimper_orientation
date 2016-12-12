@@ -40,7 +40,6 @@ class RegistrationController extends Controller
           'user/session/register.html.twig',
           array('form' => $form->createView(),
           'user' => $this->getUser(),
-          'isConnected' => $session->isAuthenticated(),
           'isAdmin' => $session->isAdmin(),)
         );
       }
@@ -56,7 +55,6 @@ class RegistrationController extends Controller
       'user/session/register.html.twig',
       array('form' => $form->createView(),
       'user' => $this->getUser(),
-      'isConnected' => $session->isAuthenticated(),
       'isAdmin' => $session->isAdmin(),)
     );
   }

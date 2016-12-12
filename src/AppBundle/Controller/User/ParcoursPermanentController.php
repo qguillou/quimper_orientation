@@ -20,7 +20,6 @@ class ParcoursPermanentController extends Controller
 		return $this->render('user/parcours/parcours.html.twig', [
 			'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
 			'user' => $this->getUser(),
-			'isConnected' => $session->isAuthenticated(),
 			'isAdmin' => $session->isAdmin(),
 			'cartes' => $cartes,
 		]);
