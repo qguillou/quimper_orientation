@@ -83,17 +83,7 @@
   <div class="row">
     <h2>Les inscrits</h2>
     <p class="lead">Ils sont déjà inscrits à cette course.</p>
-    {% for successMessage in app.session.flashbag.get('success') %}
-    <div class="alert alert-dismissible alert-success">
-      {{ successMessage }}
-    </div>
-    {% endfor %}
-
-    {% for errorMessage in app.session.flashbag.get('error') %}
-    <div class="alert alert-dismissible alert-danger">
-      {{ errorMessage }}
-    </div>
-    {% endfor %}
+    {% include 'template/messages.html.twig' %}
 
     {% if form.vars.errors is not empty %}
     <div class="alert alert-dismissible alert-danger">

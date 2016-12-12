@@ -13,17 +13,7 @@
       <p class="lead">Vous avez déjà un compte, identifiez-vous !</p>
       {{ form_errors(form) }}
 
-      {% for successMessage in app.session.flashbag.get('success') %}
-      <div class="alert alert-dismissible alert-success">
-        {{ successMessage }}
-      </div>
-      {% endfor %}
-
-      {% for errorMessage in app.session.flashbag.get('error') %}
-      <div class="alert alert-dismissible alert-danger">
-        {{ errorMessage }}
-      </div>
-      {% endfor %}
+      {% include 'template/messages.html.twig' %}
 
       <div class="row">
         <div class="form-group">
