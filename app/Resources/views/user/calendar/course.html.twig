@@ -115,7 +115,7 @@
           <td>{{inscrit.getCommentaire()}}</td>
           <td>
             {% if app.user == inscrit.getUser() %}
-            <i class="fa fa-times" style="color: red;cursor:pointer;"></i>
+            <a href="{{ path('course_delete_inscrit', { 'id': inscrit.getId(), 'course': course.id }) }}"><i class="fa fa-times" style="color: red;cursor:pointer;"></i></a>
             {% endif %}
           </td>
         </tr>

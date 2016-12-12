@@ -89,4 +89,28 @@ class CalendarController extends Controller
 			);
 		}
 	}
+
+	/**
+	* Deletes a UserRole entity.
+	*
+	* @Route("/calendrier/{course}/inscrit/delete/{id}", name="course_delete_inscrit")
+	* @Method({"GET", "DELETE"})
+	*/
+	public function deleteInscritAction(Request $request, $course, $id)
+	{
+		$em = $this->getDoctrine()->getManager();
+		$inscrit = $em->getRepository('AppBundle:Inscrit')->find($id);
+
+		if ($inscrit) {
+			$em->remove($inscrit);
+			$em->flush();
+
+			$this->get('session')->getFlashBag()->add(
+				'success',
+				'La désinscription de '.$inscrit->getPrenom().' '.$inscrit->getNom().' a été effectuée.'
+			);
+		}
+
+		return $this->redirect('/calendrier/'.$course);
+	}
 }
