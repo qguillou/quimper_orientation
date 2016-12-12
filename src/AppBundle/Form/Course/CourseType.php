@@ -13,7 +13,6 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-use AppBundle\Entity\Circuit;
 use AppBundle\Form\Circuit\CircuitType;
 
 class CourseType extends AbstractType

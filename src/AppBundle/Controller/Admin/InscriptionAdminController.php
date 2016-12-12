@@ -74,9 +74,6 @@ class InscriptionAdminController extends Controller
 	public function archiveAction(Request $request){
 		$session = $this->get('app.session');
 
-		$em = $this->getDoctrine()->getManager();
-		$repository = $em->getRepository('AppBundle:Base');
-
 		$base = new Base();
 		$form = $this->createForm(ArchiveForm::class, $base);
 		$form->handleRequest($request);

@@ -119,11 +119,7 @@ class SessionController extends Controller
         'success',
         'Un email vient de vous être envoyé avec un nouveau mot de passe.'
       );
-      return $this->render(
-        'user/email/password.html.twig',
-        array('user' => $u,
-              'password' => $pass)
-      );
+      
       return $this->redirectToRoute('user_login');
     }
 

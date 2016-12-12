@@ -15,7 +15,6 @@ class InscritType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $course = 1;
         $builder
             ->add('nom', TextType::class, array('label' => 'Nom', 'disabled' => 'disabled'))
             ->add('prenom', TextType::class, array('label' => 'Prénom', 'disabled' => 'disabled'))

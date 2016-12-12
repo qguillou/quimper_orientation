@@ -73,8 +73,6 @@ class AccountController extends Controller
 		*/
 		private function save(User $user, Form $user_form, Form $notification_form)
 		{
-			$session = $this->get('app.session');
-
 			if($user->getPlainPassword()){
 				$password = $this->get('security.password_encoder')
 						->encodePassword($user, $user->getPlainPassword());

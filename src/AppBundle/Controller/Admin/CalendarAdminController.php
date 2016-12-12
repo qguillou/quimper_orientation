@@ -100,13 +100,13 @@ class CalendarAdminController extends Controller
 				$courses = $repository->findFutureCourse();
 
 				return $this->render(
-					'admin/parcours/parcours.html.twig',
+					'admin/calendar/calendar.html.twig',
 					array('form' => $form->createView(),
 					'user' => $this->getUser(),
 					'isConnected' => $session->isAuthenticated(),
 					'isAdmin' => $session->isAdmin(),
 					'active' => $course->getId(),
-					'course' => $coursess)
+					'courses' => $courses)
 				);
 			}
 
