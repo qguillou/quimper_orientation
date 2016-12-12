@@ -16,8 +16,6 @@ class ClubController extends Controller
 		$session = $this->get('app.session');
 		return $this->render('user/club/presentation.html.twig', [
 			'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-			'user' => $this->getUser(),
-			'isAdmin' => $session->isAdmin(),
 		]);
 	}
 
@@ -33,8 +31,6 @@ class ClubController extends Controller
 		$session = $this->get('app.session');
 		return $this->render('user/club/rejoindre.html.twig', [
 			'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-			'user' => $this->getUser(),
-			'isAdmin' => $session->isAdmin(),
 			'licences' => $licences,
 		]);
 	}
@@ -47,8 +43,6 @@ class ClubController extends Controller
 		$session = $this->get('app.session');
 		return $this->render('user/club/ecole.html.twig', [
 			'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-			'user' => $this->getUser(),
-			'isAdmin' => $session->isAdmin(),
 		]);
 	}
 
@@ -64,8 +58,6 @@ class ClubController extends Controller
 		$session = $this->get('app.session');
 		return $this->render('user/club/contact.html.twig', [
 			'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-			'user' => $this->getUser(),
-			'isAdmin' => $session->isAdmin(),
 			'contacts' => $contacts,
 		]);
 	}

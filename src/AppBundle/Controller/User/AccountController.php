@@ -23,8 +23,6 @@ class AccountController extends Controller
 				$session = $this->get('app.session');
         return $this->render('user/account/account.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-						'user' => $this->getUser(),
-            'isAdmin' => $session->isAdmin(),
         ]);
     }
 
@@ -56,8 +54,6 @@ class AccountController extends Controller
 
 				return $this->render('user/account/parameter.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-						'user' => $this->getUser(),
-            'isAdmin' => $session->isAdmin(),
 						'user_form' => $user_form->createView(),
 						'delete_form' => $delete_form->createView(),
 						'notification_form' => $notification_form->createView(),

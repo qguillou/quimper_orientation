@@ -59,8 +59,6 @@ class InscriptionAdminController extends Controller
 
 		return $this->render('admin/inscription/utilisateur.html.twig', [
 				'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-				'user' => $this->getUser(),
-				'isAdmin' => $session->isAdmin(),
 				'users' => $users,
 				'form' => $form->createView(),
 		]);
@@ -105,8 +103,6 @@ class InscriptionAdminController extends Controller
 
 		return $this->render('admin/inscription/archive.html.twig', [
 			'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-			'user' => $this->getUser(),
-			'isAdmin' => $session->isAdmin(),
 			'form' => $form->createView(),
 		]);
 	}

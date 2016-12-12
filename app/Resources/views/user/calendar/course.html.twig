@@ -124,7 +124,7 @@
           <td>{% if inscrit.getCircuit() != null %}{{inscrit.getCircuit().getNom()}}{% endif %}</td>
           <td>{{inscrit.getCommentaire()}}</td>
           <td>
-            {% if user == inscrit.getUser() %}
+            {% if app.user == inscrit.getUser() %}
             <i class="fa fa-times" style="color: red;cursor:pointer;"></i>
             {% endif %}
           </td>
@@ -133,7 +133,7 @@
       </tbody>
     </table>
     {% if is_past(course.getModification() | date("Y-m-d H:i:s")) == false %}
-    {% if user != null %}
+    {% if app.user != null %}
     <button data-toggle="modal"
             data-target="#InscriptionRapideModal"
             class="btn btn-square-toround btn-bordered-success">

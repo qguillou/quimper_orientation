@@ -24,7 +24,8 @@ class Role
     /**
      * @var int
      *
-     * @ORM\Column(name="user", type="string", length=100, unique=true)
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\User", inversedBy="role")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
 

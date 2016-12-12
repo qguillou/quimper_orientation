@@ -65,6 +65,11 @@ class User implements UserInterface, \Serializable
   */
   private $prenom;
 
+  /**
+  * @ORM\OneToOne(targetEntity="AppBundle\Entity\Role", mappedBy="user")
+  */
+  private $role;
+
   public function __construct()
   {
     $this->isActive = true;
@@ -99,7 +104,7 @@ class User implements UserInterface, \Serializable
 
   public function getRoles()
   {
-    return array('ROLE_USER');
+    return array($this->getRole()->getRole());
   }
 
   public function eraseCredentials()
@@ -332,5 +337,29 @@ class User implements UserInterface, \Serializable
     public function getNom()
     {
       return $this->nom;
+    }
+
+    /**
+    * Set role
+    *
+    * @param integer $role
+    *
+    * @return user
+    */
+    public function setRole($role)
+    {
+      $this->role = $role;
+
+      return $this;
+    }
+
+    /**
+    * Get role
+    *
+    * @return int
+    */
+    public function getRole()
+    {
+      return $this->role;
     }
   }

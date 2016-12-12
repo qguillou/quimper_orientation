@@ -58,8 +58,6 @@ class TypeAdminController extends Controller
 
 		return $this->render('admin/calendar/type.html.twig', [
 			'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-			'user' => $this->getUser(),
-			'isAdmin' => $session->isAdmin(),
 			'types' => $types,
 			'form' => $form->createView(),
 		]);
@@ -91,8 +89,6 @@ class TypeAdminController extends Controller
 			return $this->render(
 				'admin/calendar/type.html.twig',
 				array('form' => $form->createView(),
-				'user' => $this->getUser(),
-				'isAdmin' => $session->isAdmin(),
 				'types' => $types)
 			);
 		}

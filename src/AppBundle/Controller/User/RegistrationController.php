@@ -38,9 +38,7 @@ class RegistrationController extends Controller
       catch (UniqueConstraintViolationException $e){
         return $this->render(
           'user/session/register.html.twig',
-          array('form' => $form->createView(),
-          'user' => $this->getUser(),
-          'isAdmin' => $session->isAdmin(),)
+          array('form' => $form->createView(),)
         );
       }
 
@@ -53,9 +51,7 @@ class RegistrationController extends Controller
 
     return $this->render(
       'user/session/register.html.twig',
-      array('form' => $form->createView(),
-      'user' => $this->getUser(),
-      'isAdmin' => $session->isAdmin(),)
+      array('form' => $form->createView(),)
     );
   }
 

@@ -58,8 +58,6 @@ class ClubAdminController extends Controller
 
 		return $this->render('admin/club/tarif.html.twig', [
 				'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-				'user' => $this->getUser(),
-				'isAdmin' => $session->isAdmin(),
 				'tarifs' => $tarifs,
 				'form' => $form->createView(),
 		]);
@@ -90,8 +88,6 @@ class ClubAdminController extends Controller
       return $this->render(
         'admin/club/tarif.html.twig',
         array('form' => $form->createView(),
-        'user' => $this->getUser(),
-        'isAdmin' => $session->isAdmin(),
         'tarifs' => $tarifs)
       );
     }
@@ -167,8 +163,6 @@ class ClubAdminController extends Controller
 
     return $this->render('admin/club/contact.html.twig', [
         'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-        'user' => $this->getUser(),
-        'isAdmin' => $session->isAdmin(),
         'contacts' => $contacts,
         'form' => $form->createView(),
     ]);
@@ -199,8 +193,6 @@ class ClubAdminController extends Controller
       return $this->render(
         'admin/club/contact.html.twig',
         array('form' => $form->createView(),
-        'user' => $this->getUser(),
-        'isAdmin' => $session->isAdmin(),
         'contacts' => $contacts)
       );
     }

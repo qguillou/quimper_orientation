@@ -19,8 +19,6 @@ class DefaultController extends Controller
         $courses = $repository->findAll();
         return $this->render('user/default/index.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-            'user' => $this->getUser(),
-            'isAdmin' => $session->isAdmin(),
             'courses' => $courses,
         ]);
     }
@@ -33,8 +31,6 @@ class DefaultController extends Controller
         $session = $this->get('app.session');
         return $this->render('user/default/about.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-            'user' => $this->getUser(),
-            'isAdmin' => $session->isAdmin(),
         ]);
     }
 }

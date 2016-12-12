@@ -24,8 +24,6 @@ class CalendarController extends Controller
 		$courses = $repository->findFutureCourse();
 		return $this->render('user/calendar/calendar.html.twig', [
 			'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-			'user' => $this->getUser(),
-			'isAdmin' => $this->session->isAdmin(),
 			'courses' => $courses,
 		]);
 	}
@@ -63,8 +61,6 @@ class CalendarController extends Controller
 
 		return $this->render('user/calendar/course.html.twig', [
 			'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-			'user' => $this->getUser(),
-			'isAdmin' => $this->session->isAdmin(),
 			'course' => $inscrit->getCourse(),
 			'form' => $form->createView(),
 		]);

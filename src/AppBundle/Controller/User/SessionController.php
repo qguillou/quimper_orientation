@@ -39,8 +39,7 @@ class SessionController extends Controller
     return $this->render(
       'user/session/login.html.twig',
       array('form' => $form->createView(),
-      'form_password' => $form_password->createView(),
-      'user' => $this->getUser(),)
+      'form_password' => $form_password->createView(),)
     );
   }
 
@@ -52,14 +51,7 @@ class SessionController extends Controller
       $factory = $this->get('security.encoder_factory');
       $encoder = $factory->getEncoder($u);
       if(($encoder->isPasswordValid($u->getPassword(),$user->getPlainPassword(),$u->getSalt()))){
-        $repository = $em->getRepository('AppBundle:Role');
-        $r = $repository->findOneBy(array('user' => $u->getUsername()));
-        $role = "ROLE_USER";
-        if($r){
-          $role = $r->getRole();
-        }
-
-        $token = new UsernamePasswordToken($u, $u->getPassword(), "public", array($role));
+        $token = new UsernamePasswordToken($u, $u->getPassword(), "public", $u->getRoles());
         $this->get("security.token_storage")->setToken($token);
         $event = new InteractiveLoginEvent($request, $token);
         $this->get("event_dispatcher")->dispatch("security.interactive_login", $event);
@@ -80,8 +72,7 @@ class SessionController extends Controller
     return $this->render(
       'user/session/login.html.twig',
       array('form' => $form->createView(),
-      'form_password' => $form_password->createView(),
-      'user' => $this->getUser(),)
+      'form_password' => $form_password->createView(),)
     );
   }
 
@@ -134,8 +125,7 @@ class SessionController extends Controller
     return $this->render(
       'user/session/login.html.twig',
       array('form' => $form->createView(),
-      'form_password' => $form_password->createView(),
-      'user' => $this->getUser(),)
+      'form_password' => $form_password->createView(),)
     );
 }
 

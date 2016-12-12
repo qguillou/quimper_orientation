@@ -12,10 +12,6 @@ class SessionService
         $this->security = $security;
     }
 
-    public function isAdmin(){
-      return $this->security->isGranted('ROLE_ADMIN');
-    }
-
     public function isWebmaster(){
       return $this->security->isGranted('ROLE_WEBMASTER');
     }

@@ -48,12 +48,12 @@
 
         </ul>
 
-        {% if user != null %}
+        {% if app.user != null %}
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <i class="fa fa-user"></i>
-                {{user.username}}
+                {{app.user.username}}
                 <span class="badge" title="Nombre de course à venir, où vous êtes inscrits">
                   0
                 </span>
@@ -69,7 +69,7 @@
                     <i class="fa fa-calendar"></i> Mon calendrier
                   </a>
                 </li>
-                {% if isAdmin %}
+                {% if is_granted('ROLE_WEBMASTER') %}
                 <li class="divider"></li>
                 <li>
                   <a href="/account/mail">
