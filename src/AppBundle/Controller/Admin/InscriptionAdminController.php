@@ -6,7 +6,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Form\Type\UserView;
+use AppBundle\Form\Type\InscritAdminUpdate;
 use AppBundle\Entity\User;
+use AppBundle\Entity\Course;
 use AppBundle\Entity\Role;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use AppBundle\Entity\Base;
@@ -170,4 +172,92 @@ class InscriptionAdminController extends Controller
 		}
     return $this->redirect('/admin/inscription/utilisateur/'.$user->getId());
   }
+
+	/**
+	* @Route("/admin/inscription/modification/")
+	* @Method({"GET", "POST"})
+	*/
+	public function updateInscritsAction(Request $request)
+	{
+		$course = new Course();
+		return $this->renderModificationInscritPage($request, $course);
+	}
+
+	/**
+	* @Route("/admin/inscription/modification/{id}/")
+	* @Method({"GET", "POST"})
+	*/
+	public function updateInscritsByIdAction(Request $request, $id)
+	{
+		$em = $this->getDoctrine()->getManager();
+		$repository = $em->getRepository('AppBundle:Course');
+		$course = $repository->findOneBy(array('id' => $id));
+
+		return $this->renderModificationInscritPage($request, $course);
+	}
+
+	private function renderModificationInscritPage(Request $request, Course $course)
+	{
+		$em = $this->getDoctrine()->getManager();
+		$repository = $em->getRepository('AppBundle:Course');
+		$courses = $repository->findFutureCourse();
+
+		$form = $this->createForm(InscritAdminUpdate::class, $course);
+		$form->handleRequest($request);
+
+		if ($form->isSubmitted() && $form->isValid()) {
+			return $this->saveInscrits($course);
+		}
+
+		return $this->render('admin/inscription/modification.html.twig', [
+				'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
+				'courses' => $courses,
+				'form' => $form->createView(),
+		]);
+	}
+
+	private function saveInscrits(Course $course)
+	{
+		$em = $this->getDoctrine()->getManager();
+
+		try {
+			$em->persist($course);
+			$em->flush();
+			$this->get('session')->getFlashBag()->add(
+				'success',
+				'Les inscrits de la course '.$course->getNom().' ont été correctement modifié.'
+			);
+		}
+		catch (UniqueConstraintViolationException $e){
+			$this->get('session')->getFlashBag()->add(
+				'error',
+				'Les inscrits de la course '.$course->getNom().' n\'ont pas pu être modifié, une erreur est survenue.'
+			);
+		}
+		return $this->redirect("/admin/inscription/modification/".$course->getId());
+	}
+
+	/**
+	* Deletes an Inscrit
+	*
+	* @Route("/admin/inscription/modification/{course}/inscrit/delete/{id}", name="admin_inscription_delete")
+	* @Method({"GET", "DELETE"})
+	*/
+	public function deleteInscritAction(Request $request, $course, $id)
+	{
+		$em = $this->getDoctrine()->getManager();
+		$inscrit = $em->getRepository('AppBundle:Inscrit')->find($id);
+
+		if ($inscrit) {
+			$em->remove($inscrit);
+			$em->flush();
+
+			$this->get('session')->getFlashBag()->add(
+				'success',
+				'La désinscription de '.$inscrit->getPrenom().' '.$inscrit->getNom().' a été effectuée.'
+			);
+		}
+
+		return $this->redirect('/admin/inscription/modification/'.$course);
+	}
 }

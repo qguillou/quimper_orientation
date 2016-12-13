@@ -10,3 +10,4 @@ TODOList
 - Gérer le lien entre Role et User, supprimer le isAdmin de chaque render
 - supprimer les user dans le render, remplacer par app.user !!!
 - Modifier le code de suppression d'un user (delete la suppr du role et gestion cascade)
+- Suppression d'un inscrits via menu administrateur
