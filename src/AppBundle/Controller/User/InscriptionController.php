@@ -51,8 +51,7 @@ class InscriptionController extends Controller
 	{
 		$em = $this->getDoctrine()->getManager();
 		$repository = $em->getRepository('AppBundle:Inscrit');
-		//$inscrits = $repository->findAllByUser($this->getUser());
-		$inscrits = $repository->findAll();
+		
 		$form = $this->createForm(InscritUpdate::class, $this->getUser());
 		$form->handleRequest($request);
 

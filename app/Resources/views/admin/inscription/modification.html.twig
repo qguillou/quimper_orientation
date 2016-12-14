@@ -20,49 +20,11 @@
 {% if form.vars.data.id %}
 <div class="col-md-8">
   <div class="row">
-  {% include 'alerts/alerts.form_validation.html.twig' %}
-
-    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
-    <fieldset>
-      <h2>Liste des inscrits</h2>
-      <p class="lead">Vous pouvez supprimer, ou modifier une inscription.</p>
-      {{ form_errors(form) }}
-
-      <table class="table table-striped table-hover ">
-        <thead>
-          <tr>
-            <th>Nom</th>
-            <th>Prénom</th>
-            <th>Puce</th>
-            <th>Circuit</th>
-            <th>Commentaire</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for inscrit in form.inscrits %}
-          <tr class="{% if inscrit.puce.vars.errors | length %}warning{% endif %}">
-            <td>{{ form_widget(inscrit.nom, {'attr': {'class': 'form-control'}}) }}</td>
-            <td>{{ form_widget(inscrit.prenom, {'attr': {'class': 'form-control'}}) }}</td>
-            <td>{{ form_widget(inscrit.puce, {'attr': {'class': 'form-control'}}) }}</td>
-            <td>{{ form_widget(inscrit.circuit, {'attr': {'class': 'form-control'}}) }}</td>
-            <td>{{ form_widget(inscrit.commentaire, {'attr': {'class': 'form-control'}}) }}</td>
-            <td>
-              <a href="{{ path('admin_inscription_delete', { 'course': form.vars.data.id, 'id': 0 }) }}">
-                <i class="fa fa-2x fa-times" style="color: red;cursor:pointer;"></i>
-              </a>
-            </td>
-          </tr>
-          {{ form_widget(inscrit, {'attr': {'class': 'hidden'}}) }}
-          {% endfor %}
-        </tbody>
-      </table>
-
-      <div class="row">
-        {{ form_widget(form.save, {'attr': {'class': 'btn btn-success'}}) }}
-      </div>
-    </fieldset>
-    {{ form_end(form) }}
+    {% include 'alerts/alerts.form_validation.html.twig' %}
+    <h2>Liste des inscrits</h2>
+    <p class="lead">Vous pouvez supprimer, ou modifier une inscription.</p>
+    
+    {% include 'forms/forms.inscrits_update.html.twig' %}
   </div>
 </div>
 {% else %}

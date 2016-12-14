@@ -109,7 +109,7 @@ class User implements UserInterface, \Serializable
 
   public function getRoles()
   {
-    if($this->getRole() == null)
+    if($this->getRole() === null)
       return array('ROLE_USER');
     return array($this->getRole()->getRole());
   }
