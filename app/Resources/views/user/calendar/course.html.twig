@@ -1,13 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-{% if course.getType() != null and course.getType().getColor() != null and course.getType().getColor() != '' %}
-{% set color = course.getType().getColor() %}
-{% else %}
+<!-- On récupére la couleur d'affichage de la course !-->
 {% set color = 'black' %}
+{% if course.type != null and course.type.color != null and course.type.color != '' %}
+{% set color = course.type.color %}
 {% endif %}
+
 <div class="col-md-12">
-  <h1 style="color:{{color}}; font-weight:bold">{{course.getNom()}}</h1>
+  <h1 style="color:{{color}}; font-weight:bold">{{course.nom}}</h1>
   <p class="lead">
     Retrouvez toutes les informations sur cet événement sur cette page.
   </p>
@@ -16,37 +17,34 @@
 <div class="col-md-4">
   <h2>Informations sur la course</h2>
   <ul class="text-list information" style="border-color:{{color}}">
-    {% if course.getLieu() != null %}
-    <li><i class="fa fa-map-marker"></i> Lieu <p class="lead" style="color:{{color}}; font-weight:bold">{{course.getLieu()}}</p></li>
-    {% endif %}
-    {% if course.getType() != null %}
-    <li><i class="fa fa-tag"></i> Type <p class="lead" style="color:{{color}}; font-weight:bold">{{course.getType().getNom()}}</p></li>
-    {% endif %}
-    {% if course.getOrganisateur() != null %}
-    <li><i class="fa fa-user"></i> Organisé par <p class="lead" style="color:{{color}}; font-weight:bold">{{course.getOrganisateur()}}</p></li>
-    {% endif %}
-    <li><i class="fa fa-sign-in"></i> Inscription
-      {% if course.getInscription() %}
+    <li><i class="fa fa-map-marker"></i> Lieu <p class="lead" style="color:{{color}}; font-weight:bold">{{course.lieu}}</p></li>
 
-      {% if is_past(course.getModification() | date("Y-m-d H:i:s")) %}
+    <li><i class="fa fa-tag"></i> Type <p class="lead" style="color:{{color}}; font-weight:bold">{{course.type.nom}}</p></li>
+
+    <li><i class="fa fa-user"></i> Organisé par <p class="lead" style="color:{{color}}; font-weight:bold">{{course.organisateur}}</p></li>
+
+    <li><i class="fa fa-sign-in"></i> Inscription
+      {% if course.inscription %}
+
+      {% if is_past(course.modification | date("Y-m-d H:i:s")) %}
       <p class="lead" style="color:{{color}}; font-weight:bold">Les inscriptions sont closes</p>
       {% else %}
-      <p class="lead" style="color:{{color}}; font-weight:bold">Sur le site jusqu'au {{strftime(course.getModification() | date("Y-m-d H:i:s"), "%A %d %B à %H:%M:%S")}}</p>
+      <p class="lead" style="color:{{color}}; font-weight:bold">Sur le site jusqu'au {{strftime(course.modification | date("Y-m-d H:i:s"), "%A %d %B à %H:%M:%S")}}</p>
       {% endif %}
 
       {% else %}
       <p class="lead" style="color:{{color}}; font-weight:bold">Voir avec l'organisateur</p>
       {% endif %}
     </li>
-    {% if course.getGPS() != null %}
-    <li><i class="fa fa-location-arrow"></i> Coordonnées GPS <p class="lead"  style="color:{{course.getType().getColor()}}; font-weight:bold">{{course.getGPS()}}</p></li>
+    {% if course.gps != null %}
+    <li><i class="fa fa-location-arrow"></i> Coordonnées GPS <p class="lead"  style="color:{{color}}; font-weight:bold">{{course.gps}}</p></li>
     {% endif %}
 
-    {% if sizeof(course.getCircuits()) > 0 %}
+    {% if sizeof(course.circuits) > 0 %}
     <li><i class="fa fa-map-signs"></i> Circuits
       <p class="lead"  style="color:{{color}}; font-weight:bold">
-        {% for circuit in course.getCircuits() %}
-        {{circuit.getNom()}} {% if circuit.getInformation() != null %}- {{circuit.getInformation()}} - {{sizeof(circuit.getInscrits())}} inscrit(s){% endif %}
+        {% for circuit in course.circuits %}
+        {{circuit.nom}} {% if circuit.information != null %}- {{circuit.information}} - {{sizeof(circuit.inscrits)}} inscrit(s){% endif %}
         {% endfor %}
       </p>
     </li>
@@ -62,22 +60,22 @@
   <div class="row">
     <h2>L'annonce de course, les horaires, le site, ...</h2>
     <p class="lead">Tous les fichiers importants liés à cette événement.</p>
-    {% if course.getSite() != null %}
-    <a href="{{course.getSite()}}" class="btn btn-square-toround btn-bordered-primary"><span class="fa fa-info"></span> Site Internet</a>
+    {% if course.site != null %}
+    <a href="{{course.site}}" class="btn btn-square-toround btn-bordered-primary"><span class="fa fa-info"></span> Site Internet</a>
     {% endif %}
 
-    {% if annonce_exists(course.getId()) %}
-    <a href="/files/courses/{{course.getId()}}/annonce.pdf" target="_BLANK" class="btn btn-square-toround btn-bordered-info"><span class="fa fa-flag"></span> Annonce de course</a>
+    {% if annonce_exists(course.id) %}
+    <a href="/files/courses/{{course.id}}/annonce.pdf" target="_BLANK" class="btn btn-square-toround btn-bordered-info"><span class="fa fa-flag"></span> Annonce de course</a>
     {% endif %}
 
-    {% for file in get_files(course.getId()) %}
+    {% for file in get_files(course.id) %}
     {% if is_file(file) %}
-    <a href="/files/courses/{{course.getId()}}/autres/{{basename(file, '')}}" target="_BLANK" class="btn btn-square-toround btn-bordered-warning"><span class="fa fa-leaf"></span> {{basename(file, '.*')}}</a>
+    <a href="/files/courses/{{course.id}}/autres/{{basename(file, '')}}" target="_BLANK" class="btn btn-square-toround btn-bordered-warning"><span class="fa fa-leaf"></span> {{basename(file, '.*')}}</a>
     {% endif %}
     {% endfor %}
   </div>
 
-  {% if course.getInscription() %}
+  {% if course.inscription %}
   <div class="row-divider"></div>
 
   <div class="row">
@@ -92,37 +90,10 @@
       {{ form_errors(form) }}
     </div>
     {% endif %}
-    <table class="table table-striped table-hover ">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Nom</th>
-          <th>Prénom</th>
-          <th>Circuit</th>
-          <th>Commentaire</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        {% set i = 0 %}
-        {% for inscrit in course.getInscrits() %}
-        {% set i = i + 1 %}
-        <tr {% if sizeof(course.getCircuits()) > 0 and inscrit.getCircuit() == null %}class="warning"{% endif %}>
-          <td>{{i}}</td>
-          <td>{{inscrit.getNom()}}</td>
-          <td>{{inscrit.getPrenom()}}</td>
-          <td>{% if inscrit.getCircuit() != null %}{{inscrit.getCircuit().getNom()}}{% else %}Non sélectionné{% endif %}</td>
-          <td>{{inscrit.getCommentaire()}}</td>
-          <td>
-            {% if app.user == inscrit.getUser() %}
-            <a href="{{ path('course_delete_inscrit', { 'id': inscrit.getId(), 'course': course.id }) }}"><i class="fa fa-times" style="color: red;cursor:pointer;"></i></a>
-            {% endif %}
-          </td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-    {% if is_past(course.getModification() | date("Y-m-d H:i:s")) == false %}
+
+    {% include 'lists/lists.inscrits_course.html.twig' %}
+
+    {% if is_past(course.modification | date("Y-m-d H:i:s")) == false %}
     {% if app.user != null %}
     <button data-toggle="modal"
             data-target="#ModalQuickEntries"
@@ -145,7 +116,7 @@
   </div>
 </div>
 
-{% if is_past(course.getModification() | date("Y-m-d H:i:s")) == false %}
+{% if is_past(course.modification | date("Y-m-d H:i:s")) == false %}
 {% include 'modals/modal.quick_entries.html.twig' %}
 {% endif %}
 {% endblock %}

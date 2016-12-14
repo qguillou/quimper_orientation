@@ -32,7 +32,7 @@ class Course
     /**
      * @var string
      *
-     * @ORM\Column(name="lieu", type="string", length=255, nullable=true)
+     * @ORM\Column(name="lieu", type="string", length=255)
      */
     private $lieu;
 
@@ -46,7 +46,7 @@ class Course
 
      /**
       * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Type")
-      * @ORM\JoinColumn(name="type_id", referencedColumnName="id", nullable=true)
+      * @ORM\JoinColumn(name="type_id", referencedColumnName="id")
       */
     private $type;
 
