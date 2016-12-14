@@ -7,37 +7,7 @@
     <p class="lead">
       Vous pouvez ici modifier toutes les inscriptions que vous avez pu faire, sur les courses à venir.
     </p>
-
-    <table class="table table-striped table-hover ">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Nom</th>
-          <th>Prénom</th>
-          <th>Circuit</th>
-          <th>Commentaire</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        {% set i = 0 %}
-        {% for inscrit in form.inscrits %}
-        {% set i = i + 1 %}
-        <tr {% if sizeof(inscrit.getCourse().getCircuits()) > 0 and inscrit.getCircuit() == null %}class="warning"{% endif %}>
-          <td>{{i}}</td>
-          <td>{{inscrit.getNom()}}</td>
-          <td>{{inscrit.getPrenom()}}</td>
-          <td>{% if inscrit.getCircuit() != null %}{{inscrit.getCircuit().getNom()}}{% else %}Non sélectionné{% endif %}</td>
-          <td>{{inscrit.getCommentaire()}}</td>
-          <td>
-            {% if app.user == inscrit.getUser() %}
-            <a href="{{ path('course_delete_inscrit', { 'id': inscrit.getId(), 'course': course.id }) }}"><i class="fa fa-times" style="color: red;cursor:pointer;"></i></a>
-            {% endif %}
-          </td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+    {% include 'forms/forms.inscrits_user_update.html.twig' %}
   </div>
 </div>
 {% endblock %}

@@ -48,10 +48,7 @@ class InscriptionController extends Controller
 	* @Method({"GET"})
 	*/
 	public function modificationAction(Request $request)
-	{
-		$em = $this->getDoctrine()->getManager();
-		$repository = $em->getRepository('AppBundle:Inscrit');
-		
+	{		
 		$form = $this->createForm(InscritUpdate::class, $this->getUser());
 		$form->handleRequest($request);
 

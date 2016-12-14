@@ -15,3 +15,4 @@ TODOList
 - Modifier la redirection de new password return $this->redirectToRoute('user_login');
 - Ajouter les actions cascade lors de la suppression d'un tupple
 - bug quand tentative de modifer son propre compte à partir de l'administration
+- modifier form_inscrit_user_update.html.twig pour faire en sorte que ce soit un form avec validation
