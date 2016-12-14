@@ -50,7 +50,7 @@ class User implements UserInterface, \Serializable
   private $newsletter;
 
   /**
-  * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Base")
+  * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Base", cascade={"persist"})
   * @ORM\JoinColumn(name="base_id", referencedColumnName="id", unique=true, nullable=true)
   */
   private $license;
@@ -66,9 +66,14 @@ class User implements UserInterface, \Serializable
   private $prenom;
 
   /**
-  * @ORM\OneToOne(targetEntity="AppBundle\Entity\Role", mappedBy="user")
+  * @ORM\OneToOne(targetEntity="AppBundle\Entity\Role", mappedBy="user", cascade={"remove"})
   */
   private $role;
+
+  /**
+  * @ORM\OneToMany(targetEntity="AppBundle\Entity\Inscrit", mappedBy="user", cascade={"remove"})
+  */
+  private $inscrits;
 
   public function __construct()
   {
@@ -104,6 +109,8 @@ class User implements UserInterface, \Serializable
 
   public function getRoles()
   {
+    if($this->getRole() == null)
+      return array('ROLE_USER');
     return array($this->getRole()->getRole());
   }
 
@@ -361,5 +368,29 @@ class User implements UserInterface, \Serializable
     public function getRole()
     {
       return $this->role;
+    }
+
+    /**
+     * Set inscrits
+     *
+     * @param string $inscrits
+     *
+     * @return Course
+     */
+    public function setInscrits($inscrits)
+    {
+        $this->inscrits = $inscrits;
+
+        return $this;
+    }
+
+    /**
+     * Get inscrits
+     *
+     * @return array Inscrit
+     */
+    public function getInscrits()
+    {
+        return $this->inscrits;
     }
   }

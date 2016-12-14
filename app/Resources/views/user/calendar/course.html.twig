@@ -46,7 +46,7 @@
     <li><i class="fa fa-map-signs"></i> Circuits
       <p class="lead"  style="color:{{color}}; font-weight:bold">
         {% for circuit in course.getCircuits() %}
-        {{circuit.getNom()}} {% if circuit.getInformation() != null %}- {{circuit.getInformation()}} {% endif %}
+        {{circuit.getNom()}} {% if circuit.getInformation() != null %}- {{circuit.getInformation()}} - {{sizeof(circuit.getInscrits())}} inscrit(s){% endif %}
         {% endfor %}
       </p>
     </li>
@@ -83,7 +83,7 @@
   <div class="row">
     <h2>Les inscrits</h2>
     <p class="lead">Ils sont déjà inscrits à cette course.</p>
-    {% include 'template/messages.html.twig' %}
+    {% include 'alerts/alerts.form_validation.html.twig' %}
 
     {% if form.vars.errors is not empty %}
     <div class="alert alert-dismissible alert-danger">
@@ -125,7 +125,7 @@
     {% if is_past(course.getModification() | date("Y-m-d H:i:s")) == false %}
     {% if app.user != null %}
     <button data-toggle="modal"
-            data-target="#InscriptionRapideModal"
+            data-target="#ModalQuickEntries"
             class="btn btn-square-toround btn-bordered-success">
       <span class="fa fa-user-plus"></span> Inscription rapide
     </button>
@@ -146,9 +146,6 @@
 </div>
 
 {% if is_past(course.getModification() | date("Y-m-d H:i:s")) == false %}
-{% include 'user/inscription/modal_inscrire_quickly.html.twig' %}
+{% include 'modals/modal.quick_entries.html.twig' %}
 {% endif %}
-{% endblock %}
-
-{% block stylesheets %}
 {% endblock %}

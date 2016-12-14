@@ -1,0 +1,77 @@
+<!--
+  lists.events.html.twig
+  Display a list of event
+
+  @param $courses Array of AppBundle\Entity\Course
+!-->
+
+{% for course in courses %}
+
+<!-- On récupére la couleur d'affichage de la course !-->
+{% set color = 'black' %}
+{% if course.type != null and course.type.color != null and course.type.color != '' %}
+{% set color = course.type.color %}
+{% endif %}
+
+<div class="row">
+  <div class="col-md-3" style="text-align:center">
+    <h3 style="color:{{color}}; font-weight:bold">{{strftime(course.date | date("Y-m-d"), "%A")}}<br/>
+    {{course.date | date("d")}}<br/>
+    {{strftime(course.date | date("Y-m-d"), "%B")}}</h3>
+
+    <a id="more-{{course.id}}" href="/calendrier/{{course.id}}/"
+        class="btn btn-square-toround btn-bordered-success"
+        style="border-color:{{color}}; color:{{color}}">
+        <span class="fa fa-caret-square-o-down"></span> Plus d'informations
+    </a>
+
+    <script>
+    $("#more-{{course.id}}").hover(function(){
+      $("#more-{{course.id}}").css("color","white")
+      $("#more-{{course.id}}").css("background","{{color}}")
+    }, function(){
+      $("#more-{{course.id}}").css("color","{{color}}")
+      $("#more-{{course.id}}").css("background","white")
+    });
+    </script>
+  </div>
+  <div class="col-md-9">
+    <h3 style="color:{{color}};font-weight:bold">{{course.nom}}</h3>
+    <ul class="text-list information" style="border-color: {{color}}">
+      <li><i class="fa fa-map-marker"></i> Lieu <b style="color:{{color}}">{{course.lieu}}</b></li>
+
+      <li><i class="fa fa-tag"></i> Type <b style="color:{{color}}">{{course.type.nom}}</b></li>
+
+      <li><i class="fa fa-user"></i> Organisé par <b style="color:{{color}}">{{course.organisateur}}</b></li>
+      
+      {% if course.inscription %}
+      <li><i class="fa fa-sign-in"></i> Inscription <b style="color:{{color}}">Sur le site jusqu'au {{course.modification | date('d/m/Y à H:i:s')}}</b></li>
+      {% else %}
+      <li><i class="fa fa-sign-in"></i> Inscription <b style="color:{{color}}">Voir avec l'organisateur</b></li>
+      {% endif %}
+
+      {% if course.site != null %}
+      <li><i class="fa fa-at"></i> Site Internet <b><a target="_BLANK" href="{{course.site}}" style="color:{{color}}; text-decoration:underline;">{{course.site}}</a></b></li>
+      {% endif %}
+
+      {% if annonce_exists(course.id) %}
+      <li><i class="fa fa-info"></i> Annonce de course <b><a target="_BLANK" href="/files/courses/{{course.id}}/annonce.pdf" style="color:{{color}}; text-decoration:underline;"> Voir l'annonce de course</a></b></li>
+      {% endif %}
+
+      {% if has_other_file(course.id) %}
+      <li><i class="fa fa-files-o"></i> Autres fichiers <b>
+        <ul class="text-list">
+          {% for file in get_files(course.id) %}
+          {% if is_file(file) %}
+          <li><i class="fa fa-file-o"></i> <a target="_BLANK" href="/files/courses/{{course.id}}/autres/{{basename(file, '')}}" style="color:{{color}}; text-decoration:underline;"> {{basename(file, '.*')}}</a></li>
+          {% endif %}
+          {% endfor %}
+        </ul>
+      </b></li>
+      {% endif %}
+    </ul>
+  </div>
+</div>
+
+<div class="row-divider"></div>
+{% endfor %}

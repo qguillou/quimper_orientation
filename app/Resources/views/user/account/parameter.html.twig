@@ -26,167 +26,27 @@
 
 <div class="col-md-7 tab-content">
 
-  {% include 'template/messages.html.twig' %}
+  {% include 'alerts/alerts.form_validation.html.twig' %}
 
   <div class="tab-pane fade in active" id="profil">
-    {{ form_start(user_form, {'attr': {'class': 'form-horizontal'}}) }}
-    <fieldset>
-      <h2>Modification du profil</h2>
-      <p class="lead">N'oubliez pas d'enregistrer vos modifications !</p>
-      {{ form_errors(user_form) }}
-
-      <div class="row">
-        <div class="form-group">
-          {{ form_label(user_form.username, "Pseudo", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
-
-          <div class="col-sm-6">
-            {{ form_widget(user_form.username, {'attr': {'class': 'form-control'}}) }}
-            {{ form_errors(user_form.username) }}
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="form-group">
-          {{ form_label(user_form.email, "Adresse mail", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
-
-          <div class="col-sm-6">
-            {{ form_widget(user_form.email, {'attr': {'class': 'form-control'}}) }}
-            {{ form_errors(user_form.email) }}
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="form-group">
-          {{ form_label(user_form.plainPassword.first, "Mot de passe", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
-
-          <div class="col-sm-6">
-            {{ form_widget(user_form.plainPassword.first, {'attr': {'class': 'form-control'}}) }}
-            {{ form_errors(user_form.plainPassword.first) }}
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="form-group">
-          {{ form_label(user_form.plainPassword.second, "Confirmation du mot de passe", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
-
-          <div class="col-sm-6">
-            {{ form_widget(user_form.plainPassword.second, {'attr': {'class': 'form-control'}}) }}
-            {{ form_errors(user_form.plainPassword.second) }}
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="form-group">
-          {{ form_label(user_form.license, "Numéro de licence FFCO", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
-
-          <div class="col-sm-6">
-            {{ form_widget(user_form.license, {'attr': {'class': 'form-control'}}) }}
-            {{ form_errors(user_form.license) }}
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="form-group">
-          {{ form_label(user_form.nom, "Nom", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
-
-          <div class="col-sm-6">
-            {{ form_widget(user_form.nom, {'attr': {'class': 'form-control'}}) }}
-            {{ form_errors(user_form.nom) }}
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="form-group">
-          {{ form_label(user_form.prenom, "Prénom", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
-
-          <div class="col-sm-6">
-            {{ form_widget(user_form.prenom, {'attr': {'class': 'form-control'}}) }}
-            {{ form_errors(user_form.prenom) }}
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <button class="btn btn-default" type="reset">Annuler</button>
-        <button class="btn btn-success" type="submit">Enregistrer les modifications</button>
-      </div>
-    </fieldset>
-    {{ form_end(user_form) }}
+    <h2>Modification du profil</h2>
+    <p class="lead">N'oubliez pas d'enregistrer vos modifications !</p>
+    {% include 'forms/forms.user.html.twig' %}
   </div>
 
 
   <div class="tab-pane fade" id="compte">
-    {{ form_start(delete_form, {'attr': {'class': 'form-horizontal'}}) }}
-    <fieldset>
-      <h2>Suppression du compte</h2>
-      <p class="lead">Attention, la suppression est définitive.</p>
-      {{ form_errors(delete_form) }}
-
-      <div class="row">
-        <div class="form-group">
-          {{ form_label(delete_form.username, "Pseudo", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
-
-          <div class="col-sm-6">
-            {{ form_widget(delete_form.username, {'attr': {'class': 'form-control'}}) }}
-            {{ form_errors(delete_form.username) }}
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="form-group">
-          {{ form_label(delete_form.plainPassword, "Mot de passe", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
-
-          <div class="col-sm-6">
-            {{ form_widget(delete_form.plainPassword, {'attr': {'class': 'form-control'}}) }}
-            {{ form_errors(delete_form.plainPassword) }}
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <button class="btn btn-default" type="reset">Annuler</button>
-        <button class="btn btn-danger" type="submit">Supprimer le compte</button>
-      </div>
-    </fieldset>
-    {{ form_end(delete_form) }}
+    {% include 'user/account/account.html.twig' %}
   </div>
 
 
   <div class="tab-pane fade" id="notification">
-    {{ form_start(notification_form, {'attr': {'class': 'form-horizontal'}}) }}
-    <fieldset>
-      <h2>Gestion des notifications</h2>
-      <p class="lead">La newsletter est réservée au licencié du Quimper Orientation</p>
-      {{ form_errors(notification_form) }}
-
-      <div class="row">
-        <div class="form-group">
-          {{ form_label(notification_form.newsletter, "Recevoir la newsletter", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
-          <div class="col-sm-6 material-switch pull-right">
-            {{ form_widget(notification_form.newsletter, {'attr': {'class': 'form-control'}}) }}
-            <label for="user_notification_newsletter" class="label-switch"></label>
-            {{ form_errors(notification_form.newsletter) }}
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <button class="btn btn-default" type="reset">Annuler</button>
-        <button class="btn btn-success" type="submit">Enregistrer les modifications</button>
-      </div>
-    </fieldset>
-    {{ form_end(notification_form) }}
+    {% include 'user/account/notification.html.twig' %}
   </div>
 
 
   <div class="tab-pane fade" id="option">
-
+    {% include 'user/account/option.html.twig' %}
   </div>
 </div>
 {% endblock %}

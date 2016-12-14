@@ -20,7 +20,7 @@
 {% if form.vars.data.id %}
 <div class="col-md-8">
   <div class="row">
-    {% include 'template/messages.html.twig' %}
+  {% include 'alerts/alerts.form_validation.html.twig' %}
 
     {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
     <fieldset>
@@ -41,7 +41,7 @@
         </thead>
         <tbody>
           {% for inscrit in form.inscrits %}
-          <tr>
+          <tr class="{% if inscrit.puce.vars.errors | length %}warning{% endif %}">
             <td>{{ form_widget(inscrit.nom, {'attr': {'class': 'form-control'}}) }}</td>
             <td>{{ form_widget(inscrit.prenom, {'attr': {'class': 'form-control'}}) }}</td>
             <td>{{ form_widget(inscrit.puce, {'attr': {'class': 'form-control'}}) }}</td>
@@ -68,8 +68,6 @@
 {% else %}
 <div class="col-md-6">
   <div class="row">
-    {% include 'template/messages.html.twig' %}
-
     <h2>Aucune course sélectionné</h2>
     <p class="lead">Vous n'avez pas sélectionné de course dans la liste ci-contre.</p>
   </div>

@@ -1,7 +1,5 @@
 {% extends 'base.html.twig' %}
 
-{% form_theme form 'bootstrap_3_layout.html.twig' %}
-
 {% block body %}
 {% include 'user/session/information.html' %}
 
@@ -13,7 +11,7 @@
       <p class="lead">Vous avez déjà un compte, identifiez-vous !</p>
       {{ form_errors(form) }}
 
-      {% include 'template/messages.html.twig' %}
+      {% include 'alerts/alerts.form_validation.html.twig' %}
 
       <div class="row">
         <div class="form-group">
@@ -39,7 +37,7 @@
 
       <div class="row">
         <button class="btn btn-default" type="reset">Annuler</button>
-        <button class="btn btn-warning" type="button" data-toggle="modal" data-target="#PasswordModal">Mot de passe oublié ?</button>
+        <button class="btn btn-warning" type="button" data-toggle="modal" data-target="#ModalPasswordLost">Mot de passe oublié ?</button>
         <button class="btn btn-success" type="submit">Se connecter</button>
       </div>
       <div class="row">
@@ -60,38 +58,5 @@
   </div>
 </div>
 
-
-<div class="modal fade" id="PasswordModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      {{ form_start(form_password, {'attr': {'class': 'form-horizontal'}}) }}
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h1 class="modal-title" id="myModalLabel">Mot de passe oublié ?</h1>
-        <p class="lead">
-          Un email avec un nouveau mot de passe va vous être envoyé.
-        </p>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-          <div class="form-group">
-            {{ form_label(form_password.email, null, {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
-
-            <div class="col-sm-6">
-              {{ form_widget(form_password.email, {'attr': {'class': 'form-control'}}) }}
-              {{ form_errors(form_password.email) }}
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-        {{ form_widget(form_password.save, {'attr': {'class': 'btn btn-success'}}) }}
-      </div>
-      {{ form_end(form_password) }}
-    </div>
-  </div>
-</div>
+{% include 'modals/modal.password_lost.html.twig' %}
 {% endblock %}

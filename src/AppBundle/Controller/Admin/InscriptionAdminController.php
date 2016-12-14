@@ -5,7 +5,7 @@ namespace AppBundle\Controller\Admin;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
-use AppBundle\Form\Type\UserView;
+use AppBundle\Form\Type\UserType;
 use AppBundle\Form\Type\InscritAdminUpdate;
 use AppBundle\Entity\User;
 use AppBundle\Entity\Course;
@@ -19,7 +19,7 @@ class InscriptionAdminController extends Controller
 {
 	/**
 	* @Route("/admin/inscription/utilisateur/")
-	* @Method({"GET", "POST"})
+	* @Method({"GET"})
 	*/
 	public function utilisateurAction(Request $request)
 	{
@@ -29,7 +29,7 @@ class InscriptionAdminController extends Controller
 
 	/**
 	* @Route("/admin/inscription/utilisateur/{id}/")
-	* @Method({"GET", "POST"})
+	* @Method({"GET", "POST", "DELETE"})
 	*/
 	public function utilisateurByIdAction($id, Request $request)
 	{
@@ -51,14 +51,20 @@ class InscriptionAdminController extends Controller
 		$repository = $em->getRepository('AppBundle:User');
 		$users = $repository->findAll();
 
-		$form = $this->createForm(UserView::class, $user);
+		$form = $this->createForm(UserType::class, $user);
 		$form->handleRequest($request);
 
 		if ($form->isSubmitted() && $form->isValid()) {
-      if($form->get('delete')->isClicked())
-			return $this->delete($user);
-			else
-			return $this->promote($user);
+      if($form->get('delete')->isClicked()){
+				return $this->delete($user);
+			}
+
+			if($form->get('save')->isClicked()){
+				return $this->saveUser($user);
+			}
+			else {
+				return $this->promote($user);
+			}
 		}
 
 		return $this->render('admin/inscription/utilisateur.html.twig', [
@@ -118,30 +124,44 @@ class InscriptionAdminController extends Controller
 	*/
 	private function delete(User $user)
 	{
-    if($user->getId() !== null){
-      $em = $this->getDoctrine()->getManager();
+    $em = $this->getDoctrine()->getManager();
 
-      $repository = $em->getRepository('AppBundle:Role');
-  		$role = $repository->findOneBy(array('user' => $user->getUsername()));
-      if($role)
-        $em->remove($role);
+    $em->remove($user);
+    $em->flush();
 
-      $em->remove($user);
-      $em->flush();
-
-      $this->get('session')->getFlashBag()->add(
-        'success',
-        'L\'utilisateur '.$user->getUsername().' a été supprimée.'
-      );
-    }
-    else {
-      $this->get('session')->getFlashBag()->add(
-        'error',
-        'Veuillez sélectionner un utilisateur.'
-      );
-    }
+    $this->get('session')->getFlashBag()->add(
+      'success',
+      'L\'utilisateur '.$user->getUsername().' a été supprimée.'
+    );
 
 		return $this->redirect('/admin/inscription/utilisateur/');
+	}
+
+	/**
+	* Function to save an user
+	* @param User $user the user entity to save into database
+	* @return the redirect view
+	*/
+	private function saveUser(User $user)
+	{
+    $em = $this->getDoctrine()->getManager();
+		try {
+	    $em->persist($user);
+	    $em->flush();
+
+	    $this->get('session')->getFlashBag()->add(
+	      'success',
+	      'L\'utilisateur '.$user->getUsername().' a été modifié correctement.'
+	    );
+		}
+		catch (UniqueConstraintViolationException $e){
+			$this->get('session')->getFlashBag()->add(
+				'error',
+				'Les modification sur l\'utilisateur '.$user->getUsername().' n\'ont pas pu être enregistrée, une erreur est survenue.'
+			);
+		}
+
+		return $this->redirect('/admin/inscription/utilisateur/'.$user->getId().'/');
 	}
 
   /**
@@ -170,7 +190,7 @@ class InscriptionAdminController extends Controller
 				'L\'utilisateur '.$user->getUsername().' avait déjà les droits d\'administration.'
 			);
 		}
-    return $this->redirect('/admin/inscription/utilisateur/'.$user->getId());
+		return $this->redirect('/admin/inscription/utilisateur/'.$user->getId());
   }
 
 	/**

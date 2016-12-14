@@ -5,6 +5,8 @@ namespace AppBundle\Controller\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Symfony\Component\HttpFoundation\Request;
+use AppBundle\Form\Type\InscritUpdate;
 
 class InscriptionController extends Controller
 {
@@ -45,10 +47,18 @@ class InscriptionController extends Controller
 	* @Route("/inscription/modification/")
 	* @Method({"GET"})
 	*/
-	public function modificationAction()
+	public function modificationAction(Request $request)
 	{
+		$em = $this->getDoctrine()->getManager();
+		$repository = $em->getRepository('AppBundle:Inscrit');
+		//$inscrits = $repository->findAllByUser($this->getUser());
+		$inscrits = $repository->findAll();
+		$form = $this->createForm(InscritUpdate::class, $this->getUser());
+		$form->handleRequest($request);
+
 		return $this->render('user/inscription/modification.html.twig', [
 			'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
+			'form' => $form->createView(),
 		]);
 	}
 

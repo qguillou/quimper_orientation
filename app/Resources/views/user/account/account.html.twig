@@ -1,0 +1,46 @@
+{{ form_start(delete_form, {'attr': {'class': 'form-horizontal'}}) }}
+<fieldset>
+  <h2>Suppression du compte</h2>
+  <p class="lead">Attention, la suppression est définitive.</p>
+  {{ form_errors(delete_form) }}
+
+  <div class="row">
+    <div class="form-group">
+      {{ form_label(delete_form.username) }}
+
+      <div class="col-sm-6">
+        {{ form_widget(delete_form.username) }}
+        {{ form_errors(delete_form.username) }}
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group">
+      {{ form_label(delete_form.plainPassword.first) }}
+
+      <div class="col-sm-6">
+        {{ form_widget(delete_form.plainPassword.first) }}
+        {{ form_errors(delete_form.plainPassword.first) }}
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group">
+      {{ form_label(delete_form.plainPassword.second) }}
+
+      <div class="col-sm-6">
+        {{ form_widget(delete_form.plainPassword.second) }}
+        {{ form_errors(delete_form.plainPassword.second) }}
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    {{ form_widget(delete_form.reset) }}
+    {{ form_widget(delete_form.delete) }}
+  </div>
+</fieldset>
+{{ form_widget(delete_form, {'attr': {'class': 'hidden'}}) }}
+{{ form_end(delete_form) }}

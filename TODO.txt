@@ -11,3 +11,7 @@ TODOList
 - supprimer les user dans le render, remplacer par app.user !!!
 - Modifier le code de suppression d'un user (delete la suppr du role et gestion cascade)
 - Suppression d'un inscrits via menu administrateur
+- Implémenter la modification d'une inscription pour un user (assez complexe à gérer)
+- Modifier la redirection de new password return $this->redirectToRoute('user_login');
+- Ajouter les actions cascade lors de la suppression d'un tupple
+- bug quand tentative de modifer son propre compte à partir de l'administration

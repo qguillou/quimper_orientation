@@ -3,7 +3,7 @@
 namespace AppBundle\Controller\User;
 
 use AppBundle\Form\Type\LoginForm;
-use AppBundle\Form\Type\UserPassword;
+use AppBundle\Form\Type\UserType;
 use AppBundle\Entity\User;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\FormError;
@@ -24,7 +24,7 @@ class SessionController extends Controller
     $user = new User();
     $form = $this->createForm(LoginForm::class, $user);
     $form->handleRequest($request);
-    $form_password = $this->createForm(UserPassword::class, $user);
+    $form_password = $this->createForm(UserType::class, $user);
     $form_password->handleRequest($request);
     if ($form->isSubmitted() && $form->isValid()) {
       $password = $this->get('security.password_encoder')
@@ -60,7 +60,7 @@ class SessionController extends Controller
 
         $this->get('session')->getFlashBag()->add(
           'success',
-          'Bonjour '.$user->getPrenom().',
+          'Bonjour '.$u->getPrenom().',
           Vous êtes maintenant connecté sur le site de Quimper Orientation.
           Ceci vous permet d\'obtenir de nouvelles fonctions personnalisées.'
         );
@@ -112,8 +112,11 @@ class SessionController extends Controller
         'success',
         'Un email vient de vous être envoyé avec un nouveau mot de passe.'
       );
-
-      return $this->redirectToRoute('user_login');
+      return $this->renderView(
+        'user/email/password.html.twig',
+        array('user' => $u,
+              'password' => $pass)
+      );
     }
 
     $error = new FormError("Le nom d'utilisateur et le mot de passe ne correspondent pas.");

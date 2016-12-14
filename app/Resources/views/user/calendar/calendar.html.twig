@@ -6,75 +6,7 @@
   <p class="lead">
     Consultez les évenements à venir, et trouvez toutes les informations importantes.
   </p>
-  {% for course in courses %}
-  {% if course.getType() != null and course.getType().getColor() != null and course.getType().getColor() != '' %}
-  {% set color = course.getType().getColor() %}
-  {% else %}
-  {% set color = 'black' %}
-  {% endif %}
-  <div class="row">
-    <div class="col-md-3" style="text-align:center">
-      <h3 style="color:{{color}}; font-weight:bold">{{strftime(course.getDate() | date("Y-m-d"), "%A")}}<br/>
-      {{course.getDate() | date("d")}}<br/>
-      {{strftime(course.getDate() | date("Y-m-d"), "%B")}}</h3>
-      <a id="more-{{course.getId()}}" href="/calendrier/{{course.getId()}}/"
-          class="btn btn-square-toround btn-bordered-success"
-          style="border-color:{{color}}; color:{{color}}">
-          <span class="fa fa-caret-square-o-down"></span> Plus d'informations
-      </a>
-      <script>
-      $("#more-{{course.getId()}}").hover(function(){
-        $("#more-{{course.getId()}}").css("color","white")
-        $("#more-{{course.getId()}}").css("background","{{color}}")
-      }, function(){
-        $("#more-{{course.getId()}}").css("color","{{color}}")
-        $("#more-{{course.getId()}}").css("background","white")
-      });
-      </script>
-    </div>
-    <div class="col-md-9">
-      <h3 style="color:{{color}};font-weight:bold">{{course.getNom()}}</h3>
-      <ul class="text-list information" style="border-color: {{color}}">
-        {% if course.getLieu() != null %}
-        <li><i class="fa fa-map-marker"></i> Lieu <b style="color:{{color}}">{{course.getLieu()}}</b></li>
-        {% endif %}
-        {% if course.getType() != null %}
-        <li><i class="fa fa-tag"></i> Type <b style="color:{{color}}">{{course.getType().getNom()}}</b></li>
-        {% endif %}
-        {% if course.getOrganisateur() != null %}
-        <li><i class="fa fa-user"></i> Organisé par <b style="color:{{color}}">{{course.getOrganisateur()}}</b></li>
-        {% endif %}
-        {% if course.getInscription() == '1' %}
-        <li><i class="fa fa-sign-in"></i> Inscription <b style="color:{color}}">Sur le site jusqu'au {{course.getModification() | date('d/m/Y à H:i:s')}}</b></li>
-        {% else %}
-        <li><i class="fa fa-sign-in"></i> Inscription <b style="color:{{color}}">Voir avec l'organisateur</b></li>
-        {% endif %}
-
-        {% if course.getSite() != null %}
-        <li><i class="fa fa-at"></i> Site Internet <b><a target="_BLANK" href="{{course.getSite()}}" style="color:{{course.getType().getColor()}}; text-decoration:underline;">{{course.getSite()}}</a></b></li>
-        {% endif %}
-
-        {% if annonce_exists(course.getId()) %}
-        <li><i class="fa fa-info"></i> Annonce de course <b><a target="_BLANK" href="/files/courses/{{course.getId()}}/annonce.pdf" style="color:{{course.getType().getColor()}}; text-decoration:underline;"> Voir l'annonce de course</a></b></li>
-        {% endif %}
-
-        {% if has_other_file(course.getId()) %}
-        <li><i class="fa fa-files-o"></i> Autres fichiers <b>
-          <ul class="text-list">
-            {% for file in get_files(course.getId()) %}
-            {% if is_file(file) %}
-            <li><i class="fa fa-file-o"></i> <a target="_BLANK" href="/files/courses/{{course.getId()}}/autres/{{basename(file, '')}}" style="color:{{course.getType().getColor()}}; text-decoration:underline;"> {{basename(file, '.*')}}</a></li>
-            {% endif %}
-            {% endfor %}
-          </ul>
-        </b></li>
-        {% endif %}
-      </ul>
-    </div>
-  </div>
-
-  <div class="row-divider"></div>
-  {% endfor %}
+  {% include 'lists/lists.events.html.twig' %}
 
 </div>
 

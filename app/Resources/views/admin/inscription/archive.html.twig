@@ -5,7 +5,7 @@
   <h1>Administration de l'archive fédérale</h1>
   <p class="lead">Attention, la mise à jour de l'archive peut prendre du temps, et l'opération doit être faite intégralement.</p>
   <div class="row">
-    {% include 'template/messages.html.twig' %}
+  {% include 'alerts/alerts.form_validation.html.twig' %}
 
     {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
     <fieldset>

@@ -40,14 +40,14 @@ class Inscrit
     /**
      * @var int
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Base")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Base", cascade={"persist"})
      * @ORM\JoinColumn(name="base_id", referencedColumnName="id", nullable=true)
      */
     private $licence;
 
     /**
      * @var int
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Course", inversedBy="inscrits")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Course", inversedBy="inscrits", cascade={"persist"})
      * @ORM\JoinColumn(name="course_id", referencedColumnName="id")
      */
     private $course;
@@ -69,13 +69,13 @@ class Inscrit
     /**
      * @var int
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Circuit", inversedBy="inscrits")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Circuit", inversedBy="inscrits", cascade={"persist"})
      * @ORM\JoinColumn(name="circuit_id", referencedColumnName="id")
      */
     private $circuit;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="inscrits", cascade={"persist"})
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=true)
      */
    private $user;

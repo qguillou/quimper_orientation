@@ -2,6 +2,8 @@
 
 namespace AppBundle\Repository;
 
+use AppBundle\Entity\User;
+
 /**
  * InscritRepository
  *
@@ -10,4 +12,12 @@ namespace AppBundle\Repository;
  */
 class InscritRepository extends \Doctrine\ORM\EntityRepository
 {
+  public function findAllByUser(User $user){
+    return $this->createQueryBuilder('i')
+        ->where('i.user = :user')
+        ->setParameter('user', $user)
+        ->orderBy('i.course', 'ASC')
+        ->getQuery()
+        ->getResult();
+  }
 }

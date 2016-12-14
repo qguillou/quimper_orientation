@@ -4,8 +4,7 @@ namespace AppBundle\Controller\User;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use AppBundle\Form\Type\UserUpdate;
-use AppBundle\Form\Type\UserDelete;
+use AppBundle\Form\Type\UserType;
 use AppBundle\Form\Type\UserNotification;
 use AppBundle\Entity\User;
 use Symfony\Component\HttpFoundation\Request;
@@ -24,14 +23,14 @@ class AccountController extends Controller
     {
 				$user = $this->getUser();
 
-				$delete_form = $this->createForm(UserDelete::class, $user);
+				$delete_form = $this->createForm(UserType::class, $user);
 				$delete_form->handleRequest($request);
 				if ($delete_form->isSubmitted() && $delete_form->isValid()) {
 					if($this->delete($user, $delete_form))
 						return $this->redirectToRoute('homepage');
 				}
 
-				$user_form = $this->createForm(UserUpdate::class, $user);
+				$user_form = $this->createForm(UserType::class, $user);
 				$user_form->handleRequest($request);
 				$notification_form = $this->createForm(UserNotification::class, $user);
 				$notification_form->handleRequest($request);
@@ -43,7 +42,7 @@ class AccountController extends Controller
 
 				return $this->render('user/account/parameter.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-						'user_form' => $user_form->createView(),
+						'form_user' => $user_form->createView(),
 						'delete_form' => $delete_form->createView(),
 						'notification_form' => $notification_form->createView(),
         ]);

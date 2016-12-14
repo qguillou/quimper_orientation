@@ -38,11 +38,11 @@ class RegistrationController extends Controller
       catch (UniqueConstraintViolationException $e){
         return $this->render(
           'user/session/register.html.twig',
-          array('form' => $form->createView(),)
+          array('form_user' => $form->createView(),)
         );
       }
 
-      $token = new UsernamePasswordToken($user, $user->getPassword(), "public", $user->getRoles());
+      $token = new UsernamePasswordToken($user, $user->getPassword(), "public", array('ROLE_USER'));
       $this->get("security.token_storage")->setToken($token);
       $event = new InteractiveLoginEvent($request, $token);
       $this->get("event_dispatcher")->dispatch("security.interactive_login", $event);
@@ -51,7 +51,7 @@ class RegistrationController extends Controller
 
     return $this->render(
       'user/session/register.html.twig',
-      array('form' => $form->createView(),)
+      array('form_user' => $form->createView(),)
     );
   }
 

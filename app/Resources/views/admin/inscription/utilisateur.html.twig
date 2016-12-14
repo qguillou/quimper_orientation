@@ -7,8 +7,8 @@
 <div class="col-md-3">
   <div class="list-group">
     {% for u in users %}
-    <a href="/admin/inscription/utilisateur/{{u.getId()}}/" class="list-group-item {% if form.vars.data.id == u.getId() %}active{% endif %}">
-      {{u.getUsername()}}
+    <a href="/admin/inscription/utilisateur/{{u.id}}/" class="list-group-item {% if form.vars.data.id == u.id %}active{% endif %}">
+      {{u.username}}
     </a>
     {% endfor %}
   </div>
@@ -19,7 +19,7 @@
 
 <div class="col-md-6">
   <div class="row">
-    {% include 'template/messages.html.twig' %}
+  {% include 'alerts/alerts.form_validation.html.twig' %}
 
     {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
     <fieldset>
@@ -29,20 +29,20 @@
 
       <div class="row">
         <div class="form-group">
-          {{ form_label(form.username, "Pseudo", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+          {{ form_label(form.username) }}
 
           <div class="col-sm-6">
-            {{ form_widget(form.username, {'attr': {'class': 'form-control'}}) }}
+            {{ form_widget(form.username, {'attr': {'disabled': 'disabled'}}) }}
             {{ form_errors(form.username) }}
           </div>
         </div>
       </div>
       <div class="row">
         <div class="form-group">
-          {{ form_label(form.email, "Adresse mail", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+          {{ form_label(form.email) }}
 
           <div class="col-sm-6">
-            {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+            {{ form_widget(form.email, {'attr': {'disabled': 'disabled'}}) }}
             {{ form_errors(form.email) }}
           </div>
         </div>
@@ -50,10 +50,10 @@
 
       <div class="row">
         <div class="form-group">
-          {{ form_label(form.license, "Numéro de licence FFCO", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+          {{ form_label(form.license) }}
 
           <div class="col-sm-6">
-            {{ form_widget(form.license, {'attr': {'class': 'form-control'}}) }}
+            {{ form_widget(form.license) }}
             {{ form_errors(form.license) }}
           </div>
         </div>
@@ -61,10 +61,10 @@
 
       <div class="row">
         <div class="form-group">
-          {{ form_label(form.nom, "Nom", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+          {{ form_label(form.nom) }}
 
           <div class="col-sm-6">
-            {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+            {{ form_widget(form.nom, {'attr': {'disabled': 'disabled'}}) }}
             {{ form_errors(form.nom) }}
           </div>
         </div>
@@ -72,22 +72,25 @@
 
       <div class="row">
         <div class="form-group">
-          {{ form_label(form.prenom, "Prénom", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+          {{ form_label(form.prenom) }}
 
           <div class="col-sm-6">
-            {{ form_widget(form.prenom, {'attr': {'class': 'form-control'}}) }}
+            {{ form_widget(form.prenom, {'attr': {'disabled': 'disabled'}}) }}
             {{ form_errors(form.prenom) }}
           </div>
         </div>
       </div>
 
       <div class="row">
-        {{ form_widget(form.delete, {'attr': {'class': 'btn btn-danger'}}) }}
         {% if form.vars.data.id %}
+        {{ form_widget(form.reset) }}
+        {{ form_widget(form.delete) }}
+        {{ form_widget(form.save) }}
         <button class="btn btn-primary" type="submit">Donner les droits d'administration</button>
         {% endif %}
       </div>
     </fieldset>
+    {{ form_widget(form, {'attr': {'class': 'hidden'}}) }}
     {{ form_end(form) }}
   </div>
 </div>
