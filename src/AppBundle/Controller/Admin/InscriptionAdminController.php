@@ -266,8 +266,8 @@ class InscriptionAdminController extends Controller
 	public function deleteInscritAction(Request $request, $course, $id)
 	{
 		$em = $this->getDoctrine()->getManager();
-		$inscrit = $em->getRepository('AppBundle:Inscrit')->find($id);
-
+		$repository = $em->getRepository('AppBundle:Inscrit');
+		$inscrit = $repository->findOneBy(array('id' => $id));
 		if ($inscrit) {
 			$em->remove($inscrit);
 			$em->flush();

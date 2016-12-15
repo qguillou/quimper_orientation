@@ -30,7 +30,7 @@ Form for update inscrits
         <td>{{ form_widget(inscrit.circuit, {'attr': {'class': 'form-control'}}) }}</td>
         <td>{{ form_widget(inscrit.commentaire, {'attr': {'class': 'form-control'}}) }}</td>
         <td>
-          <a href="{{ path('admin_inscription_delete', { 'course': form.vars.data.id, 'id': 0 }) }}">
+          <a href="{{ path('admin_inscription_delete', { 'course': form.vars.data.id, 'id': inscrit.id.vars.value }) }}">
             <i class="fa fa-2x fa-times" style="color: red;cursor:pointer;"></i>
           </a>
         </td>
