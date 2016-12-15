@@ -20,7 +20,7 @@
     {% set i = 0 %}
     {% for inscrit in course.inscrits %}
     {% set i = i + 1 %}
-    <tr {% if sizeof(course.circuits) > 0 and inscrit.circuit == null %}class="warning"{% endif %}>
+    <tr>
       <td>{{i}}</td>
       <td>{{inscrit.nom}}</td>
       <td>{{inscrit.prenom}}</td>

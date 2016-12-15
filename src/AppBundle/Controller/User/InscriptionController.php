@@ -71,10 +71,7 @@ class InscriptionController extends Controller
 				);
 			}
 
-			return $this->render('user/inscription/modification.html.twig', [
-				'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-				'form' => $form->createView(),
-			]);
+			return $this->redirect('/inscription/modification/');
 		}
 
 		return $this->render('user/inscription/modification.html.twig', [

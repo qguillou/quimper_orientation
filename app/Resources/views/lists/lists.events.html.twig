@@ -43,7 +43,7 @@
       <li><i class="fa fa-tag"></i> Type <b style="color:{{color}}">{{course.type.nom}}</b></li>
 
       <li><i class="fa fa-user"></i> Organisé par <b style="color:{{color}}">{{course.organisateur}}</b></li>
-      
+
       {% if course.inscription %}
       <li><i class="fa fa-sign-in"></i> Inscription <b style="color:{{color}}">Sur le site jusqu'au {{course.modification | date('d/m/Y à H:i:s')}}</b></li>
       {% else %}
@@ -58,17 +58,7 @@
       <li><i class="fa fa-info"></i> Annonce de course <b><a target="_BLANK" href="/files/courses/{{course.id}}/annonce.pdf" style="color:{{color}}; text-decoration:underline;"> Voir l'annonce de course</a></b></li>
       {% endif %}
 
-      {% if has_other_file(course.id) %}
-      <li><i class="fa fa-files-o"></i> Autres fichiers <b>
-        <ul class="text-list">
-          {% for file in get_files(course.id) %}
-          {% if is_file(file) %}
-          <li><i class="fa fa-file-o"></i> <a target="_BLANK" href="/files/courses/{{course.id}}/autres/{{basename(file, '')}}" style="color:{{color}}; text-decoration:underline;"> {{basename(file, '.*')}}</a></li>
-          {% endif %}
-          {% endfor %}
-        </ul>
-      </b></li>
-      {% endif %}
+      {% include 'lists/lists.file_events.html.twig' %}
     </ul>
   </div>
 </div>
