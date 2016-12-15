@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Form\Type\InscritUpdate;
+use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 
 class InscriptionController extends Controller
 {
@@ -53,7 +54,6 @@ class InscriptionController extends Controller
 		$form->handleRequest($request);
 
 		if ($form->isSubmitted() && $form->isValid()) {
-			$inscrits = $this->getUser()->getInscrits();
 			$em = $this->getDoctrine()->getManager();
 			try {
 		    $em->persist($this->getUser());
@@ -70,6 +70,11 @@ class InscriptionController extends Controller
 					'Les inscription n\'ont pas pu être modifiée, une erreur est survenue.'
 				);
 			}
+
+			return $this->render('user/inscription/modification.html.twig', [
+				'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
+				'form' => $form->createView(),
+			]);
 		}
 
 		return $this->render('user/inscription/modification.html.twig', [
