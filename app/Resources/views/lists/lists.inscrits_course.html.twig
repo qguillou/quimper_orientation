@@ -24,7 +24,7 @@
       <td>{{i}}</td>
       <td>{{inscrit.nom}}</td>
       <td>{{inscrit.prenom}}</td>
-      <td>{% if inscrit.circuit != null %}{{inscrit.circuit.nom}}{% else %}Non sélectionné{% endif %}</td>
+      <td>{% if inscrit.circuit != null %}{{inscrit.circuit.nom}}{% endif %}</td>
       <td>{{inscrit.commentaire}}</td>
       <td>
         {% if app.user == inscrit.user %}
