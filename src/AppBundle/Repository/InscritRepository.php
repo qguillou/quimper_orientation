@@ -20,4 +20,14 @@ class InscritRepository extends \Doctrine\ORM\EntityRepository
         ->getQuery()
         ->getResult();
   }
+
+  public function findInscrit(User $user, $id){
+    return $this->createQueryBuilder('i')
+      ->where('i.user = :user')
+      ->andWhere('i.id = :id')
+      ->setParameter('user', $user)
+      ->setParameter('id', $id)
+      ->getQuery()
+      ->getOneOrNullResult();
+  }
 }

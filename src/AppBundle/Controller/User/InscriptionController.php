@@ -45,12 +45,32 @@ class InscriptionController extends Controller
 
 	/**
 	* @Route("/inscription/modification/")
-	* @Method({"GET"})
+	* @Method({"GET", "POST"})
 	*/
 	public function modificationAction(Request $request)
-	{		
+	{
 		$form = $this->createForm(InscritUpdate::class, $this->getUser());
 		$form->handleRequest($request);
+
+		if ($form->isSubmitted() && $form->isValid()) {
+			$inscrits = $this->getUser()->getInscrits();
+			$em = $this->getDoctrine()->getManager();
+			try {
+		    $em->persist($this->getUser());
+		    $em->flush();
+
+		    $this->get('session')->getFlashBag()->add(
+		      'success',
+		      'Les inscriptions ont été modifiés.'
+		    );
+			}
+			catch (UniqueConstraintViolationException $e){
+				$this->get('session')->getFlashBag()->add(
+					'error',
+					'Les inscription n\'ont pas pu être modifiée, une erreur est survenue.'
+				);
+			}
+		}
 
 		return $this->render('user/inscription/modification.html.twig', [
 			'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
@@ -67,5 +87,29 @@ class InscriptionController extends Controller
 		return $this->render('user/inscription/recuperation.html.twig', [
 			'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
 		]);
+	}
+
+	/**
+	* Deletes an Inscrit
+	*
+	* @Route("/inscription/modification/delete/{id}", name="inscription_delete")
+	* @Method({"GET", "DELETE"})
+	*/
+	public function deleteInscritAction(Request $request, $id)
+	{
+		$em = $this->getDoctrine()->getManager();
+		$repository = $em->getRepository('AppBundle:Inscrit');
+		$inscrit = $repository->findInscrit($this->getUser(), $id);
+		if ($inscrit) {
+			$em->remove($inscrit);
+			$em->flush();
+
+			$this->get('session')->getFlashBag()->add(
+				'success',
+				'La désinscription de '.$inscrit->getPrenom().' '.$inscrit->getNom().' a été effectuée.'
+			);
+		}
+
+		return $this->redirect('/inscription/modification/');
 	}
 }

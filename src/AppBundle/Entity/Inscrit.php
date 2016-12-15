@@ -10,7 +10,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *
  * @ORM\Table(name="inscrit")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\InscritRepository")
- * @UniqueEntity(fields={"course","licence","nom","prenom"})
+ * @UniqueEntity(fields={"course","user","nom","prenom"})
  */
 class Inscrit
 {
