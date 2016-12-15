@@ -1,0 +1,38 @@
+<div class="col-md-4">
+  <h2>Informations sur la course</h2>
+  <ul class="text-list information" style="border-color:{{color}}">
+    <li><i class="fa fa-map-marker"></i> Lieu <p class="lead" style="color:{{color}}; font-weight:bold">{{course.lieu}}</p></li>
+
+    <li><i class="fa fa-tag"></i> Type <p class="lead" style="color:{{color}}; font-weight:bold">{{course.type.nom}}</p></li>
+
+    <li><i class="fa fa-user"></i> Organisé par <p class="lead" style="color:{{color}}; font-weight:bold">{{course.organisateur}}</p></li>
+
+    <li><i class="fa fa-sign-in"></i> Inscription
+      {% if course.inscription %}
+
+      {% if is_past(course.modification | date("Y-m-d H:i:s")) %}
+      <p class="lead" style="color:{{color}}; font-weight:bold">Les inscriptions sont closes</p>
+      {% else %}
+      <p class="lead" style="color:{{color}}; font-weight:bold">Sur le site jusqu'au {{strftime(course.modification | date("Y-m-d H:i:s"), "%A %d %B à %H:%M:%S")}}</p>
+      {% endif %}
+
+      {% else %}
+      <p class="lead" style="color:{{color}}; font-weight:bold">Voir avec l'organisateur</p>
+      {% endif %}
+    </li>
+    {% if course.gps != null %}
+    <li><i class="fa fa-location-arrow"></i> Coordonnées GPS <p class="lead"  style="color:{{color}}; font-weight:bold">{{course.gps}}</p></li>
+    {% endif %}
+
+    {% if sizeof(course.circuits) > 0 %}
+    <li><i class="fa fa-map-signs"></i> Circuits
+      <p class="lead"  style="color:{{color}}; font-weight:bold">
+        {% for circuit in course.circuits %}
+        {{circuit.nom}} {% if circuit.information != null %}- {{circuit.information}} - {{sizeof(circuit.inscrits)}} inscrit(s){% endif %}
+        {% endfor %}
+      </p>
+    </li>
+    {% endif %}
+
+  </ul>
+</div>
