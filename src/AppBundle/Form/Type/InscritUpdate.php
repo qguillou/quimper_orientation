@@ -16,6 +16,7 @@ class InscritUpdate extends AbstractType
         $builder
             ->add('inscrits', CollectionType::class, array(
               'entry_type' => InscritType::class,
+              'entry_options' => array('course' => 263),
               'allow_delete'  => true,
               'allow_add'     => true,
               'allow_delete'  => true,
@@ -28,8 +29,7 @@ class InscritUpdate extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\User',
-            'course' => null,
+            'data_class' => 'AppBundle\Entity\User'
         ));
     }
 }

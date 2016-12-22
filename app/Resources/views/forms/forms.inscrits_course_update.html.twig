@@ -29,17 +29,7 @@ Form for update inscrits
         <td>{{ form_widget(inscrit.nom) }}</td>
         <td>{{ form_widget(inscrit.prenom) }}</td>
         <td>{{ form_widget(inscrit.puce) }}</td>
-        <td>
-          <select id="inscrit_admin_update_inscrits_{{i - 1}}_circuit" name="inscrit_admin_update[inscrits][{{i - 1}}][circuit]" class="form-control">
-            <option value=""></option>
-
-            {% for choice in inscrit.vars.data.course.circuits %}
-                <option value="{{ choice.id }}" {% if inscrit.vars.data.circuit != null and choice == inscrit.vars.data.circuit %} selected="selected"{% endif %}>
-                  {{ choice.nom }}
-                </option>
-            {% endfor %}
-          </select>
-        </td>
+        <td>{{ form_widget(inscrit.circuit) }}</td>
         <td>{{ form_widget(inscrit.commentaire) }}</td>
         <td>
           <a href="{{ path('admin_inscription_delete', { 'course': form.vars.data.id, 'id': inscrit.id.vars.value }) }}">

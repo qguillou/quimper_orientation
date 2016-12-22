@@ -4028,8 +4028,8 @@ Ident. base de données;Puce;Nom;Prénom;Né;S;N° club;Nom;Ville;Nat;N° cat.;Court;
 31490;;GUERIN;Florian;1990;H;5116;5116CA;ASO Sillery;France;21;H21;H21;;;;;;;;;;;;;;;;;0
 10809;1780728;GUERIN;Franck;1958;H;7807;7807IF;GO78;France;55;H55;H55;;;;;;;;;;;;;;;;;0
 25892;;GUERIN;Martin;2005;H;7716;7716IF;BALISE 77;France;12;H12;H12;;;;;;;;;;;;;;;;;0
-20630;1331914;GUERIN;Stéphane;1971;H;3319;3319AQ;SMOG;France;45;H45;H45;;;;;;;;;;;;;;;;;0
 33723;;GUERIN;Stéphane;1974;H;3502;3502BR;CRCO;France;40;H40;H40;;;;;;;;;;;;;;;;;0
+20630;1331914;GUERIN;Stéphane;1971;H;3319;3319AQ;SMOG;France;45;H45;H45;;;;;;;;;;;;;;;;;0
 33590;;GUERIN;Thibault;2004;H;6911;6911RA;ASUL SPORTS NAT;France;12;H12;H12;;;;;;;;;;;;;;;;;0
 27021;1508341;GUERINI;Alice;2006;F;7719;7719IF;ERCO;France;110;D10;D10;;;;;;;;;;;;;;;;;0
 27019;;GUERINI;Jean-Philippe;1974;H;7719;7719IF;ERCO;France;40;H40;H40;;;;;;;;;;;;;;;;;0
@@ -5081,6 +5081,7 @@ Ident. base de données;Puce;Nom;Prénom;Né;S;N° club;Nom;Ville;Nat;N° cat.;Court;
 29325;1000982;LE DEVEHAT;Simon ;1990;H;7720;7720IF;TOM MEAUX;France;21;H21;H21;;;;;;;;;;;;;;;;;0
 33757;1590075;LEDEZ;Rémi;1993;H;5907;5907NO;T.A.D.;France;21;H21;H21;;;;;;;;;;;;;;;;;0
 6912;35416;LEDI;Jean-Michel;1966;H;9006;9006FC;RAMBO;France;50;H50;H50;;;;;;;;;;;;;;;;;0
+34290;;LE DISSEZ;Enora;2000;F;2904;2904BR;Quimper 29;France;116;D16;D16;;;;;;;;;;;;;;;;;0
 9401;213352;LE DREAU;Corentin;1989;H;3801;3801RA;DAUPHINE'O;France;21;H21;H21;;;;;;;;;;;;;;;;;0
 9396;213348;LE DREAU;J-Claude;1951;H;4203;4203RA;OE42;France;65;H65;H65;;;;;;;;;;;;;;;;;0
 909397;213351;LE DREAU;Liliane;1957;F;4203;4203RA;OE42;France;155;D55;D55;;;;;;;;;;;;;;;;;0
@@ -5478,8 +5479,8 @@ Ident. base de données;Puce;Nom;Prénom;Né;S;N° club;Nom;Ville;Nat;N° cat.;Court;
 900727;38723;LOUVET;Line;1950;F;2517;2517FC;OTB;France;165;D65;D65;;;;;;;;;;;;;;;;;0
 17085;34779;LOUVET;Theo;2000;H;1905;1905LI;BriveCorrèzeCO;France;16;H16;H16;;;;;;;;;;;;;;;;;0
 26331;2050006;LOZE;Claire;1972;F;2407;2407AQ;POP;France;140;D40;D40;;;;;;;;;;;;;;;;;0
-33232;1680455;LUCAS;Baptiste;2002;H;6804;6804AL;COColmar;France;14;H14;H14;;;;;;;;;;;;;;;;;0
 17246;1137404;LUCAS;Baptiste;1986;H;7404;7404RA;ASO;France;21;H21;H21;;;;;;;;;;;;;;;;;0
+33232;1680455;LUCAS;Baptiste;2002;H;6804;6804AL;COColmar;France;14;H14;H14;;;;;;;;;;;;;;;;;0
 30938;;LUCAS;Cécile;1966;F;3502;3502BR;CRCO;France;150;D50;D50;;;;;;;;;;;;;;;;;0
 31841;;LUCAS;Philippe;2002;H;5604;5604BR;COL;France;14;H14;H14;;;;;;;;;;;;;;;;;0
 31547;;LUCAT;Antoine;2008;H;8807;8807LO;LO Sanchey;France;10;H10;H10;;;;;;;;;;;;;;;;;0
@@ -7529,8 +7530,8 @@ Ident. base de données;Puce;Nom;Prénom;Né;S;N° club;Nom;Ville;Nat;N° cat.;Court;
 30689;1841477;RODRIGUEZ;Jean-Luc;1959;H;8404;8404PZ;OPA;France;55;H55;H55;;;;;;;;;;;;;;;;;0
 32400;;RODRIGUEZ;Lilé;2002;F;8404;8404PZ;OPA;France;114;D14;D14;;;;;;;;;;;;;;;;;0
 32399;;RODRIGUEZ;Lou;2000;F;8404;8404PZ;OPA;France;116;D16;D16;;;;;;;;;;;;;;;;;0
-16865;8102002;RODRIGUEZ;Lucas;2002;H;4709;4709AQ;PSNO;France;14;H14;H14;;;;;;;;;;;;;;;;;0
 30102;;RODRIGUEZ;Lucas;2002;H;1905;1905LI;BriveCorrèzeCO;France;14;H14;H14;;;;;;;;;;;;;;;;;0
+16865;8102002;RODRIGUEZ;Lucas;2002;H;4709;4709AQ;PSNO;France;14;H14;H14;;;;;;;;;;;;;;;;;0
 18071;8002004;RODRIGUEZ;Mattéo;2004;H;4709;4709AQ;PSNO;France;12;H12;H12;;;;;;;;;;;;;;;;;0
 29873;1841457;RODRIGUEZ;Noé;2004;H;8404;8404PZ;OPA;France;12;H12;H12;;;;;;;;;;;;;;;;;0
 5691;8001969;RODRIGUEZ;Stéphane;1969;H;4709;4709AQ;PSNO;France;45;H45;H45;;;;;;;;;;;;;;;;;0
@@ -7653,8 +7654,8 @@ Ident. base de données;Puce;Nom;Prénom;Né;S;N° club;Nom;Ville;Nat;N° cat.;Court;
 16001;1040403;ROUX;Agnes;1965;F;0404;0404PZ;Balise 04;France;150;D50;D50;;;;;;;;;;;;;;;;;0
 31677;2090372;ROUX;Camille;2001;F;7807;7807IF;GO78;France;116;D16;D16;;;;;;;;;;;;;;;;;0
 13270;1006446;ROUX;Catherine;1969;F;6205;6205NO;O²;France;145;D45;D45;;;;;;;;;;;;;;;;;0
-22330;9003009;ROUX;Corentin;1994;H;4201;4201RA;NOSE;France;21;H21;H21;;;;;;;;;;;;;;;;;0
 12519;31452;ROUX;Corentin;1998;H;7703;7703IF;CSLG MELUN;France;18;H18;H18;;;;;;;;;;;;;;;;;0
+22330;9003009;ROUX;Corentin;1994;H;4201;4201RA;NOSE;France;21;H21;H21;;;;;;;;;;;;;;;;;0
 25237;1420105;ROUX;Fleury;1997;H;4201;4201RA;NOSE;France;20;H20;H20;;;;;;;;;;;;;;;;;0
 25235;35806;ROUX;JACKY;1962;H;4201;4201RA;NOSE;France;50;H50;H50;;;;;;;;;;;;;;;;;0
 32010;;ROUX;Jerome;1984;H;3810;3810RA;ORIENTALP;France;21;H21;H21;;;;;;;;;;;;;;;;;0

@@ -222,7 +222,7 @@ class InscriptionAdminController extends Controller
 		$repository = $em->getRepository('AppBundle:Course');
 		$courses = $repository->findFutureCourse();
 
-		$form = $this->createForm(InscritAdminUpdate::class, $course);
+		$form = $this->createForm(InscritAdminUpdate::class, $course, array('course' => $course->getId()));
 		$form->handleRequest($request);
 
 		if ($form->isSubmitted()) {

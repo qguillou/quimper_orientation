@@ -26,7 +26,16 @@ class UserType extends AbstractType
       'type' => PasswordType::class,
       'first_options'  => array('required' => false, 'label' => 'Mot de passe', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-4 control-label')),
       'second_options' => array('required' => false, 'label' => 'Confirmation du mot de passe', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-4 control-label'))))
-      ->add('license', EntityType::class, array('auto_initialize' => false, 'required' => false, 'label' => 'N° de licence FFCO', 'class' => 'AppBundle\Entity\Base', 'choice_label' => 'id', 'required' => false, 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-4 control-label')))
+      ->add('license', EntityType::class,
+        array('auto_initialize' => false,
+              'required' => false,
+              'label' => 'N° de licence FFCO',
+              'class' => 'AppBundle\Entity\Base',
+              'choice_label' => 'id',
+              'required' => false,
+              'attr' => array('class' => 'form-control'),
+              'label_attr' => array('class' => 'col-sm-4 control-label')
+            ))
       ->add('nom', TextType::class, array('required' => false, 'label' => 'Nom', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-4 control-label')))
       ->add('newsletter', CheckboxType::class, array('label' => 'Recevoir la newsletter', 'required' => false))
       ->add('prenom', TextType::class, array('required' => false, 'label' => 'Prénom', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-4 control-label')))

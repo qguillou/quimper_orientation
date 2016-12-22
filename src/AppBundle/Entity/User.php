@@ -76,10 +76,16 @@ class User implements UserInterface, \Serializable
   */
   private $inscrits;
 
+  /**
+  * @ORM\OneToMany(targetEntity="AppBundle\Entity\User_attached", mappedBy="user", cascade={"remove"})
+  */
+  private $users;
+
   public function __construct()
   {
     $this->isActive = true;
     $this->inscrits = new ArrayCollection();
+    $this->users = new ArrayCollection();
   }
 
   public function getUsername()
@@ -394,5 +400,29 @@ class User implements UserInterface, \Serializable
     public function getInscrits()
     {
         return $this->inscrits;
+    }
+
+    /**
+     * Set users
+     *
+     * @param string $users
+     *
+     * @return Course
+     */
+    public function setUsers($users)
+    {
+        $this->users = $users;
+
+        return $this;
+    }
+
+    /**
+     * Get users
+     *
+     * @return array User
+     */
+    public function getUsers()
+    {
+        return $this->users;
     }
   }

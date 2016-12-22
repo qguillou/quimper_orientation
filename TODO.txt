@@ -15,3 +15,4 @@ TODOList
 - bug quand tentative de modifer son propre compte à partir de l'administration
 - changer les paramètres du compte avec un seul formulaire ? Oui mais problème avec mot de passe ?
 - Modification inscription modification du circuit impossible (user: null et admin: prev value)
+- Finir d'ajouter l'user_attached (inscription rapide, sélection dans les paramètres, ...)

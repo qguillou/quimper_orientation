@@ -16,6 +16,7 @@ class InscritAdminUpdate extends AbstractType
         $builder
             ->add('inscrits', CollectionType::class, array(
               'entry_type' => InscritType::class,
+              'entry_options' => array('course' => $options['course']),
               'allow_delete'  => true,
               'allow_add'     => true,
               'allow_delete'  => true,
