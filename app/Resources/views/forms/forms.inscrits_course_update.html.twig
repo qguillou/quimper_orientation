@@ -26,9 +26,9 @@ Form for update inscrits
       {% for inscrit in form.inscrits %}
       {% set i = i + 1 %}
       <tr class="{% if inscrit.puce.vars.errors | length %}warning{% endif %}">
-        <td>{{ form_widget(inscrit.nom, {'attr': {'class': 'form-control'}}) }}</td>
-        <td>{{ form_widget(inscrit.prenom, {'attr': {'class': 'form-control'}}) }}</td>
-        <td>{{ form_widget(inscrit.puce, {'attr': {'class': 'form-control'}}) }}</td>
+        <td>{{ form_widget(inscrit.nom) }}</td>
+        <td>{{ form_widget(inscrit.prenom) }}</td>
+        <td>{{ form_widget(inscrit.puce) }}</td>
         <td>
           <select id="inscrit_admin_update_inscrits_{{i - 1}}_circuit" name="inscrit_admin_update[inscrits][{{i - 1}}][circuit]" class="form-control">
             <option value=""></option>
@@ -40,7 +40,7 @@ Form for update inscrits
             {% endfor %}
           </select>
         </td>
-        <td>{{ form_widget(inscrit.commentaire, {'attr': {'class': 'form-control'}}) }}</td>
+        <td>{{ form_widget(inscrit.commentaire) }}</td>
         <td>
           <a href="{{ path('admin_inscription_delete', { 'course': form.vars.data.id, 'id': inscrit.id.vars.value }) }}">
             <i class="fa fa-2x fa-times" style="color: red;cursor:pointer;"></i>
@@ -53,7 +53,8 @@ Form for update inscrits
   </table>
 
   <div class="row">
-    {{ form_widget(form.save, {'attr': {'class': 'btn btn-success'}}) }}
+    {{ form_widget(form.reset) }}
+    {{ form_widget(form.save) }}
   </div>
 </fieldset>
 {{ form_widget(form, {'attr': {'class': 'hidden'}}) }}

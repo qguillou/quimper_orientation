@@ -6,9 +6,9 @@
 
   <div class="row">
     <div class="form-group">
-      {{ form_label(notification_form.newsletter, "Recevoir la newsletter", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+      {{ form_label(notification_form.newsletter) }}
       <div class="col-sm-6 material-switch pull-right">
-        {{ form_widget(notification_form.newsletter, {'attr': {'class': 'form-control'}}) }}
+        {{ form_widget(notification_form.newsletter) }}
         <label for="user_notification_newsletter" class="label-switch"></label>
         {{ form_errors(notification_form.newsletter) }}
       </div>
@@ -16,8 +16,8 @@
   </div>
 
   <div class="row">
-    <button class="btn btn-default" type="reset">Annuler</button>
-    <button class="btn btn-success" type="submit">Enregistrer les modifications</button>
+    {{ form_widget(notification_form.reset) }}
+    {{ form_widget(notification_form.save) }}
   </div>
 </fieldset>
 

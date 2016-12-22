@@ -34,10 +34,10 @@
 
       <div class="row">
         <div class="form-group">
-          {{ form_label(form.nom, "Nom", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+          {{ form_label(form.nom) }}
 
           <div class="col-sm-6">
-            {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+            {{ form_widget(form.nom) }}
             {{ form_errors(form.nom) }}
           </div>
         </div>
@@ -45,10 +45,10 @@
 
       <div class="row">
         <div class="form-group">
-          {{ form_label(form.color, "Couleur d'affichage", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+          {{ form_label(form.color) }}
 
           <div class="col-sm-6">
-            {{ form_widget(form.color, {'attr': {'class': 'form-control'}}) }}
+            {{ form_widget(form.color) }}
             <span class="help-block">
               Permet de personnaliser la couleur d'affichage dans le calendrier, noir par défaut si non renseigné.
               <br>
@@ -60,13 +60,14 @@
       </div>
 
       <div class="row">
-        <button class="btn btn-default" type="reset">Annuler</button>
-        {{ form_widget(form.save, {'attr': {'class': 'btn btn-success'}}) }}
+        {{ form_widget(form.reset) }}
+        {{ form_widget(form.save) }}
         {% if form.vars.data.id %}
-        <button class="btn btn-danger" type="submit">Supprimer le type</a>
+        {{ form_widget(form.delete) }}
         {% endif %}
       </div>
     </fieldset>
+    {{ form_widget(form, {'attr': {'class': 'hidden'}}) }}
     {{ form_end(form) }}
   </div>
 </div>

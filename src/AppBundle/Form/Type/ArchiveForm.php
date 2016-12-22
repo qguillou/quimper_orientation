@@ -12,7 +12,7 @@ class ArchiveForm extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('save', SubmitType::class, array('label' => 'Mettre à jour l\'archive fédérale'));
+            ->add('save', SubmitType::class, array('label' => 'Mettre à jour l\'archive fédérale', 'attr' => array('class' => 'btn btn-primary')));
     }
 
     public function configureOptions(OptionsResolver $resolver)

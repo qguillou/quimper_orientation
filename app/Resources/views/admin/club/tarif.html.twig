@@ -34,10 +34,10 @@
 
       <div class="row">
         <div class="form-group">
-          {{ form_label(form.nom, "Nom", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+          {{ form_label(form.nom) }}
 
           <div class="col-sm-6">
-            {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+            {{ form_widget(form.nom) }}
             {{ form_errors(form.nom) }}
           </div>
         </div>
@@ -45,23 +45,24 @@
 
       <div class="row">
         <div class="form-group">
-          {{ form_label(form.prix, "Prix", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+          {{ form_label(form.prix) }}
 
           <div class="col-sm-6">
-            {{ form_widget(form.prix, {'attr': {'class': 'form-control'}}) }}
+            {{ form_widget(form.prix) }}
             {{ form_errors(form.prix) }}
           </div>
         </div>
       </div>
 
       <div class="row">
-        <button class="btn btn-default" type="reset">Annuler</button>
-        {{ form_widget(form.save, {'attr': {'class': 'btn btn-success'}}) }}
+        {{ form_widget(form.reset) }}
+        {{ form_widget(form.save) }}
         {% if form.vars.data.id %}
-        <button class="btn btn-danger" type="submit">Supprimer le tarif</a>
+        {{ form_widget(form.delete) }}
         {% endif %}
       </div>
     </fieldset>
+    {{ form_widget(form, {'attr': {'class': 'hidden'}}) }}
     {{ form_end(form) }}
   </div>
 </div>

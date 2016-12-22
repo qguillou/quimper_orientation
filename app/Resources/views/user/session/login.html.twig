@@ -15,10 +15,10 @@
 
       <div class="row">
         <div class="form-group">
-          {{ form_label(form.username, "Pseudo", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+          {{ form_label(form.username) }}
 
           <div class="col-sm-6">
-            {{ form_widget(form.username, {'attr': {'class': 'form-control'}}) }}
+            {{ form_widget(form.username) }}
             {{ form_errors(form.username) }}
           </div>
         </div>
@@ -26,19 +26,19 @@
 
       <div class="row">
         <div class="form-group">
-          {{ form_label(form.plainPassword, "Mot de passe", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+          {{ form_label(form.plainPassword) }}
 
           <div class="col-sm-6">
-            {{ form_widget(form.plainPassword, {'attr': {'class': 'form-control'}}) }}
+            {{ form_widget(form.plainPassword) }}
             {{ form_errors(form.plainPassword) }}
           </div>
         </div>
       </div>
 
       <div class="row">
-        <button class="btn btn-default" type="reset">Annuler</button>
-        <button class="btn btn-warning" type="button" data-toggle="modal" data-target="#ModalPasswordLost">Mot de passe oublié ?</button>
-        <button class="btn btn-success" type="submit">Se connecter</button>
+        {{ form_widget(form.reset) }}
+        {{ form_widget(form.password) }}
+        {{ form_widget(form.save) }}
       </div>
       <div class="row">
       </div>

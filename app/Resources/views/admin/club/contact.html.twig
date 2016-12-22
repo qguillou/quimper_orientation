@@ -34,10 +34,10 @@
 
       <div class="row">
         <div class="form-group">
-          {{ form_label(form.fonction, "Fonction", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+          {{ form_label(form.fonction) }}
 
           <div class="col-sm-6">
-            {{ form_widget(form.fonction, {'attr': {'class': 'form-control'}}) }}
+            {{ form_widget(form.fonction) }}
             {{ form_errors(form.fonction) }}
           </div>
         </div>
@@ -45,10 +45,10 @@
 
       <div class="row">
         <div class="form-group">
-          {{ form_label(form.nom, "Nom", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+          {{ form_label(form.nom) }}
 
           <div class="col-sm-6">
-            {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+            {{ form_widget(form.nom) }}
             {{ form_errors(form.nom) }}
           </div>
         </div>
@@ -56,10 +56,10 @@
 
       <div class="row">
         <div class="form-group">
-          {{ form_label(form.prenom, "Prénom", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+          {{ form_label(form.prenom) }}
 
           <div class="col-sm-6">
-            {{ form_widget(form.prenom, {'attr': {'class': 'form-control'}}) }}
+            {{ form_widget(form.prenom) }}
             {{ form_errors(form.prenom) }}
           </div>
         </div>
@@ -67,10 +67,10 @@
 
       <div class="row">
         <div class="form-group">
-          {{ form_label(form.mail, "Adresse E-mail", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+          {{ form_label(form.mail) }}
 
           <div class="col-sm-6">
-            {{ form_widget(form.mail, {'attr': {'class': 'form-control'}}) }}
+            {{ form_widget(form.mail) }}
             {{ form_errors(form.mail) }}
           </div>
         </div>
@@ -78,10 +78,10 @@
 
       <div class="row">
         <div class="form-group">
-          {{ form_label(form.adresse, "Adresse", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+          {{ form_label(form.adresse) }}
 
           <div class="col-sm-6">
-            {{ form_widget(form.adresse, {'attr': {'class': 'form-control'}}) }}
+            {{ form_widget(form.adresse) }}
             {{ form_errors(form.adresse) }}
           </div>
         </div>
@@ -89,10 +89,10 @@
 
       <div class="row">
         <div class="form-group">
-          {{ form_label(form.portable, "N° mobile", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+          {{ form_label(form.portable) }}
 
           <div class="col-sm-6">
-            {{ form_widget(form.portable, {'attr': {'class': 'form-control'}}) }}
+            {{ form_widget(form.portable) }}
             {{ form_errors(form.portable) }}
           </div>
         </div>
@@ -100,23 +100,24 @@
 
       <div class="row">
         <div class="form-group">
-          {{ form_label(form.telephone, "N° Téléphone", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+          {{ form_label(form.telephone) }}
 
           <div class="col-sm-6">
-            {{ form_widget(form.telephone, {'attr': {'class': 'form-control'}}) }}
+            {{ form_widget(form.telephone) }}
             {{ form_errors(form.telephone) }}
           </div>
         </div>
       </div>
 
       <div class="row">
-        <button class="btn btn-default" type="reset">Annuler</button>
-        {{ form_widget(form.save, {'attr': {'class': 'btn btn-success'}}) }}
+        {{ form_widget(form.reset) }}
+        {{ form_widget(form.save) }}
         {% if form.vars.data.id %}
-        <button class="btn btn-danger" type="submit">Supprimer le contact</a>
+        {{ form_widget(form.delete) }}
         {% endif %}
       </div>
     </fieldset>
+    {{ form_widget(form, {'attr': {'class': 'hidden'}}) }}
     {{ form_end(form) }}
   </div>
 </div>

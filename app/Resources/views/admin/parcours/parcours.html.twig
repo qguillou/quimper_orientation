@@ -10,8 +10,8 @@
       <i class="fa fa-plus-circle"></i> Nouvelle carte
     </a>
     {% for carte in cartes %}
-    <a href="/admin/parcours/{{carte.getId()}}/" class="list-group-item {% if form.vars.data.id == carte.getId() %}active{% endif %}">
-      {{carte.getNom()}}
+    <a href="/admin/parcours/{{carte.id}}/" class="list-group-item {% if form.vars.data.id == carte.id %}active{% endif %}">
+      {{carte.nom}}
     </a>
     {% endfor %}
   </div>
@@ -33,10 +33,10 @@
 
       <div class="row">
         <div class="form-group">
-          {{ form_label(form.nom, null, {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+          {{ form_label(form.nom) }}
 
           <div class="col-sm-6">
-            {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+            {{ form_widget(form.nom) }}
             {{ form_errors(form.nom) }}
           </div>
         </div>
@@ -44,10 +44,10 @@
 
       <div class="row">
         <div class="form-group">
-          {{ form_label(form.file, null, {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+          {{ form_label(form.file) }}
 
           <div class="col-sm-6">
-            {{ form_widget(form.file, {'attr': {'class': ''}}) }}
+            {{ form_widget(form.file) }}
             {{ form_errors(form.file) }}
           </div>
         </div>
@@ -55,9 +55,9 @@
 
       <div class="row">
         <div class="form-group">
-          {{ form_label(form.alert, null, {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+          {{ form_label(form.alert) }}
           <div class="col-sm-6 material-switch">
-            {{ form_widget(form.alert, {'attr': {'class': 'form-control'}}) }}
+            {{ form_widget(form.alert) }}
             <label for="carte_alert" class="label-switch"></label>
             {{ form_errors(form.alert) }}
           </div>
@@ -65,13 +65,14 @@
       </div>
 
       <div class="row">
-        <button class="btn btn-default" type="reset">Annuler</button>
-        {{ form_widget(form.save, {'attr': {'class': 'btn btn-success'}}) }}
+        {{ form_widget(form.reset) }}
+        {{ form_widget(form.save) }}
         {% if form.vars.data.id %}
-        <button class="btn btn-danger" type="submit">Supprimer la carte</button>
+        {{ form_widget(form.delete) }}
         {% endif %}
       </div>
     </fieldset>
+    {{ form_widget(form, {'attr': {'class': 'hidden'}}) }}
     {{ form_end(form) }}
   </div>
 </div>

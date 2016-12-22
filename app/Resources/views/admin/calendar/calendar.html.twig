@@ -53,10 +53,10 @@
 
           <div class="row">
             <div class="form-group">
-              {{ form_label(form.nom, null, {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+              {{ form_label(form.nom) }}
 
               <div class="col-sm-6">
-                {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+                {{ form_widget(form.nom) }}
                 {{ form_errors(form.nom) }}
               </div>
             </div>
@@ -64,10 +64,10 @@
 
           <div class="row">
             <div class="form-group">
-              {{ form_label(form.date, null, {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+              {{ form_label(form.date) }}
 
               <div class="col-sm-6">
-                {{ form_widget(form.date, {'attr': {'class': 'form-control'}}) }}
+                {{ form_widget(form.date) }}
                 {{ form_errors(form.date) }}
               </div>
             </div>
@@ -75,10 +75,10 @@
 
           <div class="row">
             <div class="form-group">
-              {{ form_label(form.lieu, null, {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+              {{ form_label(form.lieu) }}
 
               <div class="col-sm-6">
-                {{ form_widget(form.lieu, {'attr': {'class': 'form-control'}}) }}
+                {{ form_widget(form.lieu) }}
                 {{ form_errors(form.lieu) }}
               </div>
             </div>
@@ -86,10 +86,10 @@
 
           <div class="row">
             <div class="form-group">
-              {{ form_label(form.type, null, {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+              {{ form_label(form.type) }}
 
               <div class="col-sm-6">
-                {{ form_widget(form.type, {'attr': {'class': 'form-control'}}) }}
+                {{ form_widget(form.type) }}
                 {{ form_errors(form.type) }}
               </div>
             </div>
@@ -97,10 +97,10 @@
 
           <div class="row">
             <div class="form-group">
-              {{ form_label(form.organisateur, null, {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+              {{ form_label(form.organisateur) }}
 
               <div class="col-sm-6">
-                {{ form_widget(form.organisateur, {'attr': {'class': 'form-control'}}) }}
+                {{ form_widget(form.organisateur) }}
                 {{ form_errors(form.organisateur) }}
               </div>
             </div>
@@ -108,10 +108,10 @@
 
           <div class="row">
             <div class="form-group">
-              {{ form_label(form.gps, null, {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+              {{ form_label(form.gps) }}
 
               <div class="col-sm-6">
-                {{ form_widget(form.gps, {'attr': {'class': 'form-control'}}) }}
+                {{ form_widget(form.gps) }}
                 {{ form_errors(form.gps) }}
               </div>
             </div>
@@ -124,9 +124,9 @@
 
           <div class="row">
             <div class="form-group">
-              {{ form_label(form.inscription, null, {'label_attr': {'class': 'col-sm-6 control-label'}}) }}
+              {{ form_label(form.inscription) }}
               <div class="col-sm-6 material-switch pull-right">
-                {{ form_widget(form.inscription, {'attr': {'class': 'form-control'}}) }}
+                {{ form_widget(form.inscription) }}
                 <label for="course_inscription" class="label-switch"></label>
                 {{ form_errors(form.inscription) }}
               </div>
@@ -135,10 +135,10 @@
 
           <div class="row">
             <div class="form-group">
-              {{ form_label(form.modification, null, {'label_attr': {'class': 'col-sm-6 control-label'}}) }}
+              {{ form_label(form.modification) }}
 
               <div class="col-sm-6">
-                {{ form_widget(form.modification, {'attr': {'class': 'form-control'}}) }}
+                {{ form_widget(form.modification) }}
                 {{ form_errors(form.modification) }}
               </div>
             </div>
@@ -205,9 +205,9 @@
           <div class="row-divider"></div>
           <div class="row">
             <div class="form-group">
-              {{ form_label(form.annonce, null, {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+              {{ form_label(form.annonce) }}
               <div class="col-sm-6">
-                {{ form_widget(form.annonce, {'attr': {'class': ''}}) }}
+                {{ form_widget(form.annonce) }}
                 {{ form_errors(form.annonce) }}
               </div>
             </div>
@@ -215,33 +215,29 @@
 
           <div class="row">
             <div class="form-group">
-              {{ form_label(form.files, null, {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
-
+              {{ form_label(form.files) }}
               <div class="col-sm-6">
-                {{ form_widget(form.files, {'attr': {'class': ''}}) }}
+                {{ form_widget(form.files) }}
                 {{ form_errors(form.files) }}
               </div>
             </div>
           </div>
-
         </div>
 
-
-
         <div class="row">
-          <button class="btn btn-default" type="reset">Annuler</button>
-          {{ form_widget(form.save, {'attr': {'class': 'btn btn-success'}}) }}
+          {{ form_widget(form.reset) }}
+          {{ form_widget(form.save) }}
           {% if form.vars.data.id %}
-          <button class="btn btn-danger" type="submit">Supprimer la course</a>
-            {% endif %}
-          </div>
-        </fieldset>
-        {{ form_widget(form, {'attr': {'class': 'hidden'}}) }}
-        {{ form_end(form) }}
-      </div>
+          {{ form_widget(form.delete) }}
+          {% endif %}
+        </div>
+      </fieldset>
+      {{ form_widget(form, {'attr': {'class': 'hidden'}}) }}
+      {{ form_end(form) }}
     </div>
+  </div>
 
-    {% endblock %}
+  {% endblock %}
 
-    {% block stylesheets %}
-    {% endblock %}
+  {% block stylesheets %}
+  {% endblock %}

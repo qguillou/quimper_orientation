@@ -185,7 +185,7 @@ class ClubAdminController extends Controller
     catch (UniqueConstraintViolationException $e){
       $this->get('session')->getFlashBag()->add(
         'error',
-        'Le contact '.$contact->getNom().' n\'a pas pu être modifiée, une erreur est survenue.'
+        'Le contact '.$contact->getFonction().' n\'a pas pu être modifié, une erreur est survenue.'
       );
 
 			$em = $this->getDoctrine()->getManager();
@@ -201,7 +201,7 @@ class ClubAdminController extends Controller
 
     $this->get('session')->getFlashBag()->add(
       'success',
-      'Le contact '.$contact->getNom().' a été modifiée.'
+      'Le contact '.$contact->getFonction().' a été modifié.'
     );
     return $this->redirect('/admin/club/contact/'.$contact->getId());
   }
@@ -219,7 +219,7 @@ class ClubAdminController extends Controller
 
     $this->get('session')->getFlashBag()->add(
       'success',
-      'Le contact '.$contact->getNom().' a été supprimée.'
+      'Le contact '.$contact->getFonction().' a été supprimé.'
     );
 
     return $this->redirect('/admin/club/contact/');

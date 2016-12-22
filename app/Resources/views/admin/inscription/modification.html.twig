@@ -7,8 +7,8 @@
 <div class="col-md-3">
   <div class="list-group">
     {% for c in courses %}
-    <a href="/admin/inscription/modification/{{c.getId()}}/" class="list-group-item {% if form.vars.data.id == c.getId() %}active{% endif %}">
-      {{c.getNom()}}
+    <a href="/admin/inscription/modification/{{c.id}}/" class="list-group-item {% if form.vars.data.id == c.id %}active{% endif %}">
+      {{c.nom}}
     </a>
     {% endfor %}
   </div>
