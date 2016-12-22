@@ -47,4 +47,32 @@
   .hidden-phone {
     display: none !important;
   }
+
+  .timeline-centered:before, .timeline-centered:after {
+    content: none;
+  }
+
+  .timeline-centered:before {
+    position: absolute;
+    display: none;
+    width: 2px;
+    background: #ff00ff;/*timeline-color*/
+    left: 15%;
+    top: 20px;
+    bottom: 20px;
+    margin-left: -4px;
+  }
+
+  .timeline-centered .timeline-entry {
+    margin-left: 0%;
+  }
+
+  .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label {
+    margin-left: 15px;
+  }
+
+  .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label:after {
+    content: '';
+    display: none;
+  }
 }
