@@ -24,7 +24,7 @@ class ContactType extends AbstractType
             ->add('telephone', TextType::class, array('label' => 'N° de Téléphone', 'required' => false, 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-4 control-label')))
             ->add('reset', ResetType::class, array('label' => 'Annuler', 'attr' => array('class' => 'btn btn-default')))
             ->add('save', SubmitType::class, array('label' => 'Enregistrer les modifications', 'attr' => array('class' => 'btn btn-success')))
-            ->add('delete', SubmitType::class, array('label' => 'Supprimer le type', 'attr' => array('class' => 'btn btn-danger')));
+            ->add('delete', SubmitType::class, array('label' => 'Supprimer le contact', 'attr' => array('class' => 'btn btn-danger')));
     }
 
     public function configureOptions(OptionsResolver $resolver)
