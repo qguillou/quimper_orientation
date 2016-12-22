@@ -10,4 +10,11 @@ namespace AppBundle\Repository;
  */
 class ContactRepository extends \Doctrine\ORM\EntityRepository
 {
+  public function findContact(){
+    return $this->createQueryBuilder('c')
+        ->where('c.fonction != \'Webmaster\'')
+        ->orderBy('c.fonction', 'ASC')
+        ->getQuery()
+        ->getResult();
+  }
 }

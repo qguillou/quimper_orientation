@@ -45,7 +45,7 @@ class ParcoursPermanentAdminController extends Controller
 	{
 		$em = $this->getDoctrine()->getManager();
 		$repository = $em->getRepository('AppBundle:Cartes');
-		$cartes = $repository->findAll();
+		$cartes = $repository->findCartes();
 
 		$form = $this->createForm(CarteType::class, $carte);
 		$form->handleRequest($request);

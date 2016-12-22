@@ -2,7 +2,8 @@
 <li><i class="fa fa-map-signs"></i> Circuits
   <p class="lead"  style="color:{{color}}; font-weight:bold">
     {% for circuit in course.circuits %}
-    {{circuit.nom}} {% if circuit.information != null %}- {{circuit.information}} - {{sizeof(circuit.inscrits)}} inscrit(s){% endif %}
+    {{circuit.nom}} {% if circuit.information != null %}- {{circuit.information}}{% endif %} {% if course.inscription %} - {{sizeof(circuit.inscrits)}} inscrit(s){% endif %}
+    <br/>
     {% endfor %}
   </p>
 </li>

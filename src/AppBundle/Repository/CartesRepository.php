@@ -10,4 +10,10 @@ namespace AppBundle\Repository;
  */
 class CartesRepository extends \Doctrine\ORM\EntityRepository
 {
+  public function findCartes(){
+    return $this->createQueryBuilder('c')
+        ->orderBy('c.nom', 'ASC')
+        ->getQuery()
+        ->getResult();
+  }
 }

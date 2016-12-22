@@ -225,7 +225,7 @@ class InscriptionAdminController extends Controller
 		$form = $this->createForm(InscritAdminUpdate::class, $course);
 		$form->handleRequest($request);
 
-		if ($form->isSubmitted() && $form->isValid()) {
+		if ($form->isSubmitted()) {
 			return $this->saveInscrits($course);
 		}
 

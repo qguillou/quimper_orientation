@@ -56,7 +56,7 @@ class ClubController extends Controller
 		$em = $this->getDoctrine()->getManager();
     $repository = $em->getRepository('AppBundle:Contact');
 
-    $contacts = $repository->findAll();
+    $contacts = $repository->findContact();
 		return $this->render('user/club/contact.html.twig', [
 			'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
 			'contacts' => $contacts,
