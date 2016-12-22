@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\ResetType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class InscritUpdate extends AbstractType
@@ -20,7 +21,8 @@ class InscritUpdate extends AbstractType
               'allow_delete'  => true,
               'by_reference' => false,
               'prototype' => true))
-            ->add('save', SubmitType::class, array('label' => 'Enregistrer les modifications'));
+            ->add('save', SubmitType::class, array('label' => 'Enregistrer les modifications', 'attr' => array('class' => 'btn btn-success')))
+            ->add('reset', ResetType::class, array('label' => 'Annuler', 'attr' => array('class' => 'btn btn-default')));
     }
 
     public function configureOptions(OptionsResolver $resolver)

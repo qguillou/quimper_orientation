@@ -14,6 +14,7 @@ Form for update inscrits
     <thead>
       <tr>
         <th>#</th>
+        <th>Course</th>
         <th>Nom</th>
         <th>Prénom</th>
         <th>Puce</th>
@@ -28,11 +29,12 @@ Form for update inscrits
       {% set i = i + 1 %}
       <tr class="{% if inscrit.puce.vars.errors | length %}warning{% endif %}">
         <td>{{i}}</td>
-        <td>{{ form_widget(inscrit.nom, {'attr': {'class': 'form-control'}}) }}</td>
-        <td>{{ form_widget(inscrit.prenom, {'attr': {'class': 'form-control'}}) }}</td>
-        <td>{{ form_widget(inscrit.puce, {'attr': {'class': 'form-control'}}) }}</td>
-        <td>{{ form_widget(inscrit.circuit, {'attr': {'class': 'form-control'}}) }}</td>
-        <td>{{ form_widget(inscrit.commentaire, {'attr': {'class': 'form-control'}}) }}</td>
+        <td> {{ inscrit.vars.data.course.nom }} </td>
+        <td>{{ form_widget(inscrit.nom) }}</td>
+        <td>{{ form_widget(inscrit.prenom) }}</td>
+        <td>{{ form_widget(inscrit.puce) }}</td>
+        <td>{{ form_widget(inscrit.circuit) }}</td>
+        <td>{{ form_widget(inscrit.commentaire) }}</td>
         <td>
           <a href="{{ path('inscription_delete', { 'id': inscrit.id.vars.value }) }}">
             <i class="fa fa-2x fa-times" style="color: red;cursor:pointer;"></i>
@@ -44,7 +46,8 @@ Form for update inscrits
   </table>
 
   <div class="row">
-    {{ form_widget(form.save, {'attr': {'class': 'btn btn-success'}}) }}
+    {{ form_widget(form.reset) }}
+    {{ form_widget(form.save) }}
   </div>
 </fieldset>
 {{ form_widget(form, {'attr': {'class': 'hidden'}}) }}

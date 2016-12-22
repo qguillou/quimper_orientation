@@ -14,3 +14,4 @@ TODOList
 - Ajouter les actions cascade lors de la suppression d'un tupple
 - bug quand tentative de modifer son propre compte à partir de l'administration
 - changer les paramètres du compte avec un seul formulaire ? Oui mais problème avec mot de passe ?
+- Modification inscription liste circuit erreur quand plusieurs courses

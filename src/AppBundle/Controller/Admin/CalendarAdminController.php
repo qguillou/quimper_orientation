@@ -20,6 +20,7 @@ class CalendarAdminController extends Controller
     public function calendarAction(Request $request)
     {
         $course = new Course();
+				$course->setDate(new \DateTime(date("d-m-Y H:m")));
         return $this->renderCalendarAdminPage($request, $course);
     }
 
