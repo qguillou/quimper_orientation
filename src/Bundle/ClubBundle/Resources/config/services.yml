@@ -1,0 +1,12 @@
+services:
+#    club.example:
+#        class: ClubBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
+
+    manager.tarif:
+        class: Bundle\ClubBundle\Manager\TarifManager
+        arguments: ['@doctrine.orm.entity_manager']
+
+    manager.contact:
+        class: Bundle\ClubBundle\Manager\ContactManager
+        arguments: ['@doctrine.orm.entity_manager']

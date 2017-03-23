@@ -1,0 +1,48 @@
+{% extends '::base.html.twig' %}
+
+{% block msg %}{% endblock %}
+
+{% block content %}
+
+<!-- On récupére la couleur d'affichage de la course !-->
+{% set color = 'black' %}
+{% if course.type and course.type.color and course.type.color != '' %}
+{% set color = course.type.color %}
+{% endif %}
+
+<div class="col-md-12">
+  <h1 style="color:{{color}}; font-weight:bold">{{course.nom}}</h1>
+  <p class="lead">
+    Retrouvez toutes les informations sur cet événement sur cette page.
+  </p>
+</div>
+
+<div class="col-md-4">
+  {% include 'CalendarBundle:Course:partials/informations.html.twig' %}
+</div>
+
+
+<div class="col-md-1">
+</div>
+
+<div class="col-md-7">
+
+  <div class="row">
+    {% include 'CalendarBundle:Course:partials/files.html.twig' %}
+  </div>
+
+  <div class="row-divider"></div>
+
+  <div class="row">
+    {% include 'CalendarBundle:Course:partials/inscrits.html.twig' %}
+  </div>
+
+  <div class="row-divider"></div>
+
+  <div class="row">
+    <h2>Comment s'y rendre ?</h2>
+    <p class="lead">Le plan d'accès vous montre le localisation du point d'accueil de l'événement.</p>
+  </div>
+</div>
+
+{% endblock %}

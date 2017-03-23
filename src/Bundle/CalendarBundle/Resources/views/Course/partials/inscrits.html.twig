@@ -1,0 +1,29 @@
+<h2>Les inscrits</h2>
+{% if course.inscription %}
+  <p class="lead">Ils sont déjà inscrits à cette course.</p>
+
+  <div class="row">
+    {% for info in app.session.flashbag.get('info') %}
+      <div class="alert alert-dismissible alert-info">
+        {{ info }}
+      </div>
+    {% endfor %}
+  </div>
+
+  {% if is_past(course.modification | date("Y-m-d H:i:s")) == false %}
+    {% if app.user %}
+      <button data-toggle="modal"
+              data-target="#ModalQuickEntries"
+              class="btn btn-square-toround btn-bordered-success">
+        <span class="fa fa-user-plus"></span> Inscription rapide
+      </button>
+      {% include 'CalendarBundle:Course:partials/inscription_rapide.html.twig' %}
+    {% endif %}
+    <a href="/inscription/inscrire" class="btn btn-square-toround btn-bordered-success"><span class="fa fa-user-plus"></span> S'inscrire</a>
+    {% if app.user %}
+      <a href="/inscription/modification" class="btn btn-square-toround btn-bordered-primary"><span class="fa fa-pencil-square-o"></span> Modifier ses inscriptions</a>
+      {% endif %}
+  {% endif %}
+{% else %}
+  <p class="lead">Les inscriptions ne sont pas disponibles.</p>
+{% endif %}

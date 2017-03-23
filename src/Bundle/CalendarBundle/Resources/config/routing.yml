@@ -1,0 +1,7 @@
+calendrier:
+    path:     /calendrier
+    defaults: { _controller: CalendarBundle:Calendar:calendar }
+
+course:
+    path:     /calendrier/{id}/
+    defaults: { _controller: CalendarBundle:Calendar:course }

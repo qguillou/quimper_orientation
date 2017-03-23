@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="fr" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="app.name">
+                <source>app.name</source>
+                <target>Quimper Orientation</target>
+            </trans-unit>
+
+            <trans-unit id="nav.club">
+                <source>nav.club</source>
+                <target>Le club</target>
+            </trans-unit>
+            <trans-unit id="nav.club.presentation">
+                <source>nav.club.presentation</source>
+                <target>Présentation</target>
+            </trans-unit>
+            <trans-unit id="nav.club.join">
+                <source>nav.club.join</source>
+                <target>Nous rejoindre</target>
+            </trans-unit>
+            <trans-unit id="nav.club.school">
+                <source>nav.club.school</source>
+                <target>L'école de CO</target>
+            </trans-unit>
+            <trans-unit id="nav.club.contact">
+                <source>nav.club.contact</source>
+                <target>Contacts</target>
+            </trans-unit>
+
+            <trans-unit id="nav.calendar">
+                <source>nav.calendar</source>
+                <target>Calendrier</target>
+            </trans-unit>
+
+            <trans-unit id="nav.entries">
+                <source>nav.entries</source>
+                <target>Inscription</target>
+            </trans-unit>
+            <trans-unit id="nav.entries.entry">
+                <source>nav.entries.entry</source>
+                <target>S'inscrire</target>
+            </trans-unit>
+            <trans-unit id="nav.entries.update">
+                <source>nav.entries.update</source>
+                <target>Modification</target>
+            </trans-unit>
+            <trans-unit id="nav.entries.get">
+                <source>nav.entries.get</source>
+                <target>Récupération</target>
+            </trans-unit>
+
+            <trans-unit id="nav.map">
+                <source>nav.map</source>
+                <target>Parcours permanents</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

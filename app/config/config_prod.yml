@@ -7,14 +7,6 @@ imports:
 #        result_cache_driver: apc
 #        query_cache_driver: apc
 
-# Twig Configuration
-twig:
-    debug:            "%kernel.debug%"
-    strict_variables: "%kernel.debug%"
-    globals:
-        nVersion: "3.0"
-        dVersion: "Octobre 2016"
-
 monolog:
     handlers:
         main:

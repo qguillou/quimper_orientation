@@ -1,0 +1,7 @@
+services:
+#    parcours.example:
+#        class: ParcoursBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
+    manager.carte:
+        class: Bundle\ParcoursBundle\Manager\CarteManager
+        arguments: ['@doctrine.orm.entity_manager']

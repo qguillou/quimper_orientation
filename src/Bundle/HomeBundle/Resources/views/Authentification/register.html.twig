@@ -1,0 +1,115 @@
+{% extends '::base.html.twig' %}
+
+{% block content %}
+
+  <div class="col-md-5 hidden-tablet">
+    {% include 'HomeBundle:Authentification:information.html.twig' %}
+  </div>
+
+  <div class="col-md-7">
+    <div class="row">
+      <h2>S'inscrire sur le site</h2>
+      <p class="lead">Vous n'avez pas encore de compte, et vous souhaitez en créer un ?</p>
+      {{ form_start(form_user, {'attr': {'class': 'form-horizontal'}}) }}
+      <fieldset>
+        {{ form_errors(form_user) }}
+
+        <div class="row">
+          <div class="form-group">
+            {{ form_label(form_user.username) }}
+
+            <div class="col-sm-6">
+              {{ form_widget(form_user.username) }}
+              {{ form_errors(form_user.username) }}
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            {{ form_label(form_user.email) }}
+
+            <div class="col-sm-6">
+              {{ form_widget(form_user.email) }}
+              {{ form_errors(form_user.email) }}
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group">
+            {{ form_label(form_user.plainPassword.first) }}
+
+            <div class="col-sm-6">
+              {{ form_widget(form_user.plainPassword.first) }}
+              {{ form_errors(form_user.plainPassword.first) }}
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group">
+            {{ form_label(form_user.plainPassword.second) }}
+
+            <div class="col-sm-6">
+              {{ form_widget(form_user.plainPassword.second) }}
+              {{ form_errors(form_user.plainPassword.second) }}
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group">
+            {{ form_label(form_user.license) }}
+
+            <div class="col-sm-6">
+              {{ form_widget(form_user.license) }}
+              {{ form_errors(form_user.license) }}
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group">
+            {{ form_label(form_user.nom) }}
+
+            <div class="col-sm-6">
+              {{ form_widget(form_user.nom) }}
+              {{ form_errors(form_user.nom) }}
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group">
+            {{ form_label(form_user.prenom) }}
+
+            <div class="col-sm-6">
+              {{ form_widget(form_user.prenom) }}
+              {{ form_errors(form_user.prenom) }}
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          {{ form_widget(form_user.reset) }}
+          {{ form_widget(form_user.save) }}
+        </div>
+      </fieldset>
+      {{ form_widget(form_user, {'attr': {'class': 'hidden'}}) }}
+      {{ form_end(form_user) }}
+    </div>
+
+    <div class="row-divider">
+    </div>
+
+    <div class="row">
+      <h2>Se connecter sur le site</h2>
+      <p class="lead">Vous avez déjà un compte, identifiez-vous !</p>
+      <div class="row">
+        <a href="/login" class="btn btn-primary">Ouvrir la page d'identification</a>
+      </div>
+    </div>
+
+  </div>
+
+{% endblock %}

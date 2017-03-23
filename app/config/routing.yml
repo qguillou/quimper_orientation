@@ -1,3 +1,11 @@
-app:
-    resource: "@AppBundle/Controller/"
-    type:     annotation
+home:
+    resource: '@HomeBundle/Resources/config/routing.yml'
+
+club:
+    resource: '@ClubBundle/Resources/config/routing.yml'
+
+parcours:
+    resource: '@ParcoursBundle/Resources/config/routing.yml'
+
+calendrier:
+    resource: '@CalendarBundle/Resources/config/routing.yml'

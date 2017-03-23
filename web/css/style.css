@@ -487,3 +487,11 @@ select.form-control {
   float: none;
   text-align: center;
 }
+
+.msg-error {
+  color: red;
+}
+
+.msg-error li {
+  list-style: none;
+}

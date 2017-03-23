@@ -1,165 +1,54 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8" />
-  <title>{% block title %}Quimper Orientation Coatarmor 29{% endblock %}</title>
-  <link rel="icon" type="image/x-icon" href="{{ asset('favicon.png') }}" />
-  <link href="{{ asset( 'css/bootstrap.css' ) }}" rel="stylesheet" type="text/css" />
-  <link href="{{ asset( 'css/style.css' ) }}" rel="stylesheet" type="text/css" />
-  <link href="{{ asset( 'css/responsive.css' ) }}" rel="stylesheet" type="text/css" />
+  <head>
+    <meta charset="UTF-8" />
+    <title>Quimper Orientation Coatarmor 29</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.png') }}" />
+    <link href="{{ asset( 'css/bootstrap.css' ) }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset( 'css/style.css' ) }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset( 'css/responsive.css' ) }}" rel="stylesheet" type="text/css" />
 
-  <link href="{{ asset( 'css/font-awesome.css' ) }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset( 'css/font-awesome.css' ) }}" rel="stylesheet" type="text/css" />
 
-  <script src="{{ asset( 'js/jquery.js' ) }}"></script>
-  <script src="{{ asset( 'js/bootstrap.js' ) }}"></script>
-  <script src="{{ asset( 'js/bootstrap-tab.js' ) }}"></script>
-</head>
-<body>
+    {% block javascript %}
+      <script src="{{ asset( 'js/jquery.js' ) }}"></script>
+      <script src="{{ asset( 'js/bootstrap.js' ) }}"></script>
+      <script src="{{ asset( 'js/bootstrap-tab.js' ) }}"></script>
+    {% endblock %}
+  </head>
 
+  <body>
+    {% block header %}
+      {% if app.user != null %}
+        {% include ':Navbar:header_user.html.twig' %}
+      {% else %}
+        {% include ':Navbar:header_default.html.twig' %}
+      {% endif %}
+    {% endblock %}
 
-  <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="/">Quimper Orientation</a>
-      </div>
+    <div class="container">
+      {% block msg %}
+        <div class="row">
+          {% for successMessage in app.session.flashbag.get('success') %}
+            <div class="alert alert-dismissible alert-success">
+              {{ successMessage }}
+            </div>
+          {% endfor %}
 
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
-        <ul class="nav navbar-nav">
+          {% for errorMessage in app.session.flashbag.get('error') %}
+            <div class="alert alert-dismissible alert-danger">
+              {{ errorMessage }}
+            </div>
+          {% endfor %}
+        </div>
+      {% endblock %}
 
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Le club <span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="/club/presentation">Présentation</a></li>
-              <li><a href="/club/rejoindre">Nous rejoindre</a></li>
-              <li><a href="/club/ecole">L'école de CO</a></li>
-              <li><a href="/club/contact">Contacts</a></li>
-            </ul>
-          </li>
-
-          <li><a href="/calendrier">Calendrier</a></li>
-
-          <li class="dropdown">
-            <a href="/inscription/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Inscription <span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="/inscription/inscrire">S'inscrire</a></li>
-              {% if app.user != null %}
-              <li><a href="/inscription/modification">Modification</a></li>
-              {% endif %}
-              <li><a href="/inscription/recuperation">Récupération</a></li>
-            </ul>
-          </li>
-
-          <li><a href="/parcours">Parcours permanents</a></li>
-
-        </ul>
-
-        {% if app.user != null %}
-          <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <i class="fa fa-user"></i>
-                {{app.user.username}}
-                <span class="badge" title="Nombre de course à venir, où vous êtes inscrits">
-                  {{sizeof(app.user.inscrits)}}
-                </span>
-              </a>
-              <ul class="dropdown-menu">
-                <li>
-                  <a href="/account/parameter">
-                    <i class="fa fa-cog"></i> Paramètres
-                  </a>
-                </li>
-                <li>
-                  <a href="/account/calendar">
-                    <i class="fa fa-calendar"></i> Mon calendrier
-                  </a>
-                </li>
-                {% if is_granted('ROLE_WEBMASTER') %}
-                <li class="divider"></li>
-                <li>
-                  <a href="/account/mail">
-                    <i class="fa fa-envelope"></i> Ma messagerie (0)
-                  </a>
-                </li>
-                <li>
-                  <a href="/document">
-                    <i class="fa fa-folder"></i> Mes documents
-                  </a>
-                </li>
-                <li class="divider"></li>
-                <li>
-                  <a href="/admin">
-                    <i class="fa fa-terminal"></i> Passer en administrateur
-                  </a>
-                </li>
-                {% endif %}
-
-                <li class="divider"></li>
-                <li>
-                  <a href="/logout">
-                    <i class="fa fa-sign-out"></i> Se déconnecter
-                  </a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-          {% else %}
-          <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown">
-              <a href="/login" class="navbar-link dropdown-toggle">
-                <i class="fa fa-sign-in"></i> S'identifier
-              </a>
-              <ul class="dropdown-menu">
-                <li>
-                  <a href="/register" class="navbar-link">
-                    Créer un compte
-                  </a>
-                </li>
-
-                <li>
-                  <a href="/login" class="navbar-link">
-                    S'identifier
-                  </a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-          {% endif %}
+      <div class="row">
+        {% block content %}{% endblock %}
       </div>
     </div>
-  </nav>
 
-  <div class="container">
-    <div class="row">
-      {% block body %}{% endblock %}
-    </div>
-  </div>
+    {% include ':Navbar:footer.html.twig' %}
+  </body>
 
-  {% block javascripts %}{% endblock %}
-
-  <div class="logo-bottom">
-
-  </div>
-  <div class="footer-page">
-    <div>
-      <img src="{{ asset( 'images/logo/logo-club.gif' ) }}" style="width:120px;height:100px;">
-      <img src="{{ asset( 'images/logo/logo-ffco.png' ) }}" style="width:150px;height:100px;">
-    </div>
-    <a href="/help">Aide</a> |
-    <a href="/about">A propos</a> |
-    <a href="/contacter/webmaster">Contacter le Webmaster</a>
-  </div>
-
-  <nav class="navbar navbar-inverse">
-    <div class="navbar-content">
-      Site du Quimper Orientation - Version {{ nVersion }} ({{ dVersion }}) - {{ author }}
-    </div>
-  </nav>
-</body>
 </html>

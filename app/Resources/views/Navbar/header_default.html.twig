@@ -1,0 +1,68 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">{{ "app.name" | trans }}</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+      <ul class="nav navbar-nav">
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+            {{ "nav.club" | trans }}
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/club/presentation">{{ "nav.club.presentation" | trans }}</a></li>
+            <li><a href="/club/rejoindre">{{ "nav.club.join" | trans }}</a></li>
+            <li><a href="/club/ecole">{{ "nav.club.school" | trans }}</a></li>
+            <li><a href="/club/contact">{{ "nav.club.contact" | trans }}</a></li>
+          </ul>
+        </li>
+
+        <li><a href="/calendrier">{{ "nav.calendar" | trans }}</a></li>
+
+        <li class="dropdown">
+          <a href="/inscription/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+            {{ "nav.entries" | trans }}
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/inscription/inscrire">{{ "nav.entries.entry" | trans }}</a></li>
+            <li><a href="/inscription/recuperation">{{ "nav.entries.get" | trans }}</a></li>
+          </ul>
+        </li>
+
+        <li><a href="/parcours">{{ "nav.map" | trans }}</a></li>
+
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="/login" class="navbar-link dropdown-toggle">
+            <i class="fa fa-sign-in"></i> S'identifier
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="/register" class="navbar-link">
+                Créer un compte
+              </a>
+            </li>
+
+            <li>
+              <a href="/login" class="navbar-link">
+                S'identifier
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

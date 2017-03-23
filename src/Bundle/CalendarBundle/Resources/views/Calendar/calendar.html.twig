@@ -1,0 +1,81 @@
+{% extends '::base.html.twig' %}
+
+{% block content %}
+
+<div class="col-md-9">
+  <h1>Le calendrier</h1>
+  <p class="lead">
+    Consultez les évenements à venir, et trouvez toutes les informations importantes.
+  </p>
+  {% for course in courses %}
+
+  <!-- On récupére la couleur d'affichage de la course !-->
+  {% set color = 'black' %}
+  {% if course.type and course.type.color and course.type.color != '' %}
+  {% set color = course.type.color %}
+  {% endif %}
+
+  <div class="row">
+    <div class="col-md-3" style="text-align:center">
+      <h3 style="color:{{color}}; font-weight:bold">
+        {{ course.date | date("d") }}<br/>
+        {{ course.date | format_datetime('MMMM', 'fr', 'Europe/Paris') | upper }}
+      </h3>
+
+      <a id="more-{{course.id}}" href="/calendrier/{{course.id}}/"
+          class="btn btn-square-toround btn-bordered-success"
+          style="border-color:{{color}}; color:{{color}}">
+          <i class="fa fa-caret-square-o-down"></i>
+          Plus d'informations
+      </a>
+
+      <script>
+      $("#more-{{course.id}}").hover(function(){
+        $("#more-{{course.id}}").css("color","white")
+        $("#more-{{course.id}}").css("background","{{color}}")
+      }, function(){
+        $("#more-{{course.id}}").css("color","{{color}}")
+        $("#more-{{course.id}}").css("background","white")
+      });
+      </script>
+    </div>
+
+    <div class="col-md-9">
+      <h3 style="color:{{color}};font-weight:bold">{{course.nom}}</h3>
+      <ul class="text-list information" style="border-color: {{color}}">
+        {% if course.lieu %}
+        <li><i class="fa fa-map-marker"></i> Lieu <b style="color:{{color}}">{{course.lieu}}</b></li>
+        {% endif %}
+
+        {% if course.type %}
+        <li><i class="fa fa-tag"></i> Type <b style="color:{{color}}">{{course.type.nom}}</b></li>
+        {% endif %}
+
+        {% if course.organisateur %}
+        <li><i class="fa fa-user"></i> Organisé par <b style="color:{{color}}">{{course.organisateur}}</b></li>
+        {% endif %}
+
+        {% if course.inscription %}
+        <li><i class="fa fa-sign-in"></i> Inscription <b style="color:{{color}}">Sur le site jusqu'au {{course.modification | date('d/m/Y à H:i:s')}}</b></li>
+        {% else %}
+        <li><i class="fa fa-sign-in"></i> Inscription <b style="color:{{color}}">Voir avec l'organisateur</b></li>
+        {% endif %}
+
+        {% if course.site %}
+        <li><i class="fa fa-at"></i> Site Internet <b><a target="_BLANK" href="{{course.site}}" style="color:{{color}}; text-decoration:underline;">{{course.site}}</a></b></li>
+        {% endif %}
+      </ul>
+    </div>
+
+
+  </div>
+
+  <div class="row-divider"></div>
+  {% endfor %}
+</div>
+
+<div class="col-md-3">
+
+</div>
+
+{% endblock %}
