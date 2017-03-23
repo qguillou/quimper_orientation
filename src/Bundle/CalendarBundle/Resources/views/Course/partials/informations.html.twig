@@ -1,29 +1,29 @@
-<h2>Informations sur la course</h2>
+<h2>{{ "course.informations" | trans }}</h2>
 <ul class="text-list information" style="border-color:{{color}}">
 
-  <li><i class="fa fa-calendar"></i> Date <p class="lead" style="color:{{color}}; font-weight:bold">{{ course.date | format_datetime('d MMMM YYYY', 'fr', 'Europe/Paris') }}</p></li>
+  <li><i class="fa fa-calendar"></i> {{ "calendar.date" | trans }} <p class="lead" style="color:{{color}}; font-weight:bold">{{ course.date | format_datetime('d MMMM YYYY', 'fr', 'Europe/Paris') }}</p></li>
 
   {% if course.lieu %}
-  <li><i class="fa fa-map-marker"></i> Lieu <p class="lead" style="color:{{color}}; font-weight:bold">{{course.lieu}}</p></li>
+  <li><i class="fa fa-map-marker"></i> {{ "calendar.location" | trans }} <p class="lead" style="color:{{color}}; font-weight:bold">{{course.lieu}}</p></li>
   {% endif %}
 
   {% if course.type %}
-  <li><i class="fa fa-tag"></i> Type <p class="lead" style="color:{{color}}; font-weight:bold">{{course.type.nom}}</p></li>
+  <li><i class="fa fa-tag"></i> {{ "calendar.type" | trans }} <p class="lead" style="color:{{color}}; font-weight:bold">{{course.type.nom}}</p></li>
   {% endif %}
 
   {% if course.organisateur %}
-  <li><i class="fa fa-user"></i> Organisé par <p class="lead" style="color:{{color}}; font-weight:bold">{{course.organisateur}}</p></li>
+  <li><i class="fa fa-user"></i> {{ "calendar.organised.by" | trans }} <p class="lead" style="color:{{color}}; font-weight:bold">{{course.organisateur}}</p></li>
   {% endif %}
 
-  <li><i class="fa fa-sign-in"></i> Inscription
+  <li><i class="fa fa-sign-in"></i> {{ "calendar.entries" | trans }}
     {% if course.inscription %}
-    <p class="lead" style="color:{{color}}; font-weight:bold">Sur le site jusqu'au {{course.modification | format_datetime('d MMMM YYYY à HH:mm:ss', 'fr', 'Europe/Paris')}}</p>
+    <p class="lead" style="color:{{color}}; font-weight:bold">{{ "calendar.entries.limit" | trans }} {{course.modification | format_datetime('d MMMM YYYY à HH:mm:ss', 'fr', 'Europe/Paris')}}</p>
     {% else %}
-    <p class="lead" style="color:{{color}}; font-weight:bold">Voir avec l'organisateur</p>
+    <p class="lead" style="color:{{color}}; font-weight:bold">{{ "calendar.see.with.organisator" | trans }}</p>
     {% endif %}
   </li>
 
   {% if course.gps %}
-  <li><i class="fa fa-location-arrow"></i> Coordonnées GPS <p class="lead"  style="color:{{color}}; font-weight:bold">{{course.gps}}</p></li>
+  <li><i class="fa fa-location-arrow"></i> {{ "calendar.gps" | trans }} <p class="lead"  style="color:{{color}}; font-weight:bold">{{course.gps}}</p></li>
   {% endif %}
 </ul>

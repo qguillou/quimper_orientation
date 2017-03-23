@@ -9,3 +9,6 @@ parcours:
 
 calendrier:
     resource: '@CalendarBundle/Resources/config/routing.yml'
+
+admin:
+    resource: '@AdminBundle/Resources/config/routing.yml'
