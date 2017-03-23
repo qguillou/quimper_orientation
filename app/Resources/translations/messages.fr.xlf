@@ -54,6 +54,24 @@
                 <source>nav.map</source>
                 <target>Parcours permanents</target>
             </trans-unit>
+
+            <trans-unit id="cancel">
+                <source>cancel</source>
+                <target>Annuler</target>
+            </trans-unit>
+            <trans-unit id="save">
+                <source>save</source>
+                <target>Enregistrer</target>
+            </trans-unit>
+
+            <trans-unit id="firstName">
+                <source>firstName</source>
+                <target>Prénom</target>
+            </trans-unit>
+            <trans-unit id="lastName">
+                <source>lastName</source>
+                <target>Nom</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

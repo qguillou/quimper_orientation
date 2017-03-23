@@ -20,13 +20,13 @@ class InscritType extends AbstractType
     {
         $builder
             ->add('add', CheckBoxType::class, array('required' => false, 'mapped' => false))
-            ->add('id', IntegerType::class, array('required' => false, 'label' => 'Nom', 'attr' => array('class' => 'form-control')))
-            ->add('nom', TextType::class, array('label' => 'Nom', 'attr' => array('class' => 'form-control')))
-            ->add('prenom', TextType::class, array('label' => 'Prénom', 'attr' => array('class' => 'form-control')))
+            ->add('id', IntegerType::class, array('required' => false, 'attr' => array('class' => 'form-control')))
+            ->add('nom', TextType::class, array('label' => 'lastName', 'attr' => array('class' => 'form-control')))
+            ->add('prenom', TextType::class, array('label' => 'firstName', 'attr' => array('class' => 'form-control')))
             ->add('circuit',
                     EntityType::class,
                     array(
-                          'label' => 'Circuit',
+                          'label' => 'track',
                           'class' => 'Entity\Circuit',
                           'choice_label' => 'nom',
                           'required' => false,
@@ -41,10 +41,7 @@ class InscritType extends AbstractType
                           )
                   )
             ->add('commentaire', TextType::class, array('label' => 'Commentaire', 'required' => false, 'attr' => array('class' => 'form-control')))
-            ->add('puce', NumberType::class, array('label' => 'N° de Puce', 'required' => false, 'attr' => array('class' => 'form-control')))
-            ->add('reset', ResetType::class, array('label' => 'Annuler', 'attr' => array('class' => 'btn btn-default')))
-            ->add('save', SubmitType::class, array('label' => 'Enregistrer les modifications', 'attr' => array('class' => 'btn btn-success')))
-            ->add('delete', SubmitType::class, array('label' => 'Supprimer l\'inscrit', 'attr' => array('class' => 'btn btn-danger')));
+            ->add('puce', NumberType::class, array('label' => 'N° de Puce', 'required' => false, 'attr' => array('class' => 'form-control')));
     }
 
     public function configureOptions(OptionsResolver $resolver)

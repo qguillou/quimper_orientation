@@ -10,6 +10,10 @@
                 <source>subtitle.calendar</source>
                 <target>Consultez les évenements à venir, et trouvez toutes les informations importantes.</target>
             </trans-unit>
+            <trans-unit id="subtitle.course">
+                <source>subtitle.course</source>
+                <target>Retrouvez toutes les informations sur cet événement sur cette page.</target>
+            </trans-unit>
 
             <trans-unit id="calendar.more">
                 <source>calendar.more</source>
