@@ -55,6 +55,31 @@
                 <target>Parcours permanents</target>
             </trans-unit>
 
+            <trans-unit id="nav.account.parameters">
+                <source>nav.account.parameters</source>
+                <target>Paramètres</target>
+            </trans-unit>
+            <trans-unit id="nav.account.calendar">
+                <source>nav.account.calendar</source>
+                <target>Mon calendrier</target>
+            </trans-unit>
+            <trans-unit id="nav.account.switch.admin">
+                <source>nav.account.switch.admin</source>
+                <target>Passer en webmaster</target>
+            </trans-unit>
+            <trans-unit id="nav.account.logout">
+                <source>nav.account.logout</source>
+                <target>Se déconnecter</target>
+            </trans-unit>
+            <trans-unit id="nav.account.webmail">
+                <source>nav.account.webmail</source>
+                <target>Ma messagerie</target>
+            </trans-unit>
+            <trans-unit id="nav.account.documents">
+                <source>nav.account.documents</source>
+                <target>Mes documents</target>
+            </trans-unit>
+
             <trans-unit id="cancel">
                 <source>cancel</source>
                 <target>Annuler</target>
@@ -62,6 +87,19 @@
             <trans-unit id="save">
                 <source>save</source>
                 <target>Enregistrer</target>
+            </trans-unit>
+
+            <trans-unit id="help">
+                <source>help</source>
+                <target>Aide</target>
+            </trans-unit>
+            <trans-unit id="about">
+                <source>about</source>
+                <target>À propos</target>
+            </trans-unit>
+            <trans-unit id="contact.administrator">
+                <source>contact.administrator</source>
+                <target>Contacter l'administrateur</target>
             </trans-unit>
 
             <trans-unit id="firstName">

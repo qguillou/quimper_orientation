@@ -56,30 +56,30 @@
           <ul class="dropdown-menu">
             <li>
               <a href="/account/parameter">
-                <i class="fa fa-cog"></i> Paramètres
+                <i class="fa fa-cog"></i> {{ "nav.account.parameters" | trans }}
               </a>
             </li>
             <li>
               <a href="/account/calendar">
-                <i class="fa fa-calendar"></i> Mon calendrier
+                <i class="fa fa-calendar"></i> {{ "nav.account.calendar" | trans }}
               </a>
             </li>
             {% if is_granted('ROLE_WEBMASTER') %}
             <li class="divider"></li>
             <li>
               <a href="/account/mail">
-                <i class="fa fa-envelope"></i> Ma messagerie (0)
+                <i class="fa fa-envelope"></i> {{ "nav.account.webmail" | trans }}
               </a>
             </li>
             <li>
               <a href="/document">
-                <i class="fa fa-folder"></i> Mes documents
+                <i class="fa fa-folder"></i> {{ "nav.account.documents" | trans }}
               </a>
             </li>
             <li class="divider"></li>
             <li>
               <a href="/admin">
-                <i class="fa fa-terminal"></i> Passer en administrateur
+                <i class="fa fa-terminal"></i> {{ "nav.account.switch.admin" | trans }}
               </a>
             </li>
             {% endif %}
@@ -87,7 +87,7 @@
             <li class="divider"></li>
             <li>
               <a href="/logout">
-                <i class="fa fa-sign-out"></i> Se déconnecter
+                <i class="fa fa-sign-out"></i> {{ "nav.account.logout" | trans }}
               </a>
             </li>
           </ul>
