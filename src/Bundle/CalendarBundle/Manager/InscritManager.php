@@ -5,6 +5,7 @@ namespace Bundle\CalendarBundle\Manager;
 use Doctrine\ORM\EntityManager;
 use Entity\Inscrit;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authorization\AuthorizationChecker;
 
 class InscritManager
@@ -54,7 +55,7 @@ class InscritManager
       return array("inscrits" => $inscrits);
     }
 
-    public function saveInscrit($request, $data)
+    public function saveInscrit(Request $request, Array $data)
     {
       $inscrits = $request->get('collection_inscrit')['inscrits'];
       $size = sizeof($inscrits);

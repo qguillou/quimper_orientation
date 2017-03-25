@@ -5,6 +5,7 @@ namespace Bundle\HomeBundle\Manager;
 use Doctrine\ORM\EntityManager;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoder;
+use Entity\User;
 
 class UserManager
 {
@@ -21,7 +22,7 @@ class UserManager
         $this->security = $security;
     }
 
-    public function register($user)
+    public function register(User $user)
     {
       $password = $this->encoder->encodePassword($user, $user->getPlainPassword());
       $user->setPassword($password);
@@ -38,7 +39,7 @@ class UserManager
       return true;
     }
 
-    public function login($user)
+    public function login(User $user)
     {
       $repository = $this->em->getRepository('Entity\User');
       $u = $repository->findOneBy(array('username' => $user->getUsername()));

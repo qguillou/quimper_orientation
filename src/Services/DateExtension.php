@@ -2,14 +2,12 @@
 
 namespace Services;
 
-use Symfony\Component\HttpKernel\KernelInterface;
-
 class DateExtension extends \Twig_Extension
 {
 
     public function __construct()
     {
-      
+
     }
 
     /**
