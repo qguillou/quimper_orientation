@@ -16,7 +16,7 @@ class CollectionInscritType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('inscrits', CollectionType::class, array('entry_type' => InscritType::class))
+            ->add('inscrits', CollectionType::class, array('entry_options' => array('course' => $options['course']), 'entry_type' => InscritType::class))
             ->add('reset', ResetType::class, array('label' => 'cancel', 'attr' => array('class' => 'btn btn-default')))
             ->add('save', SubmitType::class, array('label' => 'save', 'attr' => array('class' => 'btn btn-success')));
     }
@@ -25,6 +25,7 @@ class CollectionInscritType extends AbstractType
     {
       $resolver->setDefaults(array(
           'inscrits' => array(new Inscrit()),
+          'course' => 1
       ));
     }
 }

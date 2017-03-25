@@ -1,29 +1,69 @@
 <h2>Les inscrits</h2>
 {% if course.inscription %}
-  <p class="lead">Ils sont déjà inscrits à cette course.</p>
+  {% if sizeof(course.inscrits) > 0 %}
+    <p class="lead">Ils sont déjà inscrits à cette course.</p>
 
-  <div class="row">
-    {% for info in app.session.flashbag.get('info') %}
-      <div class="alert alert-dismissible alert-info">
-        {{ info }}
-      </div>
-    {% endfor %}
-  </div>
+    <div class="row">
+      {% for info in app.session.flashbag.get('info') %}
+        <div class="alert alert-dismissible alert-info">
+          {{ info }}
+        </div>
+      {% endfor %}
+    </div>
+    <table class="table table-striped table-hover ">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Nom</th>
+          <th>Prénom</th>
+          <th>Circuit</th>
+          <th>Commentaire</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% set i = 0 %}
+        {% for inscrit in course.inscrits %}
+        {% set i = i + 1 %}
+        <tr>
+          <td>{{i}}</td>
+          <td>{{inscrit.nom}}</td>
+          <td>{{inscrit.prenom}}</td>
+          <td>
+            {% if inscrit.circuit != null %}
+              {{inscrit.circuit.nom}}
+            {% endif %}
+          </td>
+          <td>{{inscrit.commentaire}}</td>
+          {% if app.user == inscrit.user %}
+            <td onclick="unregister( {{inscrit.id}} )">
+            <i class="fa fa-times" style="color: red;cursor:pointer;"></i>
+          {% else %}
+            <td></td>
+          {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p class="lead">Aucun inscrit à cette course pour le moment.</p>
+  {% endif %}
 
-  {% if is_past(course.modification | date("Y-m-d H:i:s")) == false %}
+  {% if not is_past(course.modification | date("Y-m-d H:i:s")) %}
     {% if app.user %}
       <button data-toggle="modal"
               data-target="#ModalQuickEntries"
               class="btn btn-square-toround btn-bordered-success">
         <span class="fa fa-user-plus"></span> Inscription rapide
       </button>
-      {% include 'CalendarBundle:Course:forms/inscription.html.twig' %}
     {% endif %}
     <a href="/inscription/inscrire" class="btn btn-square-toround btn-bordered-success"><span class="fa fa-user-plus"></span> S'inscrire</a>
     {% if app.user %}
       <a href="/inscription/modification" class="btn btn-square-toround btn-bordered-primary"><span class="fa fa-pencil-square-o"></span> Modifier ses inscriptions</a>
       {% endif %}
   {% endif %}
+
 {% else %}
   <p class="lead">Les inscriptions ne sont pas disponibles.</p>
 {% endif %}

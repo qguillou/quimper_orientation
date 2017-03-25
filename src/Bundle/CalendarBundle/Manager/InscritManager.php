@@ -71,4 +71,14 @@ class InscritManager
         'Veuillez vérifier vos inscriptions ci-dessous, ou ouvrir de nouveau le formulaire d\'inscription pour obtenir des informations sur les erreurs.'
       );
     }
+
+    public function unregister($id)
+    {
+      $inscrit = $this->em->getRepository('Entity\Inscrit')->find($id);
+		  $course = $inscrit->getCourse();
+			$this->em->remove($inscrit);
+			$this->em->flush();
+      
+      return $course;
+    }
 }

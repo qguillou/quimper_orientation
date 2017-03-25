@@ -1,6 +1,34 @@
 {% extends '::base.html.twig' %}
 
-{% block msg %}{% endblock %}
+{% block javascript %}
+  {{ parent() }}
+
+  <script type='text/javascript'>
+    function unregister(id) {
+      $.ajax({
+        url: "{{ path('course_unregister') }}",
+        data: {
+          'id': id
+        },
+        success: function(result) {
+          $("#inscription").html(result);
+        }
+      });
+    }
+
+    function register() {
+      $.ajax({
+        url: "{{ path('course_register') }}",
+        data: {
+          'id': id
+        },
+        success: function(result) {
+          $("#inscription").html(result);
+        }
+      });
+    }
+  </script>
+{% endblock %}
 
 {% block content %}
 
@@ -33,7 +61,7 @@
 
   <div class="row-divider"></div>
 
-  <div class="row">
+  <div id="inscription" class="row">
     {% include 'CalendarBundle:Course:partials/inscrits.html.twig' %}
   </div>
 
@@ -44,5 +72,7 @@
     <p class="lead">Le plan d'accès vous montre le localisation du point d'accueil de l'événement.</p>
   </div>
 </div>
+
+{% include 'CalendarBundle:Course:forms/inscription.html.twig' %}
 
 {% endblock %}
