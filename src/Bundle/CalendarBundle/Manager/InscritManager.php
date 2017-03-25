@@ -61,14 +61,13 @@ class InscritManager
       for ($i = 0; $i < $size; $i++) {
         if(isset($inscrits[$i]['add'])) {
           $this->em->persist($data[$i]);
-    			$this->em->flush();
-
-          $this->session->getFlashBag()->add(
-            'info',
-            'Veuillez vérifier vos inscriptions ci-dessous, ou ouvrir de nouveau le formulaire d\'inscription pour obtenir des informations sur les erreurs.'
-          );
         }
       }
 
+      $this->em->flush();
+      $this->session->getFlashBag()->add(
+        'info',
+        'Veuillez vérifier vos inscriptions ci-dessous, ou ouvrir de nouveau le formulaire d\'inscription pour obtenir des informations sur les erreurs.'
+      );
     }
 }
