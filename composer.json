@@ -1,10 +1,11 @@
 {
     "name": "quentin/quimper_orientation",
+    "description": "",
     "license": "proprietary",
     "type": "project",
     "autoload": {
         "psr-4": {
-            "": "src/"
+            "src": "src/"
         },
         "classmap": [
             "app/AppKernel.php",

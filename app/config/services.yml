@@ -15,6 +15,6 @@ services:
 
   app.date.twig.extension:
           class: Services\DateExtension
-          arguments: ['@kernel']
+          arguments: []
           tags:
             - { name: twig.extension }

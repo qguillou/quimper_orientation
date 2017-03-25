@@ -57,7 +57,8 @@ class InscritManager
     public function saveInscrit($request, $data)
     {
       $inscrits = $request->get('collection_inscrit')['inscrits'];
-      for ($i = 0; $i < sizeof($inscrits); $i++) {
+      $size = sizeof($inscrits);
+      for ($i = 0; $i < $size; $i++) {
         if(isset($inscrits[$i]['add'])) {
           $this->em->persist($data[$i]);
     			$this->em->flush();

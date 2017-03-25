@@ -82,7 +82,7 @@ class User implements UserInterface, \Serializable
   private $inscrits;
 
   /**
-  * @ORM\OneToMany(targetEntity="Entity\User_attached", mappedBy="user", cascade={"remove"})
+  * @ORM\OneToMany(targetEntity="Entity\UserAttached", mappedBy="user", cascade={"remove"})
   */
   private $users;
 

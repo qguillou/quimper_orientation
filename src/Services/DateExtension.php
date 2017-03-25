@@ -7,11 +7,9 @@ use Symfony\Component\HttpKernel\KernelInterface;
 class DateExtension extends \Twig_Extension
 {
 
-    private $kernel;
-
-    public function __construct(KernelInterface $kernel)
+    public function __construct()
     {
-        $this->kernel = $kernel;
+      
     }
 
     /**
