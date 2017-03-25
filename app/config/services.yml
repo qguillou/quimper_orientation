@@ -18,3 +18,9 @@ services:
           arguments: []
           tags:
             - { name: twig.extension }
+
+  app.array.twig.extension:
+          class: Services\ArrayExtension
+          arguments: []
+          tags:
+            - { name: twig.extension }

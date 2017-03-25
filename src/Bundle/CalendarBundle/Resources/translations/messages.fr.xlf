@@ -66,6 +66,14 @@
                 <source>course.informations</source>
                 <target>Informations sur la course</target>
             </trans-unit>
+            <trans-unit id="course.track">
+                <source>course.track</source>
+                <target>Circuits</target>
+            </trans-unit>
+            <trans-unit id="course.user.entries">
+                <source>course.user.entries</source>
+                <target>inscrits</target>
+            </trans-unit>
 
         </body>
     </file>
