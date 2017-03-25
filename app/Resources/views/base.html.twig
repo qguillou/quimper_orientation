@@ -27,22 +27,6 @@
     {% endblock %}
 
     <div class="container">
-      {% block msg %}
-        <div class="row">
-          {% for successMessage in app.session.flashbag.get('success') %}
-            <div class="alert alert-dismissible alert-success">
-              {{ successMessage }}
-            </div>
-          {% endfor %}
-
-          {% for errorMessage in app.session.flashbag.get('error') %}
-            <div class="alert alert-dismissible alert-danger">
-              {{ errorMessage }}
-            </div>
-          {% endfor %}
-        </div>
-      {% endblock %}
-
       <div class="row">
         {% block content %}{% endblock %}
       </div>

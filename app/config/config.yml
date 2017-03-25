@@ -46,7 +46,7 @@ twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
     form_themes:
-        [ ':Form:error.html.twig' ]
+        [ ':Form:error.html.twig']
     globals:
         nVersion: "3.0"
         dVersion: "Mars 2017"
