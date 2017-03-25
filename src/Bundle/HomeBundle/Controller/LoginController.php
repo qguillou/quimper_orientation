@@ -5,14 +5,10 @@ namespace Bundle\HomeBundle\Controller;
 use Bundle\HomeBundle\Form\User\LoginType;
 use Bundle\HomeBundle\Form\User\ResetPasswordType;
 use Entity\User;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Form\FormError;
-use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken,
 Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 class LoginController extends Controller
 {

@@ -3,7 +3,6 @@
 namespace Bundle\ParcoursBundle\Manager;
 
 use Doctrine\ORM\EntityManager;
-use Entity\Cartes;
 
 class CarteManager
 {

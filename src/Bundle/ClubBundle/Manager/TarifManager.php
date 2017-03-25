@@ -3,7 +3,6 @@
 namespace Bundle\ClubBundle\Manager;
 
 use Doctrine\ORM\EntityManager;
-use Entity\Tarif;
 
 class TarifManager
 {

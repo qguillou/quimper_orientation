@@ -3,7 +3,6 @@
 namespace Bundle\ClubBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 class ClubController extends Controller
 {

@@ -3,17 +3,7 @@
 namespace Bundle\HomeBundle\Manager;
 
 use Doctrine\ORM\EntityManager;
-use Bundle\HomeBundle\Form\User\RegisterType;
-use Entity\User;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Form\FormError;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
-use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken,
-Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoder;
 
 class UserManager

@@ -3,7 +3,6 @@
 namespace Bundle\CalendarBundle\Manager;
 
 use Doctrine\ORM\EntityManager;
-use Entity\Course;
 
 class CourseManager
 {

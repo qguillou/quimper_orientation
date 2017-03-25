@@ -3,15 +3,8 @@
 namespace Bundle\CalendarBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Bundle\CalendarBundle\Form\Inscrit\CollectionInscritType;
-use Entity\Inscrit;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Form\FormError;
-use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
-use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken,
-Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 class CalendarController extends Controller
 {
