@@ -57,6 +57,10 @@
                 <source>calendar.entries.limit</source>
                 <target>Sur le site jusqu'au</target>
             </trans-unit>
+            <trans-unit id="calendar.entries.ended">
+                <source>calendar.entries.ended</source>
+                <target>Les inscriptions sont closes</target>
+            </trans-unit>
 
             <trans-unit id="course.informations">
                 <source>course.informations</source>

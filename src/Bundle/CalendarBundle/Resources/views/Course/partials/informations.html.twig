@@ -16,8 +16,10 @@
   {% endif %}
 
   <li><i class="fa fa-sign-in"></i> {{ "calendar.entries" | trans }}
-    {% if course.inscription %}
+    {% if course.inscription and not is_past(course.modification | date('Y-m-d H:i:s')) %}
     <p class="lead" style="color:{{color}}; font-weight:bold">{{ "calendar.entries.limit" | trans }} {{course.modification | format_datetime('d MMMM YYYY à HH:mm:ss', 'fr', 'Europe/Paris')}}</p>
+    {% elseif course.inscription %}
+    <p class="lead" style="color:{{color}}; font-weight:bold">{{ "calendar.entries.ended" | trans }}</p>
     {% else %}
     <p class="lead" style="color:{{color}}; font-weight:bold">{{ "calendar.see.with.organisator" | trans }}</p>
     {% endif %}
