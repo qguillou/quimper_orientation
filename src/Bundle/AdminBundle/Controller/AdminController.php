@@ -8,6 +8,9 @@ class AdminController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('AdminBundle:Admin:index.html.twig');
+        $admins = $this->get('manager.admin')->getAdministrators();
+
+        return $this->render('AdminBundle:Admin:index.html.twig',
+            array('admins' => $admins));
     }
 }
