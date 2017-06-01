@@ -7,8 +7,8 @@ course_unregister:
     defaults: { _controller: CalendarBundle:Calendar:unregister }
 
 course_register:
-    path:     /calendrier/unregister/
-    defaults: { _controller: CalendarBundle:Calendar:unregister }
+    path:     /calendrier/register/
+    defaults: { _controller: CalendarBundle:Calendar:register }
 
 course:
     path:     /calendrier/{id}/

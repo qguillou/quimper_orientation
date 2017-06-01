@@ -16,17 +16,26 @@
       });
     }
 
-    function register() {
-      $.ajax({
-        url: "{{ path('course_register') }}",
-        data: {
-          'id': id
-        },
-        success: function(result) {
-          $("#inscription").html(result);
-        }
+    $(function(){
+      $("form").submit(function(event){
+        event.preventDefault();
+
+        //Fermeture du modal
+        $("#ModalQuickEntries").modal('hide');
+        //Enregistrement des inscrits
+        $.ajax({
+          url: "{{ path('course_register') }}",
+          type: 'POST',
+          data: {
+            'id': {{ course.id }},
+            'values': $(this).serializeArray()
+          },
+          success: function(result) {
+            $("#inscription").html(result);
+          }
+        });
       });
-    }
+    });
   </script>
 {% endblock %}
 

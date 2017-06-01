@@ -55,13 +55,32 @@ class InscritManager
       return array("inscrits" => $inscrits);
     }
 
-    public function saveInscrit(Request $request, Array $data)
+    public function unregister($id)
     {
-      $inscrits = $request->get('collection_inscrit')['inscrits'];
-      $size = sizeof($inscrits);
-      for ($i = 0; $i < $size; $i++) {
-        if(isset($inscrits[$i]['add'])) {
-          $this->em->persist($data[$i]);
+      $inscrit = $this->em->getRepository('Entity\Inscrit')->find($id);
+
+		  $course = $inscrit->getCourse();
+
+      //Vérification que l'inscrit peut être supprimé par l'utilisateur courrant
+      $user = $this->token->getToken()->getUser();
+      if($user && ($inscrit->getUser() == $user)) {
+        $this->em->remove($inscrit);
+        $this->em->flush();
+      }
+
+      return $course;
+    }
+
+    public function register($id, $form)
+    {
+      $course = $this->em->getRepository('Entity\Course')->find($id);
+
+      //Enregistrer les modifications
+      foreach ($form->get('inscrits') as $inscrit) {
+        //TODO - Ne fonctionne pas, pas d'inscription quand coché
+        if($inscrit->get('add')->getData()) {
+          $inscrit->getData()->setCourse($course);
+          $this->em->persist($inscrit->getData());
         }
       }
 
@@ -70,15 +89,7 @@ class InscritManager
         'info',
         'Veuillez vérifier vos inscriptions ci-dessous, ou ouvrir de nouveau le formulaire d\'inscription pour obtenir des informations sur les erreurs.'
       );
-    }
 
-    public function unregister($id)
-    {
-      $inscrit = $this->em->getRepository('Entity\Inscrit')->find($id);
-		  $course = $inscrit->getCourse();
-			$this->em->remove($inscrit);
-			$this->em->flush();
-      
       return $course;
     }
 }
