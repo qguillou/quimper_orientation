@@ -1,0 +1,53 @@
+{% extends '::base.html.twig' %}
+
+{% block content %}
+
+  {% include '::Message/message.html.twig' %}
+
+  <div class="col-md-8">
+    <h1>Administration des actualités</h1>
+    <p class="lead">
+      Ajout, modification et suppression.
+    </p>
+  </div>
+
+  <div class="col-md-12">
+      <button type="button" class="btn btn-primary">Ajout d'une actualité</button>
+      <div class="row-divider"></div>
+  </div>
+
+  <div class="col-md-12">
+      <table class="table table-striped">
+          <thead>
+              <tr>
+                  <th>#</th>
+                  <th>Date de publication</th>
+                  <th>Titre</th>
+                  <th>Actions</th>
+              </tr>
+          </thead>
+          <tbody id="liste-actualite">
+              {% include 'AdminBundle:Actualite:table_actualite.html.twig' %}
+          </tbody>
+      </table>
+  </div>
+
+{% endblock %}
+
+{% block javascript %}
+  {{ parent() }}
+
+  <script type='text/javascript'>
+    function unregister(id) {
+      $.ajax({
+        url: "{{ path('actualite_delete') }}",
+        data: {
+          'id': id
+        },
+        success: function(result) {
+          $("#liste-actualite").html(result);
+        }
+      });
+    }
+  </script>
+{% endblock %}

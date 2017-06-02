@@ -1,5 +1,6 @@
-h3 {
+h1, h3 {
   margin-top: 15px;
+  margin-bottom: 5px;
 }
 
 .navbar-content {

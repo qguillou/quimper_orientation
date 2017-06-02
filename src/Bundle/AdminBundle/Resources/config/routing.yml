@@ -1,3 +1,11 @@
 admin_home:
     path:     /admin
     defaults: { _controller: AdminBundle:Admin:index }
+
+admin_actualite:
+    path:       /admin/actualite
+    defaults:   { _controller: AdminBundle:AdminActualite:index }
+
+actualite_delete:
+    path:     /admin/actualite/delete
+    defaults: { _controller: AdminBundle:AdminActualite:delete }

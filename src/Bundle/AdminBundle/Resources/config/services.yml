@@ -5,3 +5,7 @@ services:
     manager.admin:
         class: Bundle\AdminBundle\Manager\AdminManager
         arguments: ['@doctrine.orm.entity_manager']
+
+    manager.admin_actualite:
+        class: Bundle\AdminBundle\Manager\AdminActualiteManager
+        arguments: ['@doctrine.orm.entity_manager']

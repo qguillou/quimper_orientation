@@ -37,11 +37,11 @@
           <td>{{inscrit.commentaire}}</td>
           {% if app.user == inscrit.user %}
             <td onclick="unregister( {{inscrit.id}} )">
-            <i class="fa fa-times" style="color: red;cursor:pointer;"></i>
+                <i class="fa fa-times" style="color: red;cursor:pointer;"></i>
+            </td>
           {% else %}
             <td></td>
           {% endif %}
-          </td>
         </tr>
         {% endfor %}
       </tbody>
