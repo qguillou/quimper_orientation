@@ -33,6 +33,11 @@
                 <target>Calendrier</target>
             </trans-unit>
 
+            <trans-unit id="nav.news">
+                <source>nav.news</source>
+                <target>Actualité</target>
+            </trans-unit>
+
             <trans-unit id="nav.entries">
                 <source>nav.entries</source>
                 <target>Inscription</target>
@@ -66,6 +71,10 @@
             <trans-unit id="nav.account.switch.admin">
                 <source>nav.account.switch.admin</source>
                 <target>Passer en webmaster</target>
+            </trans-unit>
+            <trans-unit id="nav.account.switch.user">
+                <source>nav.account.switch.user</source>
+                <target>Passer en utilisateur</target>
             </trans-unit>
             <trans-unit id="nav.account.logout">
                 <source>nav.account.logout</source>

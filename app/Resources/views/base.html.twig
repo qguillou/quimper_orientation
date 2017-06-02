@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="UTF-8" />
     <title>Quimper Orientation Coatarmor 29</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.png') }}" />
@@ -11,28 +11,28 @@
     <link href="{{ asset( 'css/font-awesome.css' ) }}" rel="stylesheet" type="text/css" />
 
     {% block javascript %}
-      <script src="{{ asset( 'js/jquery.js' ) }}"></script>
-      <script src="{{ asset( 'js/bootstrap.js' ) }}"></script>
-      <script src="{{ asset( 'js/bootstrap-tab.js' ) }}"></script>
+    <script src="{{ asset( 'js/jquery.js' ) }}"></script>
+    <script src="{{ asset( 'js/bootstrap.js' ) }}"></script>
+    <script src="{{ asset( 'js/bootstrap-tab.js' ) }}"></script>
     {% endblock %}
-  </head>
+</head>
 
-  <body>
+<body>
     {% block header %}
-      {% if app.user != null %}
-        {% include ':Navbar:header_user.html.twig' %}
-      {% else %}
-        {% include ':Navbar:header_default.html.twig' %}
-      {% endif %}
+    {% if app.user != null and 'admin' in app.request.uri %}
+    {% include ':Navbar:header_admin.html.twig' %}
+    {% else %}
+    {% include ':Navbar:header_default.html.twig' %}
+    {% endif %}
     {% endblock %}
 
     <div class="container">
-      <div class="row">
-        {% block content %}{% endblock %}
-      </div>
+        <div class="row">
+            {% block content %}{% endblock %}
+        </div>
     </div>
 
     {% include ':Navbar:footer.html.twig' %}
-  </body>
+</body>
 
 </html>

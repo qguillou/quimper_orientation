@@ -48,8 +48,8 @@ twig:
     form_themes:
         [ ':Form:error.html.twig']
     globals:
-        nVersion: "3.0"
-        dVersion: "Mars 2017"
+        nVersion: "3.0.0"
+        dVersion: "Juin 2017"
         author: "Quentin GUILLOU"
 
 # Doctrine Configuration

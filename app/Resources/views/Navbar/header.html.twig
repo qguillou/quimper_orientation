@@ -1,0 +1,5 @@
+{% if app.user != null and 'admin' in app.request.uri %}
+    {% include ':Navbar:header_admin.html.twig' %}
+{% else %}
+    {% include ':Navbar:header_default.html.twig' %}
+{% endif %}
