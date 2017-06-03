@@ -13,8 +13,10 @@
     <div class="row">
         <div class="form-group">
             {{ form_label(form.titre) }}
-            {{ form_widget(form.titre) }}
-            {{ form_errors(form.titre) }}
+            <div class="col-sm-9">
+                {{ form_widget(form.titre) }}
+                {{ form_errors(form.titre) }}
+            </div>
         </div>
     </div>
 
@@ -22,7 +24,7 @@
         <div class="form-group">
             {{ form_label(form.contenu) }}
 
-            <div class="col-sm-8">
+            <div class="col-sm-9">
                 {{ form_widget(form.contenu) }}
                 {{ form_errors(form.contenu) }}
             </div>

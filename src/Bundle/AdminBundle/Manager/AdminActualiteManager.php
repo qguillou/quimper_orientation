@@ -3,6 +3,7 @@
 namespace Bundle\AdminBundle\Manager;
 
 use Doctrine\ORM\EntityManager;
+use Entity\Actualite;
 
 class AdminActualiteManager
 {

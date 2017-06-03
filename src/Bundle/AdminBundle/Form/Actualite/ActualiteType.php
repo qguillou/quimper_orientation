@@ -17,8 +17,8 @@ class ActualiteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('titre', TextType::class, array('label' => 'Titre de l\'actualité', 'attr' => array('class' => 'form-control col-sm-9'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
-            ->add('contenu', TextareaType::class, array('label' => 'Contenu', 'attr' => array('class' => 'form-control col-sm-9', 'rows' => '10'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
+            ->add('titre', TextType::class, array('label' => 'Titre de l\'actualité', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
+            ->add('contenu', TextareaType::class, array('label' => 'Contenu', 'attr' => array('class' => 'form-control', 'rows' => '10'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
             ->add('reset', ResetType::class, array('label' => 'Annuler', 'attr' => array('class' => 'btn btn-default')))
             ->add('save', SubmitType::class, array('label' => 'Enregistrer', 'attr' => array('class' => 'btn btn-success')));
     }
