@@ -93,9 +93,3 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
-
-sonata_intl:
-    timezone:
-        locales:
-            fr:    Europe/Paris
-            en_UK: Europe/London
