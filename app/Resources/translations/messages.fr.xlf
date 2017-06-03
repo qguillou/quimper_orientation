@@ -60,6 +60,11 @@
                 <target>Parcours permanents</target>
             </trans-unit>
 
+            <trans-unit id="nav.definition">
+                <source>nav.definition</source>
+                <target>Les définitions</target>
+            </trans-unit>
+
             <trans-unit id="nav.account.parameters">
                 <source>nav.account.parameters</source>
                 <target>Paramètres</target>

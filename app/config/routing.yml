@@ -1,8 +1,3 @@
-definition:
-    resource: "@DefinitionBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
 home:
     resource: '@HomeBundle/Resources/config/routing.yml'
 
@@ -17,3 +12,6 @@ calendrier:
 
 admin:
     resource: '@AdminBundle/Resources/config/routing.yml'
+
+definition:
+    resource: '@DefinitionBundle/Resources/config/routing.yml'
