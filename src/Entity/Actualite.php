@@ -29,6 +29,13 @@ class Actualite
     private $titre;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="contenu", type="text")
+     */
+    private $contenu;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_modification", type="datetime")
@@ -75,6 +82,30 @@ class Actualite
     public function getTitre()
     {
         return $this->titre;
+    }
+
+    /**
+     * Set contenu
+     *
+     * @param string $contenu
+     *
+     * @return Actualite
+     */
+    public function setContenu($contenu)
+    {
+        $this->contenu = $contenu;
+
+        return $this;
+    }
+
+    /**
+     * Get contenu
+     *
+     * @return string
+     */
+    public function getContenu()
+    {
+        return $this->contenu;
     }
 
     /**

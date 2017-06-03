@@ -12,12 +12,12 @@
   </div>
 
   <div class="col-md-12">
-      <button type="button" class="btn btn-primary">Ajout d'une actualité</button>
+      <button id="add" type="button" class="btn btn-primary">Ajout d'une actualité</button>
       <div class="row-divider"></div>
   </div>
 
   <div class="col-md-12">
-      <table class="table table-striped">
+      <table class="table table-striped table-hover">
           <thead>
               <tr>
                   <th>#</th>
@@ -32,12 +32,32 @@
       </table>
   </div>
 
+  <div class="modal fade" id="ModalEditActualite" tabindex="-1" role="dialog" aria-labelledby="ModalEditActualiteTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content" id="form-actualite">
+
+      </div>
+    </div>
+  </div>
+
 {% endblock %}
 
 {% block javascript %}
   {{ parent() }}
 
   <script type='text/javascript'>
+      function register(id) {
+        $.ajax({
+          url: "{{ path('actualite_add') }}",
+          data: {
+            'value': $('#add').serializeArray()
+          },
+          success: function(result) {
+            $("#liste-actualite").html(result);
+          }
+        });
+      }
+
     function unregister(id) {
       $.ajax({
         url: "{{ path('actualite_delete') }}",
@@ -49,5 +69,39 @@
         }
       });
     }
+
+    function form(id = 0) {
+        $.ajax({
+          url: "{{ path('actualite_form') }}",
+          data: {
+            'id': id
+          },
+          success: function(result) {
+            $("#form-actualite").html(result);
+            $("#ModalEditActualite").modal('show');
+          }
+        });
+    }
+
+    $("form").submit(function(event){
+        event.preventDefault();
+        console.log("ok");
+        $.ajax({
+          url: "{{ path('actualite_add') }}",
+          data: {
+            'value': $(this).serializeArray()
+          },
+          success: function(result) {
+            $("#liste-actualite").html(result);
+          }
+        });
+    });
+
+    window.onload = function() {
+        document.getElementById("add").addEventListener("click", function(){
+            form(0);
+        }, false);
+    }
+
   </script>
 {% endblock %}

@@ -6,6 +6,14 @@ admin_actualite:
     path:       /admin/actualite
     defaults:   { _controller: AdminBundle:AdminActualite:index }
 
+actualite_add:
+    path:     /admin/actualite/add
+    defaults: { _controller: AdminBundle:AdminActualite:add }
+
 actualite_delete:
     path:     /admin/actualite/delete
     defaults: { _controller: AdminBundle:AdminActualite:delete }
+
+actualite_form:
+    path:     /admin/actualite/form
+    defaults: { _controller: AdminBundle:AdminActualite:form }

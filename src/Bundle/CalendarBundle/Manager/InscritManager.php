@@ -5,7 +5,6 @@ namespace Bundle\CalendarBundle\Manager;
 use Doctrine\ORM\EntityManager;
 use Entity\Inscrit;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authorization\AuthorizationChecker;
 
 class InscritManager
