@@ -1,6 +1,6 @@
 {
     "name": "quentin/quimper_orientation",
-    "description": "",
+    "description": "Site Internet du club de course d'orientation de Quimper",
     "license": "proprietary",
     "type": "project",
     "autoload": {
