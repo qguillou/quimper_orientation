@@ -83,20 +83,6 @@
         });
     }
 
-    $("form").submit(function(event){
-        event.preventDefault();
-        console.log("ok");
-        $.ajax({
-          url: "{{ path('actualite_add') }}",
-          data: {
-            'value': $(this).serializeArray()
-          },
-          success: function(result) {
-            $("#liste-actualite").html(result);
-          }
-        });
-    });
-
     window.onload = function() {
         document.getElementById("add").addEventListener("click", function(){
             form(0);

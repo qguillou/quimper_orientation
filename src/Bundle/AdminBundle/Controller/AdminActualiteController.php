@@ -21,9 +21,11 @@ class AdminActualiteController extends Controller
     {
         $actualite = new Actualite();
         $form = $this->createForm(ActualiteType::class, $actualite);
-        $form->handleRequest($request->get('value'));
+        $form->handleRequest($request);
 
-        $this->get('manager.admin_actualite')->save($actualite);
+        //if ($form->isSubmitted() && $form->isValid()) {
+            $this->get('manager.admin_actualite')->save($actualite);
+        //}
 
         $actualites = $this->get('manager.admin_actualite')->getAll();
 

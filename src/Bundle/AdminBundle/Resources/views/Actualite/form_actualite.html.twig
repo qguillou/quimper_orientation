@@ -38,3 +38,17 @@
     {{ form_widget(form.save) }}
 </div>
 {{ form_end(form) }}
+
+<script type="text/javascript">
+    $("form").submit(function(event){
+        event.preventDefault();
+        $.ajax({
+          url: "{{ path('actualite_add') }}",
+          data: $(this).serializeArray(),
+          success: function(result) {
+            $("#ModalEditActualite").modal('hide');
+            $("#liste-actualite").html(result);
+          }
+        });
+    });
+</script>
