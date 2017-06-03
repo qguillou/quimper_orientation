@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new Bundle\ParcoursBundle\ParcoursBundle(),
             new Bundle\CalendarBundle\CalendarBundle(),
             new Bundle\AdminBundle\AdminBundle(),
+            new DefinitionBundle\DefinitionBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
