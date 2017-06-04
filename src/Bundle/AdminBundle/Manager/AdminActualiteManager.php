@@ -25,7 +25,7 @@ class AdminActualiteManager
     public function getAll()
     {
         $repository = $this->em->getRepository('Entity\Actualite');
-		$actualites = $repository->findAll();
+		$actualites = $repository->findBy(array(), array('dateModification' => 'DESC'));
 
         return $actualites;
     }
