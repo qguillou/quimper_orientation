@@ -19,7 +19,12 @@ class AdminActualiteController extends Controller
 
     public function addAction(Request $request)
     {
-        $actualite = new Actualite();
+        if ($request->request->get('actualite')['id'] != "0") {
+            $actualite = $this->get('manager.admin_actualite')->get($request->request->get('actualite')['id']);
+        } else {
+            $actualite = new Actualite();
+        }
+
         $form = $this->createForm(ActualiteType::class, $actualite);
         $form->handleRequest($request);
 
