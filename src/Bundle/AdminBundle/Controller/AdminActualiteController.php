@@ -23,9 +23,9 @@ class AdminActualiteController extends Controller
         $form = $this->createForm(ActualiteType::class, $actualite);
         $form->handleRequest($request);
 
-        //if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $this->get('manager.admin_actualite')->save($actualite);
-        //}
+        }
 
         $actualites = $this->get('manager.admin_actualite')->getAll();
 
@@ -47,8 +47,12 @@ class AdminActualiteController extends Controller
     {
         if ($request->get('id') != 0) {
             $actualite = $this->get('manager.admin_actualite')->get($request->get('id'));
+            $actualite->setDateModification(new \DateTime('now'));
         } else {
             $actualite = new Actualite();
+            $actualite->setId(0);
+            $actualite->setDateModification(new \DateTime('now'));
+            $actualite->setDateCreation(new \DateTime('now'));
         }
 
         $form = $this->createForm(ActualiteType::class, $actualite);

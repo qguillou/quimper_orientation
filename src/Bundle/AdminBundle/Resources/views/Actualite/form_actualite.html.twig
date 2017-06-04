@@ -37,6 +37,7 @@
     {{ form_widget(form.reset, {'attr': {'data-dismiss': "modal"}}) }}
     {{ form_widget(form.save) }}
 </div>
+{{ form_widget(form, {'attr': {'class': 'hidden'}}) }}
 {{ form_end(form) }}
 
 <script type="text/javascript">
@@ -45,6 +46,7 @@
         $.ajax({
           url: "{{ path('actualite_add') }}",
           data: $(this).serializeArray(),
+          type: 'post',
           success: function(result) {
             $("#ModalEditActualite").modal('hide');
             $("#liste-actualite").html(result);

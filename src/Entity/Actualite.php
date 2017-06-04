@@ -61,6 +61,20 @@ class Actualite
     }
 
     /**
+     * Set id
+     *
+     * @param string $id
+     *
+     * @return Actualite
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
      * Set titre
      *
      * @param string $titre
