@@ -1,8 +1,6 @@
 {% extends '::base.html.twig' %}
 
 {% block content %}
-
-
     <div class="col-md-9">
         <h1>Administration du site</h1>
         <p class="lead">
@@ -19,18 +17,22 @@
         <ul class="nav nav-tabs">
             <li class="active"><a  href="#generale" data-toggle="tab">Générales</a></li>
             <li><a  href="#systeme" data-toggle="tab">Système</a></li>
+            <li><a  href="#module" data-toggle="tab">Modules</a></li>
             <li><a  href="#version" data-toggle="tab">Version</a></li>
         </ul>
 
         <div class="tab-content clearfix">
             <div class="tab-pane active" id="generale">
-                {% include 'AdminBundle:Configuration:generale.html.twig' %}
+                {% include 'ConfigurationBundle:Configuration:generale.html.twig' %}
             </div>
             <div class="tab-pane" id="systeme">
-                {% include 'AdminBundle:Configuration:systeme.html.twig' %}
+                {% include 'ConfigurationBundle:Configuration:systeme.html.twig' %}
+            </div>
+            <div class="tab-pane" id="module">
+                {% include 'ConfigurationBundle:Configuration:module.html.twig' %}
             </div>
             <div class="tab-pane" id="version">
-                {% include 'AdminBundle:Configuration:version.html.twig' %}
+                {% include 'ConfigurationBundle:Configuration:version.html.twig' %}
             </div>
         </div>
 

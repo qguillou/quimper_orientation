@@ -1,15 +1,16 @@
 <?php
 
-namespace Bundle\AdminBundle\Controller;
+namespace Bundle\ConfigurationBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Yaml\Dumper;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\ResetType;
 
-class AdminConfigurationController extends Controller
+class ConfigurationController extends Controller
 {
     public function indexAction(Request $request)
     {
@@ -30,11 +31,23 @@ class AdminConfigurationController extends Controller
             'mailer_user' => $this->container->getParameter('mailer_user'),
             'mailer_password' => $this->container->getParameter('mailer_password'),
 
+            'module_club' => $this->container->get('twig')->getGlobals()['module_club'],
+            'club_name' => 'Le club',
+            'module_calendrier' => $this->container->get('twig')->getGlobals()['module_calendrier'],
+            'calendrier_name' => 'Calendrier',
+            'module_inscription' => $this->container->get('twig')->getGlobals()['module_inscription'],
+            'inscription_name' => 'Inscription',
+            'module_resultat' => $this->container->get('twig')->getGlobals()['module_resultat'],
+            'resultat_name' => 'Résultats',
+            'module_carte' => $this->container->get('twig')->getGlobals()['module_carte'],
+            'carte_name' => 'Parcours permanents',
+            'module_definition' => $this->container->get('twig')->getGlobals()['module_definition'],
+            'definition_name' => 'Les définitions',
         );
 
         $form = $this->createFormBuilder($defaultValues)
             ->add('site_name', TextType::class, array('label' => 'Nom du site', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
-            ->add('color_primary', TextType::class, array('label' => 'Couleur principale', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
+            ->add('color_primary', TextType::class, array('label' => 'Couleur principale', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label'), 'required' => false))
 
             ->add('nVersion', TextType::class, array('label' => 'N° de version', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
             ->add('dVersion', TextType::class, array('label' => 'Date de version', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
@@ -51,6 +64,24 @@ class AdminConfigurationController extends Controller
             ->add('mailer_user', TextType::class, array('label' => 'Nom de l\'utilisateur', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
             ->add('mailer_password', TextType::class, array('label' => 'Mot de passe', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
 
+            ->add('module_club', CheckboxType::class, array('label' => 'Activer le module', 'label_attr' => array('class' => 'col-sm-3 control-label'), 'required' => false))
+            ->add('club_name', TextType::class, array('label' => 'Nom du menu', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
+
+            ->add('module_calendrier', CheckboxType::class, array('label' => 'Activer le module', 'label_attr' => array('class' => 'col-sm-3 control-label'), 'required' => false))
+            ->add('calendrier_name', TextType::class, array('label' => 'Nom du menu', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
+
+            ->add('module_inscription', CheckboxType::class, array('label' => 'Activer le module', 'label_attr' => array('class' => 'col-sm-3 control-label'), 'required' => false))
+            ->add('inscription_name', TextType::class, array('label' => 'Nom du menu', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
+
+            ->add('module_resultat', CheckboxType::class, array('label' => 'Activer le module', 'label_attr' => array('class' => 'col-sm-3 control-label'), 'required' => false))
+            ->add('resultat_name', TextType::class, array('label' => 'Nom du menu', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
+
+            ->add('module_carte', CheckboxType::class, array('label' => 'Activer le module', 'label_attr' => array('class' => 'col-sm-3 control-label'), 'required' => false))
+            ->add('carte_name', TextType::class, array('label' => 'Nom du menu', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
+
+            ->add('module_definition', CheckboxType::class, array('label' => 'Activer le module', 'label_attr' => array('class' => 'col-sm-3 control-label'), 'required' => false))
+            ->add('definition_name', TextType::class, array('label' => 'Nom du menu', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
+
             ->add('reset', ResetType::class, array('label' => 'Annuler', 'attr' => array('class' => 'btn btn-default')))
             ->add('save', SubmitType::class, array('label' => 'Enregistrer', 'attr' => array('class' => 'btn btn-success')))
             ->getForm();
@@ -58,7 +89,6 @@ class AdminConfigurationController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // data is an array with "name", "email", and "message" keys
             $data = $form->getData();
 
             $ymlDump = array(
@@ -68,6 +98,12 @@ class AdminConfigurationController extends Controller
                         'dVersion' => $data['dVersion'],
                         'author' => $data['author'],
                         'site_name' => $data['site_name'],
+                        'module_club' => $data['module_club'],
+                        'module_calendrier' => $data['module_calendrier'],
+                        'module_inscription' => $data['module_inscription'],
+                        'module_resultat' => $data['module_resultat'],
+                        'module_carte' => $data['module_carte'],
+                        'module_definition' => $data['module_definition'],
                     )
                 ),
                 'parameters' => array(
@@ -94,7 +130,7 @@ class AdminConfigurationController extends Controller
             );
         }
 
-        return $this->render('AdminBundle:Configuration:index.html.twig',
+        return $this->render('ConfigurationBundle:Configuration:index.html.twig',
             array('form' => $form->createView()));
     }
 }
