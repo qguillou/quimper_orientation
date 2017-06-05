@@ -2,6 +2,13 @@
     <tr>
         <td>  </td>
         <td> {{ type.nom }} </td>
+        <td>
+            {% if type.color %}
+                <div class="color" style="background-color: {{type.color}}"/>
+            {% else %}
+
+            {% endif %}
+        </td>
         <td> {{ type.userModification.prenom }} {{ type.userModification.nom }} </td>
         <td> {{ type.dateModification | format_datetime('dd MMMM YYYY', 'fr', 'Europe/Paris') }} </td>
         <td>
