@@ -1,0 +1,97 @@
+{% extends '::base.html.twig' %}
+
+{% block content %}
+
+
+  <div class="col-md-8">
+    <h1>Administration des types de course</h1>
+    <p class="lead">
+      Ajout, modification et suppression.
+    </p>
+
+    {% include '::Message/message.html.twig' %}
+  </div>
+
+
+  <div class="col-md-12">
+      <button id="add" type="button" class="btn btn-primary">Ajout d'un type de course</button>
+      <div class="row-divider"></div>
+  </div>
+
+  <div class="col-md-12">
+      <table class="table table-striped table-hover">
+          <thead>
+              <tr>
+                  <th>#</th>
+                  <th>Nom</th>
+                  <th>Utilisateur</th>
+                  <th>Date Modification</th>
+                  <th>Actions</th>
+              </tr>
+          </thead>
+          <tbody id="liste">
+              {% include 'AdminBundle:TypeCourse:table_type.html.twig' %}
+          </tbody>
+      </table>
+  </div>
+
+  <div class="modal fade" id="ModalEdit" tabindex="-1" role="dialog" aria-labelledby="ModalEditTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content" id="form-course">
+
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block javascript %}
+  {{ parent() }}
+
+  <script type='text/javascript'>
+      function register(id) {
+        $.ajax({
+          url: "{{ path('type_course_add') }}",
+          data: {
+            'value': $('#add').serializeArray()
+          },
+          success: function(result) {
+            $("#liste").html(result);
+          }
+        });
+      }
+
+    function unregister(id) {
+      $.ajax({
+        url: "{{ path('type_course_delete') }}",
+        data: {
+          'id': id
+        },
+        success: function(result) {
+          $("#liste").html(result.table);
+          $("#messages").html(result.messages);
+        }
+      });
+    }
+
+    function form(id = 0) {
+        $.ajax({
+          url: "{{ path('type_course_form') }}",
+          data: {
+            'id': id
+          },
+          success: function(result) {
+            $("#form-course").html(result);
+            $("#ModalEdit").modal('show');
+          }
+        });
+    }
+
+    window.onload = function() {
+        document.getElementById("add").addEventListener("click", function(){
+            form(0);
+        }, false);
+    }
+
+  </script>
+{% endblock %}

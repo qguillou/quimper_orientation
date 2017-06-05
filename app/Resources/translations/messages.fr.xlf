@@ -38,6 +38,15 @@
                 <target>Actualité</target>
             </trans-unit>
 
+            <trans-unit id="nav.data">
+                <source>nav.data</source>
+                <target>Données</target>
+            </trans-unit>
+            <trans-unit id="nav.data.type">
+                <source>nav.data.type</source>
+                <target>Type de course</target>
+            </trans-unit>
+
             <trans-unit id="nav.entries">
                 <source>nav.entries</source>
                 <target>Inscription</target>

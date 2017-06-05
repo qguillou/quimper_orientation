@@ -35,3 +35,20 @@ course_delete:
 course_form:
     path:     /admin/course/form
     defaults: { _controller: AdminBundle:AdminCourse:form }
+
+#Type
+admin_type_course:
+    path:       /admin/data/type
+    defaults:   { _controller: AdminBundle:AdminTypeCourse:index }
+
+type_course_add:
+    path:     /admin/data/type/add
+    defaults: { _controller: AdminBundle:AdminTypeCourse:add }
+
+type_course_delete:
+    path:     /admin/data/type/delete
+    defaults: { _controller: AdminBundle:AdminTypeCourse:delete }
+
+type_course_form:
+    path:     /admin/data/type/form
+    defaults: { _controller: AdminBundle:AdminTypeCourse:form }

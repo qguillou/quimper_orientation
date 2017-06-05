@@ -1,59 +1,69 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="/admin">{{ "app.name" | trans }}</a>
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/admin">{{ "app.name" | trans }}</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+            <ul class="nav navbar-nav">
+                <li><a href="/admin/actualite">{{ "nav.news" | trans }}</a></li>
+                <li><a href="/admin/course">{{ "nav.calendar" | trans }}</a></li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        {{ "nav.data" | trans }}
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="/admin/data/type">{{ "nav.data.type" | trans }}</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-user"></i>
+                        {{app.user.username}}
+                        <span class="badge" title="Nombre de course à venir, où vous êtes inscrits">
+                            0
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        {% if is_granted('ROLE_WEBMASTER') %}
+                        <li>
+                            <a href="/account/mail">
+                                <i class="fa fa-envelope"></i> {{ "nav.account.webmail" | trans }}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/document">
+                                <i class="fa fa-folder"></i> {{ "nav.account.documents" | trans }}
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="/">
+                                <i class="fa fa-terminal"></i> {{ "nav.account.switch.user" | trans }}
+                            </a>
+                        </li>
+                        {% endif %}
+
+                        <li class="divider"></li>
+                        <li>
+                            <a href="/logout">
+                                <i class="fa fa-sign-out"></i> {{ "nav.account.logout" | trans }}
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </div>
-
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
-      <ul class="nav navbar-nav">
-        <li><a href="/admin/actualite">{{ "nav.news" | trans }}</a></li>
-        <li><a href="/admin/course">{{ "nav.calendar" | trans }}</a></li>
-      </ul>
-
-      <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <i class="fa fa-user"></i>
-            {{app.user.username}}
-            <span class="badge" title="Nombre de course à venir, où vous êtes inscrits">
-              0
-            </span>
-          </a>
-          <ul class="dropdown-menu">
-            {% if is_granted('ROLE_WEBMASTER') %}
-            <li>
-              <a href="/account/mail">
-                <i class="fa fa-envelope"></i> {{ "nav.account.webmail" | trans }}
-              </a>
-            </li>
-            <li>
-              <a href="/document">
-                <i class="fa fa-folder"></i> {{ "nav.account.documents" | trans }}
-              </a>
-            </li>
-            <li class="divider"></li>
-            <li>
-              <a href="/">
-                <i class="fa fa-terminal"></i> {{ "nav.account.switch.user" | trans }}
-              </a>
-            </li>
-            {% endif %}
-
-            <li class="divider"></li>
-            <li>
-              <a href="/logout">
-                <i class="fa fa-sign-out"></i> {{ "nav.account.logout" | trans }}
-              </a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </div>
 </nav>

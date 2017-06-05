@@ -1,0 +1,12 @@
+{% for type in types %}
+    <tr>
+        <td>  </td>
+        <td> {{ type.nom }} </td>
+        <td> {{ type.userModification.prenom }} {{ type.userModification.nom }} </td>
+        <td> {{ type.dateModification | format_datetime('dd MMMM YYYY', 'fr', 'Europe/Paris') }} </td>
+        <td>
+            <i class="fa fa-edit" style="color: orange;cursor:pointer;margin-right:0.5em;" onclick="form( {{type.id}} )"></i>
+            <i class="fa fa-times" style="color: red;cursor:pointer;" onclick="unregister( {{type.id}} )"></i>
+        </td>
+    </tr>
+{% endfor %}

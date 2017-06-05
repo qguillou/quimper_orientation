@@ -13,3 +13,7 @@ services:
     manager.admin_course:
         class: Bundle\AdminBundle\Manager\AdminCourseManager
         arguments: ['@doctrine.orm.entity_manager', '@session']
+
+    manager.admin_type_course:
+        class: Bundle\AdminBundle\Manager\AdminTypeCourseManager
+        arguments: ['@doctrine.orm.entity_manager', '@session']
