@@ -5,7 +5,7 @@ namespace Bundle\AdminBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Entity\Actualite;
+use Entity\Actalite;
 use Bundle\AdminBundle\Form\Actualite\ActualiteType;
 
 class AdminActualiteController extends Controller

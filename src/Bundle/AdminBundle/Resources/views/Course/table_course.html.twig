@@ -1,0 +1,12 @@
+{% for course in courses %}
+    <tr>
+        <td> {{ course.id }} </td>
+        <td> {{ course.date | format_datetime('dd MMMM YYYY', 'fr', 'Europe/Paris') }} </td>
+        <td> {{ course.nom }} </td>
+        <td> {{ course.userModification.prenom }} {{ course.userModification.nom }} </td>
+        <td>
+            <i class="fa fa-edit" style="color: orange;cursor:pointer;margin-right:0.5em;" onclick="form( {{course.id}} )"></i>
+            <i class="fa fa-times" style="color: red;cursor:pointer;" onclick="unregister( {{course.id}} )"></i>
+        </td>
+    </tr>
+{% endfor %}

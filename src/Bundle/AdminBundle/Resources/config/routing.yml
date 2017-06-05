@@ -2,6 +2,7 @@ admin_home:
     path:     /admin
     defaults: { _controller: AdminBundle:Admin:index }
 
+#Actualite
 admin_actualite:
     path:       /admin/actualite
     defaults:   { _controller: AdminBundle:AdminActualite:index }
@@ -17,3 +18,20 @@ actualite_delete:
 actualite_form:
     path:     /admin/actualite/form
     defaults: { _controller: AdminBundle:AdminActualite:form }
+
+#Course
+admin_course:
+    path:       /admin/course
+    defaults:   { _controller: AdminBundle:AdminCourse:index }
+
+course_add:
+    path:     /admin/course/add
+    defaults: { _controller: AdminBundle:AdminCourse:add }
+
+course_delete:
+    path:     /admin/course/delete
+    defaults: { _controller: AdminBundle:AdminCourse:delete }
+
+course_form:
+    path:     /admin/course/form
+    defaults: { _controller: AdminBundle:AdminCourse:form }

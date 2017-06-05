@@ -9,3 +9,7 @@ services:
     manager.admin_actualite:
         class: Bundle\AdminBundle\Manager\AdminActualiteManager
         arguments: ['@doctrine.orm.entity_manager', '@session']
+
+    manager.admin_course:
+        class: Bundle\AdminBundle\Manager\AdminCourseManager
+        arguments: ['@doctrine.orm.entity_manager', '@session']
