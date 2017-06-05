@@ -1,0 +1,84 @@
+<h2>Configuration base de données</h2>
+<div class="row">
+    <div class="form-group">
+        {{ form_label(form.database_host) }}
+        <div class="col-sm-9">
+            {{ form_widget(form.database_host) }}
+            {{ form_errors(form.database_host) }}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="form-group">
+        {{ form_label(form.database_port) }}
+        <div class="col-sm-9">
+            {{ form_widget(form.database_port) }}
+            {{ form_errors(form.database_port) }}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="form-group">
+        {{ form_label(form.database_name) }}
+        <div class="col-sm-9">
+            {{ form_widget(form.database_name) }}
+            {{ form_errors(form.database_name) }}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="form-group">
+        {{ form_label(form.database_user) }}
+        <div class="col-sm-9">
+            {{ form_widget(form.database_user) }}
+            {{ form_errors(form.database_user) }}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="form-group">
+        {{ form_label(form.database_password) }}
+        <div class="col-sm-9">
+            {{ form_widget(form.database_password) }}
+            {{ form_errors(form.database_password) }}
+        </div>
+    </div>
+</div>
+
+<h2>Configuration serveur mail</h2>
+<div class="row">
+    <div class="form-group">
+        {{ form_label(form.mailer_transport) }}
+        <div class="col-sm-9">
+            {{ form_widget(form.mailer_transport) }}
+            {{ form_errors(form.mailer_transport) }}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="form-group">
+        {{ form_label(form.mailer_host) }}
+        <div class="col-sm-9">
+            {{ form_widget(form.mailer_host) }}
+            {{ form_errors(form.mailer_host) }}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="form-group">
+        {{ form_label(form.mailer_user) }}
+        <div class="col-sm-9">
+            {{ form_widget(form.mailer_user) }}
+            {{ form_errors(form.mailer_user) }}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="form-group">
+        {{ form_label(form.mailer_password) }}
+        <div class="col-sm-9">
+            {{ form_widget(form.mailer_password) }}
+            {{ form_errors(form.mailer_password) }}
+        </div>
+    </div>
+</div>

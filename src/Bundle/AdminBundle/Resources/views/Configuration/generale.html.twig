@@ -1,0 +1,21 @@
+<h2>Configurations générales</h2>
+<div class="row">
+    <div class="form-group">
+        {{ form_label(form.site_name) }}
+        <div class="col-sm-9">
+            {{ form_widget(form.site_name) }}
+            {{ form_errors(form.site_name) }}
+        </div>
+    </div>
+</div>
+
+<h2>Configurations des couleurs</h2>
+<div class="row">
+    <div class="form-group">
+        {{ form_label(form.color_primary) }}
+        <div class="col-sm-9">
+            {{ form_widget(form.color_primary) }}
+            {{ form_errors(form.color_primary) }}
+        </div>
+    </div>
+</div>
