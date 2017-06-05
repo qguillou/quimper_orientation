@@ -21,8 +21,14 @@ class AdminActualiteController extends Controller
     {
         if ($request->request->get('actualite')['id'] != "0") {
             $actualite = $this->get('manager.admin_actualite')->get($request->request->get('actualite')['id']);
+            $actualite->setDateModification(new \DateTime('now'));
+            $actualite->setUserModification($this->get('security.token_storage')->getToken()->getUser());
         } else {
             $actualite = new Actualite();
+            $actualite->setDateCreation(new \DateTime('now'));
+            $actualite->setDateModification(new \DateTime('now'));
+            $actualite->setUserCreation($this->get('security.token_storage')->getToken()->getUser());
+            $actualite->setUserModification($this->get('security.token_storage')->getToken()->getUser());
         }
 
         $form = $this->createForm(ActualiteType::class, $actualite);
@@ -52,12 +58,9 @@ class AdminActualiteController extends Controller
     {
         if ($request->get('id') != 0) {
             $actualite = $this->get('manager.admin_actualite')->get($request->get('id'));
-            $actualite->setDateModification(new \DateTime('now'));
         } else {
             $actualite = new Actualite();
             $actualite->setId(0);
-            $actualite->setDateModification(new \DateTime('now'));
-            $actualite->setDateCreation(new \DateTime('now'));
         }
 
         $form = $this->createForm(ActualiteType::class, $actualite);

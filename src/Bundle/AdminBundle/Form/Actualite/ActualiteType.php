@@ -20,8 +20,6 @@ class ActualiteType extends AbstractType
             ->add('id', IntegerType::class)
             ->add('titre', TextType::class, array('label' => 'Titre de l\'actualité', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
             ->add('contenu', TextareaType::class, array('label' => 'Contenu', 'attr' => array('class' => 'form-control', 'rows' => '10'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
-            ->add('dateCreation', DateTimeType::class)
-            ->add('dateModification', DateTimeType::class)
             ->add('reset', ResetType::class, array('label' => 'Annuler', 'attr' => array('class' => 'btn btn-default')))
             ->add('save', SubmitType::class, array('label' => 'Enregistrer', 'attr' => array('class' => 'btn btn-success')));
     }

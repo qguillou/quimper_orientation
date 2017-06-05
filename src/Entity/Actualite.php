@@ -49,6 +49,20 @@ class Actualite
      */
     private $dateCreation;
 
+    /**
+      * @var int
+      * @ORM\ManyToOne(targetEntity="Entity\User")
+      * @ORM\JoinColumn(name="userModification_id", referencedColumnName="id")
+      */
+    private $userModification;
+
+    /**
+      * @var int
+      * @ORM\ManyToOne(targetEntity="Entity\User")
+      * @ORM\JoinColumn(name="userCreation_id", referencedColumnName="id")
+      */
+    private $userCreation;
+
 
     /**
      * Get id
@@ -168,5 +182,53 @@ class Actualite
     public function getDateCreation()
     {
         return $this->dateCreation;
+    }
+
+    /**
+     * Set userCreation
+     *
+     * @param integer $userCreation
+     *
+     * @return Inscrit
+     */
+    public function setUserCreation($userCreation)
+    {
+        $this->userCreation = $userCreation;
+
+        return $this;
+    }
+
+    /**
+     * Get userCreation
+     *
+     * @return int
+     */
+    public function getUserCreation()
+    {
+        return $this->userCreation;
+    }
+
+    /**
+     * Set userModification
+     *
+     * @param integer $userModification
+     *
+     * @return Inscrit
+     */
+    public function setUserModification($userModification)
+    {
+        $this->userModification = $userModification;
+
+        return $this;
+    }
+
+    /**
+     * Get userModification
+     *
+     * @return int
+     */
+    public function getUserModification()
+    {
+        return $this->userModification;
     }
 }
