@@ -49,7 +49,8 @@
           type: 'post',
           success: function(result) {
             $("#ModalEditActualite").modal('hide');
-            $("#liste-actualite").html(result);
+            $("#liste-actualite").html(result.table);
+            $("#messages").html(result.messages);
           }
         });
     });

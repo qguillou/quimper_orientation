@@ -2,14 +2,16 @@
 
 {% block content %}
 
-  {% include '::Message/message.html.twig' %}
 
   <div class="col-md-8">
     <h1>Administration des actualités</h1>
     <p class="lead">
       Ajout, modification et suppression.
     </p>
+
+    {% include '::Message/message.html.twig' %}
   </div>
+
 
   <div class="col-md-12">
       <button id="add" type="button" class="btn btn-primary">Ajout d'une actualité</button>
@@ -66,7 +68,8 @@
           'id': id
         },
         success: function(result) {
-          $("#liste-actualite").html(result);
+          $("#liste-actualite").html(result.table);
+          $("#messages").html(result.messages);
         }
       });
     }

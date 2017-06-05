@@ -4,6 +4,7 @@ namespace Bundle\AdminBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Entity\Actualite;
 use Bundle\AdminBundle\Form\Actualite\ActualiteType;
 
@@ -39,9 +40,14 @@ class AdminActualiteController extends Controller
         }
 
         $actualites = $this->get('manager.admin_actualite')->getAll();
-
-        return $this->render('AdminBundle:Actualite:table_actualite.html.twig',
+        $table = $this->renderView('AdminBundle:Actualite:table_actualite.html.twig',
             array('actualites' => $actualites));
+        $messages = $this->renderView('::Message/message.html.twig');
+
+        return new JsonResponse(array(
+            'table' => $table,
+            'messages' => $messages
+        ));
     }
 
     public function deleteAction(Request $request)
@@ -49,9 +55,14 @@ class AdminActualiteController extends Controller
         $this->get('manager.admin_actualite')->delete($request->get('id'));
 
         $actualites = $this->get('manager.admin_actualite')->getAll();
-
-        return $this->render('AdminBundle:Actualite:table_actualite.html.twig',
+        $table = $this->renderView('AdminBundle:Actualite:table_actualite.html.twig',
             array('actualites' => $actualites));
+        $messages = $this->renderView('::Message/message.html.twig');
+
+        return new JsonResponse(array(
+            'table' => $table,
+            'messages' => $messages
+        ));
     }
 
     public function formAction(Request $request)
