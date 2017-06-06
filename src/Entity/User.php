@@ -7,6 +7,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Entity\DefaultEntity;
 
 /**
 * @ORM\Table(name="user")
@@ -14,14 +15,14 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 * @UniqueEntity(fields={"username"}, message="Ce pseudo est déjà utilisé")
 * @UniqueEntity(fields={"email"}, message="Cette adresse e-mail est déjà utilisée")
 */
-class User implements UserInterface, \Serializable
+class User extends DefaultEntity implements UserInterface, \Serializable
 {
   /**
   * @ORM\Column(type="integer")
   * @ORM\Id
   * @ORM\GeneratedValue(strategy="AUTO")
   */
-  private $id;
+  protected $id;
 
   /**
   * @ORM\Column(type="string", length=100, unique=true)
@@ -175,16 +176,6 @@ class User implements UserInterface, \Serializable
       // see section on salt below
       // $this->salt
       ) = unserialize($serialized);
-    }
-
-    /**
-    * Get id
-    *
-    * @return integer
-    */
-    public function getId()
-    {
-      return $this->id;
     }
 
     /**

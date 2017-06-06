@@ -4,6 +4,7 @@ namespace Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Entity\DefaultEntity;
 
 /**
  * Inscrit
@@ -12,7 +13,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Entity(repositoryClass="Repository\InscritRepository")
  * @UniqueEntity(fields={"course","user","nom","prenom"}, message="Un licencié ne peut pas s'inscrire plusieurs fois à la même course.")
  */
-class Inscrit
+class Inscrit extends DefaultEntity
 {
     /**
      * @var int
@@ -21,7 +22,7 @@ class Inscrit
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -80,16 +81,6 @@ class Inscrit
      */
    private $user;
 
-
-    /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * Set nom

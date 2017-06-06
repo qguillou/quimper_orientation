@@ -3,6 +3,7 @@
 namespace Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Entity\DefaultEntity;
 
 /**
  * Contact
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="contact")
  * @ORM\Entity(repositoryClass="Repository\ContactRepository")
  */
-class Contact
+class Contact extends DefaultEntity
 {
     /**
      * @var int
@@ -19,7 +20,7 @@ class Contact
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -70,16 +71,6 @@ class Contact
      */
     private $portable;
 
-
-    /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * Set fonction

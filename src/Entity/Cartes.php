@@ -3,6 +3,7 @@
 namespace Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Entity\DefaultEntity;
 
 /**
  * Cartes
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="cartes")
  * @ORM\Entity(repositoryClass="Repository\CartesRepository")
  */
-class Cartes
+class Cartes extends DefaultEntity
 {
     /**
      * @var int
@@ -19,7 +20,7 @@ class Cartes
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -27,13 +28,6 @@ class Cartes
      * @ORM\Column(name="nom", type="string", length=255)
      */
     private $nom;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="date_modification", type="datetime")
-     */
-    private $dateModification;
 
     /**
      * @var int
@@ -48,17 +42,6 @@ class Cartes
      * @ORM\Column(name="alert", type="boolean")
      */
     private $alert;
-
-
-    /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * Set nom
