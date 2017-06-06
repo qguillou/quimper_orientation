@@ -5,14 +5,14 @@ namespace Bundle\AdminBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Entity\Actalite;
+use Entity\Actualite;
 use Bundle\AdminBundle\Form\Actualite\ActualiteType;
 
 class AdminActualiteController extends Controller
 {
     public function indexAction()
     {
-        $actualites = $this->get('manager.admin_actualite')->getAll();
+        $actualites = $this->get('manager.actualite')->getAll();
 
         return $this->render('AdminBundle:Actualite:actualite.html.twig',
             array('actualites' => $actualites));
@@ -21,7 +21,7 @@ class AdminActualiteController extends Controller
     public function addAction(Request $request)
     {
         if ($request->request->get('actualite')['id'] != "0") {
-            $actualite = $this->get('manager.admin_actualite')->get($request->request->get('actualite')['id']);
+            $actualite = $this->get('manager.actualite')->get($request->request->get('actualite')['id']);
             $actualite->setDateModification(new \DateTime('now'));
             $actualite->setUserModification($this->get('security.token_storage')->getToken()->getUser());
         } else {
@@ -36,10 +36,10 @@ class AdminActualiteController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->get('manager.admin_actualite')->save($actualite);
+            $this->get('manager.actualite')->save($actualite);
         }
 
-        $actualites = $this->get('manager.admin_actualite')->getAll();
+        $actualites = $this->get('manager.actualite')->getAll();
         $table = $this->renderView('AdminBundle:Actualite:table_actualite.html.twig',
             array('actualites' => $actualites));
         $messages = $this->renderView('::Message/message.html.twig');
@@ -52,9 +52,9 @@ class AdminActualiteController extends Controller
 
     public function deleteAction(Request $request)
     {
-        $this->get('manager.admin_actualite')->delete($request->get('id'));
+        $this->get('manager.actualite')->delete($request->get('id'));
 
-        $actualites = $this->get('manager.admin_actualite')->getAll();
+        $actualites = $this->get('manager.actualite')->getAll();
         $table = $this->renderView('AdminBundle:Actualite:table_actualite.html.twig',
             array('actualites' => $actualites));
         $messages = $this->renderView('::Message/message.html.twig');
@@ -68,7 +68,7 @@ class AdminActualiteController extends Controller
     public function formAction(Request $request)
     {
         if ($request->get('id') != 0) {
-            $actualite = $this->get('manager.admin_actualite')->get($request->get('id'));
+            $actualite = $this->get('manager.actualite')->get($request->get('id'));
         } else {
             $actualite = new Actualite();
             $actualite->setId(0);

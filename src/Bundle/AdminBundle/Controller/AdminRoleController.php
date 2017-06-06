@@ -12,7 +12,7 @@ class AdminRoleController extends Controller
 {
     public function indexAction()
     {
-        $roles = $this->get('manager.admin_role')->getAll();
+        $roles = $this->get('manager.role')->getAll();
 
         return $this->render('AdminBundle:Role:role.html.twig',
             array('roles' => $roles));
@@ -21,7 +21,7 @@ class AdminRoleController extends Controller
     public function addAction(Request $request)
     {
         if ($request->request->get('role')['id'] != "0") {
-            $role = $this->get('manager.admin_role')->get($request->request->get('role')['id']);
+            $role = $this->get('manager.role')->get($request->request->get('role')['id']);
             $role->setDateModification(new \DateTime('now'));
             $role->setUserModification($this->get('security.token_storage')->getToken()->getUser());
         } else {
@@ -36,10 +36,10 @@ class AdminRoleController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->get('manager.admin_role')->save($role);
+            $this->get('manager.role')->save($role);
         }
 
-        $roles = $this->get('manager.admin_role')->getAll();
+        $roles = $this->get('manager.role')->getAll();
         $table = $this->renderView('AdminBundle:Role:table_role.html.twig',
             array('roles' => $roles));
         $messages = $this->renderView('::Message/message.html.twig');
@@ -52,9 +52,9 @@ class AdminRoleController extends Controller
 
     public function deleteAction(Request $request)
     {
-        $this->get('manager.admin_role')->delete($request->get('id'));
+        $this->get('manager.role')->delete($request->get('id'));
 
-        $roles = $this->get('manager.admin_role')->getAll();
+        $roles = $this->get('manager.role')->getAll();
         $table = $this->renderView('AdminBundle:Role:table_role.html.twig',
             array('roles' => $roles));
         $messages = $this->renderView('::Message/message.html.twig');
@@ -68,7 +68,7 @@ class AdminRoleController extends Controller
     public function formAction(Request $request)
     {
         if ($request->get('id') != 0) {
-            $role = $this->get('manager.admin_role')->get($request->get('id'));
+            $role = $this->get('manager.role')->get($request->get('id'));
         } else {
             $role = new Role();
             $role->setId(0);

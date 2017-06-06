@@ -2,24 +2,15 @@
 
 namespace Manager;
 
-use Doctrine\ORM\EntityManager;
-use Symfony\Component\HttpFoundation\Session\Session;
-
 abstract class DefaultManager
 {
-    abstract protected $entity_namespace;
     protected $em;
     protected $session;
-
-    public function __construct(EntityManager $em, Session $session)
-    {
-        $this->em = $em;
-        $this->session = $session;
-    }
+    protected $entity_namespace;
 
     public function get($id)
     {
-        $repository = $this->em->getRepository($entity_namespace);
+        $repository = $this->em->getRepository($this->entity_namespace);
 		$entity = $repository->findOneById($id);
 
         return $entity;
@@ -27,13 +18,13 @@ abstract class DefaultManager
 
     public function getAll($orderBy = array())
     {
-        $repository = $this->em->getRepository($entity_namespace);
+        $repository = $this->em->getRepository($this->entity_namespace);
 		$entities = $repository->findBy(array(), $orderBy);
 
         return $entities;
     }
 
-    public function save(DefaultEntity $entity)
+    public function save($entity)
     {
         $this->em->persist($entity);
         $this->em->flush();
@@ -46,7 +37,7 @@ abstract class DefaultManager
 
     public function delete($id)
     {
-        $repository = $this->em->getRepository($entity_namespace);
+        $repository = $this->em->getRepository($this->entity_namespace);
 		$entity = $repository->findOneById($id);
 
         $this->em->remove($entity);

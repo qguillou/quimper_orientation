@@ -12,7 +12,7 @@ class AdminTypeCourseController extends Controller
 {
     public function indexAction()
     {
-        $types = $this->get('manager.admin_type_course')->getAll();
+        $types = $this->get('manager.type')->getAll(array('nom' => 'ASC'));
 
         return $this->render('AdminBundle:TypeCourse:type.html.twig',
             array('types' => $types));
@@ -21,7 +21,7 @@ class AdminTypeCourseController extends Controller
     public function addAction(Request $request)
     {
         if ($request->request->get('type_course')['id'] != "0") {
-            $type = $this->get('manager.admin_type_course')->get($request->request->get('type_course')['id']);
+            $type = $this->get('manager.type')->get($request->request->get('type_course')['id']);
             $type->setDateModification(new \DateTime('now'));
             $type->setUserModification($this->get('security.token_storage')->getToken()->getUser());
         } else {
@@ -36,10 +36,10 @@ class AdminTypeCourseController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->get('manager.admin_type_course')->save($type);
+            $this->get('manager.type')->save($type);
         }
 
-        $types = $this->get('manager.admin_type_course')->getAll();
+        $types = $this->get('manager.type')->getAll(array('nom' => 'ASC'));
         $table = $this->renderView('AdminBundle:TypeCourse:table_type.html.twig',
             array('types' => $types));
         $messages = $this->renderView('::Message/message.html.twig');
@@ -52,9 +52,9 @@ class AdminTypeCourseController extends Controller
 
     public function deleteAction(Request $request)
     {
-        $this->get('manager.admin_type_course')->delete($request->get('id'));
+        $this->get('manager.type')->delete($request->get('id'));
 
-        $types = $this->get('manager.admin_type_course')->getAll();
+        $types = $this->get('manager.type')->getAll(array('nom' => 'ASC'));
         $table = $this->renderView('AdminBundle:TypeCourse:table_type.html.twig',
             array('types' => $types));
         $messages = $this->renderView('::Message/message.html.twig');
@@ -68,7 +68,7 @@ class AdminTypeCourseController extends Controller
     public function formAction(Request $request)
     {
         if ($request->get('id') != 0) {
-            $type = $this->get('manager.admin_type_course')->get($request->get('id'));
+            $type = $this->get('manager.type')->get($request->get('id'));
         } else {
             $type = new Type();
             $type->setId(0);

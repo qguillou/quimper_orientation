@@ -1,25 +1,34 @@
 <?php
 
-namespace Bundle\HomeBundle\Manager;
+namespace Manager;
 
+use Manager\DefaultManager;
 use Doctrine\ORM\EntityManager;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoder;
 use Entity\User;
 
-class UserManager
+class UserManager extends DefaultManager
 {
-    protected $em;
     protected $encoder;
     protected $security;
 
-    public function __construct(EntityManager $em,
-                                UserPasswordEncoder $encoder,
-                                $security)
+    public function __construct(EntityManager $em, Session $session, UserPasswordEncoder $encoder, $security)
     {
         $this->em = $em;
+        $this->session = $session;
+        $this->entity_namespace = 'Entity\User';
         $this->encoder = $encoder;
         $this->security = $security;
+    }
+
+    public function getWebmasters()
+    {
+        $repository = $this->em->getRepository($this->entity_namespace);
+		$admins = $repository->findAdminUser();
+
+        return $admins;
     }
 
     public function register(User $user)

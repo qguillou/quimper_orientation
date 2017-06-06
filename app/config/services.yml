@@ -24,3 +24,23 @@ services:
           arguments: []
           tags:
             - { name: twig.extension }
+
+  manager.actualite:
+      class: Manager\ActualiteManager
+      arguments: ['@doctrine.orm.entity_manager', '@session']
+
+  manager.course:
+      class: Manager\CourseManager
+      arguments: ['@doctrine.orm.entity_manager', '@session']
+
+  manager.type:
+      class: Manager\TypeManager
+      arguments: ['@doctrine.orm.entity_manager', '@session']
+
+  manager.role:
+      class: Manager\RoleManager
+      arguments: ['@doctrine.orm.entity_manager', '@session']
+
+  manager.user:
+      class: Manager\UserManager
+      arguments: ['@doctrine.orm.entity_manager', '@session', '@security.password_encoder', '@security.token_storage']

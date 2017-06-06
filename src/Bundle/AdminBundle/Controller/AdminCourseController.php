@@ -12,7 +12,7 @@ class AdminCourseController extends Controller
 {
     public function indexAction()
     {
-        $courses = $this->get('manager.admin_course')->getAll();
+        $courses = $this->get('manager.course')->getAll(array('date' => 'DESC'));
 
         return $this->render('AdminBundle:Course:course.html.twig',
             array('courses' => $courses));
@@ -21,7 +21,7 @@ class AdminCourseController extends Controller
     public function addAction(Request $request)
     {
         if ($request->request->get('course')['id'] != "0") {
-            $course = $this->get('manager.admin_course')->get($request->request->get('course')['id']);
+            $course = $this->get('manager.course')->get($request->request->get('course')['id']);
             $course->setDateModification(new \DateTime('now'));
             $course->setUserModification($this->get('security.token_storage')->getToken()->getUser());
         } else {
@@ -36,10 +36,10 @@ class AdminCourseController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->get('manager.admin_course')->save($course);
+            $this->get('manager.course')->save($course);
         }
 
-        $courses = $this->get('manager.admin_course')->getAll();
+        $courses = $this->get('manager.course')->getAll(array('date' => 'DESC'));
         $table = $this->renderView('AdminBundle:Course:table_course.html.twig',
             array('courses' => $courses));
         $messages = $this->renderView('::Message/message.html.twig');
@@ -52,9 +52,9 @@ class AdminCourseController extends Controller
 
     public function deleteAction(Request $request)
     {
-        $this->get('manager.admin_course')->delete($request->get('id'));
+        $this->get('manager.course')->delete($request->get('id'));
 
-        $courses = $this->get('manager.admin_course')->getAll();
+        $courses = $this->get('manager.course')->getAll(array('date' => 'DESC'));
         $table = $this->renderView('AdminBundle:Course:table_course.html.twig',
             array('courses' => $courses));
         $messages = $this->renderView('::Message/message.html.twig');
@@ -68,7 +68,7 @@ class AdminCourseController extends Controller
     public function formAction(Request $request)
     {
         if ($request->get('id') != 0) {
-            $course = $this->get('manager.admin_course')->get($request->get('id'));
+            $course = $this->get('manager.course')->get($request->get('id'));
         } else {
             $course = new Course();
             $course->setId(0);
