@@ -41,6 +41,18 @@ services:
       class: Manager\RoleManager
       arguments: ['@doctrine.orm.entity_manager', '@session']
 
+  manager.tarif:
+      class: Manager\TarifManager
+      arguments: ['@doctrine.orm.entity_manager', '@session']
+
+  manager.contact:
+      class: Manager\ContactManager
+      arguments: ['@doctrine.orm.entity_manager', '@session']
+
+  manager.carte:
+      class: Manager\CarteManager
+      arguments: ['@doctrine.orm.entity_manager', '@session']
+
   manager.user:
       class: Manager\UserManager
       arguments: ['@doctrine.orm.entity_manager', '@session', '@security.password_encoder', '@security.token_storage']
