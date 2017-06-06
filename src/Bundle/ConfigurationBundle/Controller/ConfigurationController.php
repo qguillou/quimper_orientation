@@ -41,8 +41,6 @@ class ConfigurationController extends Controller
             'resultat_name' => 'Résultats',
             'module_carte' => $this->container->get('twig')->getGlobals()['module_carte'],
             'carte_name' => 'Parcours permanents',
-            'module_definition' => $this->container->get('twig')->getGlobals()['module_definition'],
-            'definition_name' => 'Les définitions',
         );
 
         $form = $this->createFormBuilder($defaultValues)
@@ -79,9 +77,6 @@ class ConfigurationController extends Controller
             ->add('module_carte', CheckboxType::class, array('label' => 'Activer le module', 'label_attr' => array('class' => 'col-sm-3 control-label'), 'required' => false))
             ->add('carte_name', TextType::class, array('label' => 'Nom du menu', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
 
-            ->add('module_definition', CheckboxType::class, array('label' => 'Activer le module', 'label_attr' => array('class' => 'col-sm-3 control-label'), 'required' => false))
-            ->add('definition_name', TextType::class, array('label' => 'Nom du menu', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
-
             ->add('reset', ResetType::class, array('label' => 'Annuler', 'attr' => array('class' => 'btn btn-default')))
             ->add('save', SubmitType::class, array('label' => 'Enregistrer', 'attr' => array('class' => 'btn btn-success')))
             ->getForm();
@@ -103,7 +98,6 @@ class ConfigurationController extends Controller
                         'module_inscription' => $data['module_inscription'],
                         'module_resultat' => $data['module_resultat'],
                         'module_carte' => $data['module_carte'],
-                        'module_definition' => $data['module_definition'],
                     )
                 ),
                 'parameters' => array(
