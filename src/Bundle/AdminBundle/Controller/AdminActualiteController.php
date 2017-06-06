@@ -10,9 +10,9 @@ class AdminActualiteController extends DefaultAdminController
 {
     public function indexAction()
     {
-        $actualites = $this->get('manager.actualite')->getAll();
+        $entities = $this->getManager()->getAll();
 
-        return $this->render('AdminBundle:Actualite:actualite.html.twig', array('actualites' => $actualites));
+        return $this->render('AdminBundle:Actualite:actualite.html.twig', array('entities' => $entities));
     }
 
     public function getFormClass()
@@ -37,9 +37,9 @@ class AdminActualiteController extends DefaultAdminController
 
     public function getTable()
     {
-        $actualites = $this->get('manager.actualite')->getAll();
+        $entities = $this->getManager()->getAll();
 
-        return $this->renderView('AdminBundle:Actualite:table_actualite.html.twig', array('actualites' => $actualites));
+        return $this->renderView('AdminBundle:Actualite:table_actualite.html.twig', array('entities' => $entities));
     }
 
     public function getForm($form)

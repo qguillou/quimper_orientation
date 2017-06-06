@@ -1,13 +1,8 @@
-{% for role in roles %}
-    <tr>
-        <td>  </td>
-        <td> {{ role.user.username }} ({{role.user.prenom}} {{role.user.nom}})</td>
-        <td> {{ role.role}}</td>
-        <td> {{ role.userModification.prenom }} {{ role.userModification.nom }} </td>
-        <td> {{ role.dateModification | format_datetime('dd MMMM YYYY', 'fr', 'Europe/Paris') }} </td>
-        <td>
-            <i class="fa fa-edit" style="color: orange;cursor:pointer;margin-right:0.5em;" onclick="form( {{role.id}} )"></i>
-            <i class="fa fa-times" style="color: red;cursor:pointer;" onclick="unregister( {{role.id}} )"></i>
-        </td>
-    </tr>
-{% endfor %}
+{% extends 'AdminBundle::table_default.html.twig' %}
+
+{% block line_content %}
+<td>  </td>
+<td> {{ entity.user.username }} ({{entity.user.prenom}} {{entity.user.nom}})</td>
+<td> {{ entity.role}}</td>
+<td> {{ entity.dateModification | format_datetime('dd MMMM YYYY', 'fr', 'Europe/Paris') }} </td>
+{% endblock %}

@@ -1,57 +1,28 @@
-{{ form_start(form, {'attr': {'class': 'form-horizontal', 'id': 'form'}}) }}
-<div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
+{% extends 'AdminBundle::form_default.html.twig' %}
 
-    <h1 class="modal-title" id="ModalEditActualite">&Eacute;dition d'une actualité</h1>
-</div>
+{% block modal_title %}Édition d'une actualité{% endblock %}
 
-<div class="modal-body">
-    {{ form_errors(form) }}
-
-    <div class="row">
-        <div class="form-group">
-            {{ form_label(form.titre) }}
-            <div class="col-sm-9">
-                {{ form_widget(form.titre) }}
-                {{ form_errors(form.titre) }}
-            </div>
+{% block modal_body %}
+<div class="row">
+    <div class="form-group">
+        {{ form_label(form.titre) }}
+        <div class="col-sm-9">
+            {{ form_widget(form.titre) }}
+            {{ form_errors(form.titre) }}
         </div>
     </div>
+</div>
 
-    <div class="row">
-        <div class="form-group">
-            {{ form_label(form.contenu) }}
+<div class="row">
+    <div class="form-group">
+        {{ form_label(form.contenu) }}
 
-            <div class="col-sm-9">
-                {{ form_widget(form.contenu) }}
-                {{ form_errors(form.contenu) }}
-            </div>
+        <div class="col-sm-9">
+            {{ form_widget(form.contenu) }}
+            {{ form_errors(form.contenu) }}
         </div>
     </div>
-
 </div>
+{% endblock %}
 
-<div class="modal-footer">
-    {{ form_widget(form.reset, {'attr': {'data-dismiss': "modal"}}) }}
-    {{ form_widget(form.save) }}
-</div>
-{{ form_widget(form, {'attr': {'class': 'hidden'}}) }}
-{{ form_end(form) }}
-
-<script type="text/javascript">
-    $("form").submit(function(event){
-        event.preventDefault();
-        $.ajax({
-          url: "{{ path('actualite_add') }}",
-          data: $(this).serializeArray(),
-          type: 'post',
-          success: function(result) {
-            $("#ModalEditActualite").modal('hide');
-            $("#liste-actualite").html(result.table);
-            $("#messages").html(result.messages);
-          }
-        });
-    });
-</script>
+{% block path_add %}"{{ path('actualite_add') }}"{% endblock %}

@@ -10,9 +10,9 @@ class AdminCourseController extends DefaultAdminController
 {
     public function indexAction()
     {
-        $courses = $this->get('manager.course')->getAll(array('date' => 'DESC'));
+        $entities = $this->getManager()->getAll(array('date' => 'DESC'));
 
-        return $this->render('AdminBundle:Course:course.html.twig', array('courses' => $courses));
+        return $this->render('AdminBundle:Course:course.html.twig', array('entities' => $entities));
     }
 
     public function getFormClass()
@@ -37,9 +37,9 @@ class AdminCourseController extends DefaultAdminController
 
     public function getTable()
     {
-        $courses = $this->get('manager.course')->getAll(array('date' => 'DESC'));
+        $entities = $this->getManager()->getAll(array('date' => 'DESC'));
 
-        return $this->renderView('AdminBundle:Course:table_course.html.twig', array('courses' => $courses));
+        return $this->renderView('AdminBundle:Course:table_course.html.twig', array('entities' => $entities));
     }
 
     public function getForm($form)

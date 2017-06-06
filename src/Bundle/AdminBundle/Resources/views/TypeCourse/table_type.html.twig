@@ -1,19 +1,14 @@
-{% for type in types %}
-    <tr>
-        <td>  </td>
-        <td> {{ type.nom }} </td>
-        <td>
-            {% if type.color %}
-                <div class="color" style="background-color: {{type.color}}"/>
-            {% else %}
+{% extends 'AdminBundle::table_default.html.twig' %}
 
-            {% endif %}
-        </td>
-        <td> {{ type.userModification.prenom }} {{ type.userModification.nom }} </td>
-        <td> {{ type.dateModification | format_datetime('dd MMMM YYYY', 'fr', 'Europe/Paris') }} </td>
-        <td>
-            <i class="fa fa-edit" style="color: orange;cursor:pointer;margin-right:0.5em;" onclick="form( {{type.id}} )"></i>
-            <i class="fa fa-times" style="color: red;cursor:pointer;" onclick="unregister( {{type.id}} )"></i>
-        </td>
-    </tr>
-{% endfor %}
+{% block line_content %}
+<td>  </td>
+<td> {{ entity.nom }} </td>
+<td>
+    {% if entity.color %}
+        <div class="color" style="background-color: {{entity.color}}"/>
+    {% else %}
+
+    {% endif %}
+</td>
+<td> {{ entity.dateModification | format_datetime('dd MMMM YYYY', 'fr', 'Europe/Paris') }} </td>
+{% endblock %}

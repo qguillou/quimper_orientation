@@ -1,98 +1,19 @@
-{% extends '::base.html.twig' %}
+{% extends 'AdminBundle::default.html.twig' %}
 
-{% block content %}
+{% block title %}Administration des rôles{% endblock %}
 
+{% block label_add %}Ajout d'un rôle{% endblock %}
 
-  <div class="col-md-8">
-    <h1>Administration des rôles</h1>
-    <p class="lead">
-      Ajout, modification et suppression.
-    </p>
-
-    {% include '::Message/message.html.twig' %}
-  </div>
-
-
-  <div class="col-md-12">
-      <button id="add" type="button" class="btn btn-primary">Ajout d'un rôle</button>
-      <div class="row-divider"></div>
-  </div>
-
-  <div class="col-md-12">
-      <table class="table table-striped table-hover">
-          <thead>
-              <tr>
-                  <th>#</th>
-                  <th>Utilisateur (Prénom Nom)</th>
-                  <th>Rôle</th>
-                  <th>Utilisateur</th>
-                  <th>Date Modification</th>
-                  <th>Actions</th>
-              </tr>
-          </thead>
-          <tbody id="liste">
-              {% include 'AdminBundle:Role:table_role.html.twig' %}
-          </tbody>
-      </table>
-  </div>
-
-  <div class="modal fade" id="ModalEdit" tabindex="-1" role="dialog" aria-labelledby="ModalEditTitle" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content" id="form-role">
-
-      </div>
-    </div>
-  </div>
-
+{% block table_head %}
+<th>#</th>
+<th>Utilisateur (Prénom Nom)</th>
+<th>Rôle</th>
+<th>Date Modification</th>
 {% endblock %}
 
-{% block javascript %}
-  {{ parent() }}
-
-  <script type='text/javascript'>
-      function register(id) {
-        $.ajax({
-          url: "{{ path('role_add') }}",
-          data: {
-            'value': $('#add').serializeArray()
-          },
-          success: function(result) {
-            $("#liste").html(result);
-          }
-        });
-      }
-
-    function unregister(id) {
-      $.ajax({
-        url: "{{ path('role_delete') }}",
-        data: {
-          'id': id
-        },
-        success: function(result) {
-          $("#liste").html(result.table);
-          $("#messages").html(result.messages);
-        }
-      });
-    }
-
-    function form(id = 0) {
-        $.ajax({
-          url: "{{ path('role_form') }}",
-          data: {
-            'id': id
-          },
-          success: function(result) {
-            $("#form-role").html(result);
-            $("#ModalEdit").modal('show');
-          }
-        });
-    }
-
-    window.onload = function() {
-        document.getElementById("add").addEventListener("click", function(){
-            form(0);
-        }, false);
-    }
-
-  </script>
+{% block table_body %}
+{% include 'AdminBundle:Role:table_role.html.twig' %}
 {% endblock %}
+
+{% block path_form %}"{{ path('role_form') }}"{% endblock %}
+{% block path_delete %}"{{ path('role_delete') }}"{% endblock %}

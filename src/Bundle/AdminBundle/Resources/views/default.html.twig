@@ -1,0 +1,82 @@
+{% extends '::base.html.twig' %}
+
+{% block content %}
+  <div class="col-md-8">
+    <h1>{% block title %}{% endblock %}</h1>
+    <p class="lead">
+      Ajout, modification et suppression.
+    </p>
+
+    {% include '::Message/message.html.twig' %}
+  </div>
+
+
+  <div class="col-md-12">
+      <button id="add" type="button" class="btn btn-primary">{% block label_add %}{% endblock %}</button>
+      <div class="row-divider"></div>
+  </div>
+
+  <div class="col-md-12">
+      <table class="table table-striped table-hover">
+          <thead>
+              <tr>
+                  {% block table_head %}{% endblock %}
+                  <th>Utilisateur</th>
+                  <th>Actions</th>
+              </tr>
+          </thead>
+          <tbody id="liste">
+              {% block table_body %}{% endblock %}
+          </tbody>
+      </table>
+  </div>
+
+  <div class="modal fade" id="ModalEdit" tabindex="-1" role="dialog" aria-labelledby="ModalEditTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content" id="form">
+
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block javascript %}
+  {{ parent() }}
+
+  <script type='text/javascript'>
+
+    function unregister(id) {
+      $.ajax({
+        url: {% block path_delete %}{% endblock %},
+        data: {
+          'id': id
+        },
+        success: function(result) {
+          $("#liste").html(result.table);
+          $("#messages").html(result.messages);
+        }
+      });
+    }
+
+    function form(id = 0) {
+        $.ajax({
+          url: {% block path_form %}{% endblock %},
+          data: {
+            'id': id
+          },
+          success: function(result) {
+            $("#form").html(result);
+            $("#ModalEdit").modal('show');
+          }
+        });
+    }
+
+    window.onload = function() {
+        document.getElementById("add").addEventListener("click", function(){
+            form(0);
+        }, false);
+    }
+
+  </script>
+{% endblock %}

@@ -1,12 +1,7 @@
-{% for actualite in actualites %}
-    <tr>
-        <td> {{ actualite.id }} </td>
-        <td> {{ actualite.dateCreation | format_datetime('dd MMMM YYYY', 'fr', 'Europe/Paris') }} </td>
-        <td> {{ actualite.titre }} </td>
-        <td> {{ actualite.userModification.prenom }} {{ actualite.userModification.nom }} </td>
-        <td>
-            <i class="fa fa-edit" style="color: orange;cursor:pointer;margin-right:0.5em;" onclick="form( {{actualite.id}} )"></i>
-            <i class="fa fa-times" style="color: red;cursor:pointer;" onclick="unregister( {{actualite.id}} )"></i>
-        </td>
-    </tr>
-{% endfor %}
+{% extends 'AdminBundle::table_default.html.twig' %}
+
+{% block line_content %}
+<td> {{ entity.id }} </td>
+<td> {{ entity.dateCreation | format_datetime('dd MMMM YYYY', 'fr', 'Europe/Paris') }} </td>
+<td> {{ entity.titre }} </td>
+{% endblock %}

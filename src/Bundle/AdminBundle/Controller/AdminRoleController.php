@@ -10,9 +10,9 @@ class AdminRoleController extends DefaultAdminController
 {
     public function indexAction()
     {
-        $roles = $this->get('manager.role')->getAll();
+        $entities = $this->getManager()->getAll();
 
-        return $this->render('AdminBundle:Role:role.html.twig', array('roles' => $roles));
+        return $this->render('AdminBundle:Role:role.html.twig', array('entities' => $entities));
     }
 
     public function getFormClass()
@@ -37,9 +37,9 @@ class AdminRoleController extends DefaultAdminController
 
     public function getTable()
     {
-        $roles = $this->get('manager.role')->getAll();
+        $entities = $this->getManager()->getAll();
 
-        return $this->renderView('AdminBundle:Role:table_role.html.twig', array('roles' => $roles));
+        return $this->renderView('AdminBundle:Role:table_role.html.twig', array('entities' => $entities));
     }
 
     public function getForm($form)

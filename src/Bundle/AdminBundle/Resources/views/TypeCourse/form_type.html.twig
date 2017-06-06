@@ -1,56 +1,27 @@
-{{ form_start(form, {'attr': {'class': 'form-horizontal', 'id': 'form'}}) }}
-<div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
+{% extends 'AdminBundle::form_default.html.twig' %}
 
-    <h1 class="modal-title" id="ModalEdit">&Eacute;dition d'un type de course</h1>
-</div>
+{% block modal_title %}Édition d'un type de course{% endblock %}
 
-<div class="modal-body">
-    {{ form_errors(form) }}
-
-    <div class="row">
-        <div class="form-group">
-            {{ form_label(form.nom) }}
-            <div class="col-sm-9">
-                {{ form_widget(form.nom) }}
-                {{ form_errors(form.nom) }}
-            </div>
+{% block modal_body %}
+<div class="row">
+    <div class="form-group">
+        {{ form_label(form.nom) }}
+        <div class="col-sm-9">
+            {{ form_widget(form.nom) }}
+            {{ form_errors(form.nom) }}
         </div>
     </div>
+</div>
 
-    <div class="row">
-        <div class="form-group">
-            {{ form_label(form.color) }}
-            <div class="col-sm-9">
-                {{ form_widget(form.color) }}
-                {{ form_errors(form.color) }}
-            </div>
+<div class="row">
+    <div class="form-group">
+        {{ form_label(form.color) }}
+        <div class="col-sm-9">
+            {{ form_widget(form.color) }}
+            {{ form_errors(form.color) }}
         </div>
     </div>
-
 </div>
+{% endblock %}
 
-<div class="modal-footer">
-    {{ form_widget(form.reset, {'attr': {'data-dismiss': "modal"}}) }}
-    {{ form_widget(form.save) }}
-</div>
-{{ form_widget(form, {'attr': {'class': 'hidden'}}) }}
-{{ form_end(form) }}
-
-<script type="text/javascript">
-    $("form").submit(function(event){
-        event.preventDefault();
-        $.ajax({
-          url: "{{ path('type_course_add') }}",
-          data: $(this).serializeArray(),
-          type: 'post',
-          success: function(result) {
-            $("#ModalEdit").modal('hide');
-            $("#liste").html(result.table);
-            $("#messages").html(result.messages);
-          }
-        });
-    });
-</script>
+{% block path_add %}"{{ path('type_course_add') }}"{% endblock %}

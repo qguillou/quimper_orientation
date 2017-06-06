@@ -1,0 +1,10 @@
+{% for entity in entities %}
+    <tr>
+        {% block line_content %}{% endblock %}
+        <td> {{ entity.userModification.prenom }} {{ entity.userModification.nom }} </td>
+        <td>
+            <i class="fa fa-edit" style="color: orange;cursor:pointer;margin-right:0.5em;" onclick="form( {{entity.id}} )"></i>
+            <i class="fa fa-times" style="color: red;cursor:pointer;" onclick="unregister( {{entity.id}} )"></i>
+        </td>
+    </tr>
+{% endfor %}
