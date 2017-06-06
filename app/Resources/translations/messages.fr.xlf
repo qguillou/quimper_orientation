@@ -50,6 +50,10 @@
                 <source>nav.config.archive</source>
                 <target>Archive fédérale</target>
             </trans-unit>
+            <trans-unit id="nav.config.tarif">
+                <source>nav.config.tarif</source>
+                <target>Tarifs</target>
+            </trans-unit>
             <trans-unit id="nav.config.role">
                 <source>nav.config.role</source>
                 <target>Attribution des rôles</target>

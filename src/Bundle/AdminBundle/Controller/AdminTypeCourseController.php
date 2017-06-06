@@ -2,80 +2,48 @@
 
 namespace Bundle\AdminBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\JsonResponse;
+use Bundle\AdminBundle\Controller\DefaultAdminController;
 use Entity\Type;
 use Bundle\AdminBundle\Form\TypeCourse\TypeCourseType;
 
-class AdminTypeCourseController extends Controller
+class AdminTypeCourseController extends DefaultAdminController
 {
     public function indexAction()
     {
         $types = $this->get('manager.type')->getAll(array('nom' => 'ASC'));
 
-        return $this->render('AdminBundle:TypeCourse:type.html.twig',
-            array('types' => $types));
+        return $this->render('AdminBundle:TypeCourse:type.html.twig', array('types' => $types));
     }
 
-    public function addAction(Request $request)
+    public function getFormClass()
     {
-        if ($request->request->get('type_course')['id'] != "0") {
-            $type = $this->get('manager.type')->get($request->request->get('type_course')['id']);
-            $type->setDateModification(new \DateTime('now'));
-            $type->setUserModification($this->get('security.token_storage')->getToken()->getUser());
-        } else {
-            $type = new Type();
-            $type->setDateCreation(new \DateTime('now'));
-            $type->setDateModification(new \DateTime('now'));
-            $type->setUserCreation($this->get('security.token_storage')->getToken()->getUser());
-            $type->setUserModification($this->get('security.token_storage')->getToken()->getUser());
-        }
+        return TypeCourseType::class;
+    }
 
-        $form = $this->createForm(TypeCourseType::class, $type);
-        $form->handleRequest($request);
+    public function getManager()
+    {
+        return $this->get('manager.type');
+    }
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->get('manager.type')->save($type);
-        }
+    public function getEntityType()
+    {
+        return new TypeCourse();
+    }
 
+    public function getEntityName()
+    {
+        return 'type_course';
+    }
+
+    public function getTable()
+    {
         $types = $this->get('manager.type')->getAll(array('nom' => 'ASC'));
-        $table = $this->renderView('AdminBundle:TypeCourse:table_type.html.twig',
-            array('types' => $types));
-        $messages = $this->renderView('::Message/message.html.twig');
 
-        return new JsonResponse(array(
-            'table' => $table,
-            'messages' => $messages
-        ));
+        return $this->renderView('AdminBundle:TypeCourse:table_type.html.twig', array('types' => $types));
     }
 
-    public function deleteAction(Request $request)
+    public function getForm($form)
     {
-        $this->get('manager.type')->delete($request->get('id'));
-
-        $types = $this->get('manager.type')->getAll(array('nom' => 'ASC'));
-        $table = $this->renderView('AdminBundle:TypeCourse:table_type.html.twig',
-            array('types' => $types));
-        $messages = $this->renderView('::Message/message.html.twig');
-
-        return new JsonResponse(array(
-            'table' => $table,
-            'messages' => $messages
-        ));
-    }
-
-    public function formAction(Request $request)
-    {
-        if ($request->get('id') != 0) {
-            $type = $this->get('manager.type')->get($request->get('id'));
-        } else {
-            $type = new Type();
-            $type->setId(0);
-        }
-
-        $form = $this->createForm(TypeCourseType::class, $type);
-
         return $this->render('AdminBundle:TypeCourse:form_type.html.twig',
             array('form' => $form->createView()));
     }
