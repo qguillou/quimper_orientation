@@ -1,0 +1,55 @@
+{{ form_start(form, {'attr': {'class': 'form-horizontal', 'id': 'form'}}) }}
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+
+    <h1 class="modal-title" id="ModalEdit">&Eacute;dition d'un rôle</h1>
+</div>
+
+<div class="modal-body">
+    {{ form_errors(form) }}
+    <div class="row">
+        <div class="form-group">
+            {{ form_label(form.user) }}
+            <div class="col-sm-9">
+                {{ form_widget(form.user) }}
+                {{ form_errors(form.user) }}
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group">
+            {{ form_label(form.role) }}
+            <div class="col-sm-9">
+                {{ form_widget(form.role) }}
+                {{ form_errors(form.role) }}
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal-footer">
+    {{ form_widget(form.reset, {'attr': {'data-dismiss': "modal"}}) }}
+    {{ form_widget(form.save) }}
+</div>
+{{ form_widget(form, {'attr': {'class': 'hidden'}}) }}
+{{ form_end(form) }}
+
+<script type="text/javascript">
+    $("form").submit(function(event){
+        event.preventDefault();
+        $.ajax({
+          url: "{{ path('role_add') }}",
+          data: $(this).serializeArray(),
+          type: 'post',
+          success: function(result) {
+            $("#ModalEdit").modal('hide');
+            $("#liste").html(result.table);
+            $("#messages").html(result.messages);
+          }
+        });
+    });
+</script>

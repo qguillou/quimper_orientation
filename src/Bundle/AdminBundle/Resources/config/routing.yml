@@ -52,3 +52,20 @@ type_course_delete:
 type_course_form:
     path:     /admin/config/type/form
     defaults: { _controller: AdminBundle:AdminTypeCourse:form }
+
+#Role
+admin_role:
+    path:       /admin/config/role
+    defaults:   { _controller: AdminBundle:AdminRole:index }
+
+role_add:
+    path:     /admin/config/role/add
+    defaults: { _controller: AdminBundle:AdminRole:add }
+
+role_delete:
+    path:     /admin/config/role/delete
+    defaults: { _controller: AdminBundle:AdminRole:delete }
+
+role_form:
+    path:     /admin/config/role/form
+    defaults: { _controller: AdminBundle:AdminRole:form }

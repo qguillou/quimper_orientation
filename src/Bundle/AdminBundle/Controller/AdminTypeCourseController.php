@@ -20,7 +20,7 @@ class AdminTypeCourseController extends Controller
 
     public function addAction(Request $request)
     {
-        if ($request->request->get('type')['id'] != "0") {
+        if ($request->request->get('type_course')['id'] != "0") {
             $type = $this->get('manager.admin_type_course')->get($request->request->get('type_course')['id']);
             $type->setDateModification(new \DateTime('now'));
             $type->setUserModification($this->get('security.token_storage')->getToken()->getUser());
