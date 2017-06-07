@@ -75,11 +75,11 @@ class Inscrit extends DefaultEntity
      */
     private $circuit;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Entity\User", inversedBy="inscrits", cascade={"persist"})
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=true)
-     */
-   private $user;
+   /**
+    * @ORM\ManyToOne(targetEntity="Entity\User", inversedBy="inscrits", cascade={"persist"})
+    * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=true)
+    */
+   protected $userCreation;
 
 
     /**
@@ -250,27 +250,4 @@ class Inscrit extends DefaultEntity
         return $this->circuit;
     }
 
-    /**
-     * Set user
-     *
-     * @param string user
-     *
-     * @return Course
-     */
-    public function setUser($user)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return string
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
 }

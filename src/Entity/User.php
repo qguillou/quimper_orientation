@@ -78,7 +78,7 @@ class User extends DefaultEntity implements UserInterface, \Serializable
   private $role;
 
   /**
-  * @ORM\OneToMany(targetEntity="Entity\Inscrit", mappedBy="user", cascade={"remove"})
+  * @ORM\OneToMany(targetEntity="Entity\Inscrit", mappedBy="userCreation", cascade={"remove"})
   */
   private $inscrits;
 
