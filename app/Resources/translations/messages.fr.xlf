@@ -37,9 +37,13 @@
                 <source>nav.news</source>
                 <target>Actualité</target>
             </trans-unit>
-            <trans-unit id="nav.inscrit">
-                <source>nav.inscrit</source>
-                <target>Inscrits</target>
+            <trans-unit id="nav.inscription">
+                <source>nav.inscription</source>
+                <target>Inscription</target>
+            </trans-unit>
+            <trans-unit id="nav.carte">
+                <source>nav.carte</source>
+                <target>Parcours permanents</target>
             </trans-unit>
 
             <trans-unit id="nav.config">

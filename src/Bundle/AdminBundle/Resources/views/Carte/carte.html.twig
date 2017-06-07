@@ -1,0 +1,18 @@
+{% extends 'AdminBundle::default.html.twig' %}
+
+{% block title %}Administration des cartes{% endblock %}
+
+{% block label_add %}Ajout d'une carte{% endblock %}
+
+{% block table_head %}
+<th>#</th>
+<th>Nom</th>
+<th>Date Modification</th>
+{% endblock %}
+
+{% block table_body %}
+{% include 'AdminBundle:Carte:table_carte.html.twig' %}
+{% endblock %}
+
+{% block path_form %}"{{ path('carte_form') }}"{% endblock %}
+{% block path_delete %}"{{ path('carte_delete') }}"{% endblock %}

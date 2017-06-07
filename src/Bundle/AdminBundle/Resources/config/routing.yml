@@ -53,6 +53,23 @@ inscrit_form:
     path:     /admin/inscrit/form
     defaults: { _controller: AdminBundle:AdminInscrit:form }
 
+#Carte
+admin_carte:
+    path:       /admin/carte
+    defaults:   { _controller: AdminBundle:AdminCarte:index }
+
+carte_add:
+    path:     /admin/carte/add
+    defaults: { _controller: AdminBundle:AdminCarte:add }
+
+carte_delete:
+    path:     /admin/carte/delete
+    defaults: { _controller: AdminBundle:AdminCarte:delete }
+
+carte_form:
+    path:     /admin/carte/form
+    defaults: { _controller: AdminBundle:AdminCarte:form }
+
 #Type
 admin_type_course:
     path:       /admin/config/type

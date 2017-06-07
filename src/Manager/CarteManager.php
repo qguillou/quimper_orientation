@@ -12,6 +12,6 @@ class CarteManager extends DefaultManager
     {
         $this->em = $em;
         $this->session = $session;
-        $this->entity_namespace = 'Entity\Cartes';
+        $this->entity_namespace = 'Entity\Carte';
     }
 }

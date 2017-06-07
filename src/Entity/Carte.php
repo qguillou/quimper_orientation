@@ -6,12 +6,12 @@ use Doctrine\ORM\Mapping as ORM;
 use Entity\DefaultEntity;
 
 /**
- * Cartes
+ * Carte
  *
- * @ORM\Table(name="cartes")
- * @ORM\Entity(repositoryClass="Repository\CartesRepository")
+ * @ORM\Table(name="carte")
+ * @ORM\Entity(repositoryClass="Repository\CarteRepository")
  */
-class Cartes extends DefaultEntity
+class Carte extends DefaultEntity
 {
     /**
      * @var int
@@ -21,6 +21,13 @@ class Cartes extends DefaultEntity
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="display", type="boolean")
+     */
+    private $display;
 
     /**
      * @var string
@@ -34,7 +41,7 @@ class Cartes extends DefaultEntity
      *
      * @ORM\Column(name="nb_telechargement", type="integer")
      */
-    private $nbTelechargement;
+    private $nbTelechargement = 0;
 
     /**
      * @var bool
@@ -44,11 +51,36 @@ class Cartes extends DefaultEntity
     private $alert;
 
     /**
+     * Set display
+     *
+     * @param boolean $display
+     *
+     * @return Carte
+     */
+    public function setDisplay($display)
+    {
+        $this->display = $display;
+
+        return $this;
+    }
+
+    /**
+     * Get display
+     *
+     * @return bool
+     */
+    public function getDisplay()
+    {
+        return $this->display;
+    }
+
+
+    /**
      * Set nom
      *
      * @param string $nom
      *
-     * @return Cartes
+     * @return Carte
      */
     public function setNom($nom)
     {
@@ -68,35 +100,11 @@ class Cartes extends DefaultEntity
     }
 
     /**
-     * Set dateModification
-     *
-     * @param \DateTime $dateModification
-     *
-     * @return Cartes
-     */
-    public function setDateModification($dateModification)
-    {
-        $this->dateModification = $dateModification;
-
-        return $this;
-    }
-
-    /**
-     * Get dateModification
-     *
-     * @return \DateTime
-     */
-    public function getDateModification()
-    {
-        return $this->dateModification;
-    }
-
-    /**
      * Set nbTelechargement
      *
      * @param integer $nbTelechargement
      *
-     * @return Cartes
+     * @return Carte
      */
     public function setNbTelechargement($nbTelechargement)
     {
@@ -120,7 +128,7 @@ class Cartes extends DefaultEntity
      *
      * @param boolean $alert
      *
-     * @return Cartes
+     * @return Carte
      */
     public function setAlert($alert)
     {

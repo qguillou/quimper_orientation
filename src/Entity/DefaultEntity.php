@@ -67,7 +67,7 @@ abstract class DefaultEntity
      *
      * @param \DateTime $dateModification
      *
-     * @return Cartes
+     * @return Carte
      */
     public function setDateModification($dateModification)
     {
@@ -91,7 +91,7 @@ abstract class DefaultEntity
      *
      * @param \DateTime $dateModification
      *
-     * @return Cartes
+     * @return Carte
      */
     public function setDateCreation($dateCreation)
     {
