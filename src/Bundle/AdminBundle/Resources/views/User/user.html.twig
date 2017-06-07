@@ -1,0 +1,20 @@
+{% extends 'AdminBundle::default.html.twig' %}
+
+{% block title %}Administration des utilisateurs{% endblock %}
+
+{% block label_add %}Ajout d'un utilisateur{% endblock %}
+
+{% block table_head %}
+<th>#</th>
+<th>Identifiant</th>
+<th>Nom</th>
+<th>Prénom</th>
+<th>Date Modification</th>
+{% endblock %}
+
+{% block table_body %}
+{% include 'AdminBundle:User:table_user.html.twig' %}
+{% endblock %}
+
+{% block path_form %}"{{ path('user_form') }}"{% endblock %}
+{% block path_delete %}"{{ path('user_delete') }}"{% endblock %}

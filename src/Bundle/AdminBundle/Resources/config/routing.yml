@@ -103,3 +103,20 @@ contact_delete:
 contact_form:
     path:     /admin/config/contact/form
     defaults: { _controller: AdminBundle:AdminContact:form }
+
+#User
+admin_user:
+    path:       /admin/config/user
+    defaults:   { _controller: AdminBundle:AdminUser:index }
+
+user_add:
+    path:     /admin/config/user/add
+    defaults: { _controller: AdminBundle:AdminUser:add }
+
+user_delete:
+    path:     /admin/config/user/delete
+    defaults: { _controller: AdminBundle:AdminUser:delete }
+
+user_form:
+    path:     /admin/config/user/form
+    defaults: { _controller: AdminBundle:AdminUser:form }

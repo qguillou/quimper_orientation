@@ -1,0 +1,67 @@
+{% extends 'AdminBundle::form_default.html.twig' %}
+
+{% block modal_title %}Édition d'un utilisateur{% endblock %}
+
+{% block modal_body %}
+<div class="row">
+    <div class="form-group">
+        {{ form_label(form.username) }}
+        <div class="col-sm-9">
+            {{ form_widget(form.username) }}
+            {{ form_errors(form.username) }}
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="form-group">
+        {{ form_label(form.nom) }}
+        <div class="col-sm-9">
+            {{ form_widget(form.nom) }}
+            {{ form_errors(form.nom) }}
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="form-group">
+        {{ form_label(form.prenom) }}
+        <div class="col-sm-9">
+            {{ form_widget(form.prenom) }}
+            {{ form_errors(form.prenom) }}
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="form-group">
+        {{ form_label(form.email) }}
+        <div class="col-sm-9">
+            {{ form_widget(form.email) }}
+            {{ form_errors(form.email) }}
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="form-group">
+        {{ form_label(form.newsletter) }}
+        <div class="col-sm-9">
+            {{ form_widget(form.newsletter) }}
+            {{ form_errors(form.newsletter) }}
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="form-group">
+        {{ form_label(form.license) }}
+        <div class="col-sm-9">
+            {{ form_widget(form.license) }}
+            {{ form_errors(form.license) }}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block path_add %}"{{ path('user_add') }}"{% endblock %}
