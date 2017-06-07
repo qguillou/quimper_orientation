@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\ResetType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class InscritType extends AbstractType
@@ -38,6 +39,8 @@ class InscritType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'Entity\Inscrit',
+            'course' => 1,
+            'allow_extra_fields' => true
         ));
     }
 }

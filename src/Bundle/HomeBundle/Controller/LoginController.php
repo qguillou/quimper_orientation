@@ -7,6 +7,7 @@ use Bundle\HomeBundle\Form\User\ResetPasswordType;
 use Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+ use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken,
 Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 
@@ -15,6 +16,7 @@ class LoginController extends Controller
     public function loginAction(Request $request)
     {
       $user = new User();
+      $dispatcher = new EventDispatcher();
 
       $form = $this->createForm(LoginType::class, $user);
       $form_password = $this->createForm(ResetPasswordType::class, $user);
@@ -25,7 +27,7 @@ class LoginController extends Controller
           $token = new UsernamePasswordToken($u, $u->getPassword(), "public", $u->getRoles());
           $this->get("security.token_storage")->setToken($token);
           $event = new InteractiveLoginEvent($request, $token);
-          $this->get("event_dispatcher")->dispatch("security.interactive_login", $event);
+          $dispatcher->dispatch("security.interactive_login", $event);
 
           $this->get('session')->getFlashBag()->add(
             'success',

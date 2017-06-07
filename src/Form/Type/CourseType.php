@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\ResetType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class CourseType extends AbstractType
@@ -18,7 +19,7 @@ class CourseType extends AbstractType
     {
         $builder
             ->add('id', IntegerType::class)
-            ->add('nom', TextType::class, array('label' => 'Nom de la carte', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
+            ->add('nom', TextType::class, array('label' => 'Nom', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
             ->add('date', DateTimeType::class, array('label' => 'Date', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
             ->add('lieu', TextType::class, array('label' => 'Nom de la carte', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
             ->add('gps', TextType::class, array('label' => 'Coordonnées GPS', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
