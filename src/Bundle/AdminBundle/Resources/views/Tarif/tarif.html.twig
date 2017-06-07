@@ -1,0 +1,19 @@
+{% extends 'AdminBundle::default.html.twig' %}
+
+{% block title %}Administration des tarifs{% endblock %}
+
+{% block label_add %}Ajout d'un tarif{% endblock %}
+
+{% block table_head %}
+<th>#</th>
+<th>Libellé</th>
+<th>Prix</th>
+<th>Date Modification</th>
+{% endblock %}
+
+{% block table_body %}
+{% include 'AdminBundle:Tarif:table_tarif.html.twig' %}
+{% endblock %}
+
+{% block path_form %}"{{ path('tarif_form') }}"{% endblock %}
+{% block path_delete %}"{{ path('tarif_delete') }}"{% endblock %}

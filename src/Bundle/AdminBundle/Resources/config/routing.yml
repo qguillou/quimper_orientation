@@ -69,3 +69,20 @@ role_delete:
 role_form:
     path:     /admin/config/role/form
     defaults: { _controller: AdminBundle:AdminRole:form }
+
+#Tarif
+admin_tarif:
+    path:       /admin/config/tarif
+    defaults:   { _controller: AdminBundle:AdminTarif:index }
+
+tarif_add:
+    path:     /admin/config/tarif/add
+    defaults: { _controller: AdminBundle:AdminTarif:add }
+
+tarif_delete:
+    path:     /admin/config/tarif/delete
+    defaults: { _controller: AdminBundle:AdminTarif:delete }
+
+tarif_form:
+    path:     /admin/config/tarif/form
+    defaults: { _controller: AdminBundle:AdminTarif:form }

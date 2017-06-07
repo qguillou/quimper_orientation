@@ -1,0 +1,27 @@
+{% extends 'AdminBundle::form_default.html.twig' %}
+
+{% block modal_title %}Édition d'un tarif{% endblock %}
+
+{% block modal_body %}
+<div class="row">
+    <div class="form-group">
+        {{ form_label(form.nom) }}
+        <div class="col-sm-9">
+            {{ form_widget(form.nom) }}
+            {{ form_errors(form.nom) }}
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="form-group">
+        {{ form_label(form.prix) }}
+        <div class="col-sm-9">
+            {{ form_widget(form.prix) }}
+            {{ form_errors(form.prix) }}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block path_add %}"{{ path('tarif_add') }}"{% endblock %}
