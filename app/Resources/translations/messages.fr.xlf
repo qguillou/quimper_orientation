@@ -54,6 +54,10 @@
                 <source>nav.config.tarif</source>
                 <target>Tarifs</target>
             </trans-unit>
+            <trans-unit id="nav.config.contact">
+                <source>nav.config.contact</source>
+                <target>Contacts</target>
+            </trans-unit>
             <trans-unit id="nav.config.role">
                 <source>nav.config.role</source>
                 <target>Attribution des rôles</target>

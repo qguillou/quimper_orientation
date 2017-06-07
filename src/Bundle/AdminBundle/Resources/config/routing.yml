@@ -86,3 +86,20 @@ tarif_delete:
 tarif_form:
     path:     /admin/config/tarif/form
     defaults: { _controller: AdminBundle:AdminTarif:form }
+
+#Contact
+admin_contact:
+    path:       /admin/config/contact
+    defaults:   { _controller: AdminBundle:AdminContact:index }
+
+contact_add:
+    path:     /admin/config/contact/add
+    defaults: { _controller: AdminBundle:AdminContact:add }
+
+contact_delete:
+    path:     /admin/config/contact/delete
+    defaults: { _controller: AdminBundle:AdminContact:delete }
+
+contact_form:
+    path:     /admin/config/contact/form
+    defaults: { _controller: AdminBundle:AdminContact:form }

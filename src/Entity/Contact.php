@@ -23,6 +23,13 @@ class Contact extends DefaultEntity
     protected $id;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="display", type="boolean")
+     */
+    private $display;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="fonction", type="string", length=255)
@@ -71,6 +78,29 @@ class Contact extends DefaultEntity
      */
     private $portable;
 
+    /**
+     * Set display
+     *
+     * @param boolean $display
+     *
+     * @return Contact
+     */
+    public function setDisplay($display)
+    {
+        $this->display = $display;
+
+        return $this;
+    }
+
+    /**
+     * Get display
+     *
+     * @return bool
+     */
+    public function getDisplay()
+    {
+        return $this->display;
+    }
 
     /**
      * Set fonction
