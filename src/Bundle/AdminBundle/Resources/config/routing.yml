@@ -36,6 +36,23 @@ course_form:
     path:     /admin/course/form
     defaults: { _controller: AdminBundle:AdminCourse:form }
 
+#Inscrit
+admin_inscrit:
+    path:       /admin/inscrit
+    defaults:   { _controller: AdminBundle:AdminInscrit:index }
+
+inscrit_add:
+    path:     /admin/inscrit/add
+    defaults: { _controller: AdminBundle:AdminInscrit:add }
+
+inscrit_delete:
+    path:     /admin/inscrit/delete
+    defaults: { _controller: AdminBundle:AdminInscrit:delete }
+
+inscrit_form:
+    path:     /admin/inscrit/form
+    defaults: { _controller: AdminBundle:AdminInscrit:form }
+
 #Type
 admin_type_course:
     path:       /admin/config/type

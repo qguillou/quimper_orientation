@@ -37,6 +37,10 @@
                 <source>nav.news</source>
                 <target>Actualité</target>
             </trans-unit>
+            <trans-unit id="nav.inscrit">
+                <source>nav.inscrit</source>
+                <target>Inscrits</target>
+            </trans-unit>
 
             <trans-unit id="nav.config">
                 <source>nav.config</source>

@@ -7,11 +7,12 @@ security:
             algorithm: bcrypt
 
     role_hierarchy:
-        ROLE_WEBMASTER:       [ROLE_USER]
-        ROLE_ADMIN:           [ROLE_USER, ROLE_WEBMASTER]
+        ROLE_ENTRIES_MANAGER:   [ROLE_USER]
+        ROLE_WEBMASTER:         [ROLE_ENTRIES_MANAGER]
+        ROLE_ADMIN:             [ROLE_WEBMASTER]
 
     access_control:
-        - { path: ^/admin, roles: [ROLE_ADMIN, ROLE_WEBMASTER] }
+        - { path: ^/admin, roles: [ROLE_WEBMASTER] }
         - { path: ^/account, roles: [ROLE_USER] }
         - { path: ^/inscription/modification, roles: [ROLE_USER] }
 

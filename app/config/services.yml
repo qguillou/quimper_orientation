@@ -56,3 +56,7 @@ services:
   manager.user:
       class: Manager\UserManager
       arguments: ['@doctrine.orm.entity_manager', '@session', '@security.password_encoder', '@security.token_storage']
+
+  manager.inscrit:
+      class: Manager\InscritManager
+      arguments: ['@doctrine.orm.entity_manager', '@session', '@security.token_storage', '@security.authorization_checker']

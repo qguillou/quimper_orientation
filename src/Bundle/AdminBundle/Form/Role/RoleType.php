@@ -30,6 +30,7 @@ class RoleType extends AbstractType
             ->add('role', ChoiceType::class, array(
                 'choices'  => array(
                     'Webmaster' => 'ROLE_WEBMASTER',
+                    'Administrateur' => 'ROLE_ADMIN',
                 ),
                 'label' => 'Role',
                 'attr' => array('class' => 'form-control'),

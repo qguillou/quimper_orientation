@@ -1,8 +1,1 @@
 services:
-#    calendar.example:
-#        class: CalendarBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
-
-    manager.inscrit:
-        class: Bundle\CalendarBundle\Manager\InscritManager
-        arguments: ['@doctrine.orm.entity_manager', '@security.token_storage', '@security.authorization_checker', '@session']

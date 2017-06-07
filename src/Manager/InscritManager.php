@@ -1,25 +1,23 @@
 <?php
 
-namespace Bundle\CalendarBundle\Manager;
+namespace Manager;
 
+use Manager\DefaultManager;
 use Doctrine\ORM\EntityManager;
-use Entity\Inscrit;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Symfony\Component\Security\Core\Authorization\AuthorizationChecker;
 
-class InscritManager
+class InscritManager extends DefaultManager
 {
-    protected $em;
     private $security;
     private $token;
-    private $session;
 
-    public function __construct(EntityManager $em, TokenStorage $token, AuthorizationChecker $security, $session)
+    public function __construct(EntityManager $em, Session $session, TokenStorage $token, AuthorizationChecker $security)
     {
-      $this->em = $em;
-      $this->token = $token;
-      $this->security = $security;
-      $this->session = $session;
+        $this->em = $em;
+        $this->session = $session;
+        $this->entity_namespace = 'Entity\Inscrit';
     }
 
     public function getInscrit($course)
