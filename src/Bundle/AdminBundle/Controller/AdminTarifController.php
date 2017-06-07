@@ -15,34 +15,34 @@ class AdminTarifController extends DefaultAdminController
         return $this->render('AdminBundle:Tarif:tarif.html.twig', array('entities' => $entities));
     }
 
-    public function getFormClass()
+    protected function getFormClass()
     {
         return TarifType::class;
     }
 
-    public function getManager()
+    protected function getManager()
     {
         return $this->get('manager.tarif');
     }
 
-    public function getEntityType()
+    protected function getEntityType()
     {
         return new Tarif();
     }
 
-    public function getEntityName()
+    protected function getEntityName()
     {
         return 'tarif';
     }
 
-    public function getTable()
+    protected function getTable()
     {
         $entities = $this->getManager()->getAll();
 
         return $this->renderView('AdminBundle:Tarif:table_tarif.html.twig', array('entities' => $entities));
     }
 
-    public function getForm($form)
+    protected function getForm($form)
     {
         return $this->render('AdminBundle:Tarif:form_tarif.html.twig',
             array('form' => $form->createView()));

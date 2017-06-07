@@ -15,34 +15,34 @@ class AdminCourseController extends DefaultAdminController
         return $this->render('AdminBundle:Course:course.html.twig', array('entities' => $entities));
     }
 
-    public function getFormClass()
+    protected function getFormClass()
     {
         return CourseType::class;
     }
 
-    public function getManager()
+    protected function getManager()
     {
         return $this->get('manager.course');
     }
 
-    public function getEntityType()
+    protected function getEntityType()
     {
         return new Course();
     }
 
-    public function getEntityName()
+    protected function getEntityName()
     {
         return 'course';
     }
 
-    public function getTable()
+    protected function getTable()
     {
         $entities = $this->getManager()->getAll(array('date' => 'DESC'));
 
         return $this->renderView('AdminBundle:Course:table_course.html.twig', array('entities' => $entities));
     }
 
-    public function getForm($form)
+    protected function getForm($form)
     {
         return $this->render('AdminBundle:Course:form_course.html.twig',
             array('form' => $form->createView()));

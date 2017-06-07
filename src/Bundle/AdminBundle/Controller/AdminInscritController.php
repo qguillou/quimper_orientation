@@ -16,34 +16,34 @@ class AdminInscritController extends DefaultAdminController
         return $this->render('AdminBundle:Inscrit:inscrit.html.twig', array('entities' => $entities));
     }
 
-    public function getFormClass()
+    protected function getFormClass()
     {
         return InscritType::class;
     }
 
-    public function getManager()
+    protected function getManager()
     {
         return $this->get('manager.inscrit');
     }
 
-    public function getEntityType()
+    protected function getEntityType()
     {
         return new Inscrit();
     }
 
-    public function getEntityName()
+    protected function getEntityName()
     {
         return 'inscrit';
     }
 
-    public function getTable()
+    protected function getTable()
     {
         $entities = $this->getManager()->getAll();
 
         return $this->renderView('AdminBundle:Inscrit:table_inscrit.html.twig', array('entities' => $entities));
     }
 
-    public function getForm($form)
+    protected function getForm($form)
     {
         return $this->render('AdminBundle:Inscrit:form_inscrit.html.twig',
             array('form' => $form->createView()));

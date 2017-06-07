@@ -15,34 +15,34 @@ class AdminActualiteController extends DefaultAdminController
         return $this->render('AdminBundle:Actualite:actualite.html.twig', array('entities' => $entities));
     }
 
-    public function getFormClass()
+    protected function getFormClass()
     {
         return ActualiteType::class;
     }
 
-    public function getManager()
+    protected function getManager()
     {
         return $this->get('manager.actualite');
     }
 
-    public function getEntityType()
+    protected function getEntityType()
     {
         return new Actualite();
     }
 
-    public function getEntityName()
+    protected function getEntityName()
     {
         return 'actualite';
     }
 
-    public function getTable()
+    protected function getTable()
     {
         $entities = $this->getManager()->getAll();
 
         return $this->renderView('AdminBundle:Actualite:table_actualite.html.twig', array('entities' => $entities));
     }
 
-    public function getForm($form)
+    protected function getForm($form)
     {
         return $this->render('AdminBundle:Actualite:form_actualite.html.twig',
             array('form' => $form->createView()));

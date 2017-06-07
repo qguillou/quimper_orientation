@@ -15,34 +15,34 @@ class AdminContactController extends DefaultAdminController
         return $this->render('AdminBundle:Contact:contact.html.twig', array('entities' => $entities));
     }
 
-    public function getFormClass()
+    protected function getFormClass()
     {
         return ContactType::class;
     }
 
-    public function getManager()
+    protected function getManager()
     {
         return $this->get('manager.contact');
     }
 
-    public function getEntityType()
+    protected function getEntityType()
     {
         return new Contact();
     }
 
-    public function getEntityName()
+    protected function getEntityName()
     {
         return 'contact';
     }
 
-    public function getTable()
+    protected function getTable()
     {
         $entities = $this->getManager()->getAll();
 
         return $this->renderView('AdminBundle:Contact:table_contact.html.twig', array('entities' => $entities));
     }
 
-    public function getForm($form)
+    protected function getForm($form)
     {
         return $this->render('AdminBundle:Contact:form_contact.html.twig',
             array('form' => $form->createView()));

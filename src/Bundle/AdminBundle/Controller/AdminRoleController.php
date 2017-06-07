@@ -15,34 +15,34 @@ class AdminRoleController extends DefaultAdminController
         return $this->render('AdminBundle:Role:role.html.twig', array('entities' => $entities));
     }
 
-    public function getFormClass()
+    protected function getFormClass()
     {
         return RoleType::class;
     }
 
-    public function getManager()
+    protected function getManager()
     {
         return $this->get('manager.role');
     }
 
-    public function getEntityType()
+    protected function getEntityType()
     {
         return new Role();
     }
 
-    public function getEntityName()
+    protected function getEntityName()
     {
         return 'role';
     }
 
-    public function getTable()
+    protected function getTable()
     {
         $entities = $this->getManager()->getAll();
 
         return $this->renderView('AdminBundle:Role:table_role.html.twig', array('entities' => $entities));
     }
 
-    public function getForm($form)
+    protected function getForm($form)
     {
         return $this->render('AdminBundle:Role:form_role.html.twig',
             array('form' => $form->createView()));

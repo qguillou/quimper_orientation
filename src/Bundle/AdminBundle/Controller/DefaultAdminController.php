@@ -8,12 +8,12 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 abstract class DefaultAdminController extends Controller
 {
-    public abstract function getFormClass();
-    public abstract function getManager();
-    public abstract function getEntityType();
-    public abstract function getEntityName();
-    public abstract function getTable();
-    public abstract function getForm($form);
+    protected abstract function getFormClass();
+    protected abstract function getManager();
+    protected abstract function getEntityType();
+    protected abstract function getEntityName();
+    protected abstract function getTable();
+    protected abstract function getForm($form);
 
     public function addAction(Request $request)
     {

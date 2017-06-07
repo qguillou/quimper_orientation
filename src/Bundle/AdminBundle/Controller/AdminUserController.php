@@ -15,34 +15,34 @@ class AdminUserController extends DefaultAdminController
         return $this->render('AdminBundle:User:user.html.twig', array('entities' => $entities));
     }
 
-    public function getFormClass()
+    protected function getFormClass()
     {
         return UserType::class;
     }
 
-    public function getManager()
+    protected function getManager()
     {
         return $this->get('manager.user');
     }
 
-    public function getEntityType()
+    protected function getEntityType()
     {
         return new User();
     }
 
-    public function getEntityName()
+    protected function getEntityName()
     {
         return 'user';
     }
 
-    public function getTable()
+    protected function getTable()
     {
         $entities = $this->getManager()->getAll();
 
         return $this->renderView('AdminBundle:User:table_user.html.twig', array('entities' => $entities));
     }
 
-    public function getForm($form)
+    protected function getForm($form)
     {
         return $this->render('AdminBundle:User:form_user.html.twig',
             array('form' => $form->createView()));
