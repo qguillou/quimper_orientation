@@ -4,7 +4,7 @@ namespace Bundle\AdminBundle\Controller;
 
 use Bundle\AdminBundle\Controller\DefaultAdminController;
 use Entity\Role;
-use Bundle\AdminBundle\Form\Role\RoleType;
+use Form\RoleType;
 
 class AdminRoleController extends DefaultAdminController
 {

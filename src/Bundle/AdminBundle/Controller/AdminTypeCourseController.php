@@ -4,7 +4,7 @@ namespace Bundle\AdminBundle\Controller;
 
 use Bundle\AdminBundle\Controller\DefaultAdminController;
 use Entity\Type;
-use Bundle\AdminBundle\Form\TypeCourse\TypeCourseType;
+use Form\TypeType;
 
 class AdminTypeCourseController extends DefaultAdminController
 {
@@ -17,7 +17,7 @@ class AdminTypeCourseController extends DefaultAdminController
 
     protected function getFormClass()
     {
-        return TypeCourseType::class;
+        return TypeType::class;
     }
 
     protected function getManager()

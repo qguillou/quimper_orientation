@@ -4,7 +4,7 @@ namespace Bundle\AdminBundle\Controller;
 
 use Bundle\AdminBundle\Controller\DefaultAdminController;
 use Entity\Inscrit;
-use Bundle\AdminBundle\Form\Inscrit\InscritType;
+use Form\InscritType;
 use Symfony\Component\HttpFoundation\Request;
 
 class AdminInscritController extends DefaultAdminController

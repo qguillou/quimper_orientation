@@ -4,7 +4,7 @@ namespace Bundle\AdminBundle\Controller;
 
 use Bundle\AdminBundle\Controller\DefaultAdminController;
 use Entity\Course;
-use Bundle\AdminBundle\Form\Course\CourseType;
+use Form\CourseType;
 
 class AdminCourseController extends DefaultAdminController
 {

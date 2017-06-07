@@ -4,7 +4,7 @@ namespace Bundle\AdminBundle\Controller;
 
 use Bundle\AdminBundle\Controller\DefaultAdminController;
 use Entity\Actualite;
-use Bundle\AdminBundle\Form\Actualite\ActualiteType;
+use Form\Type\ActualiteType;
 
 class AdminActualiteController extends DefaultAdminController
 {

@@ -4,7 +4,7 @@ namespace Bundle\AdminBundle\Controller;
 
 use Bundle\AdminBundle\Controller\DefaultAdminController;
 use Entity\Tarif;
-use Bundle\AdminBundle\Form\Tarif\TarifType;
+use Form\TarifType;
 
 class AdminTarifController extends DefaultAdminController
 {
