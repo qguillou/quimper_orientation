@@ -4,6 +4,7 @@ namespace Manager;
 
 use Manager\DefaultManager;
 use Doctrine\ORM\EntityManager;
+use Entity\Inscrit;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Symfony\Component\Security\Core\Authorization\AuthorizationChecker;
@@ -18,6 +19,8 @@ class InscritManager extends DefaultManager
         $this->em = $em;
         $this->session = $session;
         $this->entity_namespace = 'Entity\Inscrit';
+        $this->token = $token;
+        $this->security = $security;
     }
 
     public function getInscrit($course)
