@@ -4,7 +4,7 @@ namespace Bundle\AdminBundle\Controller;
 
 use Bundle\AdminBundle\Controller\DefaultAdminController;
 use Entity\Contact;
-use Form\ContactType;
+use Form\Type\ContactType;
 
 class AdminContactController extends DefaultAdminController
 {

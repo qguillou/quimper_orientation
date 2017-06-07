@@ -4,7 +4,7 @@ namespace Bundle\AdminBundle\Controller;
 
 use Bundle\AdminBundle\Controller\DefaultAdminController;
 use Entity\Carte;
-use Form\CarteType;
+use Form\Type\CarteType;
 
 class AdminCarteController extends DefaultAdminController
 {
