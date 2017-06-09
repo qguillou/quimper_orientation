@@ -10,7 +10,7 @@ class AdminController extends Controller
     {
         $admins = $this->get('manager.user')->getWebmasters();
 
-        return $this->render('AdminBundle:Admin:index.html.twig',
+        return $this->render('AdminBundle::index.html.twig',
             array('admins' => $admins));
     }
 }

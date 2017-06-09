@@ -421,4 +421,9 @@ class User extends DefaultEntity implements UserInterface, \Serializable
     {
         return $this->users;
     }
+
+    public function __toString()
+    {
+        return (string) $this->getPrenom() . ' ' . $this->getNom() . ' (' . $this->getUsername() . ')';
+    }
   }

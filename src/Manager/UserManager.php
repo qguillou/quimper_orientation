@@ -5,22 +5,66 @@ namespace Manager;
 use Manager\DefaultManager;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Form\Type\UserType;
+use Entity\User;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoder;
-use Entity\User;
+use Symfony\Component\Security\Core\Authorization\AuthorizationChecker;
 
 class UserManager extends DefaultManager
 {
-    protected $encoder;
-    protected $security;
-
-    public function __construct(EntityManager $em, Session $session, UserPasswordEncoder $encoder, $security)
+    public function create()
     {
-        $this->em = $em;
-        $this->session = $session;
-        $this->entity_namespace = 'Entity\User';
-        $this->encoder = $encoder;
-        $this->security = $security;
+        $entity = new User();
+
+        return $entity;
+    }
+
+    public function getFormClass()
+    {
+        return UserType::class;
+    }
+
+    public function getAdminPageTitle()
+    {
+        return "Administration des utilisateurs";
+    }
+
+    public function getDisplayColumnTitle()
+    {
+        return array(
+            'Identifiant',
+            'Nom',
+            'Prénom',
+            'E-mail'
+        );
+    }
+
+    public function getDisplayColumn()
+    {
+        return array(
+            'username',
+            'nom',
+            'prenom',
+            'email'
+        );
+    }
+
+    public function getDisplayFormField()
+    {
+        return array(
+            'username',
+            'nom',
+            'prenom',
+            'email',
+            'license',
+            'newsletter'
+        );
+    }
+
+    public function getOrderBy()
+    {
+        return array('username' => 'ASC');
     }
 
     public function getWebmasters()
@@ -33,7 +77,7 @@ class UserManager extends DefaultManager
 
     public function register(User $user)
     {
-      $password = $this->encoder->encodePassword($user, $user->getPlainPassword());
+      $password = $this->password_encoder->encodePassword($user, $user->getPlainPassword());
       $user->setPassword($password);
       $user->setNewsletter(true);
 
@@ -53,7 +97,7 @@ class UserManager extends DefaultManager
       $repository = $this->em->getRepository('Entity\User');
       $u = $repository->findOneBy(array('username' => $user->getUsername()));
 
-      if($u && ($this->encoder->isPasswordValid($u ,$user->getPlainPassword(),$u->getSalt()))){
+      if($u && ($this->password_encoder->isPasswordValid($u ,$user->getPlainPassword(),$u->getSalt()))){
         return $u;
       }
 

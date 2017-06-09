@@ -11,7 +11,7 @@ use Entity\DefaultEntity;
  *
  * @ORM\Table(name="inscrit")
  * @ORM\Entity(repositoryClass="Repository\InscritRepository")
- * @UniqueEntity(fields={"course","user","nom","prenom"}, message="Un licencié ne peut pas s'inscrire plusieurs fois à la même course.")
+ * @UniqueEntity(fields={"course","licence","nom","prenom"}, message="Un licencié ne peut pas s'inscrire plusieurs fois à la même course.")
  */
 class Inscrit extends DefaultEntity
 {

@@ -5,13 +5,58 @@ namespace Manager;
 use Manager\DefaultManager;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Form\Type\CarteType;
+use Entity\Carte;
 
 class CarteManager extends DefaultManager
 {
-    public function __construct(EntityManager $em, Session $session)
+    public function create()
     {
-        $this->em = $em;
-        $this->session = $session;
-        $this->entity_namespace = 'Entity\Carte';
+        $entity = new Carte();
+
+        return $entity;
+    }
+
+    public function getFormClass()
+    {
+        return CarteType::class;
+    }
+
+    public function getAdminPageTitle()
+    {
+        return "Administration des cartes";
+    }
+
+    public function getDisplayColumnTitle()
+    {
+        return array(
+            'Affichée',
+            'Nom',
+            'Nombre de téléchargement'
+        );
+    }
+
+    public function getDisplayColumn()
+    {
+        return array(
+            'display',
+            'nom',
+            'nbTelechargement'
+        );
+    }
+
+    public function getDisplayFormField()
+    {
+        return array(
+            'display',
+            'nom',
+            'alert',
+            'nbTelechargement'
+        );
+    }
+
+    public function getOrderBy()
+    {
+        return array('nom' => 'ASC');
     }
 }

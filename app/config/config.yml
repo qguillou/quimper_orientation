@@ -6,7 +6,6 @@ imports:
     - { resource: "@ClubBundle/Resources/config/services.yml" }
     - { resource: "@ParcoursBundle/Resources/config/services.yml" }
     - { resource: "@CalendarBundle/Resources/config/services.yml" }
-    - { resource: "@AdminBundle/Resources/config/services.yml" }
     - { resource: "@DefinitionBundle/Resources/config/services.yml" }
     - { resource: "@ConfigurationBundle/Resources/config/services.yml" }
 

@@ -1,7 +1,0 @@
-{% extends 'AdminBundle::table_default.html.twig' %}
-
-{% block line_content %}
-<td> {{ entity.id }} </td>
-<td> {{ entity.date | format_datetime('dd MMMM YYYY', 'fr', 'Europe/Paris') }} </td>
-<td> {{ entity.nom }} </td>
-{% endblock %}

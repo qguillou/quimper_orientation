@@ -2,39 +2,21 @@ admin_home:
     path:     /admin
     defaults: { _controller: AdminBundle:Admin:index }
 
-#Actualite
-admin_actualite:
-    path:       /admin/actualite
-    defaults:   { _controller: AdminBundle:AdminActualite:index }
+admin_entity:
+    path:       /admin/entity/{entity_type}
+    defaults:   { _controller: AdminBundle:AdminEntity:index }
 
-actualite_add:
-    path:     /admin/actualite/add
-    defaults: { _controller: AdminBundle:AdminActualite:add }
+admin_entity_form:
+    path:       /admin/entity/{entity_type}/form/{id}
+    defaults:   { _controller: AdminBundle:AdminEntity:form }
 
-actualite_delete:
-    path:     /admin/actualite/delete
-    defaults: { _controller: AdminBundle:AdminActualite:delete }
+admin_entity_save:
+    path:       /admin/entity/{entity_type}/save
+    defaults:   { _controller: AdminBundle:AdminEntity:save }
 
-actualite_form:
-    path:     /admin/actualite/form
-    defaults: { _controller: AdminBundle:AdminActualite:form }
-
-#Course
-admin_course:
-    path:       /admin/course
-    defaults:   { _controller: AdminBundle:AdminCourse:index }
-
-course_add:
-    path:     /admin/course/add
-    defaults: { _controller: AdminBundle:AdminCourse:add }
-
-course_delete:
-    path:     /admin/course/delete
-    defaults: { _controller: AdminBundle:AdminCourse:delete }
-
-course_form:
-    path:     /admin/course/form
-    defaults: { _controller: AdminBundle:AdminCourse:form }
+admin_entity_delete:
+    path:       /admin/entity/{entity_type}/delete/{id}
+    defaults:   { _controller: AdminBundle:AdminEntity:delete }
 
 #Inscrit
 admin_inscrit:
@@ -52,105 +34,3 @@ inscrit_delete:
 inscrit_form:
     path:     /admin/inscrit/form
     defaults: { _controller: AdminBundle:AdminInscrit:form }
-
-#Carte
-admin_carte:
-    path:       /admin/carte
-    defaults:   { _controller: AdminBundle:AdminCarte:index }
-
-carte_add:
-    path:     /admin/carte/add
-    defaults: { _controller: AdminBundle:AdminCarte:add }
-
-carte_delete:
-    path:     /admin/carte/delete
-    defaults: { _controller: AdminBundle:AdminCarte:delete }
-
-carte_form:
-    path:     /admin/carte/form
-    defaults: { _controller: AdminBundle:AdminCarte:form }
-
-#Type
-admin_type_course:
-    path:       /admin/config/type
-    defaults:   { _controller: AdminBundle:AdminTypeCourse:index }
-
-type_course_add:
-    path:     /admin/config/type/add
-    defaults: { _controller: AdminBundle:AdminTypeCourse:add }
-
-type_course_delete:
-    path:     /admin/config/type/delete
-    defaults: { _controller: AdminBundle:AdminTypeCourse:delete }
-
-type_course_form:
-    path:     /admin/config/type/form
-    defaults: { _controller: AdminBundle:AdminTypeCourse:form }
-
-#Role
-admin_role:
-    path:       /admin/config/role
-    defaults:   { _controller: AdminBundle:AdminRole:index }
-
-role_add:
-    path:     /admin/config/role/add
-    defaults: { _controller: AdminBundle:AdminRole:add }
-
-role_delete:
-    path:     /admin/config/role/delete
-    defaults: { _controller: AdminBundle:AdminRole:delete }
-
-role_form:
-    path:     /admin/config/role/form
-    defaults: { _controller: AdminBundle:AdminRole:form }
-
-#Tarif
-admin_tarif:
-    path:       /admin/config/tarif
-    defaults:   { _controller: AdminBundle:AdminTarif:index }
-
-tarif_add:
-    path:     /admin/config/tarif/add
-    defaults: { _controller: AdminBundle:AdminTarif:add }
-
-tarif_delete:
-    path:     /admin/config/tarif/delete
-    defaults: { _controller: AdminBundle:AdminTarif:delete }
-
-tarif_form:
-    path:     /admin/config/tarif/form
-    defaults: { _controller: AdminBundle:AdminTarif:form }
-
-#Contact
-admin_contact:
-    path:       /admin/config/contact
-    defaults:   { _controller: AdminBundle:AdminContact:index }
-
-contact_add:
-    path:     /admin/config/contact/add
-    defaults: { _controller: AdminBundle:AdminContact:add }
-
-contact_delete:
-    path:     /admin/config/contact/delete
-    defaults: { _controller: AdminBundle:AdminContact:delete }
-
-contact_form:
-    path:     /admin/config/contact/form
-    defaults: { _controller: AdminBundle:AdminContact:form }
-
-#User
-admin_user:
-    path:       /admin/config/user
-    defaults:   { _controller: AdminBundle:AdminUser:index }
-
-user_add:
-    path:     /admin/config/user/add
-    defaults: { _controller: AdminBundle:AdminUser:add }
-
-user_delete:
-    path:     /admin/config/user/delete
-    defaults: { _controller: AdminBundle:AdminUser:delete }
-
-user_form:
-    path:     /admin/config/user/form
-    defaults: { _controller: AdminBundle:AdminUser:form }

@@ -13,7 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\ResetType;
 
-class ActualiteType extends AbstractType
+class TarifType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {

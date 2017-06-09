@@ -9,18 +9,33 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\ResetType;
 
-class TypeType extends AbstractType
+class UserType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('id', IntegerType::class)
-            ->add('nom', TextType::class, array('label' => 'Libellé', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
-            ->add('color', TextType::class, array('label' => 'Couleur', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
+            ->add('username', TextType::class, array('required' => true, 'label' => 'Pseudo', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
+            ->add('nom', TextType::class, array('required' => false, 'label' => 'Nom', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
+            ->add('prenom', TextType::class, array('required' => false, 'label' => 'Prénom', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
+            ->add('email', EmailType::class, array('label' => 'Adresse mail', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
+            ->add('license', EntityType::class,
+                array('auto_initialize' => false,
+                'required' => false,
+                'label' => 'N° de licence FFCO',
+                'class' => 'Entity\Base',
+                'choice_label' => 'id',
+                'required' => false,
+                'attr' => array('class' => 'form-control'),
+                'label_attr' => array('class' => 'col-sm-3 control-label')
+            ))
+            ->add('newsletter', CheckboxType::class, array('label' => 'Recevoir la newsletter', 'label_attr' => array('class' => 'col-sm-3 control-label'), 'required' => false))
 
             ->add('dateModification', DateTimeType::class, array('required' => false))
             ->add('dateCreation', DateTimeType::class, array('required' => false))
@@ -34,7 +49,7 @@ class TypeType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Entity\Type',
+            'data_class' => 'Entity\User',
         ));
     }
 }

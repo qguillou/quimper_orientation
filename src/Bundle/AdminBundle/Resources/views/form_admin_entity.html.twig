@@ -4,13 +4,23 @@
         <span aria-hidden="true">&times;</span>
     </button>
 
-    <h1 class="modal-title" id="ModalEdit">{% block modal_title %}{% endblock %}</h1>
+    <h1 class="modal-title" id="ModalEdit">Édition</h1>
 </div>
 
 <div class="modal-body">
     {{ form_errors(form) }}
 
-    {% block modal_body %}{% endblock %}
+    {% for field in display_form_fields %}
+    <div class="row">
+        <div class="form-group">
+            {{ form_label(attribute(form, field)) }}
+            <div class="col-sm-9">
+                {{ form_widget(attribute(form, field)) }}
+                {{ form_errors(attribute(form, field)) }}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
 </div>
 
 <div class="modal-footer">
@@ -24,7 +34,7 @@
     $("form").submit(function(event){
         event.preventDefault();
         $.ajax({
-          url: {% block path_add %}{% endblock %},
+          url: "{{ path('admin_entity_save', {'entity_type': entity_type}) }}",
           data: $(this).serializeArray(),
           type: 'post',
           success: function(result) {

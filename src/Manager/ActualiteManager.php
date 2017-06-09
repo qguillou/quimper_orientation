@@ -5,13 +5,54 @@ namespace Manager;
 use Manager\DefaultManager;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Form\Type\ActualiteType;
+use Entity\Actualite;
 
 class ActualiteManager extends DefaultManager
 {
-    public function __construct(EntityManager $em, Session $session)
+    public function create()
     {
-        $this->em = $em;
-        $this->session = $session;
-        $this->entity_namespace = 'Entity\Actualite';
+        $entity = new Actualite();
+
+        return $entity;
+    }
+
+    public function getFormClass()
+    {
+        return ActualiteType::class;
+    }
+
+    public function getAdminPageTitle()
+    {
+        return "Administration des actualités";
+    }
+
+    public function getDisplayColumnTitle()
+    {
+        return array(
+            'Titre',
+            'Date de publication'
+        );
+    }
+
+    public function getDisplayColumn()
+    {
+        return array(
+            'titre',
+            'dateCreation'
+        );
+    }
+
+    public function getDisplayFormField()
+    {
+        return array(
+            'titre',
+            'contenu'
+        );
+    }
+
+    public function getOrderBy()
+    {
+        return array('dateCreation' => 'DESC');
     }
 }

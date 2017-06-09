@@ -19,12 +19,12 @@ class InscritType extends AbstractType
     {
         $builder
             ->add('id', IntegerType::class)
-            ->add('nom', TextType::class, array('label' => 'Nom', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
-            ->add('prenom', TextType::class, array('label' => 'Prénom', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
+            ->add('nom', TextType::class, array('label' => 'Nom', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label'), 'required' => false))
+            ->add('prenom', TextType::class, array('label' => 'Prénom', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label'), 'required' => false))
             ->add('licence', EntityType::class, array('auto_initialize' => false, 'required' => false, 'label' => 'Licence', 'class' => 'Entity\Base', 'choice_label' => 'id', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
             ->add('course', EntityType::class, array('auto_initialize' => false, 'required' => false, 'label' => 'Course', 'class' => 'Entity\Course', 'choice_label' => 'nom', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
-            ->add('puce', IntegerType::class, array('label' => 'Puce', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
-            ->add('commentaire', TextType::class, array('label' => 'Commentaire', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
+            ->add('puce', IntegerType::class, array('label' => 'Puce', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label'), 'required' => false))
+            ->add('commentaire', TextType::class, array('label' => 'Commentaire', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label'), 'required' => false))
 
             ->add('dateModification', DateTimeType::class, array('required' => false))
             ->add('dateCreation', DateTimeType::class, array('required' => false))

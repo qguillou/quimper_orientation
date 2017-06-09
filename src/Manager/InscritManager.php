@@ -4,23 +4,62 @@ namespace Manager;
 
 use Manager\DefaultManager;
 use Doctrine\ORM\EntityManager;
-use Entity\Inscrit;
 use Symfony\Component\HttpFoundation\Session\Session;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
-use Symfony\Component\Security\Core\Authorization\AuthorizationChecker;
+use Form\Type\InscritType;
+use Entity\Inscrit;
 
 class InscritManager extends DefaultManager
 {
-    private $security;
-    private $token;
-
-    public function __construct(EntityManager $em, Session $session, TokenStorage $token, AuthorizationChecker $security)
+    public function create()
     {
-        $this->em = $em;
-        $this->session = $session;
-        $this->entity_namespace = 'Entity\Inscrit';
-        $this->token = $token;
-        $this->security = $security;
+        $entity = new Inscrit();
+
+        return $entity;
+    }
+
+    public function getFormClass()
+    {
+        return InscritType::class;
+    }
+
+    public function getAdminPageTitle()
+    {
+        return "Administration des inscrits";
+    }
+
+    public function getDisplayColumnTitle()
+    {
+        return array(
+            'Course',
+            'Nom',
+            'Prénom',
+        );
+    }
+
+    public function getDisplayColumn()
+    {
+        return array(
+            'course',
+            'nom',
+            'prenom'
+        );
+    }
+
+    public function getDisplayFormField()
+    {
+        return array(
+            'nom',
+            'prenom',
+            'licence',
+            'course',
+            'puce',
+            'commentaire',
+        );
+    }
+
+    public function getOrderBy()
+    {
+        return array('nom' => 'ASC');
     }
 
     public function getInscrit($course)

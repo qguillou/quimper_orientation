@@ -1,9 +1,0 @@
-{% extends 'AdminBundle::table_default.html.twig' %}
-
-{% block line_content %}
-<td>  </td>
-<td> {{ entity.username }} </td>
-<td> {{ entity.nom}}</td>
-<td> {{ entity.prenom}}</td>
-<td> {{ entity.dateModification | format_datetime('dd MMMM YYYY', 'fr', 'Europe/Paris') }} </td>
-{% endblock %}

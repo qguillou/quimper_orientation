@@ -2,7 +2,7 @@
 
 {% block content %}
   <div class="col-md-8">
-    <h1>{% block title %}{% endblock %}</h1>
+    <h1>{{ page_title }}</h1>
     <p class="lead">
       Ajout, modification et suppression.
     </p>
@@ -12,7 +12,7 @@
 
 
   <div class="col-md-12">
-      <button id="add" type="button" class="btn btn-primary">{% block label_add %}{% endblock %}</button>
+      <button id="add" type="button" class="btn btn-primary">Créer</button>
       <div class="row-divider"></div>
   </div>
 
@@ -20,13 +20,16 @@
       <table class="table table-striped table-hover">
           <thead>
               <tr>
-                  {% block table_head %}{% endblock %}
-                  <th>Utilisateur</th>
+                  {% for column_title in columns_title %}
+                  <th>{{ column_title }}</th>
+                  {% endfor %}
+                  <th>Modifié le</th>
+                  <th>Modifié par</th>
                   <th>Actions</th>
               </tr>
           </thead>
           <tbody id="liste">
-              {% block table_body %}{% endblock %}
+              {% include 'AdminBundle::table_admin_entity.html.twig' %}
           </tbody>
       </table>
   </div>
@@ -46,28 +49,28 @@
 
   <script type='text/javascript'>
 
-    function unregister(id) {
-      $.ajax({
-        url: {% block path_delete %}{% endblock %},
-        data: {
-          'id': id
-        },
-        success: function(result) {
-          $("#liste").html(result.table);
-          $("#messages").html(result.messages);
-        }
-      });
-    }
+    function form(id) {
+        var path = "{{ path('admin_entity_form', {'entity_type': entity_type, 'id': "IDENTIFIANT" }) }}";
+        path = path.replace("IDENTIFIANT", id);
 
-    function form(id = 0) {
         $.ajax({
-          url: {% block path_form %}{% endblock %},
-          data: {
-            'id': id
-          },
+          url: path,
           success: function(result) {
             $("#form").html(result);
             $("#ModalEdit").modal('show');
+          }
+        });
+    }
+
+    function deleteEntity(id) {
+        var path = "{{ path('admin_entity_delete', {'entity_type': entity_type, 'id': "IDENTIFIANT" }) }}";
+        path = path.replace("IDENTIFIANT", id);
+
+        $.ajax({
+          url: path,
+          success: function(result) {
+              $("#liste").html(result.table);
+              $("#messages").html(result.messages);
           }
         });
     }

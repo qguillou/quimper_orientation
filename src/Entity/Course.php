@@ -363,4 +363,9 @@ class Course extends DefaultEntity
     {
         return $this->circuits;
     }
+
+    public function __toString()
+    {
+        return (string) $this->getNom();
+    }
 }
