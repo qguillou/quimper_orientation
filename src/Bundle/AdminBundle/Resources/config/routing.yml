@@ -17,20 +17,3 @@ admin_entity_save:
 admin_entity_delete:
     path:       /admin/entity/{entity_type}/delete/{id}
     defaults:   { _controller: AdminBundle:AdminEntity:delete }
-
-#Inscrit
-admin_inscrit:
-    path:       /admin/inscrit
-    defaults:   { _controller: AdminBundle:AdminInscrit:index }
-
-inscrit_add:
-    path:     /admin/inscrit/add
-    defaults: { _controller: AdminBundle:AdminInscrit:add }
-
-inscrit_delete:
-    path:     /admin/inscrit/delete
-    defaults: { _controller: AdminBundle:AdminInscrit:delete }
-
-inscrit_form:
-    path:     /admin/inscrit/form
-    defaults: { _controller: AdminBundle:AdminInscrit:form }

@@ -3,13 +3,9 @@
 namespace Manager;
 
 use Manager\DefaultManager;
-use Doctrine\ORM\EntityManager;
-use Symfony\Component\HttpFoundation\Session\Session;
 use Form\Type\UserType;
 use Entity\User;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoder;
-use Symfony\Component\Security\Core\Authorization\AuthorizationChecker;
 
 class UserManager extends DefaultManager
 {

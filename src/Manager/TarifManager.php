@@ -3,8 +3,6 @@
 namespace Manager;
 
 use Manager\DefaultManager;
-use Doctrine\ORM\EntityManager;
-use Symfony\Component\HttpFoundation\Session\Session;
 use Form\Type\TarifType;
 use Entity\Tarif;
 
