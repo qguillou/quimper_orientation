@@ -10,11 +10,12 @@
     {% include '::Message/message.html.twig' %}
   </div>
 
-
+  {% if editable %}
   <div class="col-md-12">
       <button id="add" type="button" class="btn btn-primary">Créer</button>
       <div class="row-divider"></div>
   </div>
+  {% endif %}
 
   <div class="col-md-12">
       <table class="table table-striped table-hover">

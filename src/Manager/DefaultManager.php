@@ -34,6 +34,11 @@ abstract class DefaultManager
         $this->password_encoder = $password_encoder;
     }
 
+    public function isEditable()
+    {
+        return true;
+    }
+
     public function get($id)
     {
         $repository = $this->em->getRepository($this->entity_namespace);

@@ -72,6 +72,12 @@ services:
       calls:
           - [setEntityNamespace, ['Entity\Carte']]
 
+  manager.document:
+      class: Manager\DocumentManager
+      parent: manager.default
+      calls:
+          - [setEntityNamespace, ['Entity\Document']]
+
   manager.user:
       class: Manager\UserManager
       parent: manager.default

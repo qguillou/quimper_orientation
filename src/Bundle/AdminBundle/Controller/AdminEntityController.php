@@ -21,6 +21,7 @@ class AdminEntityController extends Controller
                 'columns_title' => $manager->getDisplayColumnTitle(),
                 'columns' => $manager->getDisplayColumn(),
                 'entities' => $entities,
+                'editable' => $manager->isEditable()
             )
         );
     }
@@ -56,6 +57,7 @@ class AdminEntityController extends Controller
             array(
                 'columns' => $manager->getDisplayColumn(),
                 'entities' => $entities,
+                'editable' => $manager->isEditable()
             )
         );
         $messages = $this->renderView('::Message/message.html.twig');
@@ -76,6 +78,7 @@ class AdminEntityController extends Controller
             array(
                 'columns' => $manager->getDisplayColumn(),
                 'entities' => $entities,
+                'editable' => $manager->isEditable()
             )
         );
         $messages = $this->renderView('::Message/message.html.twig');
