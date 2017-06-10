@@ -11,6 +11,7 @@ use Entity\DefaultEntity;
  *
  * @ORM\Table(name="course")
  * @ORM\Entity(repositoryClass="Repository\CourseRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Course extends DefaultEntity
 {

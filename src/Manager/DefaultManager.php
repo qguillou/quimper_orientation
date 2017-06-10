@@ -46,11 +46,10 @@ abstract class DefaultManager
 
         if (!$entity) {
             $entity = $this->create();
-            $entity->setDateCreation(new \DateTime('now'));
+            $entity->setId(0);
             $entity->setUserCreation($this->token->getToken()->getUser());
         }
 
-        $entity->setDateModification(new \DateTime('now'));
         $entity->setUserModification($this->token->getToken()->getUser());
 
         return $entity;

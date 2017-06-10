@@ -10,6 +10,7 @@ use Entity\DefaultEntity;
  *
  * @ORM\Table(name="carte")
  * @ORM\Entity(repositoryClass="Repository\CarteRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Carte extends DefaultEntity
 {
@@ -49,6 +50,15 @@ class Carte extends DefaultEntity
      * @ORM\Column(name="alert", type="boolean")
      */
     private $alert;
+
+    /**
+      * @var int
+      * @ORM\OneToOne(targetEntity="Entity\Document")
+      * @ORM\JoinColumn(name="file", referencedColumnName="id")
+      */
+    private $file;
+
+    private $fileUpload;
 
     /**
      * Set display
@@ -145,5 +155,68 @@ class Carte extends DefaultEntity
     public function getAlert()
     {
         return $this->alert;
+    }
+
+    /**
+     * Set file
+     *
+     * @param integer $file
+     *
+     * @return Circuit
+     */
+    public function setFile($file)
+    {
+        $this->file = $file;
+
+        return $this;
+    }
+
+    /**
+     * Get file
+     *
+     * @return int
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * Set fileUpload
+     *
+     * @param integer $fileUpload
+     *
+     * @return Circuit
+     */
+    public function setFileUpload($fileUpload)
+    {
+        var_dump($fileUpldoad);
+        $this->fileUpload = $fileUpload;
+
+        return $this;
+    }
+
+    /**
+     * Get fileUpload
+     *
+     * @return int
+     */
+    public function getFileUpload()
+    {
+        return $this->fileUpload;
+    }
+
+    /**
+    * @ORM\PostPersist()
+    * @ORM\PreUpdate()
+    */
+    public function uploadImage() {
+        if (null === $this->fileUpload) {
+            return;
+        }
+
+        $this->fileUpload->move($this->getParameter('cartes'), $this->image->getClientOriginalName());
+
+        //$this->setImage($this->imageUpload->getClientOriginalName());
     }
 }

@@ -14,6 +14,7 @@ use Entity\DefaultEntity;
 * @ORM\Entity(repositoryClass="Repository\UserRepository")
 * @UniqueEntity(fields={"username"}, message="Ce pseudo est déjà utilisé")
 * @UniqueEntity(fields={"email"}, message="Cette adresse e-mail est déjà utilisée")
+* @ORM\HasLifecycleCallbacks
 */
 class User extends DefaultEntity implements UserInterface, \Serializable
 {

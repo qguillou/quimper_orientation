@@ -10,6 +10,7 @@ use Entity\DefaultEntity;
  *
  * @ORM\Table(name="document")
  * @ORM\Entity(repositoryClass="Repository\DocumentRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Document extends DefaultEntity
 {

@@ -10,6 +10,7 @@ use Entity\DefaultEntity;
  *
  * @ORM\Table(name="user_attached")
  * @ORM\Entity(repositoryClass="Repository\UserAttachedRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class UserAttached extends DefaultEntity
 {

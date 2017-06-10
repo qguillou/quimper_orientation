@@ -157,4 +157,19 @@ abstract class DefaultEntity
     {
         return $this->userModification;
     }
+
+    /**
+    * @ORM\PreUpdate()
+    * @ORM\PrePersist()
+    */
+    public function update() {
+        $this->dateModification = new \DateTime('now');
+    }
+
+    /**
+    * @ORM\PrePersist()
+    */
+    public function create() {
+        $this->dateCreation = new \DateTime('now');
+    }
 }

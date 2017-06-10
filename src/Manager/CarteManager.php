@@ -29,8 +29,7 @@ class CarteManager extends DefaultManager
     {
         return array(
             'Affichée',
-            'Nom',
-            'Nombre de téléchargement'
+            'Nom'
         );
     }
 
@@ -38,8 +37,7 @@ class CarteManager extends DefaultManager
     {
         return array(
             'display',
-            'nom',
-            'nbTelechargement'
+            'nom'
         );
     }
 
@@ -49,7 +47,8 @@ class CarteManager extends DefaultManager
             'display',
             'nom',
             'alert',
-            'nbTelechargement'
+            'nbTelechargement',
+            'fileUpload'
         );
     }
 

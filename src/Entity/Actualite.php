@@ -10,6 +10,7 @@ use Entity\DefaultEntity;
  *
  * @ORM\Table(name="actualite")
  * @ORM\Entity(repositoryClass="Repository\ActualiteRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Actualite extends DefaultEntity
 {

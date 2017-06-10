@@ -10,6 +10,7 @@ use Entity\DefaultEntity;
  *
  * @ORM\Table(name="circuit")
  * @ORM\Entity(repositoryClass="Repository\CircuitRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Circuit extends DefaultEntity
 {

@@ -10,6 +10,7 @@ use Entity\DefaultEntity;
  *
  * @ORM\Table(name="contact")
  * @ORM\Entity(repositoryClass="Repository\ContactRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Contact extends DefaultEntity
 {

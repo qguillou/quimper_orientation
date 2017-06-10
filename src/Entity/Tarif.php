@@ -10,6 +10,7 @@ use Entity\DefaultEntity;
  *
  * @ORM\Table(name="tarif")
  * @ORM\Entity(repositoryClass="Repository\TarifRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Tarif extends DefaultEntity
 {
