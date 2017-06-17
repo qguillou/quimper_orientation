@@ -32,15 +32,10 @@ class ConfigurationController extends Controller
             'mailer_password' => $this->container->getParameter('mailer_password'),
 
             'module_club' => $this->container->get('twig')->getGlobals()['module_club'],
-            'club_name' => 'Le club',
             'module_calendrier' => $this->container->get('twig')->getGlobals()['module_calendrier'],
-            'calendrier_name' => 'Calendrier',
             'module_inscription' => $this->container->get('twig')->getGlobals()['module_inscription'],
-            'inscription_name' => 'Inscription',
             'module_resultat' => $this->container->get('twig')->getGlobals()['module_resultat'],
-            'resultat_name' => 'Résultats',
             'module_carte' => $this->container->get('twig')->getGlobals()['module_carte'],
-            'carte_name' => 'Parcours permanents',
         );
 
         $form = $this->createFormBuilder($defaultValues)
@@ -63,19 +58,14 @@ class ConfigurationController extends Controller
             ->add('mailer_password', TextType::class, array('label' => 'Mot de passe', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
 
             ->add('module_club', CheckboxType::class, array('label' => 'Activer le module', 'label_attr' => array('class' => 'col-sm-3 control-label'), 'required' => false))
-            ->add('club_name', TextType::class, array('label' => 'Nom du menu', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
 
             ->add('module_calendrier', CheckboxType::class, array('label' => 'Activer le module', 'label_attr' => array('class' => 'col-sm-3 control-label'), 'required' => false))
-            ->add('calendrier_name', TextType::class, array('label' => 'Nom du menu', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
 
             ->add('module_inscription', CheckboxType::class, array('label' => 'Activer le module', 'label_attr' => array('class' => 'col-sm-3 control-label'), 'required' => false))
-            ->add('inscription_name', TextType::class, array('label' => 'Nom du menu', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
 
             ->add('module_resultat', CheckboxType::class, array('label' => 'Activer le module', 'label_attr' => array('class' => 'col-sm-3 control-label'), 'required' => false))
-            ->add('resultat_name', TextType::class, array('label' => 'Nom du menu', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
 
             ->add('module_carte', CheckboxType::class, array('label' => 'Activer le module', 'label_attr' => array('class' => 'col-sm-3 control-label'), 'required' => false))
-            ->add('carte_name', TextType::class, array('label' => 'Nom du menu', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
 
             ->add('reset', ResetType::class, array('label' => 'Annuler', 'attr' => array('class' => 'btn btn-default')))
             ->add('save', SubmitType::class, array('label' => 'Enregistrer', 'attr' => array('class' => 'btn btn-success')))
