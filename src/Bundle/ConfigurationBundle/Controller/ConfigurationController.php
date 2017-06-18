@@ -42,6 +42,7 @@ class ConfigurationController extends Controller
         $form = $this->createFormBuilder($defaultValues)
             ->add('site_name', TextType::class, array('label' => 'Nom du site', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
             ->add('color_primary', TextType::class, array('label' => 'Couleur principale', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label'), 'required' => false))
+            ->add('image_bandeau', FileType::class, array('label' => 'Image du bandeau', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label'), 'required' => false))
             ->add('logo', FileType::class, array('label' => 'Logo du pied de page', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label'), 'required' => false, 'multiple' => true))
 
             ->add('nVersion', TextType::class, array('label' => 'N° de version', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
@@ -78,15 +79,34 @@ class ConfigurationController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
 
-            $logo = array();
-            foreach ($data['logo'] as $file) {
+            $logo = $this->container->get('twig')->getGlobals()['logo'];
+            if ($data['logo']) {
+                $logo = array();
+                foreach ($data['logo'] as $file) {
+                    // Move the file to the directory where brochures are stored
+                    $file->move(
+                        $this->getParameter('logo'),
+                        $file->getClientOriginalName()
+                    );
+
+                    $logo[] = '/images/logo/' . $file->getClientOriginalName();
+                }
+            }
+
+            $image_bandeau = $this->container->get('twig')->getGlobals()['image_bandeau'];
+            if ($data['image_bandeau']) {
+                $file = $data['image_bandeau'];
+
+                // Generate a unique name for the file before saving it
+                $fileName = 'bandeau.'.$file->guessExtension();
+
                 // Move the file to the directory where brochures are stored
                 $file->move(
-                    $this->getParameter('logo'),
-                    $file->getClientOriginalName()
+                    $this->getParameter('image_bandeau'),
+                    $fileName
                 );
 
-                $logo[] = '/images/logo/' . $fileName;
+                $image_bandeau = '/images/site/' . $fileName;
             }
 
             $ymlDump = array(
@@ -96,6 +116,7 @@ class ConfigurationController extends Controller
                         'dVersion' => $data['dVersion'],
                         'author' => $data['author'],
                         'site_name' => $data['site_name'],
+                        'image_bandeau' => $image_bandeau,
                         'logo' => $logo,
                         'module_club' => $data['module_club'],
                         'module_calendrier' => $data['module_calendrier'],

@@ -16,6 +16,7 @@ parameters:
     cartes: '%kernel.root_dir%/../web/files/cartes'
     courses: '%kernel.root_dir%/../web/files/courses'
     logo: '%kernel.root_dir%/../web/images/logo'
+    image_bandeau: '%kernel.root_dir%/../web/images/site'
 
 assetic:
     debug:          '%kernel.debug%'
