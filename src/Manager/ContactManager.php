@@ -57,10 +57,13 @@ class ContactManager extends DefaultManager
         );
     }
 
-
-
     public function getOrderBy()
     {
         return array('fonction' => 'ASC');
+    }
+
+    public function getDisplayContact()
+    {
+        return $this->em->getRepository($this->entity_namespace)->findContact();
     }
 }

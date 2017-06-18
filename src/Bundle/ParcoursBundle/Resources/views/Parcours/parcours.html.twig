@@ -20,17 +20,15 @@
         Attention, ce parcours est actuellement en cours de modification.
       </div>
       {% endif %}
-      <ul class="text-list nopadding">
         <li>
-          <b>Date de modification </b> Le {{carte.getDateModification() | date('d/m/Y à G:i')}}
+          <b>Date de modification </b> <br/>Le {{carte.getDateModification() | date('d/m/Y à G:i')}}
         </li>
         <li>
-          <b>Taille du fichier </b>
+          <b>Taille du fichier </b><br/>
         </li>
         <li>
-          <b>Téléchargé </b>{{carte.getNbTelechargement()}} fois
+          <b>Téléchargé </b><br/>{{carte.getNbTelechargement()}} fois
         </li>
-      </ul>
 
       <a href="/parcours/{{carte.getId()}}" target="_BLANK" class="btn btn-success">
         <i class="fa fa-download"></i> Télécharger la carte

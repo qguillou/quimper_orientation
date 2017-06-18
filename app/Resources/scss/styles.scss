@@ -1,6 +1,12 @@
 @import 'variables.scss';
 @import '../../../vendor/twbs/bootstrap-sass/assets/stylesheets/_bootstrap.scss';
 
+// Import des différents modules
+@import 'navbar.scss';
+@import 'admin.scss';
+@import 'box.scss';
+@import 'modal.scss';
+
 // Modification du style de base de bootstrap
 footer .footer-page {
     text-align: center;
@@ -26,7 +32,3 @@ footer img {
 li {
   list-style: none;
 }
-
-// Import des différents modules
-@import 'navbar.scss';
-@import 'admin.scss';

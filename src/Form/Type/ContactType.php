@@ -19,7 +19,7 @@ class ContactType extends AbstractType
     {
         $builder
             ->add('id', IntegerType::class)
-            ->add('display', CheckboxType::class, array('label' => 'Afficher la carte', 'label_attr' => array('class' => 'col-sm-3 control-label'), 'required' => false))
+            ->add('display', CheckboxType::class, array('label' => 'Afficher le contact', 'label_attr' => array('class' => 'col-sm-3 control-label'), 'required' => false))
             ->add('fonction', TextType::class, array('label' => 'Fonction', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
             ->add('nom', TextType::class, array('label' => 'Nom', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
             ->add('prenom', TextType::class, array('label' => 'Prénom', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
@@ -40,7 +40,7 @@ class ContactType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Entity\Carte',
+            'data_class' => 'Entity\Contact',
         ));
     }
 }

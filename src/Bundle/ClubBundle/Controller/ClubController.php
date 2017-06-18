@@ -26,7 +26,7 @@ class ClubController extends Controller
 
     public function contactAction()
     {
-        $contacts = $this->get('manager.contact')->getAll();
+        $contacts = $this->get('manager.contact')->getDisplayContact();
 
         return $this->render('ClubBundle:Club:contact.html.twig',
           array("contacts" => $contacts));
