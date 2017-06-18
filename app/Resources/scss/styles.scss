@@ -22,5 +22,15 @@ footer .footer-page a {
   color: $gray-light;
 }
 
+footer img {
+    max-width: 150px;
+    max-height: 100px;
+}
+
+li {
+  list-style: none;
+}
+
 // Import des différents modules
 @import 'navbar.scss';
+@import 'admin.scss';

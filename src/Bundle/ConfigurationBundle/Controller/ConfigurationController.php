@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Yaml\Dumper;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\ResetType;
 
@@ -41,6 +42,7 @@ class ConfigurationController extends Controller
         $form = $this->createFormBuilder($defaultValues)
             ->add('site_name', TextType::class, array('label' => 'Nom du site', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
             ->add('color_primary', TextType::class, array('label' => 'Couleur principale', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label'), 'required' => false))
+            ->add('logo', FileType::class, array('label' => 'Logo du pied de page', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label'), 'required' => false, 'multiple' => true))
 
             ->add('nVersion', TextType::class, array('label' => 'N° de version', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
             ->add('dVersion', TextType::class, array('label' => 'Date de version', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-3 control-label')))
@@ -76,6 +78,17 @@ class ConfigurationController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
 
+            $logo = array();
+            foreach ($data['logo'] as $file) {
+                // Move the file to the directory where brochures are stored
+                $file->move(
+                    $this->getParameter('logo'),
+                    $file->getClientOriginalName()
+                );
+
+                $logo[] = '/images/logo/' . $fileName;
+            }
+
             $ymlDump = array(
                 'twig' => array(
                     'globals' => array(
@@ -83,6 +96,7 @@ class ConfigurationController extends Controller
                         'dVersion' => $data['dVersion'],
                         'author' => $data['author'],
                         'site_name' => $data['site_name'],
+                        'logo' => $logo,
                         'module_club' => $data['module_club'],
                         'module_calendrier' => $data['module_calendrier'],
                         'module_inscription' => $data['module_inscription'],
@@ -103,6 +117,7 @@ class ConfigurationController extends Controller
                     'secret' => $this->container->getParameter('secret')
                 )
             );
+
             $dumper = new Dumper();
             $yaml = $dumper->dump($ymlDump);
             $path = $this->get('kernel')->getRootDir() . '/../app/config/parameters.yml';

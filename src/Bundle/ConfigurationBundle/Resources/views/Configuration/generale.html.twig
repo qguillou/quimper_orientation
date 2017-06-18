@@ -9,7 +9,7 @@
     </div>
 </div>
 
-<h3>Configurations des couleurs</h3>
+<h3>Configurations des couleurs et styles</h3>
 <div class="row">
     <div class="form-group">
         {{ form_label(form.color_primary) }}
@@ -21,3 +21,12 @@
 </div>
 
 <h3>Configurations des images</h3>
+<div class="row">
+    <div class="form-group">
+        {{ form_label(form.logo) }}
+        <div class="col-sm-9">
+            {{ form_widget(form.logo) }}
+            {{ form_errors(form.logo) }}
+        </div>
+    </div>
+</div>
