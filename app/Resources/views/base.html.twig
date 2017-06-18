@@ -4,11 +4,14 @@
     <meta charset="UTF-8" />
     <title>Quimper Orientation Coatarmor 29</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    <link href="{{ asset( 'css/bootstrap.css' ) }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset( 'css/style.css' ) }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset( 'css/responsive.css' ) }}" rel="stylesheet" type="text/css" />
 
+    {% stylesheets '@styles_css' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+
+    <link href="{{ asset( 'css/style.css' ) }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset( 'css/font-awesome.css' ) }}" rel="stylesheet" type="text/css" />
+
 
     {% block javascript %}
     <script src="{{ asset( 'js/jquery.js' ) }}"></script>

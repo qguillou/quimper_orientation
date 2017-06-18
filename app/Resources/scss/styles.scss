@@ -1,0 +1,7 @@
+@import 'variables.scss';
+@import '../../../vendor/twbs/bootstrap-sass/assets/stylesheets/_bootstrap.scss';
+
+// Modification du style de base de bootstrap
+.container {
+    margin-top: $navbar-height;
+}

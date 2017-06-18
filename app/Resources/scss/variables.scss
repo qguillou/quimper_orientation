@@ -1,0 +1,27 @@
+// COLOR
+$app-base:                                  #68b211 !default;
+
+// TEXT
+$font-size-base:                            16px !default;
+$font-size-large:                           ceil(($font-size-base * 1.15)) !default;
+$font-size-small:                           ceil(($font-size-base * 0.85)) !default;
+$font-size-h1:                              floor(($font-size-base * 2.4)) !default;
+$font-size-h2:                              floor(($font-size-base * 2.05)) !default;
+$font-size-h3:                              ceil(($font-size-base * 1.4)) !default;
+$font-size-h4:                              ceil(($font-size-base * 1.15)) !default;
+$font-size-h5:                              $font-size-base !default;
+$font-size-h6:                              ceil(($font-size-base * 0.85)) !default;
+
+// NAVBAR
+$navbar-inverse-bg:                         $app-base !default;
+$navbar-inverse-border:                     darken($navbar-inverse-bg, 10%) !default;
+$navbar-margin-bottom:                      0 !default;
+$navbar-border-radius:                      0 !default;
+$navbar-inverse-link-color:                 #fff !default;
+$navbar-inverse-link-hover-color:           #fff !default;
+$navbar-inverse-link-hover-bg:              darken($navbar-inverse-bg, 7%) !default;
+$navbar-inverse-link-active-color:          $navbar-inverse-link-hover-color !default;
+$navbar-inverse-link-active-bg:             darken($navbar-inverse-bg, 10%) !default;
+
+// BADGE
+$badge-bg:                                  lighten($app-base, 6%) !default;

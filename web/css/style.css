@@ -1,3 +1,7 @@
+
+
+# Ceci est un commentaire pour séparer le nouveau CSS de l'ancien
+
 h1, h3 {
   margin-top: 15px;
   margin-bottom: 5px;
@@ -20,73 +24,12 @@ h1, h3 {
   color: gray;
 }
 
-.information-account h3 {
-  margin-top: 30px;
-}
-
 .text-list li {
   list-style: none;
 }
 
 .row-divider {
   height: 1.2em;
-}
-
-.box {
-  border-radius: 3px;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-  padding: 10px 25px;
-  display: block;
-  min-height: 324px;
-  margin-top: 60px;
-}
-
-.box .btn {
-  margin-left: 0;
-  width: 100%;
-}
-
-.box-icon {
-  background-color: #68b211;
-  border-radius: 50%;
-  display: table;
-  height: 100px;
-  margin: 0 auto;
-  width: 100px;
-  margin-top: -61px;
-}
-
-.box-icon-actu {
-  background-color: #68b211;
-  border: solid 2px #68b211;
-  border-radius: 50%;
-  display: table;
-  height: 60px;
-  margin: 0 auto;
-  width: 60px;
-  margin-top: -41px;
-}
-
-.box-icon-actu span {
-  color: white;
-  display: table-cell;
-  text-align: center;
-  vertical-align: middle;
-}
-
-.box-icon span {
-  color: #fff;
-  display: table-cell;
-  text-align: center;
-  vertical-align: middle;
-}
-
-.nopadding {
-  padding: 0;
-}
-
-.nomargintop {
-  margin-top: 0;
 }
 
 .btn{transition:all 0.8s;-o-transition:all 0.8s;-moz-transition:all 0.8s;-webkit-transition:all 0.8s;border-radius:0px;margin-top:10px}
@@ -110,118 +53,6 @@ h1, h3 {
 
 .dropdown:hover .dropdown-menu {
     display: block;
-}
-
-.dropdown:hover .dropdown-toggle {
-  background-color: #538e0d;
-}
-
-/** CALENDAR */
-.responsive-calendar .controls {
-  text-align: center;
-}
-.responsive-calendar .controls a {
-  cursor: pointer;
-}
-.responsive-calendar .controls h4 {
-  display: inline;
-  font-size: 20px;
-  letter-spacing: 0px;
-}
-.responsive-calendar .day-headers,
-.responsive-calendar .days {
-  font-size: 0;
-}
-.responsive-calendar .day {
-  display: inline-block;
-  position: relative;
-  font-size: 14px;
-  width: 14.285714285714286%;
-  text-align: center;
-}
-.responsive-calendar .day a {
-  color: #000000;
-  display: block;
-  cursor: pointer;
-  padding: 20% 0 20% 0;
-}
-.responsive-calendar .day a:hover {
-  background-color: #eee;
-  text-decoration: none;
-}
-.responsive-calendar .day.header {
-  border-bottom: 1px gray solid;
-}
-.responsive-calendar .day.active a {
-  color: #ffffff;
-}
-.responsive-calendar .day.active a:hover {
-  background-color: #68b211;
-}
-.responsive-calendar .day.active .not-current {
-  background-color: #8fcaef;
-  color: #ffffff;
-}
-.responsive-calendar .day.active .not-current:hover {
-  background-color: #bcdff5;
-}
-.responsive-calendar .day.not-current a {
-  color: #ddd;
-}
-
-.responsive-calendar .day.today a {
-  color: black;
-}
-.responsive-calendar .today a {
-  color: #00aaff;
-  font-weight: bold;
-}
-.nav-month {
-  background: none;
-  color: #68b211;
-  border-color: #68b211;
-  padding: 5px;
-  margin-top: -5px;
-}
-.nav-month:hover{
-  color: white;
-  background-color: #68b211;
-  border-color: #68b211;
-}
-
-.responsive-calendar .day.active.calendar-stripes a{
-  background: repeating-linear-gradient(
-    45deg,
-    #68b211,
-    #68b211 10px,
-    #00aaff 10px,
-    #00aaff 20px
-    );
-}
-
-.legend.legend-box {
-  width: 30px;
-  height: 32px;
-}
-
-.legend.active {
-  background-color: #68b211;
-  color: white;
-}
-
-.legend.stripes {
-  background: repeating-linear-gradient(
-    45deg,
-    white,
-    white 10px,
-    #00aaff 10px,
-    #00aaff 20px
-    );
-}
-
-ul.text-list.information {
-  border-left: 3px solid #68b211;
-  padding-left: 20px;
 }
 
 .material-switch > input[type="checkbox"] {

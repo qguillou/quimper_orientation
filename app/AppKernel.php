@@ -15,6 +15,8 @@ class AppKernel extends Kernel
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
+            new Symfony\Bundle\AsseticBundle\AsseticBundle(),
+            new Symfony\Bundle\WebServerBundle\WebServerBundle(),
             new Bundle\HomeBundle\HomeBundle(),
             new Bundle\ClubBundle\ClubBundle(),
             new Bundle\ParcoursBundle\ParcoursBundle(),
