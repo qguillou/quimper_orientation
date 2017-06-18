@@ -1,0 +1,7 @@
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown:hover {
+    background-color: $navbar-inverse-link-hover-bg;
+}

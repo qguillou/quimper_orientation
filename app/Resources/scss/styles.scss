@@ -5,3 +5,22 @@
 .container {
     margin-top: $navbar-height;
 }
+
+footer .footer-page {
+    text-align: center;
+    margin-top: 2em;
+    margin-bottom: 0.5em;
+}
+
+footer .navbar-content {
+    line-height: $navbar-height;
+    color: $navbar-inverse-link-color;
+    text-align: center;
+}
+
+footer .footer-page a {
+  color: $gray-light;
+}
+
+// Import des différents modules
+@import 'navbar.scss';

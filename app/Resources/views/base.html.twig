@@ -9,7 +9,6 @@
         <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
 
-    <link href="{{ asset( 'css/style.css' ) }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset( 'css/font-awesome.css' ) }}" rel="stylesheet" type="text/css" />
 
 
@@ -35,7 +34,8 @@
         </div>
     </div>
 
-    {% include ':Navbar:footer.html.twig' %}
 </body>
-
+<footer>
+    {% include ':Navbar:footer.html.twig' %}
+</footer>
 </html>
