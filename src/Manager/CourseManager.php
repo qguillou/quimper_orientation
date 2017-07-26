@@ -8,6 +8,14 @@ use Entity\Course;
 
 class CourseManager extends DefaultManager
 {
+    public function getCalendar()
+    {
+        $repository = $this->em->getRepository($this->entity_namespace);
+		$entities = $repository->findFutureCourse();
+
+        return $entities;
+    }
+
     public function create()
     {
         $entity = new Course();

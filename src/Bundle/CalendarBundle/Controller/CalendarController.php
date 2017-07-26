@@ -10,7 +10,7 @@ class CalendarController extends Controller
 {
     public function calendarAction()
     {
-        $courses = $this->get('manager.course')->getAll();
+        $courses = $this->get('manager.course')->getCalendar();
 
         return $this->render('CalendarBundle:Calendar:calendar.html.twig',
           array("courses" => $courses));
