@@ -17,8 +17,8 @@ class CollectionInscritType extends AbstractType
     {
         $builder
             ->add('inscrits', CollectionType::class, array('entry_options' => array('course' => $options['course']), 'entry_type' => InscritType::class))
-            ->add('reset', ResetType::class, array('label' => 'cancel', 'attr' => array('class' => 'btn btn-default')))
-            ->add('save', SubmitType::class, array('label' => 'save', 'attr' => array('class' => 'btn btn-success')));
+            ->add('reset', ResetType::class, array('label' => 'cancel', 'attr' => array('class' => 'btn btn-outlined btn-default')))
+            ->add('save', SubmitType::class, array('label' => 'save', 'attr' => array('class' => 'btn btn-outlined btn-success')));
     }
 
     public function configureOptions(OptionsResolver $resolver)
