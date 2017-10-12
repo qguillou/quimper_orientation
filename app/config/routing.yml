@@ -1,6 +1,9 @@
 home:
     resource: '@HomeBundle/Resources/config/routing.yml'
 
+account:
+    resource: '@AccountBundle/Resources/config/routing.yml'
+
 club:
     resource: '@ClubBundle/Resources/config/routing.yml'
 

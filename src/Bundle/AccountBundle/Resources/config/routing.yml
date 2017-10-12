@@ -1,0 +1,7 @@
+account_parameters:
+    path:     /account/parameter
+    defaults: { _controller: AccountBundle:Account:parameter }
+
+account_calendar:
+    path:     /account/calendar
+    defaults: { _controller: AccountBundle:Account:calendar }
