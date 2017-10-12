@@ -39,45 +39,48 @@
   </script>
 {% endblock %}
 
-<!-- On récupére la couleur d'affichage de la course !-->
-{% set color = 'black' %}
-{% if course.type and course.type.color and course.type.color != '' %}
-{% set color = course.type.color %}
-{% endif %}
-
 {% block title %}
     {% include '::Navbar/title.html.twig' with {'title': course.nom, 'subtitle': "subtitle.course" | trans } %}
 {% endblock %}
 
 {% block content %}
-<div class="col-md-4">
-  {% include 'CalendarBundle:Course:partials/informations.html.twig' %}
+
+<!-- On récupére la couleur d'affichage de la course !-->
+{% set color = 'black' %}
+{% if course.type and course.type.color and course.type.color != '' %}
+{% set color = course.type.color %}
+{% endif %}
+<div class="course">
+    <div class="col-md-4">
+      {% include 'CalendarBundle:Course:partials/informations.html.twig' %}
+    </div>
+
+
+    <div class="col-md-1">
+    </div>
+
+    <div class="col-md-7">
+
+      <div class="row">
+        {% include 'CalendarBundle:Course:partials/files.html.twig' %}
+      </div>
+
+      <div class="row-divider"></div>
+
+      <div id="inscription" class="row">
+        {% include 'CalendarBundle:Course:partials/inscrits.html.twig' %}
+      </div>
+
+      <div class="row-divider"></div>
+
+      <div class="row">
+          {% if course.latitude and course.longitude %}
+          {% include 'CalendarBundle:Course:partials/carte.html.twig' %}
+          {% endif %}
+      </div>
+    </div>
+
+    {% include 'CalendarBundle:Course:forms/inscription.html.twig' %}
 </div>
-
-
-<div class="col-md-1">
-</div>
-
-<div class="col-md-7">
-
-  <div class="row">
-    {% include 'CalendarBundle:Course:partials/files.html.twig' %}
-  </div>
-
-  <div class="row-divider"></div>
-
-  <div id="inscription" class="row">
-    {% include 'CalendarBundle:Course:partials/inscrits.html.twig' %}
-  </div>
-
-  <div class="row-divider"></div>
-
-  <div class="row">
-    <h2>Comment s'y rendre ?</h2>
-    <p class="lead">Le plan d'accès vous montre le localisation du point d'accueil de l'événement.</p>
-  </div>
-</div>
-
-{% include 'CalendarBundle:Course:forms/inscription.html.twig' %}
 
 {% endblock %}

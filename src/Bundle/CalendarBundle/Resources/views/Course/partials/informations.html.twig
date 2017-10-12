@@ -1,21 +1,21 @@
-<h2>{{ "course.informations" | trans }}</h2>
+<h2 class="bold" style="color:{{color}};">{{ "course.informations" | trans }}</h2>
 <ul class="text-list information" style="border-color:{{color}}">
 
-  <li><i class="fa fa-calendar"></i> {{ "calendar.date" | trans }} <p class="lead" style="color:{{color}}; font-weight:bold">{{ course.date | format_datetime('d MMMM YYYY', 'fr', 'Europe/Paris') }}</p></li>
+  <li><b><i class="fa fa-calendar"></i> {{ "calendar.date" | trans }}</b> <p class="lead" style="color:{{color}}; font-weight:bold">{{ course.date | format_datetime('d MMMM YYYY', 'fr', 'Europe/Paris') }}</p></li>
 
   {% if course.lieu %}
-  <li><i class="fa fa-map-marker"></i> {{ "calendar.location" | trans }} <p class="lead" style="color:{{color}}; font-weight:bold">{{course.lieu}}</p></li>
+  <li><b><i class="fa fa-map-marker"></i> {{ "calendar.location" | trans }}</b> <p class="lead" style="color:{{color}}; font-weight:bold">{{course.lieu | capitalize }}</p></li>
   {% endif %}
 
   {% if course.type %}
-  <li><i class="fa fa-tag"></i> {{ "calendar.type" | trans }} <p class="lead" style="color:{{color}}; font-weight:bold">{{course.type.nom}}</p></li>
+  <li><b><i class="fa fa-tag"></i> {{ "calendar.type" | trans }}</b> <p class="lead" style="color:{{color}}; font-weight:bold">{{course.type.nom}}</p></li>
   {% endif %}
 
   {% if course.organisateur %}
-  <li><i class="fa fa-user"></i> {{ "calendar.organised.by" | trans }} <p class="lead" style="color:{{color}}; font-weight:bold">{{course.organisateur}}</p></li>
+  <li><b><i class="fa fa-user"></i> {{ "calendar.organised.by" | trans }}</b> <p class="lead" style="color:{{color}}; font-weight:bold">{{course.organisateur}}</p></li>
   {% endif %}
 
-  <li><i class="fa fa-sign-in"></i> {{ "calendar.entries" | trans }}
+  <li><b><i class="fa fa-sign-in"></i> {{ "calendar.entries" | trans }}</b>
     {% if course.inscription and not is_past(course.modification | date('Y-m-d H:i:s')) %}
     <p class="lead" style="color:{{color}}; font-weight:bold">{{ "calendar.entries.limit" | trans }} {{course.modification | format_datetime('d MMMM YYYY à HH:mm:ss', 'fr', 'Europe/Paris')}}</p>
     {% elseif course.inscription %}
@@ -26,12 +26,12 @@
   </li>
 
   {% if course.gps %}
-  <li><i class="fa fa-location-arrow"></i> {{ "calendar.gps" | trans }} <p class="lead"  style="color:{{color}}; font-weight:bold">{{course.gps}}</p></li>
+  <li><b><i class="fa fa-location-arrow"></i> {{ "calendar.gps" | trans }}</b> <p class="lead"  style="color:{{color}}; font-weight:bold">{{course.gps}}</p></li>
   {% endif %}
 
   {% if course.circuits and sizeof(course.circuits) > 0 %}
   <li>
-    <i class="fa fa-map-signs"></i> {{ "course.track" | trans }}
+    <b><i class="fa fa-map-signs"></i> {{ "course.track" | trans }}</b>
     <p class="lead"  style="color:{{color}}; font-weight:bold">
       {% for circuit in course.circuits %}
         {{circuit.nom}}

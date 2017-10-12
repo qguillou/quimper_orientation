@@ -1,4 +1,4 @@
-<h2>Les inscrits</h2>
+<h2 class="bold" style="color:{{color}};">Les inscrits</h2>
 {% if course.inscription %}
   {% if sizeof(course.inscrits) > 0 %}
     <p class="lead">Ils sont déjà inscrits à cette course.</p>
@@ -12,7 +12,7 @@
     </div>
     <table class="table table-striped table-hover ">
       <thead>
-        <tr>
+        <tr style="color:{{color}};font-weight:bold;">
           <th>#</th>
           <th>Nom</th>
           <th>Prénom</th>
@@ -35,7 +35,7 @@
             {% endif %}
           </td>
           <td>{{inscrit.commentaire}}</td>
-          {% if app.user == inscrit.user %}
+          {% if app.user == inscrit.userCreation or app.user == inscrit.userModification %}
             <td onclick="unregister( {{inscrit.id}} )">
                 <i class="fa fa-times" style="color: red;cursor:pointer;"></i>
             </td>
@@ -54,13 +54,13 @@
     {% if app.user %}
       <button data-toggle="modal"
               data-target="#ModalQuickEntries"
-              class="btn btn-square-toround btn-bordered-success">
+              class="btn btn-outlined btn-success">
         <span class="fa fa-user-plus"></span> Inscription rapide
       </button>
     {% endif %}
-    <a href="/inscription/inscrire" class="btn btn-square-toround btn-bordered-success"><span class="fa fa-user-plus"></span> S'inscrire</a>
+    <a href="/inscription/inscrire" class="btn btn-outlined btn-info"><span class="fa fa-user-plus"></span> S'inscrire</a>
     {% if app.user %}
-      <a href="/inscription/modification" class="btn btn-square-toround btn-bordered-primary"><span class="fa fa-pencil-square-o"></span> Modifier ses inscriptions</a>
+      <a href="/inscription/modification" class="btn btn-outlined btn-warning"><span class="fa fa-pencil-square-o"></span> Modifier ses inscriptions</a>
       {% endif %}
   {% endif %}
 

@@ -39,6 +39,16 @@ class Course extends DefaultEntity
     private $lieu;
 
     /**
+     * @ORM\Column(type="decimal", precision=10, scale=8, nullable=true)
+     */
+    protected $latitude;
+
+    /**
+     * @ORM\Column(type="decimal", precision=11, scale=8, nullable=true)
+     */
+    protected $longitude;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="site", type="string", length=255, nullable=true)
@@ -147,6 +157,54 @@ class Course extends DefaultEntity
     public function getLieu()
     {
         return $this->lieu;
+    }
+
+    /**
+     * Set latitude
+     *
+     * @param string $latitude
+     *
+     * @return Course
+     */
+    public function setLatitude($latitude)
+    {
+        $this->latitude = $latitude;
+
+        return $this;
+    }
+
+    /**
+     * Get latitude
+     *
+     * @return string
+     */
+    public function getLatitude()
+    {
+        return $this->latitude;
+    }
+
+    /**
+     * Set longitude
+     *
+     * @param string $longitude
+     *
+     * @return Course
+     */
+    public function setLongitude($longitude)
+    {
+        $this->longitude = $longitude;
+
+        return $this;
+    }
+
+    /**
+     * Get longitude
+     *
+     * @return string
+     */
+    public function getLongitude()
+    {
+        return $this->longitude;
     }
 
     /**

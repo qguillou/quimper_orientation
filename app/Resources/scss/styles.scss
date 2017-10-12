@@ -6,6 +6,8 @@
 @import 'admin.scss';
 @import 'box.scss';
 @import 'modal.scss';
+@import 'button.scss';
+@import 'calendar.scss';
 
 // Modification du style de base de bootstrap
 footer .footer-page {
@@ -31,4 +33,8 @@ footer img {
 
 li {
   list-style: none;
+}
+
+.bold {
+    font-weight: bold;
 }
