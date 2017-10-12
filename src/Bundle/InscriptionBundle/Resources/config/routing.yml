@@ -1,0 +1,11 @@
+inscription_inscrire:
+    path:     /inscription/inscrire
+    defaults: { _controller: InscriptionBundle:Inscription:inscrire }
+
+inscription_consulter:
+    path:     /inscription/consulter
+    defaults: { _controller: InscriptionBundle:Inscription:consulter }
+
+inscriptIon_recuperation:
+    path:     /inscription/recuperation
+    defaults: { _controller: InscriptionBundle:Inscription:recuperation }

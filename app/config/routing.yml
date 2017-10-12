@@ -21,3 +21,6 @@ definition:
 
 configuration:
     resource: '@ConfigurationBundle/Resources/config/routing.yml'
+
+inscription:
+    resource: '@InscriptionBundle/Resources/config/routing.yml'

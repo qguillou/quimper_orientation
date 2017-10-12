@@ -83,6 +83,10 @@
                 <source>nav.entries</source>
                 <target>Inscription</target>
             </trans-unit>
+            <trans-unit id="nav.entries.viex">
+                <source>nav.entries.view</source>
+                <target>Consulter</target>
+            </trans-unit>
             <trans-unit id="nav.entries.entry">
                 <source>nav.entries.entry</source>
                 <target>S'inscrire</target>
