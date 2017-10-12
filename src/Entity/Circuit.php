@@ -3,14 +3,16 @@
 namespace Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Entity\DefaultEntity;
 
 /**
  * Circuit
  *
  * @ORM\Table(name="circuit")
  * @ORM\Entity(repositoryClass="Repository\CircuitRepository")
+ * @ORM\HasLifecycleCallbacks
  */
-class Circuit
+class Circuit extends DefaultEntity
 {
     /**
      * @var int
@@ -19,7 +21,7 @@ class Circuit
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -46,17 +48,6 @@ class Circuit
     * @ORM\OneToMany(targetEntity="Entity\Inscrit", mappedBy="circuit")
     */
     private $inscrits;
-
-
-    /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * Set nom

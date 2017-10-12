@@ -1,16 +1,19 @@
 <?php
 
 namespace Entity;
+
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Entity\DefaultEntity;
 
 /**
  * Course
  *
  * @ORM\Table(name="course")
  * @ORM\Entity(repositoryClass="Repository\CourseRepository")
+ * @ORM\HasLifecycleCallbacks
  */
-class Course
+class Course extends DefaultEntity
 {
     /**
      * @var int
@@ -19,7 +22,7 @@ class Course
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -96,16 +99,6 @@ class Course
 
     public function __construct() {
         $this->inscrits = new ArrayCollection();
-    }
-
-    /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
     }
 
     /**
@@ -370,5 +363,10 @@ class Course
     public function getCircuits()
     {
         return $this->circuits;
+    }
+
+    public function __toString()
+    {
+        return (string) $this->getNom();
     }
 }

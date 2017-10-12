@@ -1,8 +1,10 @@
 {% extends '::base.html.twig' %}
 
-{% block content %}
+{% block title %}
+    {% include '::Navbar/title.html.twig' with {'title': "Rejoindre le club", 'subtitle': "Comment se licencier ?"} %}
+{% endblock %}
 
-<h1>Rejoindre le club</h1>
+{% block content %}
 <h2>Les documents</h2>
 <p class="lead">
 	Pour rejoindre le Quimper Orientation, vous devez apporter les informations suivantes.

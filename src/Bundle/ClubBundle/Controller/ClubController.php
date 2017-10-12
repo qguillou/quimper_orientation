@@ -18,7 +18,7 @@ class ClubController extends Controller
 
     public function rejoindreAction()
     {
-        $licences = $this->get('manager.tarif')->getTarif();
+        $licences = $this->get('manager.tarif')->getAll();
 
         return $this->render('ClubBundle:Club:rejoindre.html.twig',
           array("licences" => $licences));
@@ -26,7 +26,7 @@ class ClubController extends Controller
 
     public function contactAction()
     {
-        $contacts = $this->get('manager.contact')->getContact();
+        $contacts = $this->get('manager.contact')->getDisplayContact();
 
         return $this->render('ClubBundle:Club:contact.html.twig',
           array("contacts" => $contacts));

@@ -1,0 +1,30 @@
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown:hover {
+    background-color: $navbar-inverse-link-hover-bg;
+}
+
+.bandeau {
+    border-bottom: 1px solid;
+    height: fit-content;
+}
+
+.bandeau-opacity {
+    position: absolute;
+    width: 100%;
+    margin-top: -$navbar-height;
+}
+
+.bandeau-opacity img {
+    opacity: 0.2;
+}
+
+.bandeau-titre {
+    margin-top: $navbar-height;
+}
+
+.bandeau-titre h1 {
+    font-size: $font-size-h1 * 1.5;
+}

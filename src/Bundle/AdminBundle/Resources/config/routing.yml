@@ -2,18 +2,18 @@ admin_home:
     path:     /admin
     defaults: { _controller: AdminBundle:Admin:index }
 
-admin_actualite:
-    path:       /admin/actualite
-    defaults:   { _controller: AdminBundle:AdminActualite:index }
+admin_entity:
+    path:       /admin/entity/{entity_type}
+    defaults:   { _controller: AdminBundle:AdminEntity:index }
 
-actualite_add:
-    path:     /admin/actualite/add
-    defaults: { _controller: AdminBundle:AdminActualite:add }
+admin_entity_form:
+    path:       /admin/entity/{entity_type}/form/{id}
+    defaults:   { _controller: AdminBundle:AdminEntity:form }
 
-actualite_delete:
-    path:     /admin/actualite/delete
-    defaults: { _controller: AdminBundle:AdminActualite:delete }
+admin_entity_save:
+    path:       /admin/entity/{entity_type}/save
+    defaults:   { _controller: AdminBundle:AdminEntity:save }
 
-actualite_form:
-    path:     /admin/actualite/form
-    defaults: { _controller: AdminBundle:AdminActualite:form }
+admin_entity_delete:
+    path:       /admin/entity/{entity_type}/delete/{id}
+    defaults:   { _controller: AdminBundle:AdminEntity:delete }

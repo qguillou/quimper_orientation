@@ -1,0 +1,38 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}
+    {% include '::Navbar/title.html.twig' with {'title': "Espace administration", 'subtitle': "Vous êtes actuellement connecté en webmaster du site."} %}
+{% endblock %}
+
+{% block content %}
+  {% include '::Message/message.html.twig' %}
+
+  <div class="col-md-5 hidden-tablet">
+    <h3>Être administrateur c'est ...</h3>
+    <ul class="text-list">
+      <li>Faire vivre et dynamiser le site</li>
+      <li>Créer et modifier le contenu du site</li>
+      <li>Répondre aux demandes des utilisateurs</li>
+    </ul>
+
+    <h3>Des problèmes ? Des suggestions ?</h3>
+    <p>
+      Si vous rencontrez des problèmes avec certaines fonctionnalités du site, contactez le développeur Quentin GUILLOU.
+      <br/>
+      Les suggestions d'améliorations sont également les bienvenues, afin de vous simplifier votre utilisation du site.
+    </p>
+  </div>
+
+  <div class="col-md-6">
+    <div class="row">
+      <h2>Ils sont administrateurs</h2>
+      <p class="lead">Ils ont donc également accès à cette espace.</p>
+      <ul class="text-list">
+        {% for admin in admins %}
+        <li>{{admin['prenom']}} {{admin['nom']}} <i>({{admin['role']}})</i></li>
+        {% endfor %}
+      </ul>
+    </div>
+
+  </div>
+{% endblock %}

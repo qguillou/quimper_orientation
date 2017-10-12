@@ -1,0 +1,24 @@
+{% for entity in entities %}
+    <tr>
+        {% for column in columns %}
+        <td>
+            {% if attribute(entity, column) %}
+                {% if attribute(entity, column).timestamp is defined %}
+                    {{ attribute(entity, column) | format_datetime('dd MMMM YYYY', 'fr', 'Europe/Paris') }}
+                {% elseif column == 'color' and attribute(entity, column) is defined %}
+                    <div class='color' style='background-color: {{ attribute(entity, column) }};'></div>
+                {% else %}
+                    {{ attribute(entity, column) }}
+                {% endif %}
+            {% endif %}
+        </td>
+        {% endfor %}
+
+        <td> {% if entity.dateModification %} {{ entity.dateModification | format_datetime('dd MMMM YYYY', 'fr', 'Europe/Paris') }} {% endif %} </td>
+        <td> {% if entity.userModification %} {{ entity.userModification.prenom }} {{ entity.userModification.nom }} {% endif %} </td>
+        <td>
+            {% if editable %}<i class="fa fa-edit" style="color: orange;cursor:pointer;margin-right:0.5em;" onclick="form( {{entity.id}} )"></i>{% endif %}
+            <i class="fa fa-times" style="color: red;cursor:pointer;" onclick="deleteEntity( {{entity.id}} )"></i>
+        </td>
+    </tr>
+{% endfor %}

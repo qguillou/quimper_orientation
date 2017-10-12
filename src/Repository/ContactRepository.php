@@ -12,7 +12,7 @@ class ContactRepository extends \Doctrine\ORM\EntityRepository
 {
   public function findContact(){
     return $this->createQueryBuilder('c')
-        ->where('c.fonction != \'Webmaster\'')
+        ->where('c.display = 1')
         ->orderBy('c.fonction', 'ASC')
         ->getQuery()
         ->getResult();

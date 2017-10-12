@@ -10,7 +10,7 @@ class CalendarController extends Controller
 {
     public function calendarAction()
     {
-        $courses = $this->get('manager.course')->getCourse();
+        $courses = $this->get('manager.course')->getCalendar();
 
         return $this->render('CalendarBundle:Calendar:calendar.html.twig',
           array("courses" => $courses));
@@ -18,7 +18,7 @@ class CalendarController extends Controller
 
     public function courseAction(Request $request, $id)
     {
-      $course = $this->get('manager.course')->getCourseById($id);
+      $course = $this->get('manager.course')->get($id);
 
       $inscrits = $this->get('manager.inscrit')->getInscrit($course);
       $form = $this->createForm(CollectionInscritType::class, $inscrits, array('course' => $id));

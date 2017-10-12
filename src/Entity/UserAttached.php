@@ -3,14 +3,16 @@
 namespace Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Entity\DefaultEntity;
 
 /**
  * user_attached
  *
  * @ORM\Table(name="user_attached")
  * @ORM\Entity(repositoryClass="Repository\UserAttachedRepository")
+ * @ORM\HasLifecycleCallbacks
  */
-class UserAttached
+class UserAttached extends DefaultEntity
 {
     /**
      * @var int
@@ -19,7 +21,7 @@ class UserAttached
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
     * @ORM\ManyToOne(targetEntity="Entity\User", cascade={"persist"}, inversedBy="users")
@@ -32,17 +34,6 @@ class UserAttached
      * @ORM\JoinColumn(name="base_id", referencedColumnName="id")
      */
     private $license;
-
-
-    /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * Set user

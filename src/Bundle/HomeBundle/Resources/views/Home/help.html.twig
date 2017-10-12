@@ -1,6 +1,9 @@
 {% extends '::base.html.twig' %}
 
+{% block title %}
+    {% include '::Navbar/title.html.twig' with {'title': 'Aide', 'subtitle': "Besoin d'aide ? Vous êtes sur la bonne page !"} %}
+{% endblock %}
+
 {% block content %}
-<h1>Aide</h1>
 
 {% endblock %}

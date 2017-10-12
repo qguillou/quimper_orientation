@@ -4,15 +4,17 @@ namespace Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Entity\DefaultEntity;
 
 /**
  * Inscrit
  *
  * @ORM\Table(name="inscrit")
  * @ORM\Entity(repositoryClass="Repository\InscritRepository")
- * @UniqueEntity(fields={"course","user","nom","prenom"}, message="Un licencié ne peut pas s'inscrire plusieurs fois à la même course.")
+ * @UniqueEntity(fields={"course","licence","nom","prenom"}, message="Un licencié ne peut pas s'inscrire plusieurs fois à la même course.")
+ * @ORM\HasLifecycleCallbacks
  */
-class Inscrit
+class Inscrit extends DefaultEntity
 {
     /**
      * @var int
@@ -21,7 +23,7 @@ class Inscrit
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -74,22 +76,12 @@ class Inscrit
      */
     private $circuit;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Entity\User", inversedBy="inscrits", cascade={"persist"})
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=true)
-     */
-   private $user;
+   /**
+    * @ORM\ManyToOne(targetEntity="Entity\User", inversedBy="inscrits", cascade={"persist"})
+    * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=true)
+    */
+   protected $userCreation;
 
-
-    /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * Set nom
@@ -259,27 +251,4 @@ class Inscrit
         return $this->circuit;
     }
 
-    /**
-     * Set user
-     *
-     * @param string user
-     *
-     * @return Course
-     */
-    public function setUser($user)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return string
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
 }

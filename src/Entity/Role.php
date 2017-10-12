@@ -3,14 +3,16 @@
 namespace Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Entity\DefaultEntity;
 
 /**
  * Role
  *
  * @ORM\Table(name="role")
  * @ORM\Entity(repositoryClass="Repository\RoleRepository")
+ * @ORM\HasLifecycleCallbacks
  */
-class Role
+class Role extends DefaultEntity
 {
     /**
      * @var int
@@ -19,7 +21,7 @@ class Role
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var int
@@ -36,16 +38,6 @@ class Role
      */
     private $role;
 
-
-    /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * Set user

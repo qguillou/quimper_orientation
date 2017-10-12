@@ -3,14 +3,16 @@
 namespace Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Entity\DefaultEntity;
 
 /**
  * Cartes
  *
  * @ORM\Table(name="actualite")
  * @ORM\Entity(repositoryClass="Repository\ActualiteRepository")
+ * @ORM\HasLifecycleCallbacks
  */
-class Actualite
+class Actualite extends DefaultEntity
 {
     /**
      * @var int
@@ -19,7 +21,7 @@ class Actualite
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -34,31 +36,6 @@ class Actualite
      * @ORM\Column(name="contenu", type="text")
      */
     private $contenu;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="date_modification", type="datetime")
-     */
-    private $dateModification;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="date_creation", type="datetime")
-     */
-    private $dateCreation;
-
-
-    /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * Set titre
@@ -106,53 +83,5 @@ class Actualite
     public function getContenu()
     {
         return $this->contenu;
-    }
-
-    /**
-     * Set dateModification
-     *
-     * @param \DateTime $dateModification
-     *
-     * @return Cartes
-     */
-    public function setDateModification($dateModification)
-    {
-        $this->dateModification = $dateModification;
-
-        return $this;
-    }
-
-    /**
-     * Get dateModification
-     *
-     * @return \DateTime
-     */
-    public function getDateModification()
-    {
-        return $this->dateModification;
-    }
-
-    /**
-     * Set dateModification
-     *
-     * @param \DateTime $dateModification
-     *
-     * @return Cartes
-     */
-    public function setDateCreation($dateCreation)
-    {
-        $this->dateCreation = $dateCreation;
-
-        return $this;
-    }
-
-    /**
-     * Get dateCreation
-     *
-     * @return \DateTime
-     */
-    public function getDateCreation()
-    {
-        return $this->dateCreation;
     }
 }

@@ -12,3 +12,9 @@ calendrier:
 
 admin:
     resource: '@AdminBundle/Resources/config/routing.yml'
+
+definition:
+    resource: '@DefinitionBundle/Resources/config/routing.yml'
+
+configuration:
+    resource: '@ConfigurationBundle/Resources/config/routing.yml'

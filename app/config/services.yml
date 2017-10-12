@@ -24,3 +24,69 @@ services:
           arguments: []
           tags:
             - { name: twig.extension }
+
+  manager.default:
+      abstract:  true
+      class: Manager\DefaultManager
+      arguments: ['@doctrine.orm.entity_manager', '@session', '@security.token_storage']
+
+  manager.actualite:
+      class: Manager\ActualiteManager
+      parent: manager.default
+      calls:
+          - [setEntityNamespace, ['Entity\Actualite']]
+
+  manager.course:
+      class: Manager\CourseManager
+      parent: manager.default
+      calls:
+          - [setEntityNamespace, ['Entity\Course']]
+
+  manager.type:
+      class: Manager\TypeManager
+      parent: manager.default
+      calls:
+          - [setEntityNamespace, ['Entity\Type']]
+
+  manager.role:
+      class: Manager\RoleManager
+      parent: manager.default
+      calls:
+          - [setEntityNamespace, ['Entity\Role']]
+
+  manager.tarif:
+      class: Manager\TarifManager
+      parent: manager.default
+      calls:
+          - [setEntityNamespace, ['Entity\Tarif']]
+
+  manager.contact:
+      class: Manager\ContactManager
+      parent: manager.default
+      calls:
+          - [setEntityNamespace, ['Entity\Contact']]
+
+  manager.carte:
+      class: Manager\CarteManager
+      parent: manager.default
+      calls:
+          - [setEntityNamespace, ['Entity\Carte']]
+
+  manager.document:
+      class: Manager\DocumentManager
+      parent: manager.default
+      calls:
+          - [setEntityNamespace, ['Entity\Document']]
+
+  manager.user:
+      class: Manager\UserManager
+      parent: manager.default
+      calls:
+          - [setEntityNamespace, ['Entity\User']]
+          - [setPasswordEncoder, ['@security.password_encoder']]
+
+  manager.inscrit:
+      class: Manager\InscritManager
+      parent: manager.default
+      calls:
+          - [setEntityNamespace, ['Entity\Inscrit']]

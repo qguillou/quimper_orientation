@@ -6,7 +6,8 @@ imports:
     - { resource: "@ClubBundle/Resources/config/services.yml" }
     - { resource: "@ParcoursBundle/Resources/config/services.yml" }
     - { resource: "@CalendarBundle/Resources/config/services.yml" }
-    - { resource: "@AdminBundle/Resources/config/services.yml" }
+    - { resource: "@DefinitionBundle/Resources/config/services.yml" }
+    - { resource: "@ConfigurationBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -14,6 +15,24 @@ parameters:
     locale: fr
     cartes: '%kernel.root_dir%/../web/files/cartes'
     courses: '%kernel.root_dir%/../web/files/courses'
+    logo: '%kernel.root_dir%/../web/images/logo'
+    image_bandeau: '%kernel.root_dir%/../web/images/site'
+
+assetic:
+    debug:          '%kernel.debug%'
+    use_controller: '%kernel.debug%'
+    filters:
+        scssphp:
+            formatter: 'Leafo\ScssPhp\Formatter\Compressed'
+        cssrewrite: ~
+    assets:
+        styles_css:
+            inputs:
+                - '%kernel.root_dir%/../app/Resources/scss/styles.scss'
+            filters:
+                - scssphp
+                - cssrewrite
+            output: css/styles.css
 
 framework:
     #esi:             ~
@@ -48,10 +67,6 @@ twig:
     strict_variables: "%kernel.debug%"
     form_themes:
         [ ':Form:error.html.twig']
-    globals:
-        nVersion: "3.0.0"
-        dVersion: "Juin 2017"
-        author: "Quentin GUILLOU"
 
 # Doctrine Configuration
 doctrine:
@@ -93,7 +108,3 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
-
-sonata_intl:
-    timezone:
-        default: Europe/Paris

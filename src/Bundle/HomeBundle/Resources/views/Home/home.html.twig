@@ -1,13 +1,11 @@
 {% extends '::base.html.twig' %}
 
+{% block title %}
+    {% include '::Navbar/title.html.twig' with {'title': 'À la une !', 'subtitle': "Retrouvez toute l'actualité de Quimper Orientation Coatarmor 29"} %}
+{% endblock %}
+
 {% block content %}
 
   {% include '::Message/message.html.twig' %}
 
-  <div class="col-md-8">
-    <h1>&Agrave; la une !</h1>
-    <p class="lead">
-      Retrouvez toute l'actualité de Quimper Orientation Coatarmor 29.
-    </p>
-  </div>
 {% endblock %}

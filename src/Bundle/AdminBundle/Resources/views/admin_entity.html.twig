@@ -1,0 +1,83 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}
+    {% include '::Navbar/title.html.twig' with {'title': page_title, 'subtitle': "Ajout, modification et suppression."} %}
+{% endblock %}
+
+{% block content %}
+  {% include '::Message/message.html.twig' %}
+
+  {% if editable %}
+  <div class="col-md-12">
+      <button id="add" type="button" class="btn btn-primary">Créer</button>
+      <div class="row-divider"></div>
+  </div>
+  {% endif %}
+
+  <div class="col-md-12">
+      <table class="table table-striped table-hover">
+          <thead>
+              <tr>
+                  {% for column_title in columns_title %}
+                  <th>{{ column_title }}</th>
+                  {% endfor %}
+                  <th>Modifié le</th>
+                  <th>Modifié par</th>
+                  <th>Actions</th>
+              </tr>
+          </thead>
+          <tbody id="liste">
+              {% include 'AdminBundle::table_admin_entity.html.twig' %}
+          </tbody>
+      </table>
+  </div>
+
+  <div class="modal fade" id="ModalEdit" tabindex="-1" role="dialog" aria-labelledby="ModalEditTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content" id="form">
+
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block javascript %}
+  {{ parent() }}
+
+  <script type='text/javascript'>
+
+    function form(id) {
+        var path = "{{ path('admin_entity_form', {'entity_type': entity_type, 'id': "IDENTIFIANT" }) }}";
+        path = path.replace("IDENTIFIANT", id);
+
+        $.ajax({
+          url: path,
+          success: function(result) {
+            $("#form").html(result);
+            $("#ModalEdit").modal('show');
+          }
+        });
+    }
+
+    function deleteEntity(id) {
+        var path = "{{ path('admin_entity_delete', {'entity_type': entity_type, 'id': "IDENTIFIANT" }) }}";
+        path = path.replace("IDENTIFIANT", id);
+
+        $.ajax({
+          url: path,
+          success: function(result) {
+              $("#liste").html(result.table);
+              $("#messages").html(result.messages);
+          }
+        });
+    }
+
+    window.onload = function() {
+        document.getElementById("add").addEventListener("click", function(){
+            form(0);
+        }, false);
+    }
+
+  </script>
+{% endblock %}

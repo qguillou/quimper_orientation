@@ -39,21 +39,17 @@
   </script>
 {% endblock %}
 
-{% block content %}
-
 <!-- On récupére la couleur d'affichage de la course !-->
 {% set color = 'black' %}
 {% if course.type and course.type.color and course.type.color != '' %}
 {% set color = course.type.color %}
 {% endif %}
 
-<div class="col-md-12">
-  <h1 style="color:{{color}}; font-weight:bold">{{course.nom}}</h1>
-  <p class="lead">
-    {{ "subtitle.course" | trans }}
-  </p>
-</div>
+{% block title %}
+    {% include '::Navbar/title.html.twig' with {'title': course.nom, 'subtitle': "subtitle.course" | trans } %}
+{% endblock %}
 
+{% block content %}
 <div class="col-md-4">
   {% include 'CalendarBundle:Course:partials/informations.html.twig' %}
 </div>

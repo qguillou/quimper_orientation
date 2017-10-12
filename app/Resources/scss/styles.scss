@@ -1,0 +1,34 @@
+@import 'variables.scss';
+@import '../../../vendor/twbs/bootstrap-sass/assets/stylesheets/_bootstrap.scss';
+
+// Import des différents modules
+@import 'navbar.scss';
+@import 'admin.scss';
+@import 'box.scss';
+@import 'modal.scss';
+
+// Modification du style de base de bootstrap
+footer .footer-page {
+    text-align: center;
+    margin-top: 2em;
+    margin-bottom: 0.5em;
+}
+
+footer .navbar-content {
+    line-height: $navbar-height;
+    color: $navbar-inverse-link-color;
+    text-align: center;
+}
+
+footer .footer-page a {
+  color: $gray-light;
+}
+
+footer img {
+    max-width: 150px;
+    max-height: 100px;
+}
+
+li {
+  list-style: none;
+}

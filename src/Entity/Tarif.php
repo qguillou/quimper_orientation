@@ -3,14 +3,16 @@
 namespace Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Entity\DefaultEntity;
 
 /**
  * Tarif
  *
  * @ORM\Table(name="tarif")
  * @ORM\Entity(repositoryClass="Repository\TarifRepository")
+ * @ORM\HasLifecycleCallbacks
  */
-class Tarif
+class Tarif extends DefaultEntity
 {
     /**
      * @var int
@@ -19,7 +21,7 @@ class Tarif
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -34,17 +36,6 @@ class Tarif
      * @ORM\Column(name="prix", type="integer")
      */
     private $prix;
-
-
-    /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * Set nom

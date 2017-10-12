@@ -3,14 +3,16 @@
 namespace Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Entity\DefaultEntity;
 
 /**
  * Type
  *
  * @ORM\Table(name="type")
  * @ORM\Entity(repositoryClass="Repository\TypeRepository")
+ * @ORM\HasLifecycleCallbacks
  */
-class Type
+class Type extends DefaultEntity
 {
     /**
      * @var int
@@ -19,7 +21,7 @@ class Type
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -31,19 +33,9 @@ class Type
     /**
      * @var string
      *
-     * @ORM\Column(name="color", type="string", length=255)
+     * @ORM\Column(name="color", type="string", length=255, nullable=true)
      */
     private $color;
-
-    /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * Set nom

@@ -1,5 +1,9 @@
 {% extends '::base.html.twig' %}
 
+{% block title %}
+    {% include '::Navbar/title.html.twig' with {'title': "Créer un compte", 'subtitle': "Afin d'obtenir de nouvelles fonctionnalités"} %}
+{% endblock %}
+
 {% block content %}
 
   <div class="col-md-5 hidden-tablet">
@@ -90,10 +94,8 @@
           </div>
         </div>
 
-        <div class="row">
-          {{ form_widget(form_user.reset) }}
-          {{ form_widget(form_user.save) }}
-        </div>
+        {{ form_widget(form_user.reset) }}
+        {{ form_widget(form_user.save) }}
       </fieldset>
       {{ form_widget(form_user, {'attr': {'class': 'hidden'}}) }}
       {{ form_end(form_user) }}
@@ -105,9 +107,7 @@
     <div class="row">
       <h2>Se connecter sur le site</h2>
       <p class="lead">Vous avez déjà un compte, identifiez-vous !</p>
-      <div class="row">
-        <a href="/login" class="btn btn-primary">Ouvrir la page d'identification</a>
-      </div>
+      <a href="/login" class="btn btn-primary">Ouvrir la page d'identification</a>
     </div>
 
   </div>

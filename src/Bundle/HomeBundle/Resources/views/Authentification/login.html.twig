@@ -1,60 +1,61 @@
 {% extends '::base.html.twig' %}
 
+{% block title %}
+    {% include '::Navbar/title.html.twig' with {'title': "Se connecter", 'subtitle': "Accédez à votre compte..."} %}
+{% endblock %}
+
 {% block content %}
 
 <div class="col-md-5 hidden-tablet">
-  {% include 'HomeBundle:Authentification:information.html.twig' %}
+    {% include 'HomeBundle:Authentification:information.html.twig' %}
 </div>
 
 <div class="col-md-7">
-  <div class="row">
-    <h2>Se connecter sur le site</h2>
-    <p class="lead">Vous avez déjà un compte, identifiez-vous !</p>
-    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
-    <fieldset>
-      <div class="row">
-        <div class="form-group">
-          {{ form_label(form.username) }}
-
-          <div class="col-sm-6">
-            {{ form_widget(form.username) }}
-            {{ form_errors(form.username) }}
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="form-group">
-          {{ form_label(form.plainPassword) }}
-
-          <div class="col-sm-6">
-            {{ form_widget(form.plainPassword) }}
-            {{ form_errors(form.plainPassword) }}
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        {{ form_widget(form.reset) }}
-        {{ form_widget(form.password) }}
-        {{ form_widget(form.save) }}
-      </div>
-      <div class="row">
-      </div>
-    </fieldset>
-    {{ form_end(form) }}
-  </div>
-
-  <div class="row-divider">
-  </div>
-
-  <div class="row">
-    <h2>Se créer un compte</h2>
-    <p class="lead">Vous n'avez pas encore de compte, et vous souhaitez en créer un ?</p>
     <div class="row">
-      <a href="/register" class="btn btn-primary">Créer un compte</a>
+        <h2>Se connecter sur le site</h2>
+        <p class="lead">Vous avez déjà un compte, identifiez-vous !</p>
+        {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+        <fieldset>
+            <div class="row">
+                <div class="form-group">
+                    {{ form_label(form.username) }}
+
+                    <div class="col-sm-6">
+                        {{ form_widget(form.username) }}
+                        {{ form_errors(form.username) }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group">
+                    {{ form_label(form.plainPassword) }}
+
+                    <div class="col-sm-6">
+                        {{ form_widget(form.plainPassword) }}
+                        {{ form_errors(form.plainPassword) }}
+                    </div>
+                </div>
+            </div>
+
+            {{ form_widget(form.reset) }}
+            {{ form_widget(form.password) }}
+            {{ form_widget(form.save) }}
+
+            <div class="row">
+            </div>
+        </fieldset>
+        {{ form_end(form) }}
     </div>
-  </div>
+
+    <div class="row-divider">
+    </div>
+
+    <div class="row">
+        <h2>Se créer un compte</h2>
+        <p class="lead">Vous n'avez pas encore de compte, et vous souhaitez en créer un ?</p>
+        <a href="/register" class="btn btn-primary">Créer un compte</a>
+    </div>
 </div>
 
 {% include 'HomeBundle:Authentification:password.html.twig' %}

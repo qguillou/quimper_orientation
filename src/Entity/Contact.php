@@ -3,14 +3,16 @@
 namespace Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Entity\DefaultEntity;
 
 /**
  * Contact
  *
  * @ORM\Table(name="contact")
  * @ORM\Entity(repositoryClass="Repository\ContactRepository")
+ * @ORM\HasLifecycleCallbacks
  */
-class Contact
+class Contact extends DefaultEntity
 {
     /**
      * @var int
@@ -19,7 +21,14 @@ class Contact
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="display", type="boolean")
+     */
+    private $display;
 
     /**
      * @var string
@@ -70,15 +79,28 @@ class Contact
      */
     private $portable;
 
+    /**
+     * Set display
+     *
+     * @param boolean $display
+     *
+     * @return Contact
+     */
+    public function setDisplay($display)
+    {
+        $this->display = $display;
+
+        return $this;
+    }
 
     /**
-     * Get id
+     * Get display
      *
-     * @return int
+     * @return bool
      */
-    public function getId()
+    public function getDisplay()
     {
-        return $this->id;
+        return $this->display;
     }
 
     /**

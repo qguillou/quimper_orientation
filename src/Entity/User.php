@@ -7,21 +7,23 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Entity\DefaultEntity;
 
 /**
 * @ORM\Table(name="user")
 * @ORM\Entity(repositoryClass="Repository\UserRepository")
 * @UniqueEntity(fields={"username"}, message="Ce pseudo est déjà utilisé")
 * @UniqueEntity(fields={"email"}, message="Cette adresse e-mail est déjà utilisée")
+* @ORM\HasLifecycleCallbacks
 */
-class User implements UserInterface, \Serializable
+class User extends DefaultEntity implements UserInterface, \Serializable
 {
   /**
   * @ORM\Column(type="integer")
   * @ORM\Id
   * @ORM\GeneratedValue(strategy="AUTO")
   */
-  private $id;
+  protected $id;
 
   /**
   * @ORM\Column(type="string", length=100, unique=true)
@@ -77,7 +79,7 @@ class User implements UserInterface, \Serializable
   private $role;
 
   /**
-  * @ORM\OneToMany(targetEntity="Entity\Inscrit", mappedBy="user", cascade={"remove"})
+  * @ORM\OneToMany(targetEntity="Entity\Inscrit", mappedBy="userCreation", cascade={"remove"})
   */
   private $inscrits;
 
@@ -175,16 +177,6 @@ class User implements UserInterface, \Serializable
       // see section on salt below
       // $this->salt
       ) = unserialize($serialized);
-    }
-
-    /**
-    * Get id
-    *
-    * @return integer
-    */
-    public function getId()
-    {
-      return $this->id;
     }
 
     /**
@@ -429,5 +421,10 @@ class User implements UserInterface, \Serializable
     public function getUsers()
     {
         return $this->users;
+    }
+
+    public function __toString()
+    {
+        return (string) $this->getPrenom() . ' ' . $this->getNom() . ' (' . $this->getUsername() . ')';
     }
   }
