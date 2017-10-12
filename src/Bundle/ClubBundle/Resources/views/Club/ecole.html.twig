@@ -1,8 +1,11 @@
 {% extends '::base.html.twig' %}
 
+{% block title %}
+    {% include '::Navbar/title.html.twig' with {'title': "L'école de CO", 'subtitle': "Venez vous entraîner avec nous !"} %}
+{% endblock %}
+
 {% block content %}
 
-<h1>L'école de CO</h1>
 <h2>Présentation</h2>
 <p>Le club de Course d'Orientation du Quimper Orientation poursuit son développement au travers de l’École d'Orientation. Les samedis matin, de 10h à 12h, des séances spécifiques et adaptées au niveau des participants sont mises en œuvre sur les terrains adaptés de la ville de Quimper.</p>
 

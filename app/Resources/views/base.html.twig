@@ -28,13 +28,23 @@
         {% endif %}
     {% endblock %}
 
-    {% if image_bandeau is defined %}
-        <img class="bandeau" src="{{ image_bandeau }}" style="width: 100%"/>
-    {% endif %}
+    <div>
+        {% if image_bandeau is defined %}
+            <div class="bandeau-opacity">
+                <img class="bandeau" src="{{ image_bandeau }}" style="width: 100%; height:auto;"/>
+            </div>
+        {% endif %}
+
+        <div class="container bandeau-titre">
+            <div class="row">
+                {% block title %}{% endblock %}
+            </div>
+        </div>
+    </div>
 
     <div class="container">
         <div class="row">
-            {% block content %}{% endblock %}
+            {% block content %}{% endblock%}
         </div>
     </div>
 

@@ -1,8 +1,10 @@
 {% extends '::base.html.twig' %}
 
-{% block content %}
+{% block title %}
+    {% include '::Navbar/title.html.twig' with {'title': "Présentation du club", 'subtitle': "L'histoire, les acteurs, ..."} %}
+{% endblock %}
 
-<h1>Présentation du club</h1>
+{% block content %}
 <h2>Histoire du club</h2>
 <p>Le club "Coatarmor 29" est créé en 1987 à la Mairie d'Argol pour combler une lacune départementale dans le domaine de la course d'orientation.
 </br>

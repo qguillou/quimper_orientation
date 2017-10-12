@@ -1,14 +1,11 @@
 {% extends '::base.html.twig' %}
 
-{% block content %}
-  <div class="col-md-8">
-    <h1>{{ page_title }}</h1>
-    <p class="lead">
-      Ajout, modification et suppression.
-    </p>
+{% block title %}
+    {% include '::Navbar/title.html.twig' with {'title': page_title, 'subtitle': "Ajout, modification et suppression."} %}
+{% endblock %}
 
-    {% include '::Message/message.html.twig' %}
-  </div>
+{% block content %}
+  {% include '::Message/message.html.twig' %}
 
   {% if editable %}
   <div class="col-md-12">

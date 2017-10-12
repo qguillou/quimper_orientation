@@ -1,5 +1,9 @@
 {% extends '::base.html.twig' %}
 
+{% block title %}
+    {% include '::Navbar/title.html.twig' with {'title': "Créer un compte", 'subtitle': "Afin d'obtenir de nouvelles fonctionnalités"} %}
+{% endblock %}
+
 {% block content %}
 
   <div class="col-md-5 hidden-tablet">

@@ -1,8 +1,10 @@
 {% extends '::base.html.twig' %}
 
-{% block content %}
+{% block title %}
+    {% include '::Navbar/title.html.twig' with {'title': "Les contacts", 'subtitle': "Vous voulez plus d'informations ? Contactez-nous !"} %}
+{% endblock %}
 
-<h1>Les contacts</h1>
+{% block content %}
 
 {% for contact in contacts %}
 <div class="col-md-4">

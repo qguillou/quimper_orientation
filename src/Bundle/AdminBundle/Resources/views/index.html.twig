@@ -1,14 +1,10 @@
 {% extends '::base.html.twig' %}
 
+{% block title %}
+    {% include '::Navbar/title.html.twig' with {'title': "Espace administration", 'subtitle': "Vous êtes actuellement connecté en webmaster du site."} %}
+{% endblock %}
+
 {% block content %}
-
-  <div class="col-md-8">
-    <h1>Espace administration</h1>
-    <p class="lead">
-      Vous êtes actuellement connecté en webmaster du site.
-    </p>
-  </div>
-
   {% include '::Message/message.html.twig' %}
 
   <div class="col-md-5 hidden-tablet">

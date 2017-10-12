@@ -1,14 +1,11 @@
 {% extends '::base.html.twig' %}
 
-{% block content %}
-    <div class="col-md-9">
-        <h1>Administration du site</h1>
-        <p class="lead">
-            Modification des paramètres de base du site, un rafraichissement de la page sera nécessaire.
-        </p>
+{% block title %}
+    {% include '::Navbar/title.html.twig' with {'title': "Administration du site", 'subtitle': "Modification des paramètres de base du site, un rafraichissement de la page sera nécessaire."} %}
+{% endblock %}
 
-        {% include '::Message/message.html.twig' %}
-    </div>
+{% block content %}
+    {% include '::Message/message.html.twig' %}
 
     <div class="col-md-9">
         {{ form_start(form, {'attr': {'class': 'form-horizontal', 'id': 'form'}}) }}

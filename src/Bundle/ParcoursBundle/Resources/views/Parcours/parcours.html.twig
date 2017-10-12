@@ -1,12 +1,10 @@
 {% extends '::base.html.twig' %}
 
+{% block title %}
+    {% include '::Navbar/title.html.twig' with {'title': "Les parcours permanents", 'subtitle': "Vous souhaitez vous entraîner ? Téléchargez le carte d'un de nos parcours permanents et partez à l'aventure !"} %}
+{% endblock %}
+
 {% block content %}
-
-<div class="col-md-12">
-  <h1>Les parcours permanents</h1>
-  <p class="lead">Vous souhaitez vous entraîner ? Téléchargez le carte d'un de nos parcours permanents et partez à l'aventure !</p>
-</div>
-
 {% for carte in cartes %}
 <div class="col-xs-6 col-lg-3">
   <div class="box">

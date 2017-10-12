@@ -65,12 +65,12 @@ class InscritManager extends DefaultManager
       $user = $this->token->getToken()->getUser();
       $inscrits = array();
 
-      if($this->security->isGranted('ROLE_USER')) {
+      if($this->token->getToken()->getRoles() !== null) {
         //Adding current user
         $inscrit = new Inscrit();
         $inscrit->setCourse($course);
         $inscrit->setLicence($user->getLicense());
-        $inscrit->setUser($user);
+        $inscrit->setUserCreation($user);
         $inscrit->setNom($user->getNom());
         $inscrit->setPrenom($user->getPrenom());
         $inscrit->setPuce($user->getLicense()->getPuce());
@@ -81,7 +81,7 @@ class InscritManager extends DefaultManager
           $inscrit = new Inscrit();
           $inscrit->setCourse($course);
           $inscrit->setLicence($userAttached->getLicense());
-          $inscrit->setUser($user);
+          $inscrit->setUserCreation($user);
           $inscrit->setNom($userAttached->getLicense()->getNom());
           $inscrit->setPrenom($userAttached->getLicense()->getPrenom());
           $inscrit->setPuce($userAttached->getLicense()->getPuce());

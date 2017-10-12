@@ -1,12 +1,12 @@
 {% extends '::base.html.twig' %}
 
+{% block title %}
+    {% include '::Navbar/title.html.twig' with {'title': "title.calendar" | trans , 'subtitle': "subtitle.calendar" | trans } %}
+{% endblock %}
+
 {% block content %}
 
 <div class="col-md-9">
-  <h1>{{ "title.calendar" | trans }}</h1>
-  <p class="lead">
-    {{ "subtitle.calendar" | trans }}
-  </p>
   {% for course in courses %}
 
   <!-- On récupére la couleur d'affichage de la course !-->
