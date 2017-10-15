@@ -60,12 +60,19 @@ class InscritManager extends DefaultManager
         return array('nom' => 'ASC');
     }
 
+    public function getListeInscrit($id)
+    {
+        $inscrits = $this->em->getRepository('Entity\Inscrit')->findByCourse($id);
+
+        return $inscrits;
+    }
+
     public function getInscrit($course)
     {
       $user = $this->token->getToken()->getUser();
       $inscrits = array();
 
-      if($this->token->getToken()->getRoles() !== null) {
+      if($this->token->getToken()->getRoles() !== null && sizeof($this->token->getToken()->getRoles()) > 0) {
         //Adding current user
         $inscrit = new Inscrit();
         $inscrit->setCourse($course);

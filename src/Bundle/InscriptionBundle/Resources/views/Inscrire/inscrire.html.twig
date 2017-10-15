@@ -1,0 +1,82 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}
+{% include '::Navbar/title.html.twig' with {'title': "S'inscrire", 'subtitle': "Participez à une course, inscrivez vous !"} %}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    {% include 'InscriptionBundle:Inscrire:partials/course.html.twig' %}
+</div>
+
+<div class="row-divider"></div>
+
+<div id="mode" class="row">
+    {% include 'InscriptionBundle:Inscrire:partials/mode.html.twig' %}
+</div>
+
+<div class="row-divider"></div>
+
+<div id="inscrit" class="row">
+    <div class="col-md-3">
+        <div class="step-number inactive">
+            3
+        </div>
+    </div>
+
+    <div class="col-md-7">
+        <div class="row step-text-inactive">
+            <h2>Remplir le formulaire d'inscription</h2>
+            <p class="lead">Complétez le formulaire d'inscription, validez, puis vérifiez votre inscription</p>
+        </div>
+    </div>
+</div>
+{% endblock%}
+
+
+{% block javascript %}
+{{ parent() }}
+<script type='text/javascript'>
+var course, mode;
+
+function attachEventOnDropdown() {
+    $(".selLabel").click(function () {
+        $(this).parent().toggleClass('active');
+    });
+
+    $(".dropdown-custom .dropdown-custom-list li").click(function() {
+        $('.selLabel').text($(this).text());
+        $('.dropdown-custom').removeClass('active');
+        $('.selected-item p span').text($('.selLabel').text());
+    });
+
+}
+
+function changeCourse() {
+    course = document.getElementById("course_select_nom").options[document.getElementById("course_select_nom").selectedIndex].value;
+
+    if(!mode) {
+        var url = "{{ path('inscription_mode')}}";
+
+        $.ajax({
+            url: url,
+            success: function(result) {
+                $("#mode").html(result);
+                attachEventOnDropdown();
+            }
+        });
+    } else {
+
+    }
+}
+
+function changeMode() {
+
+}
+
+$(document).ready(function() {
+    document.getElementById('course_select_nom').addEventListener("change", changeCourse);
+});
+
+</script>
+{% endblock %}

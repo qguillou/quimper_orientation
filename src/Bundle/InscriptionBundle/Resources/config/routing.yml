@@ -6,6 +6,18 @@ inscription_consulter:
     path:     /inscription/consulter
     defaults: { _controller: InscriptionBundle:Inscription:consulter }
 
-inscriptIon_recuperation:
+inscription_recuperation:
     path:     /inscription/recuperation
     defaults: { _controller: InscriptionBundle:Inscription:recuperation }
+
+inscription_mode:
+    path:     /inscription/mode
+    defaults: { _controller: InscriptionBundle:Inscription:mode }
+
+inscription_type:
+    path:     /inscription/type
+    defaults: { _controller: InscriptionBundle:Inscription:type }
+
+inscription_inscrit:
+    path:     /inscription/inscrit/{id}
+    defaults: { _controller: InscriptionBundle:Inscription:inscrit }

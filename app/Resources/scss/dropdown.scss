@@ -1,0 +1,104 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
+.selected-item {
+  margin: 20px 0;
+  text-align: center;
+}
+.selected-item p {
+  font-size: 18px;
+}
+.selected-item p span {
+  font-weight: bold;
+}
+/* dropdown list */
+.dropdown-custom {
+  margin: 20px auto;
+  position: relative;
+  -webkit-perspective: 800px;
+          perspective: 800px;
+  z-index: 100;
+}
+.dropdown-custom.active .selLabel:after {
+  content: '\25B2';
+}
+.dropdown-custom.active .dropdown-custom-list li:nth-child(1) {
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+}
+.dropdown-custom.active .dropdown-custom-list li:nth-child(2) {
+  -webkit-transform: translateY(200%);
+          transform: translateY(200%);
+}
+.dropdown-custom.active .dropdown-custom-list li:nth-child(3) {
+  -webkit-transform: translateY(300%);
+          transform: translateY(300%);
+}
+.dropdown-custom.active .dropdown-custom-list li:nth-child(4) {
+  -webkit-transform: translateY(400%);
+          transform: translateY(400%);
+}
+.dropdown-custom > span {
+  line-height: 60px;
+  color: #fff;
+  font-size: 18px;
+  letter-spacing: 2px;
+  background: $app-base;
+  display: block;
+  padding: 0 50px 0 30px;
+  position: relative;
+  z-index: 9999;
+  cursor: pointer;
+  -webkit-backface-visibility: hidden;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.dropdown-custom > span:after {
+  content: '\25BC';
+  position: absolute;
+  right: 0px;
+  top: 15%;
+  width: 50px;
+  text-align: center;
+  font-size: 12px;
+  padding: 10px;
+  height: 70%;
+  line-height: 24px;
+  border-left: 1px solid #ddd;
+}
+.dropdown-custom > span:active {
+  -webkit-transform: rotateX(45deg);
+          transform: rotateX(45deg);
+}
+.dropdown-custom > span:active:after {
+  content: '\25B2';
+}
+.dropdown-custom-list li {
+  display: block;
+  list-style: none;
+  left: 0;
+  opacity: 1;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background-color: lighten($app-base, 20%); ;
+}
+.dropdown-custom-list li span {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  -webkit-backface-visibility: hidden;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  width: 100%;
+  font-size: 18px;
+  line-height: 60px;
+  padding: 0 30px;
+  display: block;
+  color: #fff;
+  cursor: pointer;
+  letter-spacing: 2px;
+}

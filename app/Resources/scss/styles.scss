@@ -9,6 +9,8 @@
 @import 'button.scss';
 @import 'calendar.scss';
 @import 'alert.scss';
+@import 'step.scss';
+@import 'dropdown.scss';
 
 // Modification du style de base de bootstrap
 footer .footer-page {
@@ -40,10 +42,23 @@ li {
     font-weight: bold;
 }
 
+.m-0 {
+    margin: 0;
+}
+
 .mt-2 {
     margin-top: 2em;
 }
 
+.mb-2 {
+    margin-bottom: 2em;
+}
+
 .content-container {
     margin-top: 20px;
+}
+
+.row-divider {
+    height: 1em;
+    border-bottom: 2px solid #ededed;
 }

@@ -1,0 +1,30 @@
+<div class="col-md-3">
+    <div class="step-number">
+        1
+    </div>
+</div>
+
+<div class="col-md-7">
+    <div class="row">
+        <h2>Choisir la course</h2>
+        <p class="lead">Sur laquelle vous voulez vous inscrire</p>
+        {{ form_start(course, {'attr': {'class': 'form-horizontal'}}) }}
+        <fieldset>
+
+            <div class="row">
+                <div class="form-group">
+                    {{ form_label(course.nom) }}
+
+                    <div class="col-sm-6">
+                        {{ form_widget(course.nom) }}
+                        {{ form_errors(course.nom) }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+            </div>
+        </fieldset>
+        {{ form_end(course) }}
+    </div>
+</div>

@@ -1,0 +1,64 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}
+    {% include '::Navbar/title.html.twig' with {'title': "Récupération des fichiers d'inscrits", 'subtitle': "Vous pouvez récupérer les fichiers des inscrits sous différents formats"} %}
+{% endblock %}
+
+
+{% block content %}
+<div class="row">
+    {% include 'InscriptionBundle:Inscrire:partials/course.html.twig' %}
+</div>
+
+<div class="row-divider"></div>
+
+<div id="type" class="row">
+    {% include 'InscriptionBundle:Recuperer:partials/type.html.twig' %}
+</div>
+{% endblock%}
+
+
+{% block javascript %}
+{{ parent() }}
+<script type='text/javascript'>
+var course, type;
+
+function attachEventOnDropdown() {
+    $(".selLabel").click(function () {
+        $(this).parent().toggleClass('active');
+    });
+
+    $(".dropdown-custom .dropdown-custom-list li").click(function() {
+        $('.selLabel').text($(this).text());
+        $('.dropdown-custom').removeClass('active');
+        $('.selected-item p span').text($('.selLabel').text());
+    });
+
+}
+
+function changeCourse() {
+    course = document.getElementById("course_select_nom").options[document.getElementById("course_select_nom").selectedIndex].value;
+
+    if(!type) {
+        var url = "{{ path('inscription_type')}}";
+
+        $.ajax({
+            url: url,
+            success: function(result) {
+                $("#type").html(result);
+                attachEventOnDropdown();
+            }
+        });
+    }
+}
+
+function changeType() {
+
+}
+
+$(document).ready(function() {
+    document.getElementById('course_select_nom').addEventListener("change", changeCourse);
+});
+
+</script>
+{% endblock %}

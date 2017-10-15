@@ -1,0 +1,46 @@
+<div class="col-md-3">
+    <div class="step-number {% if mode is not defined %}inactive{% endif %}">
+        2
+    </div>
+</div>
+
+<div class="col-md-7">
+    <div class="row {% if mode is not defined %}step-text-inactive{% endif %}">
+        <h2>Choisir le mode d'inscription</h2>
+        <p class="lead"></p>
+        {% if mode is defined %}
+        <fieldset>
+
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div class="dropdown-custom">
+                            <span class="selLabel">Sélectionner le mode d'inscription</span>
+                            <input id="course_select_mode" type="hidden" name="cd-dropdown" hidden>
+                            <ul class="dropdown-custom-list">
+                                {% if app.user != null %}
+                                <li data-value="1">
+                                    <span>Inscription personnalisée</span>
+                                </li>
+                                <li data-value="2">
+                                    <span>Inscription club ({{ app.user.license.nomclub }})</span>
+                                </li>
+                                {% endif %}
+                                <li data-value="3">
+                                    <span>Inscription licencié</span>
+                                </li>
+                                <li data-value="4">
+                                    <span>Inscription non-licencié</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+            </div>
+        </fieldset>
+        {% endif %}
+    </div>
+</div>

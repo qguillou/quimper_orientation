@@ -1,0 +1,21 @@
+.step-number {
+    background-color: $app-base;
+    color: white;
+    font-size: 10em;
+    width: 1em;
+    height: 1em;
+    line-height: 100%;
+    text-align: center;
+    border-radius: 100%;
+    margin: auto;
+    margin-top: 22px;
+}
+
+.step-number.inactive {
+    background-color: #979797;
+    font-size: 4em;
+}
+
+.step-text-inactive {
+    color: #979797;
+}

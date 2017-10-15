@@ -1,0 +1,41 @@
+<div class="col-md-3">
+    <div class="step-number {% if type is not defined %}inactive{% endif %}">
+        2
+    </div>
+</div>
+
+<div class="col-md-7">
+    <div class="row {% if type is not defined %}step-text-inactive{% endif %}">
+        <h2>Choisir le type de fichier</h2>
+        <p class="lead"></p>
+        {% if type is defined %}
+        <fieldset>
+
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div class="dropdown-custom">
+                            <span class="selLabel">Sélectionner le type de fichier</span>
+                            <input id="course_select_type" type="hidden" name="cd-dropdown" hidden>
+                            <ul class="dropdown-custom-list">
+                                <li data-value="1">
+                                    <span>PDF</span>
+                                </li>
+                                <li data-value="2">
+                                    <span>CSV pour OE 2003</span>
+                                </li>
+                                <li data-value="3">
+                                    <span>CSV pour OE 2010</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+            </div>
+        </fieldset>
+        {% endif %}
+    </div>
+</div>

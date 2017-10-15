@@ -40,7 +40,7 @@
             {% endif %}
           </td>
           <td>{{inscrit.commentaire}}</td>
-          {% if app.user == inscrit.userCreation or app.user == inscrit.userModification %}
+          {% if (app.user == inscrit.userCreation or app.user == inscrit.userModification) and app.user is not null %}
             <td onclick="unregister( {{inscrit.id}} )">
                 <i class="fa fa-times" style="color: red;cursor:pointer;"></i>
             </td>

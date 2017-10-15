@@ -1,0 +1,44 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}
+    {% include '::Navbar/title.html.twig' with {'title': "Consulter les inscrits", 'subtitle': "Découvrez contre qui vous allez courir !"} %}
+{% endblock %}
+
+
+{% block content %}
+<div class="row">
+    {% include 'InscriptionBundle:Inscrire:partials/course.html.twig' %}
+</div>
+
+<div class="row-divider"></div>
+
+<div id="inscrit" class="row">
+    {% include 'InscriptionBundle:Consulter:partials/inscrit.html.twig' %}
+</div>
+{% endblock%}
+
+
+{% block javascript %}
+{{ parent() }}
+<script type='text/javascript'>
+var course;
+
+function changeCourse() {
+    course = document.getElementById("course_select_nom").options[document.getElementById("course_select_nom").selectedIndex].value;
+
+    var url = "{{ path('inscription_inscrit', {'id' : 'id'})}}";
+    url = url.replace("id", course);
+    $.ajax({
+        url: url,
+        success: function(result) {
+            $("#inscrit").html(result);
+        }
+    });
+}
+
+$(document).ready(function() {
+    document.getElementById('course_select_nom').addEventListener("change", changeCourse);
+});
+
+</script>
+{% endblock %}
