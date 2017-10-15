@@ -1,3 +1,8 @@
+{% set color = 'black' %}
+{% if course.type and course.type.color and course.type.color != '' %}
+{% set color = course.type.color %}
+{% endif %}
+
 <h2 class="bold" style="color:{{color}};">Les inscrits</h2>
 {% if course.inscription %}
   {% if sizeof(course.inscrits) > 0 %}
@@ -5,7 +10,7 @@
 
     <div class="row">
       {% for info in app.session.flashbag.get('info') %}
-        <div class="alert alert-dismissible alert-info">
+        <div class="notice notice-info">
           {{ info }}
         </div>
       {% endfor %}

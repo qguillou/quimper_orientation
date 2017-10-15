@@ -8,6 +8,7 @@
 @import 'modal.scss';
 @import 'button.scss';
 @import 'calendar.scss';
+@import 'alert.scss';
 
 // Modification du style de base de bootstrap
 footer .footer-page {
@@ -41,4 +42,8 @@ li {
 
 .mt-2 {
     margin-top: 2em;
+}
+
+.content-container {
+    margin-top: 20px;
 }

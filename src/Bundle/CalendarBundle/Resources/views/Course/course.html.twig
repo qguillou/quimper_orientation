@@ -5,15 +5,15 @@
 
   <script type='text/javascript'>
     function unregister(id) {
-      $.ajax({
-        url: "{{ path('course_unregister') }}",
-        data: {
-          'id': id
-        },
-        success: function(result) {
-          $("#inscription").html(result);
-        }
-      });
+        var url = "{{ path('course_unregister', {'id': 'id'}) }}";
+        url = url.replace("id", id);
+
+        $.ajax({
+            url: url,
+            success: function(result) {
+                $("#inscription").html(result);
+            }
+        });
     }
 
     $(function(){
@@ -24,12 +24,9 @@
         $("#ModalQuickEntries").modal('hide');
         //Enregistrement des inscrits
         $.ajax({
-          url: "{{ path('course_register') }}",
+          url: "{{ path('course_register', {'id': course.id}) }}",
           type: 'POST',
-          data: {
-            'id': {{ course.id }},
-            'values': $(this).serializeArray()
-          },
+          data: $(this).serialize(),
           success: function(result) {
             $("#inscription").html(result);
           }

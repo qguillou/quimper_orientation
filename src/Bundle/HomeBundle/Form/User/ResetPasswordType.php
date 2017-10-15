@@ -15,8 +15,8 @@ class ResetPasswordType extends AbstractType
   {
     $builder
       ->add('email', EmailType::class, array('label' => 'Adresse mail', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-4 control-label')))
-      ->add('reset', ResetType::class, array('label' => 'Annuler', 'attr' => array('class' => 'btn btn-default')))
-      ->add('save', SubmitType::class, array('label' => 'Ré-initialiser le mot de passe', 'attr' => array('class' => 'btn btn-success')));
+      ->add('reset', ResetType::class, array('label' => 'Annuler', 'attr' => array('class' => 'btn btn-outlined btn-default')))
+      ->add('save', SubmitType::class, array('label' => 'Ré-initialiser le mot de passe', 'attr' => array('class' => 'btn btn-outlined btn-success')));
   }
 
   public function configureOptions(OptionsResolver $resolver)

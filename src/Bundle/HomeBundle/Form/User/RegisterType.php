@@ -39,9 +39,9 @@ class RegisterType extends AbstractType
       ->add('nom', TextType::class, array('required' => false, 'label' => 'Nom', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-4 control-label')))
       ->add('newsletter', CheckboxType::class, array('label' => 'Recevoir la newsletter', 'required' => false))
       ->add('prenom', TextType::class, array('required' => false, 'label' => 'Prénom', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-4 control-label')))
-      ->add('reset', ResetType::class, array('label' => 'Annuler', 'attr' => array('class' => 'btn btn-default')))
-      ->add('save', SubmitType::class, array('label' => 'Enregistrer le compte', 'attr' => array('class' => 'btn btn-success')))
-      ->add('delete', SubmitType::class, array('label' => 'Supprimer le compte', 'attr' => array('class' => 'btn btn-danger')));
+      ->add('reset', ResetType::class, array('label' => 'Annuler', 'attr' => array('class' => 'btn btn-outlined btn-default')))
+      ->add('save', SubmitType::class, array('label' => 'Enregistrer le compte', 'attr' => array('class' => 'btn btn-outlined btn-success')))
+      ->add('delete', SubmitType::class, array('label' => 'Supprimer le compte', 'attr' => array('class' => 'btn btn-outlined btn-danger')));
   }
 
   public function configureOptions(OptionsResolver $resolver)

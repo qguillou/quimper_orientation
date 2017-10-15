@@ -37,15 +37,15 @@ class CalendarController extends Controller
           array('course' => $course));
     }
 
-    public function registerAction(request $request)
+    public function registerAction(request $request, $id)
     {
-      $inscrits = $this->get('manager.inscrit')->getInscrit($request->get('id'));
-      $form = $this->createForm(CollectionInscritType::class, $inscrits, array('course' => $request->get('id')));
+      $inscrits = $this->get('manager.inscrit')->getInscrit($id);
+      $form = $this->createForm(CollectionInscritType::class, $inscrits, array('course' => $id));
       $form->handleRequest($request);
 
       //TODO trouver un moyen de savoir quelle ligne a été cochée
 
-      $course = $this->get('manager.inscrit')->register($request->get('id'), $form);
+      $course = $this->get('manager.inscrit')->register($id, $form);
 
       return $this->render('CalendarBundle:Course:partials/inscrits.html.twig',
         array('course' => $course));

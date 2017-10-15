@@ -18,9 +18,9 @@ class LoginType extends AbstractType
         $builder
             ->add('username', TextType::class, array('label' => 'Pseudo', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-4 control-label')))
             ->add('plainPassword', PasswordType::class, array('label' => 'Mot de passe', 'attr' => array('class' => 'form-control'), 'label_attr' => array('class' => 'col-sm-4 control-label')))
-            ->add('reset', ResetType::class, array('label' => 'Annuler', 'attr' => array('class' => 'btn btn-default')))
-            ->add('save', SubmitType::class, array('label' => 'Se connecter', 'attr' => array('class' => 'btn btn-success')))
-            ->add('password', ButtonType::class, array('label' => 'Mot de passe oublié ?', 'attr' => array('class' => 'btn btn-warning', 'data-toggle' => 'modal', 'data-target' => '#ModalPasswordLost')));
+            ->add('reset', ResetType::class, array('label' => 'Annuler', 'attr' => array('class' => 'btn btn-outlined btn-default')))
+            ->add('save', SubmitType::class, array('label' => 'Se connecter', 'attr' => array('class' => 'btn btn-outlined btn-success')))
+            ->add('password', ButtonType::class, array('label' => 'Mot de passe oublié ?', 'attr' => array('class' => 'btn btn-outlined btn-warning', 'data-toggle' => 'modal', 'data-target' => '#ModalPasswordLost')));
     }
 
     public function configureOptions(OptionsResolver $resolver)

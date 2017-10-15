@@ -96,11 +96,11 @@ class InscritManager extends DefaultManager
     {
       $inscrit = $this->em->getRepository('Entity\Inscrit')->find($id);
 
-		  $course = $inscrit->getCourse();
+	  $course = $inscrit->getCourse();
 
       //Vérification que l'inscrit peut être supprimé par l'utilisateur courrant
       $user = $this->token->getToken()->getUser();
-      if($user && ($inscrit->getUser() == $user)) {
+      if($user && ($inscrit->getUserCreation() == $user || $inscrit->getUserModification() == $user)) {
         $this->em->remove($inscrit);
         $this->em->flush();
       }
