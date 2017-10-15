@@ -2,14 +2,6 @@ calendrier:
     path:     /calendrier
     defaults: { _controller: CalendarBundle:Calendar:calendar }
 
-course_unregister:
-    path:     /calendrier/unregister/{id}/
-    defaults: { _controller: CalendarBundle:Calendar:unregister }
-
-course_register:
-    path:     /calendrier/register/{id}/
-    defaults: { _controller: CalendarBundle:Calendar:register }
-
 course:
     path:     /calendrier/{id}/
     defaults: { _controller: CalendarBundle:Calendar:course }

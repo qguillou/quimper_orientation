@@ -5,9 +5,16 @@ namespace Bundle\InscriptionBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Entity\Course;
 use Bundle\InscriptionBundle\Form\Course\CourseSelectType;
+use Symfony\Component\HttpFoundation\Response;
+use Bundle\CalendarBundle\Form\Inscrit\CollectionInscritType;
 
 class InscriptionController extends Controller
 {
+    const MODE_PERSONNALISE = 1;
+    const MODE_CLUB = 2;
+    const MODE_LICENCIE = 3;
+    const MODE_NON_LICENCIE = 4;
+
     public function inscrireAction()
     {
         $course = new Course();
@@ -46,6 +53,19 @@ class InscriptionController extends Controller
           array('type' => true));
     }
 
+    /**
+    * Permet de récupérer l'élément suivant du formulaire
+    *
+    * @param string $data nom du type de formulaire à récupérer
+    *
+    * @return le rendu de la nouvelle étape du formulaire
+    */
+    public function postCourseAction($data)
+    {
+        return $this->render('InscriptionBundle:Common:partials/' . $data . '.html.twig',
+          array($data => true));
+    }
+
     public function inscritAction($id)
     {
         $inscrits = $this->get('manager.inscrit')->getListeInscrit($id);
@@ -53,5 +73,49 @@ class InscriptionController extends Controller
 
         return $this->render('InscriptionBundle:Consulter:partials/inscrit.html.twig',
           array('inscrits' => $inscrits, 'course' => $course));
+    }
+
+    public function downloadAction()
+    {
+        //TODO
+    }
+
+    public function formulaireAction($id, $mode)
+    {
+        $course = $this->get('manager.course')->get($id);
+
+        switch ($mode) {
+            case static::MODE_PERSONNALISE:
+                $inscrits = $this->get('manager.inscrit')->getInscrit($id);
+                $form = $this->createForm(CollectionInscritType::class, $inscrits, array('course' => $id));
+                break;
+
+            default:
+                # code...
+                break;
+        }
+
+        return $this->render('InscriptionBundle:Inscrire:partials/inscription.html.twig',
+          array('course' => $course, 'form' => $form->createView()));
+    }
+
+    public function unregisterAction(Request $request)
+    {
+        $course = $this->get('manager.inscrit')->unregister($request->get('id'));
+
+        return $this->render('CalendarBundle:Course:partials/inscrits.html.twig',
+          array('course' => $course));
+    }
+
+    public function registerAction(request $request, $id)
+    {
+      $inscrits = $this->get('manager.inscrit')->getInscrit($id);
+      $form = $this->createForm(CollectionInscritType::class, $inscrits, array('course' => $id));
+      $form->handleRequest($request);
+
+      $course = $this->get('manager.inscrit')->register($id, $form);
+
+      return $this->render('CalendarBundle:Course:partials/inscrits.html.twig',
+        array('course' => $course));
     }
 }

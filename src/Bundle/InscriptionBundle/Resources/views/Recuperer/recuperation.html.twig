@@ -7,13 +7,13 @@
 
 {% block content %}
 <div class="row">
-    {% include 'InscriptionBundle:Inscrire:partials/course.html.twig' %}
+    {% include 'InscriptionBundle:Common:course/course.html.twig' %}
 </div>
 
 <div class="row-divider"></div>
 
 <div id="type" class="row">
-    {% include 'InscriptionBundle:Recuperer:partials/type.html.twig' %}
+    {% include 'InscriptionBundle:Common:partials/type.html.twig' %}
 </div>
 {% endblock%}
 
@@ -30,8 +30,10 @@ function attachEventOnDropdown() {
 
     $(".dropdown-custom .dropdown-custom-list li").click(function() {
         $('.selLabel').text($(this).text());
+        $('.dropdown-custom input').val($(this).attr('data-value'));
         $('.dropdown-custom').removeClass('active');
         $('.selected-item p span').text($('.selLabel').text());
+        changeType();
     });
 
 }
@@ -39,21 +41,29 @@ function attachEventOnDropdown() {
 function changeCourse() {
     course = document.getElementById("course_select_nom").options[document.getElementById("course_select_nom").selectedIndex].value;
 
-    if(!type) {
-        var url = "{{ path('inscription_type')}}";
+    var url = "{{ path('inscription_post_course', {'data': 'type'})}}";
 
-        $.ajax({
-            url: url,
-            success: function(result) {
-                $("#type").html(result);
-                attachEventOnDropdown();
-            }
-        });
-    }
+    $.ajax({
+        url: url,
+        success: function(result) {
+            $("#type").html(result);
+            attachEventOnDropdown();
+        }
+    });
 }
 
 function changeType() {
+    var type = document.getElementById("course_select_type").value;
 
+    var url = "{{ path('inscription_download', {'type' : 'type', 'id': 'id'})}}";
+    url = url.replace('type', type);
+    url = url.replace('id', course);
+
+    $.ajax({
+        url: url,
+        success: function(result) {
+        }
+    });
 }
 
 $(document).ready(function() {

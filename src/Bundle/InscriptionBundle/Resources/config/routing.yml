@@ -2,6 +2,10 @@ inscription_inscrire:
     path:     /inscription/inscrire
     defaults: { _controller: InscriptionBundle:Inscription:inscrire }
 
+inscription_formulaire:
+    path:     /inscription/inscrire/{id}/{mode}
+    defaults: { _controller: InscriptionBundle:Inscription:formulaire }
+
 inscription_consulter:
     path:     /inscription/consulter
     defaults: { _controller: InscriptionBundle:Inscription:consulter }
@@ -10,14 +14,24 @@ inscription_recuperation:
     path:     /inscription/recuperation
     defaults: { _controller: InscriptionBundle:Inscription:recuperation }
 
-inscription_mode:
-    path:     /inscription/mode
-    defaults: { _controller: InscriptionBundle:Inscription:mode }
-
-inscription_type:
-    path:     /inscription/type
-    defaults: { _controller: InscriptionBundle:Inscription:type }
+inscription_post_course:
+    path:   /inscription/get/{data}
+    defaults: { _controller: InscriptionBundle:Inscription:postCourse }
+    requirements:
+        data:   mode|type
 
 inscription_inscrit:
     path:     /inscription/inscrit/{id}
     defaults: { _controller: InscriptionBundle:Inscription:inscrit }
+
+inscription_download:
+    path:     /inscription/file/{type}/{id}
+    defaults: { _controller: InscriptionBundle:Inscription:download }
+
+course_unregister:
+    path:     /inscription/unregister/{id}/
+    defaults: { _controller: InscriptionBundle:Inscription:unregister }
+
+course_register:
+    path:     /inscription/register/{id}/
+    defaults: { _controller: InscriptionBundle:Inscription:register }

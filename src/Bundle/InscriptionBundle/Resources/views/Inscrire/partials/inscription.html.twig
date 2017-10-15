@@ -1,0 +1,21 @@
+{{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+{% set color = 'black' %}
+{% if course.type and course.type.color and course.type.color != '' %}
+{% set color = course.type.color %}
+{% endif %}
+<div class="col-md-10 col-md-offset-1">
+    <div class="row course">
+        {% include 'CalendarBundle:Common:course/header_course.html.twig' %}
+    </div>
+
+    <div class="row">
+        {{ form_errors(form) }}
+        {% include 'InscriptionBundle:Common:inscrit/table_formulaire_inscrit.html.twig' %}
+    </div>
+    <div>
+        {{ form_widget(form.reset, {'attr': {'data-dismiss': "modal"}}) }}
+        {{ form_widget(form.save) }}
+    </div>
+    {{ form_widget(form, {'attr': {'class': 'hidden'}}) }}
+    {{ form_end(form) }}
+</div>

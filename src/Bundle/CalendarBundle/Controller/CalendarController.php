@@ -43,8 +43,6 @@ class CalendarController extends Controller
       $form = $this->createForm(CollectionInscritType::class, $inscrits, array('course' => $id));
       $form->handleRequest($request);
 
-      //TODO trouver un moyen de savoir quelle ligne a été cochée
-
       $course = $this->get('manager.inscrit')->register($id, $form);
 
       return $this->render('CalendarBundle:Course:partials/inscrits.html.twig',

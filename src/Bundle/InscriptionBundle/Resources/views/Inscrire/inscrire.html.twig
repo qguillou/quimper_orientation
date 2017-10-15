@@ -6,13 +6,13 @@
 
 {% block content %}
 <div class="row">
-    {% include 'InscriptionBundle:Inscrire:partials/course.html.twig' %}
+    {% include 'InscriptionBundle:Common:course/course.html.twig' %}
 </div>
 
 <div class="row-divider"></div>
 
 <div id="mode" class="row">
-    {% include 'InscriptionBundle:Inscrire:partials/mode.html.twig' %}
+    {% include 'InscriptionBundle:Common:partials/mode.html.twig' %}
 </div>
 
 <div class="row-divider"></div>
@@ -46,8 +46,10 @@ function attachEventOnDropdown() {
 
     $(".dropdown-custom .dropdown-custom-list li").click(function() {
         $('.selLabel').text($(this).text());
+        $('.dropdown-custom input').val($(this).attr('data-value'));
         $('.dropdown-custom').removeClass('active');
         $('.selected-item p span').text($('.selLabel').text());
+        changeMode();
     });
 
 }
@@ -56,13 +58,14 @@ function changeCourse() {
     course = document.getElementById("course_select_nom").options[document.getElementById("course_select_nom").selectedIndex].value;
 
     if(!mode) {
-        var url = "{{ path('inscription_mode')}}";
+        var url = "{{ path('inscription_post_course', {'data': 'mode'})}}";
 
         $.ajax({
             url: url,
             success: function(result) {
                 $("#mode").html(result);
                 attachEventOnDropdown();
+                mode = 1;
             }
         });
     } else {
@@ -71,7 +74,18 @@ function changeCourse() {
 }
 
 function changeMode() {
+    mode = document.getElementById("course_select_mode").value;
 
+    var url = "{{ path('inscription_formulaire', {'id': 'id', 'mode': 'mode'})}}";
+    url = url.replace('id', course);
+    url = url.replace('mode', mode);
+
+    $.ajax({
+        url: url,
+        success: function(result) {
+            $("#inscrit").html(result);
+        }
+    });
 }
 
 $(document).ready(function() {

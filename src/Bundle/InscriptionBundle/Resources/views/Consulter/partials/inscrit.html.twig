@@ -1,74 +1,12 @@
 {% if inscrits is defined %}
-    {% set color = 'black' %}
-    {% if course.type and course.type.color and course.type.color != '' %}
-    {% set color = course.type.color %}
-    {% endif %}
     <div class="col-md-10 col-md-offset-1">
         <div class="row course">
-            <h2 style="color: {{color}};" class="bold">{{ course.nom }}</h2>
-            <ul class="row m-0 text-list" style="border-color:{{color}}">
-              <li class="col-md-2"><b><i class="fa fa-calendar"></i> {{ "calendar.date" | trans }}</b> <p class="lead" style="color:{{color}}; font-weight:bold">{{ course.date | format_datetime('d MMMM YYYY', 'fr', 'Europe/Paris') }}</p></li>
-
-              {% if course.lieu %}
-              <li class="col-md-2"><b><i class="fa fa-map-marker"></i> {{ "calendar.location" | trans }}</b> <p class="lead" style="color:{{color}}; font-weight:bold">{{course.lieu | capitalize }}</p></li>
-              {% endif %}
-
-              {% if course.type %}
-              <li class="col-md-2"><b><i class="fa fa-tag"></i> {{ "calendar.type" | trans }}</b> <p class="lead" style="color:{{color}}; font-weight:bold">{{course.type.nom}}</p></li>
-              {% endif %}
-
-              {% if course.organisateur %}
-              <li class="col-md-2"><b><i class="fa fa-user"></i> {{ "calendar.organised.by" | trans }}</b> <p class="lead" style="color:{{color}}; font-weight:bold">{{course.organisateur}}</p></li>
-              {% endif %}
-
-              <li class="col-md-4"><b><i class="fa fa-sign-in"></i> {{ "calendar.entries" | trans }}</b>
-                {% if course.inscription and not is_past(course.modification | date('Y-m-d H:i:s')) %}
-                <p class="lead" style="color:{{color}}; font-weight:bold">{{ "calendar.entries.limit" | trans }} {{course.modification | format_datetime('d MMMM YYYY à HH:mm:ss', 'fr', 'Europe/Paris')}}</p>
-                {% elseif course.inscription %}
-                <p class="lead" style="color:{{color}}; font-weight:bold">{{ "calendar.entries.ended" | trans }}</p>
-                {% else %}
-                <p class="lead" style="color:{{color}}; font-weight:bold">{{ "calendar.see.with.organisator" | trans }}</p>
-                {% endif %}
-              </li>
-            </ul>
+            {% include 'CalendarBundle:Common:course/header_course.html.twig' %}
         </div>
 
-        <table class="table table-striped table-hover mt-2">
-          <thead>
-            <tr style="font-weight:bold;">
-              <th>#</th>
-              <th>Nom</th>
-              <th>Prénom</th>
-              <th>Circuit</th>
-              <th>Commentaire</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {% set i = 0 %}
-            {% for inscrit in inscrits %}
-            {% set i = i + 1 %}
-            <tr>
-              <td>{{i}}</td>
-              <td>{{inscrit.nom}}</td>
-              <td>{{inscrit.prenom}}</td>
-              <td>
-                {% if inscrit.circuit != null %}
-                  {{inscrit.circuit.nom}}
-                {% endif %}
-              </td>
-              <td>{{inscrit.commentaire}}</td>
-              {% if (app.user == inscrit.userCreation or app.user == inscrit.userModification) and app.user is not null %}
-                <td onclick="unregister( {{inscrit.id}} )">
-                    <i class="fa fa-times" style="color: red;cursor:pointer;"></i>
-                </td>
-              {% else %}
-                <td></td>
-              {% endif %}
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
+        <div class="row">
+            {% include 'InscriptionBundle:Common:inscrit/table_liste_inscrit.html.twig' %}
+        </div>
     </div>
 {% else %}
     <div class="col-md-3">
