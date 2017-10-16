@@ -28,24 +28,4 @@ class CalendarController extends Controller
               'form' => $form->createView()
             ));
     }
-
-    public function unregisterAction(Request $request)
-    {
-        $course = $this->get('manager.inscrit')->unregister($request->get('id'));
-
-        return $this->render('CalendarBundle:Course:partials/inscrits.html.twig',
-          array('course' => $course));
-    }
-
-    public function registerAction(request $request, $id)
-    {
-      $inscrits = $this->get('manager.inscrit')->getInscrit($id);
-      $form = $this->createForm(CollectionInscritType::class, $inscrits, array('course' => $id));
-      $form->handleRequest($request);
-
-      $course = $this->get('manager.inscrit')->register($id, $form);
-
-      return $this->render('CalendarBundle:Course:partials/inscrits.html.twig',
-        array('course' => $course));
-    }
 }

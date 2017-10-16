@@ -1,10 +1,10 @@
 {% if inscrits is defined %}
     <div class="col-md-10 col-md-offset-1">
-        <div class="row course">
+        <div class="row course mb-2">
             {% include 'CalendarBundle:Common:course/header_course.html.twig' %}
         </div>
 
-        <div class="row">
+        <div id="inscription" class="row">
             {% include 'InscriptionBundle:Common:inscrit/table_liste_inscrit.html.twig' %}
         </div>
     </div>

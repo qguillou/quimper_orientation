@@ -3,19 +3,9 @@
 {% block javascript %}
   {{ parent() }}
 
+  {% include 'InscriptionBundle:Common:partials/js_inscription.html.twig' %}
+
   <script type='text/javascript'>
-    function unregister(id) {
-        var url = "{{ path('course_unregister', {'id': 'id'}) }}";
-        url = url.replace("id", id);
-
-        $.ajax({
-            url: url,
-            success: function(result) {
-                $("#inscription").html(result);
-            }
-        });
-    }
-
     $(function(){
       $("form").submit(function(event){
         event.preventDefault();
@@ -23,14 +13,7 @@
         //Fermeture du modal
         $("#ModalQuickEntries").modal('hide');
         //Enregistrement des inscrits
-        $.ajax({
-          url: "{{ path('course_register', {'id': course.id}) }}",
-          type: 'POST',
-          data: $(this).serialize(),
-          success: function(result) {
-            $("#inscription").html(result);
-          }
-        });
+        register({{course.id}}, $(this).serialize());
       });
     });
   </script>
@@ -64,7 +47,7 @@
 
       <div class="row-divider"></div>
 
-      <div id="inscription" class="row">
+      <div class="row">
         {% include 'CalendarBundle:Course:partials/inscrits.html.twig' %}
       </div>
 

@@ -1,4 +1,10 @@
-<table class="table table-striped table-hover mt-2">
+{% for info in app.session.flashbag.get('info') %}
+  <div class="notice notice-info">
+    {{ info }}
+  </div>
+{% endfor %}
+
+<table class="table table-striped table-hover">
   <thead>
     <tr style="font-weight:bold;">
       <th>#</th>

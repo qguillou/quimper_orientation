@@ -1,0 +1,27 @@
+<script type="text/javascript">
+    function unregister(id) {
+        var url = "{{ path('inscrit_unregister', {'id': 'id'}) }}";
+        url = url.replace("id", id);
+
+        $.ajax({
+            url: url,
+            success: function(result) {
+                $("#inscription").html(result);
+            }
+        });
+    }
+
+    function register(id, data) {
+        var url = "{{ path('inscrit_register', {'id': 'id'}) }}";
+        url = url.replace("id", id);
+
+        $.ajax({
+          url: url,
+          type: 'POST',
+          data: data,
+          success: function(result) {
+            $("#inscription").html(result);
+          }
+        });
+    }
+</script>

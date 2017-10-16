@@ -5,20 +5,13 @@
 
 <h2 class="bold" style="color:{{color}};">Les inscrits</h2>
 {% if course.inscription %}
-  {% if sizeof(course.inscrits) > 0 %}
-    <p class="lead">Ils sont déjà inscrits à cette course.</p>
-
-    <div class="row">
-      {% for info in app.session.flashbag.get('info') %}
-        <div class="notice notice-info">
-          {{ info }}
-        </div>
-      {% endfor %}
+    <div id="inscription" class="row">
+        {% if sizeof(course.inscrits) > 0 %}
+            {% include 'InscriptionBundle:Common:inscrit/table_liste_inscrit.html.twig' with {'inscrits' : course.inscrits} %}
+        {% else %}
+            <p class="lead">Aucun inscrit à cette course pour le moment.</p>
+        {% endif %}
     </div>
-    {% include 'InscriptionBundle:Common:inscrit/table_liste_inscrit.html.twig' with {'inscrits' : course.inscrits} %}
-  {% else %}
-    <p class="lead">Aucun inscrit à cette course pour le moment.</p>
-  {% endif %}
 
   {% if not is_past(course.modification | date("Y-m-d H:i:s")) %}
     {% if app.user %}

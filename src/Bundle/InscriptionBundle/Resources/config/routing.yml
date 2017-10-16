@@ -28,10 +28,10 @@ inscription_download:
     path:     /inscription/file/{type}/{id}
     defaults: { _controller: InscriptionBundle:Inscription:download }
 
-course_unregister:
+inscrit_unregister:
     path:     /inscription/unregister/{id}/
-    defaults: { _controller: InscriptionBundle:Inscription:unregister }
+    defaults: { _controller: InscriptionBundle:Inscrit:unregister }
 
-course_register:
+inscrit_register:
     path:     /inscription/register/{id}/
-    defaults: { _controller: InscriptionBundle:Inscription:register }
+    defaults: { _controller: InscriptionBundle:Inscrit:register }
