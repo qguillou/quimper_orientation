@@ -1,81 +1,84 @@
 {% extends '::base.html.twig' %}
 
 {% block title %}
-    {% include '::Navbar/title.html.twig' with {'title': "title.calendar" | trans , 'subtitle': "subtitle.calendar" | trans } %}
+{% include '::Navbar/title.html.twig' with {'title': "title.calendar" | trans , 'subtitle': "subtitle.calendar" | trans } %}
 {% endblock %}
 
 {% block content %}
-
-<div class="col-md-9">
-  {% for course in courses %}
-
-  <!-- On récupére la couleur d'affichage de la course !-->
-  {% set color = 'black' %}
-  {% if course.type and course.type.color and course.type.color != '' %}
-  {% set color = course.type.color %}
-  {% endif %}
-
-  <div class="row">
-    <div class="col-md-3" style="text-align:center">
-      <h3 style="color:{{color}}; font-weight:bold">
-        {{ course.date | date("d") }}<br/>
-        {{ course.date | format_datetime('MMMM', 'fr', 'Europe/Paris') | upper }}
-      </h3>
-
-      <a id="more-{{course.id}}" href="/calendrier/{{course.id}}/"
-          class="btn btn-square-toround btn-bordered-success"
-          style="border-color:{{color}}; color:{{color}}">
-          <i class="fa fa-caret-square-o-down"></i>
-          {{ "calendar.more" | trans }}
-      </a>
-
-      <script>
-      $("#more-{{course.id}}").hover(function(){
-        $("#more-{{course.id}}").css("color","white")
-        $("#more-{{course.id}}").css("background","{{color}}")
-      }, function(){
-        $("#more-{{course.id}}").css("color","{{color}}")
-        $("#more-{{course.id}}").css("background","white")
-      });
-      </script>
+<div class="col-md-3">
+    <div class="col-md-3 calendar">
+        {% include 'CalendarBundle:Calendar:partials/responsive_calendar.html.twig' %}
     </div>
-
-    <div class="col-md-9">
-      <h3 style="color:{{color}};font-weight:bold">{{course.nom}}</h3>
-      <ul class="text-list information" style="border-color: {{color}}">
-        {% if course.lieu %}
-        <li><i class="fa fa-map-marker"></i> {{ "calendar.location" | trans }} <b style="color:{{color}}">{{course.lieu}}</b></li>
-        {% endif %}
-
-        {% if course.type %}
-        <li><i class="fa fa-tag"></i> {{ "calendar.type" | trans }} <b style="color:{{color}}">{{course.type.nom}}</b></li>
-        {% endif %}
-
-        {% if course.organisateur %}
-        <li><i class="fa fa-user"></i> {{ "calendar.organised.by" | trans }} <b style="color:{{color}}">{{course.organisateur}}</b></li>
-        {% endif %}
-
-        {% if course.inscription %}
-        <li><i class="fa fa-sign-in"></i> {{ "calendar.entries" | trans }} <b style="color:{{color}}">{{ "calendar.entries.limit" | trans }} {{course.modification | date('d/m/Y à H:i:s')}}</b></li>
-        {% else %}
-        <li><i class="fa fa-sign-in"></i> {{ "calendar.entries" | trans }} <b style="color:{{color}}">{{ "calendar.see.with.organisator" | trans }}</b></li>
-        {% endif %}
-
-        {% if course.site %}
-        <li><i class="fa fa-at"></i> {{ "calendar.website" | trans }} <b><a target="_BLANK" href="{{course.site}}" style="color:{{color}}; text-decoration:underline;">{{course.site}}</a></b></li>
-        {% endif %}
-      </ul>
-    </div>
-
-
-  </div>
-
-  <div class="row-divider"></div>
-  {% endfor %}
 </div>
 
-<div class="col-md-3">
+<div class="col-md-7 col-md-offset-1">
+    <h2 style="float: left;"> Les courses en &nbsp;</h2>
+    <h2 class="mois"></h2>
 
+    <p class="lead">Pour changer de mois, utilisez le calendrier ci-contre</p>
+
+    {% for course in courses %}
+
+    <!-- On récupére la couleur d'affichage de la course !-->
+    {% set color = 'black' %}
+    {% if course.type and course.type.color and course.type.color != '' %}
+    {% set color = course.type.color %}
+    {% endif %}
+
+    <div class="course month-{{course.date | date('m')}}">
+        <div class="row">
+            <div class="col-md-4" style="text-align:center">
+                <h3 class="jour" style="background-color:{{color}}; font-weight:bold">
+                    {{ course.date | date("d") }}
+                </h3>
+
+                <a id="more-{{course.id}}" href="/calendrier/{{course.id}}/" class="btn btn-square-toround btn-bordered-success" style="border-color:{{color}}; color:{{color}}">
+                    <i class="fa fa-caret-square-o-down"></i>
+                    {{ "calendar.more" | trans }}
+                </a>
+
+                <script>
+                $("#more-{{course.id}}").hover(function(){
+                    $("#more-{{course.id}}").css("color","white")
+                    $("#more-{{course.id}}").css("background","{{color}}")
+                }, function(){
+                    $("#more-{{course.id}}").css("color","{{color}}")
+                    $("#more-{{course.id}}").css("background","white")
+                });
+                </script>
+            </div>
+
+            <div class="col-md-8">
+                <h3 style="color:{{color}};font-weight:bold">{{course.nom}}</h3>
+                <ul class="text-list information" style="border-color: {{color}}">
+                    {% if course.lieu %}
+                    <li><i class="fa fa-map-marker"></i> {{ "calendar.location" | trans }} <b style="color:{{color}}">{{course.lieu}}</b></li>
+                    {% endif %}
+
+                    {% if course.type %}
+                    <li><i class="fa fa-tag"></i> {{ "calendar.type" | trans }} <b style="color:{{color}}">{{course.type.nom}}</b></li>
+                    {% endif %}
+
+                    {% if course.organisateur %}
+                    <li><i class="fa fa-user"></i> {{ "calendar.organised.by" | trans }} <b style="color:{{color}}">{{course.organisateur}}</b></li>
+                    {% endif %}
+
+                    {% if course.inscription %}
+                    <li><i class="fa fa-sign-in"></i> {{ "calendar.entries" | trans }} <b style="color:{{color}}">{{ "calendar.entries.limit" | trans }} {{course.modification | date('d/m/Y à H:i:s')}}</b></li>
+                    {% else %}
+                    <li><i class="fa fa-sign-in"></i> {{ "calendar.entries" | trans }} <b style="color:{{color}}">{{ "calendar.see.with.organisator" | trans }}</b></li>
+                    {% endif %}
+
+                    {% if course.site %}
+                    <li><i class="fa fa-at"></i> {{ "calendar.website" | trans }} <b><a target="_BLANK" href="{{course.site}}" style="color:{{color}}; text-decoration:underline;">{{course.site}}</a></b></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+        <div class="row-divider"></div>
+    </div>
+
+    {% endfor %}
 </div>
 
 {% endblock %}

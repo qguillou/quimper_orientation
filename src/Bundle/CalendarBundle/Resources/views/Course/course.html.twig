@@ -31,36 +31,68 @@
 {% set color = course.type.color %}
 {% endif %}
 <div class="course">
-    <div class="col-md-4">
-      {% include 'CalendarBundle:Course:partials/informations.html.twig' %}
+    <div class="row">
+        <div class="col-md-4">
+          {% include 'CalendarBundle:Course:partials/informations.html.twig' %}
+        </div>
+
+
+        <div class="col-md-1">
+        </div>
+
+        <div class="col-md-7">
+
+          <div class="row">
+            {% include 'CalendarBundle:Course:partials/files.html.twig' %}
+          </div>
+
+          <div class="row-divider"></div>
+
+          <div class="row">
+            {% include 'CalendarBundle:Course:partials/inscrits.html.twig' %}
+          </div>
+
+          <div class="row-divider"></div>
+
+          <div class="row">
+              {% if course.latitude and course.longitude %}
+              {% include 'CalendarBundle:Course:partials/carte.html.twig' %}
+              {% endif %}
+          </div>
+        </div>
+
+        {% include 'CalendarBundle:Course:forms/inscription.html.twig' %}
     </div>
-
-
-    <div class="col-md-1">
+    <div class="row mt-2">
+        <div class="col-md-12">
+            {% if prev %}
+            <div class="col-md-5 pull-left">
+                <a href="/calendrier/{{prev.id}}" style="color: {{color}}">
+                    <div class="col-md-3 p-0 nav-course-chevron" style="height: 100%;">
+                        <i class="fa fa-chevron-left"></i>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="row nav-course-nom">{{ prev.nom}}</div>
+                        <div class="row">Le {{ prev.date | format_datetime('d MMMM YYYY', 'fr', 'Europe/Paris') }}</div>
+                    </div>
+                </a>
+            </div>
+            {% endif %}
+            {% if next %}
+            <div class="col-md-5 pull-right" style="text-align: right;">
+                <a href="/calendrier/{{next.id}}" style="color: {{color}}">
+                    <div class="col-md-9">
+                        <div class="row nav-course-nom">{{ next.nom}}</div>
+                        <div class="row">Le {{ next.date | format_datetime('d MMMM YYYY', 'fr', 'Europe/Paris') }}</div>
+                    </div>
+                    <div class="col-md-3 p-0 nav-course-chevron" style="height: 100%;">
+                        <i class="fa fa-chevron-right"></i>
+                    </div>
+                </a>
+            </div>
+            {% endif %}
+        </div>
     </div>
-
-    <div class="col-md-7">
-
-      <div class="row">
-        {% include 'CalendarBundle:Course:partials/files.html.twig' %}
-      </div>
-
-      <div class="row-divider"></div>
-
-      <div class="row">
-        {% include 'CalendarBundle:Course:partials/inscrits.html.twig' %}
-      </div>
-
-      <div class="row-divider"></div>
-
-      <div class="row">
-          {% if course.latitude and course.longitude %}
-          {% include 'CalendarBundle:Course:partials/carte.html.twig' %}
-          {% endif %}
-      </div>
-    </div>
-
-    {% include 'CalendarBundle:Course:forms/inscription.html.twig' %}
 </div>
 
 {% endblock %}

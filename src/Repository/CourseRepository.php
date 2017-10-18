@@ -3,6 +3,7 @@
 namespace Repository;
 
 use Entity\User;
+use Entity\Course;
 
 /**
  * CourseRepository
@@ -28,10 +29,35 @@ class CourseRepository extends \Doctrine\ORM\EntityRepository
         ->from('Entity\Inscrit', 'i')
         ->where('c.date >= :date')
         ->andWhere('i.course = c.id')
-        ->andWhere('i.user = :user')
-        ->setParameters(array('date' => new \Datetime(date('d-m-Y')), 'user' => $user->getId()))
+        ->andWhere('i.licence = :licence')
+        ->setParameters(array('date' => new \Datetime(date('d-m-Y')), 'licence' => $user->getLicense()))
         ->orderBy('c.date', 'ASC')
         ->getQuery()
         ->getResult();
+  }
+
+  public function findPrev(Course $course)
+  {
+      return $this->createQueryBuilder('c')
+          ->where('c.date < :date')
+          ->andWhere('c.date > :today')
+          ->andWhere('c.id != :id')
+          ->setParameters(array('date' => $course->getDate(), 'today' => date('Y-m-d'), 'id' => $course->getId()))
+          ->orderBy('c.date', 'DESC')
+          ->setMaxResults(1)
+          ->getQuery()
+          ->getOneOrNullResult();
+  }
+
+  public function findNext(Course $course)
+  {
+      return $this->createQueryBuilder('c')
+          ->where('c.date > :date')
+          ->andWhere('c.id != :id')
+          ->setParameters(array('date' => $course->getDate(), 'id' => $course->getId()))
+          ->orderBy('c.date', 'ASC')
+          ->setMaxResults(1)
+          ->getQuery()
+          ->getOneOrNullResult();
   }
 }

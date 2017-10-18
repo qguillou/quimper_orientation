@@ -11,6 +11,7 @@
 @import 'alert.scss';
 @import 'step.scss';
 @import 'dropdown.scss';
+@import 'list.scss';
 
 // Modification du style de base de bootstrap
 footer .footer-page {
@@ -52,6 +53,14 @@ li {
 
 .mb-2 {
     margin-bottom: 2em;
+}
+
+.p-0 {
+    padding: 0;
+}
+
+.pt-1 {
+    padding-top: 1em;
 }
 
 .content-container {

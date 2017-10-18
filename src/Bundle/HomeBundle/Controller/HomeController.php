@@ -8,7 +8,18 @@ class HomeController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('HomeBundle:Home:home.html.twig');
+        $courses = $this->get('manager.course')->getCalendar();
+
+        $data = array();
+        foreach ($courses as $course) {
+            $data[date('Y-m-d', $course->getDate()->getTimestamp())] = array("url" => "/calendrier/" . $course->getId());
+        }
+
+        return $this->render('HomeBundle:Home:home.html.twig',
+            array(
+                "events" => json_encode($data)
+            )
+        );
     }
 
     public function aboutAction()

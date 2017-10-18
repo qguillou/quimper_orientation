@@ -12,8 +12,17 @@ class CalendarController extends Controller
     {
         $courses = $this->get('manager.course')->getCalendar();
 
+        $data = array();
+        foreach ($courses as $course) {
+            $data[date('Y-m-d', $course->getDate()->getTimestamp())] = array("url" => "/calendrier/" . $course->getId());
+        }
+
         return $this->render('CalendarBundle:Calendar:calendar.html.twig',
-          array("courses" => $courses));
+            array(
+                "courses" => $courses,
+                "events" => json_encode($data)
+            )
+        );
     }
 
     public function courseAction(Request $request, $id)
@@ -23,9 +32,16 @@ class CalendarController extends Controller
       $inscrits = $this->get('manager.inscrit')->getInscrit($course);
       $form = $this->createForm(CollectionInscritType::class, $inscrits, array('course' => $id));
 
+      $prev = $this->get('manager.course')->getPrev($course);
+      $next = $this->get('manager.course')->getNext($course);
+
       return $this->render('CalendarBundle:Course:course.html.twig',
-        array('course' => $course,
-              'form' => $form->createView()
-            ));
+            array(
+                'course' => $course,
+                'form' => $form->createView(),
+                'next' => $next,
+                'prev' => $prev
+            )
+      );
     }
 }

@@ -6,3 +6,99 @@
     height: 280px;
     width: auto;
 }
+
+.responsive-calendar .controls {
+  text-align: center;
+}
+.responsive-calendar .controls a {
+  cursor: pointer;
+}
+.responsive-calendar .controls h4 {
+  display: inline;
+  font-size: 20px;
+}
+.responsive-calendar .day-headers,
+.responsive-calendar .days {
+  font-size: 0;
+}
+.responsive-calendar .day {
+  display: inline-block;
+  position: relative;
+  font-size: 14px;
+  width: 14.285714285714286%;
+  text-align: center;
+}
+.responsive-calendar .day a {
+  color: #000000;
+  display: block;
+  cursor: pointer;
+  padding: 20% 0 20% 0;
+}
+.responsive-calendar .day a:hover {
+  background-color: #eee;
+  text-decoration: none;
+}
+.responsive-calendar .day.header {
+  border-bottom: 1px gray solid;
+}
+.responsive-calendar .day.active a {
+  background-color: $app-base;
+  color: #ffffff;
+}
+.responsive-calendar .day.active a:hover {
+  background-color: $app-base;
+}
+.responsive-calendar .day.active .not-current {
+  background-color: #8fcaef;
+  color: #ffffff;
+}
+.responsive-calendar .day.active .not-current:hover {
+  background-color: #bcdff5;
+}
+.responsive-calendar .day.not-current a {
+  color: #ddd;
+}
+.responsive-calendar .day.today a {
+  font-weight: bold;
+}
+.nav-month {
+  background: none;
+  color: $app-base;
+  border-color: $app-base;
+  padding: 5px;
+}
+.nav-month:hover{
+  color: white;
+  background-color: $app-base;
+  border-color: $app-base;
+}
+
+@media screen and (min-width: 992px) {
+    .calendar {
+        position: fixed;
+    }
+}
+
+.calendar .box {
+    margin-top : 22px;
+}
+
+.jour {
+    color: white;
+    border-radius: 100%;
+    height: fit-content;
+    line-height: 4em;
+    height: 4em;
+    width: 4em;
+    margin: auto;
+    margin-bottom: 1em;
+    margin-top: 22px;
+}
+
+.nav-course-chevron {
+    font-size: 4em;
+}
+
+.nav-course-nom {
+    font-size: 2em;
+}

@@ -5,6 +5,7 @@ namespace Manager;
 use Manager\DefaultManager;
 use Form\Type\CourseType;
 use Entity\Course;
+use Entity\User;
 
 class CourseManager extends DefaultManager
 {
@@ -12,6 +13,14 @@ class CourseManager extends DefaultManager
     {
         $repository = $this->em->getRepository($this->entity_namespace);
 		$entities = $repository->findFutureCourse();
+
+        return $entities;
+    }
+
+    public function getUserCalendar(User $user)
+    {
+        $repository = $this->em->getRepository($this->entity_namespace);
+		$entities = $repository->findCourseWhereUserIsRegistered($user);
 
         return $entities;
     }
@@ -64,10 +73,24 @@ class CourseManager extends DefaultManager
         );
     }
 
-
-
     public function getOrderBy()
     {
         return array('date' => 'DESC');
+    }
+
+    public function getPrev(Course $course)
+    {
+        $repository = $this->em->getRepository($this->entity_namespace);
+		$entity = $repository->findPrev($course);
+
+        return $entity;
+    }
+
+    public function getNext(Course $course)
+    {
+        $repository = $this->em->getRepository($this->entity_namespace);
+		$entity = $repository->findNext($course);
+
+        return $entity;
     }
 }

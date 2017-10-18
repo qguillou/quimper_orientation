@@ -1,0 +1,47 @@
+<div class="box">
+    <h4 class="text-center">Évènements en </h4>
+    <div class="responsive-calendar" id="calendar">
+        <div class="controls mb-2">
+            <a class="pull-left" data-go="prev">
+                <div class="btn btn-primary nav-month"><</div>
+            </a>
+            <h4 data-head-month=""></h4>
+            <h4 data-head-year=""></h4>
+            <a class="pull-right" data-go="next">
+                <div class="btn btn-primary nav-month">></div>
+            </a>
+        </div>
+        <div class="day-headers">
+            <div class="day header">Lun</div>
+            <div class="day header">Mar</div>
+            <div class="day header">Mer</div>
+            <div class="day header">Jeu</div>
+            <div class="day header">Ven</div>
+            <div class="day header">Sam</div>
+            <div class="day header">Dim</div>
+        </div>
+        <div class="days" data-group="days"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function () {
+    $(".responsive-calendar").responsiveCalendar({
+        events: {{events | raw }},
+        onInit: function() {
+            onMonthChange($(this)[0].currentMonth + 1);
+        },
+        onMonthChange: function() {
+            onMonthChange($(this)[0].currentMonth + 1);
+        }
+    });
+
+    function onMonthChange(month) {
+        $(".mois").html($(".responsive-calendar h4[data-head-month]").html());
+
+        $(".course").hide();
+        $(".month-" + month).show();
+    }
+
+});
+</script>

@@ -5,7 +5,10 @@
 {% endblock %}
 
 {% block content %}
-
-  {% include '::Message/message.html.twig' %}
-
+<div class="col-md-9">
+    {% include '::Message/message.html.twig' %}
+</div>
+<div class="col-md-3">
+    {% include 'CalendarBundle:Calendar:partials/responsive_calendar.html.twig' %}
+</div>
 {% endblock %}
