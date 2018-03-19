@@ -73,7 +73,7 @@ class InscritManager extends DefaultManager
         $inscrit->setUserCreation($user);
         $inscrit->setNom($user->getNom());
         $inscrit->setPrenom($user->getPrenom());
-        $inscrit->setPuce($user->getLicense()->getPuce());
+        $inscrit->setPuce($user->getLicense() ? $user->getLicense()->getPuce() : 0 );
         $inscrits[] = $inscrit;
 
         //Adding attached user
