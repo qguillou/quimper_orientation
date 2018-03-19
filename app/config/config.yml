@@ -67,6 +67,11 @@ twig:
     strict_variables: "%kernel.debug%"
     form_themes:
         [ ':Form:error.html.twig']
+    globals:
+      nVersion: 0.0.1
+      dVersion: Mars 2018
+      author: Quentin GUILLOU
+      site_name: Quimper Orientation
 
 # Doctrine Configuration
 doctrine:

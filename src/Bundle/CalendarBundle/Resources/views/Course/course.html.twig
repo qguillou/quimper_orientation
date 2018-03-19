@@ -19,17 +19,23 @@
   </script>
 {% endblock %}
 
+{% set color = 'black' %}
+{% if course.type and course.type.color and course.type.color != '' %}
+{% set color = course.type.color %}
+{% endif %}
+
 {% block title %}
-    {% include '::Navbar/title.html.twig' with {'title': course.nom, 'subtitle': "subtitle.course" | trans } %}
+  <div class="col-md-12">
+    <h1 style="color:{{ color }}">{{ course.nom }}</h1>
+    <p class="lead">
+      {{ "subtitle.course" | trans }}
+    </p>
+  </div>
 {% endblock %}
 
 {% block content %}
 
 <!-- On récupére la couleur d'affichage de la course !-->
-{% set color = 'black' %}
-{% if course.type and course.type.color and course.type.color != '' %}
-{% set color = course.type.color %}
-{% endif %}
 <div class="course">
     <div class="row">
         <div class="col-md-4">

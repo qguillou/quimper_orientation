@@ -19,12 +19,14 @@
                             <input id="course_select_mode" type="hidden" name="cd-dropdown" hidden>
                             <ul class="dropdown-custom-list">
                                 {% if app.user != null %}
-                                <li data-value="1">
-                                    <span>Inscription personnalisée</span>
-                                </li>
-                                <li data-value="2">
-                                    <span>Inscription club ({{ app.user.license.nomclub }})</span>
-                                </li>
+                                  <li data-value="1">
+                                      <span>Inscription personnalisée</span>
+                                  </li>
+                                  {% if app.user.license != null %}
+                                    <li data-value="2">
+                                        <span>Inscription club ({{ app.user.license.nomclub }})</span>
+                                    </li>
+                                  {% endif %}
                                 {% endif %}
                                 <li data-value="3">
                                     <span>Inscription licencié</span>
