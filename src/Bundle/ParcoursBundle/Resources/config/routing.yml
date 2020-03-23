@@ -1,3 +1,0 @@
-parcours:
-    path:     /parcours
-    defaults: { _controller: ParcoursBundle:Parcours:parcours }

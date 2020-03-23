@@ -1,8 +1,0 @@
-quimper_orientation
-===================
-
-A Symfony project created on March 15, 2017, 6:58 pm.
-
-Installation
-===================
-1. Cloner le projet git

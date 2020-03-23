@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="fr" xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Site du {{ app_name }} club affilié à la Fédération Française de Course d'Orientation (FFCO)" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+    </head>
+    <body>
+        {% include 'navbar_header.html.twig' %}
+        <div class="content">
+            {% block body %}
+            {% endblock %}
+        </div>
+        {% include 'navbar_footer.html.twig' %}
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </body>
+</html>

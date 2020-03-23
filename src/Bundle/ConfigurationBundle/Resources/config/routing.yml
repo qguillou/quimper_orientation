@@ -1,4 +1,0 @@
-#Configuration du site
-configuration:
-    path:       /admin/config/site
-    defaults:   { _controller: ConfigurationBundle:Configuration:index }

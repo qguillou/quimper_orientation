@@ -1,3 +1,0 @@
-definition:
-    path:     /definition
-    defaults: { _controller: DefinitionBundle:Definition:definition }
