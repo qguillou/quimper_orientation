@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}S'inscrire{% endblock %}
+
+{% block body %}
+<div class="container row p-4 px-md-0">
+        <div class="col-12 col-md-5 col-lg-5 offset-md-1">
+            <h1>S'inscrire</h1>
+
+            {{ form_start(registrationForm) }}
+                <div class="form-group">
+                    <label for="registration_form_email" class="required"><i class="fa fa-at"></i> Adresse e-mail</label>
+                    {{ form_widget(registrationForm.email, {'attr': {'class': registrationForm.email.vars.errors|length > 0 ? 'form-control is-invalid' : 'form-control'}}) }}
+
+                    <div class="invalid-feedback">
+                        {{ form_errors(registrationForm.email) }}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="registration_form_plainPassword" class="required"><i class="fa fa-key"></i> Mot de passe</label>
+                    {{ form_widget(registrationForm.plainPassword, {'attr': {'class': registrationForm.plainPassword.vars.errors|length > 0 ? 'form-control is-invalid' : 'form-control'}}) }}
+
+                    <div class="invalid-feedback">
+                        {{ form_errors(registrationForm.plainPassword) }}
+                    </div>
+                </div>
+
+                <div class="form-group form-check">
+                    {{ form_widget(registrationForm.agreeTerms, {'attr': {'class': registrationForm.agreeTerms.vars.errors|length > 0 ? 'form-check-input is-invalid' : 'form-check-input'}}) }}
+
+                    <label class="form-check-label" for="registration_form_agreeTerms">Accepter les conditions générales d'utilisation <a href="">Voir les CGU</a></label>
+
+                    <div class="invalid-feedback">
+                        {{ form_errors(registrationForm.agreeTerms) }}
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">S'inscrire</button>
+            {{ form_end(registrationForm) }}
+        </div>
+        <div class="col-12 col-md-4 offset-md-1 mt-4 mt-md-0">
+            <h2>Déjà un compte ?</h2>
+            <a href="{{ path('app_login') }}" class="btn btn-primary">Se connecter</a>
+        </div>
+    </div>
+{% endblock %}

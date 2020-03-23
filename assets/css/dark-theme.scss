@@ -6,7 +6,7 @@
     .box,
     .close,
     .bg-white {
-        background-color: black !important;
+        background-color: $gray-900 !important;
         color: white !important;
     }
 
@@ -29,6 +29,6 @@
 
 .dark-theme {
     @include dark-theme;
-    background-color: black !important;
+    background-color: $gray-900 !important;
     color: white !important;
 }

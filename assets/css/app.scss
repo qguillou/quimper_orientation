@@ -2,6 +2,7 @@
 @import "~bootstrap/scss/bootstrap";
 @import "dark-theme.scss";
 
+/** CHECKBOX */
 input[type="checkbox"] {
 	-webkit-appearance: none;
 	-moz-appearance: none;
@@ -16,13 +17,13 @@ input[type="checkbox"] {
     vertical-align: bottom;
 	-webkit-transition: all .2s ease-in-out;
 	transition: all .2s ease-in-out;
-  }
+}
 
-  input[type="checkbox"]:checked{
+input[type="checkbox"]:checked{
 	background: $primary;
-  }
+}
 
-  input[type="checkbox"]:after{
+input[type="checkbox"]:after{
 	position: absolute;
 	content: "";
 	width: 1.5em;
@@ -36,8 +37,54 @@ input[type="checkbox"] {
 	left: 0;
 	-webkit-transition: all .2s ease-in-out;
 	transition: all .2s ease-in-out;
-  }
+}
 
-  input[type="checkbox"]:checked:after{
+input[type="checkbox"]:checked:after{
 	left: calc(100% - 1.5em);
-  }
+}
+
+/** ALERT */
+.alert-message {
+    margin: 10px 0;
+    padding: 10px;
+    border-left: 3px solid #eee;
+}
+.alert-message-success {
+    background-color: lighten(#3C763D, 15%);
+    border-color: #3C763D;
+}
+.alert-message-success h4 {
+    color: #3C763D;
+}
+.alert-message-danger {
+    border-color: $danger;
+    color: $danger;
+}
+.alert-message-warning {
+    background-color: lighten(#f0ad4e, 15%);
+    border-color: #f0ad4e;
+}
+.alert-message-warning h4 {
+    color: #f0ad4e;
+}
+.alert-message-info {
+    background-color: lighten(#5bc0de, 15%);
+    border-color: #5bc0de;
+}
+.alert-message-info h4 {
+    color: #5bc0de;
+}
+.alert-message-default {
+    background-color: lighten(#B4B4B4, 15%);
+    border-color: #B4B4B4;
+}
+.alert-message-default h4 {
+    color: #000;
+}
+.alert-message-notice {
+    background-color: lighten(#BDBD89, 15%);
+    border-color: #BDBD89;
+}
+.alert-message-notice h4 {
+    color: #444;
+}

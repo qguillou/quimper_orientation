@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Se connecter{% endblock %}
+
+{% block body %}
+<div class="container row p-4 px-md-0">
+    <div class="col-12 col-md-5 offset-md-1">
+        <h1>Se connecter</h1>
+        <form method="post">
+
+            {% if error %}
+                <div class="alert-message alert-message-danger">
+                    <h4>Erreur</h4>
+                    <p>Veuillez vérifier les informations saisies et rééssayer</p>
+                </div>
+            {% endif %}
+
+            <div class="form-group">
+                <label for="inputEmail"><i class="fa fa-at"></i> Adresse e-mail</label>
+                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control {{ error ? 'is-invalid' }}" placeholder="Adresse e-mail" required autofocus>
+
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1"><i class="fa fa-key"></i> Mot de passe</label>
+                <input type="password" name="password" id="inputPassword" class="form-control {{ error ? 'is-invalid' }}" placeholder="Mot de passe" required>
+                <small id="emailHelp" class="form-text text-muted">Mot de passe oublié ? <a href="">Réinitialiser votre mot de passe</a></small>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="_remember_me" name="_remember_me" checked>
+                <label class="form-check-label" for="_remember_me">Rester connecté</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Se connecter</button>
+
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+        </form>
+    </div>
+    <div class="col-12 col-md-4 offset-md-1 mt-4 mt-md-0">
+        <h2>Pas encore inscrit ?</h2>
+        <a href="{{ path('app_register') }}" class="btn btn-primary">Se créer un compte</a>
+        <ul class="list-unstyled mt-2">
+            <li class="font-weight-bold">Qui peut se créer un compte ?</li>
+            <li class="font-italic">Tout le monde</li>
+        </ul>
+        <ul class="list-unstyled mt-2">
+            <li class="font-weight-bold">Pourquoi se créer un compte ?</li>
+            <li class="font-italic">Pour bénéficier de nombreux avantages <a href="">Voir les informations concernant les comptes</a></li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
