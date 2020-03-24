@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use App\Model\UserNameTrait;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -12,6 +13,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class User implements UserInterface
 {
+    use UserNameTrait;
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -34,6 +37,19 @@ class User implements UserInterface
      * @ORM\Column(type="string")
      */
     private $password;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Base")
+     * @ORM\JoinColumn(name="base_id", referencedColumnName="id", nullable=true)
+     */
+    private $base;
+    private $baseId;
+
+    /**
+     * @var string The reset password token
+     * @ORM\Column(type="string", length=255)
+     */
+    private $token = null;
 
     public function getId(): ?int
     {
@@ -111,5 +127,46 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getBase(): ?Base
+    {
+        return $this->base;
+    }
+
+    public function setBase(?Base $base): self
+    {
+        $this->base = $base;
+
+        if (!empty($base)) {
+            $this->setFirstName($base->getFirstName());
+            $this->setLastName($base->getLastName());
+        }
+
+        return $this;
+    }
+
+    public function getBaseId(): ?int
+    {
+        return $this->base ? $this->base->getId() : null;
+    }
+
+    public function setBaseId(?int $id): self
+    {
+        $this->baseId = $id;
+
+        return $this;
+    }
+
+    public function getToken(): ?string
+    {
+        return $this->token;
+    }
+
+    public function setToken(?string $token): self
+    {
+        $this->token = $token;
+
+        return $this;
     }
 }

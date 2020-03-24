@@ -44,47 +44,36 @@ input[type="checkbox"]:checked:after{
 }
 
 /** ALERT */
-.alert-message {
-    margin: 10px 0;
-    padding: 10px;
-    border-left: 3px solid #eee;
+.alert {
+    padding: 15px;
+    background-color: $gray-100;
+    border-left: 6px solid #7f7f84;
+    margin-bottom: 10px;
+    -webkit-box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+       -moz-box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+            box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
 }
-.alert-message-success {
-    background-color: lighten(#3C763D, 15%);
-    border-color: #3C763D;
+.alert-success {
+    border-color: $success;
 }
-.alert-message-success h4 {
-    color: #3C763D;
+.alert-success>strong {
+    color: $success;
 }
-.alert-message-danger {
+.alert-info {
+    border-color: $info;
+}
+.alert-info>strong {
+    color: $info;
+}
+.alert-warning {
+    border-color: $warning;
+}
+.alert-warning>strong {
+    color: $warning;
+}
+.alert-danger {
     border-color: $danger;
+}
+.alert-danger>strong {
     color: $danger;
-}
-.alert-message-warning {
-    background-color: lighten(#f0ad4e, 15%);
-    border-color: #f0ad4e;
-}
-.alert-message-warning h4 {
-    color: #f0ad4e;
-}
-.alert-message-info {
-    background-color: lighten(#5bc0de, 15%);
-    border-color: #5bc0de;
-}
-.alert-message-info h4 {
-    color: #5bc0de;
-}
-.alert-message-default {
-    background-color: lighten(#B4B4B4, 15%);
-    border-color: #B4B4B4;
-}
-.alert-message-default h4 {
-    color: #000;
-}
-.alert-message-notice {
-    background-color: lighten(#BDBD89, 15%);
-    border-color: #BDBD89;
-}
-.alert-message-notice h4 {
-    color: #444;
 }

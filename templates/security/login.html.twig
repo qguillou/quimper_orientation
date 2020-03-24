@@ -4,14 +4,13 @@
 
 {% block body %}
 <div class="container row p-4 px-md-0">
-    <div class="col-12 col-md-5 offset-md-1">
+    <div class="col-12 col-md-6 offset-md-1">
         <h1>Se connecter</h1>
         <form method="post">
 
             {% if error %}
-                <div class="alert-message alert-message-danger">
-                    <h4>Erreur</h4>
-                    <p>Veuillez vérifier les informations saisies et rééssayer</p>
+                <div class="alert alert-danger">
+                    <strong>Erreur</strong> <p>Veuillez vérifier les informations saisies et rééssayer</p>
                 </div>
             {% endif %}
 
@@ -23,7 +22,7 @@
             <div class="form-group">
                 <label for="exampleInputPassword1"><i class="fa fa-key"></i> Mot de passe</label>
                 <input type="password" name="password" id="inputPassword" class="form-control {{ error ? 'is-invalid' }}" placeholder="Mot de passe" required>
-                <small id="emailHelp" class="form-text text-muted">Mot de passe oublié ? <a href="">Réinitialiser votre mot de passe</a></small>
+                <small id="emailHelp" class="form-text text-muted">Mot de passe oublié ? <a href="{{ path('app_request_reset') }}">Réinitialiser votre mot de passe</a></small>
             </div>
             <div class="form-group form-check">
                 <input type="checkbox" class="form-check-input" id="_remember_me" name="_remember_me" checked>

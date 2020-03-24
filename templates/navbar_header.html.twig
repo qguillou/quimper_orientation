@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-xl navbar-dark bg-primary">
-    <a class="navbar-brand" href="">
+    <a class="navbar-brand" href="{{ path('app_homepage') }}">
         {{ app_name }}
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-header" aria-controls="navbarsExample06" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,7 +27,8 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="dropdown-user">
                         <div class="col-lg-12">
-                            <span class="text-primary h1">{{ app.user.username|slice(0,1)|capitalize }}</span><span class="h3">{{ app.user.username|slice(1,app.user.username|length) }}</span>
+                            {% set name = app.user.firstName is not empty ? app.user.firstName : app.user.username %}
+                            <span class="text-primary h1">{{ name|slice(0,1)|capitalize }}</span><span class="h3">{{ name|slice(1,name|length) }}</span>
                         </div>
                         <div class="dropdown-divider"></div>
                         <div class="col-lg-12">

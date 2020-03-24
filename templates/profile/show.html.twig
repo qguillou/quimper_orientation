@@ -1,12 +1,38 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}S'inscrire{% endblock %}
+{% block title %}Mon espace personnel{% endblock %}
 
 {% block body %}
     <div class="container row p-4 px-md-0">
         <div class="col-12 offset-md-1">
             <h1>Mon espace personnel</h1>
+            {% if app.user.firstName is empty and app.user.lastName is empty %}
+            <div class="alert alert-warning">
+                <strong>Profil incomplet</strong>
+                <div class="progress">
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+            {% endif %}
+            <ul class="list-unstyled">
+                <li class="font-weight-bold"><i class="fa fa-at"></i> Adresse e-mail</li>
+                <li>{{ app.user.email }}</li>
+                <li class="font-weight-bold">Prénom</li>
+                <li>{{ app.user.firstName ?? '<span class="badge badge-warning">Non renseigné</span>' }}</li>
+                <li class="font-weight-bold">Nom</li>
+                <li>{{ app.user.lastName ?? '<span class="badge badge-warning">Non renseigné</span>' }}</li>
+                <li class="font-weight-bold"><i class="fa fa-id-badge"></i> Licence fédérale FFCO</li>
+                <li>
+                    {% if app.user.base is not empty %}
+                        {{ app.user.base }}
+                    {% else %}
+                        <span class="badge badge-warning">Non renseigné</span>
+                    {% endif %}
+                </li>
+            </ul>
 
+            <a href="{{ path('app_profile_update') }}" class="btn btn-primary">Modifier mon profil</a>
+            <a href="{{ path('app_profile_delete')}}" class="btn btn-outline-danger">Supprimer mon compte</a>
 
         </div>
     </div>
