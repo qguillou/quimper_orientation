@@ -1,0 +1,74 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('collection') }}
+{% endblock %}
+
+{% block admin_content %}
+    <h1>{{ news.id is not empty ? "Modification de l'actualité" : "Ajout d'une actualité" }}</h1>
+
+    {{ form_start(newsForm) }}
+        <div class="form-group">
+            <label for="news_form_title" class="required"><i class="fa fa-heading"></i> Titre</label>
+            {{ form_widget(newsForm.title, {'attr': {'class': newsForm.title.vars.errors|length > 0 ? 'form-control is-invalid' : 'form-control', 'autofocus': 'autofocus'}}) }}
+
+            <div class="invalid-feedback">
+                {{ form_errors(newsForm.title) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="news_form_content" class="required"><i class="fa fa-align-justify"></i> Contenu</label>
+            {{ form_widget(newsForm.content, {'attr': {'class': newsForm.content.vars.errors|length > 0 ? 'form-control is-invalid' : 'form-control'}}) }}
+
+            <div class="invalid-feedback">
+                {{ form_errors(newsForm.content) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="news_form_imageFile" class="required"><i class="fa fa-image"></i> Image</label>
+            {{ form_widget(newsForm.imageFile, {'attr': {'class': newsForm.imageFile.vars.errors|length > 0 ? 'form-control is-invalid' : 'form-control'}}) }}
+
+            <div class="invalid-feedback">
+                {{ form_errors(newsForm.imageFile) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="news_form_files" class="required"><i class="fa fa-file"></i> Fichiers joints</label>
+            <ul class="list-unstyled mt-2 collections" data-delete="<button class='btn btn-outline-danger' type='button'><i class='fa fa-trash'></i> Supprimer ce fichier</button>" data-prototype="{{ form_widget(newsForm.files.vars.prototype)|e('html_attr') }}">
+                {{ form_widget(newsForm.files, {'attr': {'class': newsForm.files.vars.errors|length > 0 ? 'is-invalid'}}) }}
+
+                <button type="button" class="collection-add btn btn-info"><i class="fa fa-file-alt"></i> Ajouter un fichier</button>
+            </ul>
+
+            <div class="invalid-feedback">
+                {{ form_errors(newsForm.files) }}
+            </div>
+        </div>
+
+        <div class="form-group form-check">
+            {{ form_widget(newsForm.private, {'attr': {'class': newsForm.private.vars.errors|length > 0 ? 'form-check-input is-invalid' : 'form-check-input'}}) }}
+
+            <label class="form-check-label" for="news_form_private">Rendre cette actualité privée</label>
+            <small>Visible uniquement par les licenciés du club</small>
+            <div class="invalid-feedback">
+                {{ form_errors(newsForm.private) }}
+            </div>
+        </div>
+
+        <div class="form-group form-check">
+            {{ form_widget(newsForm.promote, {'attr': {'class': newsForm.promote.vars.errors|length > 0 ? 'form-check-input is-invalid' : 'form-check-input'}}) }}
+
+            <label class="form-check-label" for="news_form_promote">Publier cette actualité sur la page d'accueil</label>
+
+            <div class="invalid-feedback">
+                {{ form_errors(newsForm.promote) }}
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Enregistrer l'actualité</button>
+    {{ form_end(newsForm) }}
+{% endblock %}

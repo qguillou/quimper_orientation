@@ -77,3 +77,62 @@ input[type="checkbox"]:checked:after{
 .alert-danger>strong {
     color: $danger;
 }
+
+/** Navbar administration */
+
+nav.sidebar .navbar-nav .open .dropdown-menu {
+	position: static;
+	float: none;
+	width: auto;
+	margin-top: 0;
+	background-color: transparent;
+	border: 0;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+nav.sidebar .navbar-collapse, nav.sidebar .container-fluid{
+    padding: 0 0px 0 0px;
+}
+
+navbar-inverse .navbar-nav .open .dropdown-menu>li>a {
+    color: #777;
+}
+
+nav.sidebar{
+	width: 200px;
+	height: 100%;
+    margin-left:-168px;
+	float: left;
+	z-index: 8000;
+	margin-bottom: 0px;
+}
+
+nav.sidebar li {
+    width: 100%;
+}
+
+nav.sidebar:hover{
+    margin-left: -20px;
+}
+
+div > nav > div > ul{
+    width:198px;
+}
+
+nav.sidebar, .main{
+    -webkit-transition: margin 300ms ease-out;
+    -moz-transition: margin 300ms ease-out;
+    -o-transition: margin 300ms ease-out;
+    transition: margin 300ms ease-out;
+}
+
+header:hover > span::before {
+    margin-right: 3px;
+    content: '<';
+}
+
+header:hover > span::after {
+    margin-left: 3px;
+    content: '>';
+}

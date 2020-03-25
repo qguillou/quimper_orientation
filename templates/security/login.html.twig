@@ -3,7 +3,7 @@
 {% block title %}Se connecter{% endblock %}
 
 {% block body %}
-<div class="container row p-4 px-md-0">
+<div class="row py-4">
     <div class="col-12 col-md-6 offset-md-1">
         <h1>Se connecter</h1>
         <form method="post">
@@ -33,7 +33,7 @@
             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
         </form>
     </div>
-    <div class="col-12 col-md-4 offset-md-1 mt-4 mt-md-0">
+    <div class="col-12 col-md-3 offset-md-1 mt-4 mt-md-0">
         <h2>Pas encore inscrit ?</h2>
         <a href="{{ path('app_register') }}" class="btn btn-primary">Se créer un compte</a>
         <ul class="list-unstyled mt-2">

@@ -51,6 +51,11 @@ class User implements UserInterface
      */
     private $token = null;
 
+    public function __toString()
+    {
+        return $this->getUsername();
+    }
+
     public function getId(): ?int
     {
         return $this->id;

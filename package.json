@@ -19,6 +19,7 @@
         "build": "encore production --progress"
     },
     "dependencies": {
+        "ckeditor": "^4.0.0",
         "node-sass": "^4.13.1",
         "webpack": "^4.0.0"
     }
