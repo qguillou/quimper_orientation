@@ -23,8 +23,10 @@ class NewsFormType extends AbstractType
             ->add('imageFile', VichImageType::class, [
                 'required' => false,
                 'allow_delete' => true,
-                'download_uri' => true,
+                'delete_label' => 'Supprimer l\'image',
+                'download_uri' => false,
                 'image_uri' => true,
+                'imagine_pattern' => 'thumbnail',
                 'asset_helper' => true,
             ])
             ->add('files', CollectionType::class, [
