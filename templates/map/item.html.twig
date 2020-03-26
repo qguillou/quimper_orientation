@@ -1,3 +1,4 @@
+{% if is_granted('view', map) %}
 <div class="col-12 col-md-4 col-lg-3 mb-4">
     <div class="card bg-dark border-primary h-100">
         <img src="{{ asset(map.image.name is not null ? 'images/' ~ map.image.name : 'images/default.jpg') | imagine_filter('thumbnail') }}" class="card-img-top position-absolute opacity-20 h-100" alt="...">
@@ -8,3 +9,4 @@
         </div>
     </div>
 </div>
+{% endif %}
