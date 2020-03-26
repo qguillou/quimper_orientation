@@ -9,6 +9,8 @@ vich_uploader:
         content_file:
             uri_prefix: /files
             upload_destination: '%kernel.project_dir%/public/files/'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
         content_image:
             uri_prefix: /images
             upload_destination: '%kernel.project_dir%/public/images/'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer

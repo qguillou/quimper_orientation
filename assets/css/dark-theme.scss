@@ -25,7 +25,8 @@
         background-color: darken($secondary, 15%) !important;
     }
 
-    .text-dark {
+    .text-dark,
+    a.text-dark:hover, a.text-dark:focus {
         color: white!important;
     }
 }

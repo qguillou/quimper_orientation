@@ -1,0 +1,53 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Administration des cartes{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block admin_content %}
+    <h1>{{ map.id is not empty ? "Modification de la carte" : "Ajout d'une carte" }}</h1>
+
+    {{ form_start(mapForm) }}
+        <div class="form-group">
+            <label for="map_form_title" class="required"><i class="fa fa-heading"></i> Titre</label>
+            {{ form_widget(mapForm.title, {'attr': {'class': mapForm.title.vars.errors|length > 0 ? 'form-control is-invalid' : 'form-control', 'autofocus': 'autofocus'}}) }}
+
+            <div class="invalid-feedback">
+                {{ form_errors(mapForm.title) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="map_form_file" class="required"><i class="fa fa-file"></i> Fichier</label>
+            <div class="form-inline">
+                <div class="form-group pr-4">
+                    {{ form_label(mapForm.file.label) }}
+                    {{ form_widget(mapForm.file.label, {'attr': {'class': mapForm.file.vars.errors|length > 0 ? 'form-control is-invalid' : 'form-control'}}) }}
+                </div>
+                <div class="form-group pr-4">
+                    {{ form_label(mapForm.file.documentFile) }}
+                    {{ form_widget(mapForm.file.documentFile, {'attr': {'class': mapForm.file.vars.errors|length > 0 ? 'form-control is-invalid' : 'form-control'}}) }}
+                </div>
+            </div>
+
+            <div class="invalid-feedback">
+                {{ form_errors(mapForm.file) }}
+            </div>
+        </div>
+
+        <div class="form-group form-check">
+            {{ form_widget(mapForm.private, {'attr': {'class': mapForm.private.vars.errors|length > 0 ? 'form-check-input is-invalid' : 'form-check-input'}}) }}
+
+            <label class="form-check-label" for="map_form_private">Rendre cette actualité privée</label>
+            <small>Visible uniquement par les licenciés du club</small>
+            <div class="invalid-feedback">
+                {{ form_errors(mapForm.private) }}
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Enregistrer la carte</button>
+        <div class="d-none">{{ form_rest(mapForm) }}</div>
+    {{ form_end(mapForm) }}
+{% endblock %}
