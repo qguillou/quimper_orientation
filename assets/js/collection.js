@@ -10,7 +10,7 @@ $(function() {
     var $addTagButton = $collectionHolder.find('button.collection-add');
 
     // add a delete link to all of the existing tag form li elements
-    $collectionHolder.find('li').each(function() {
+    $collectionHolder.find('li').children().each(function() {
         addTagFormDeleteLink($(this));
     });
 

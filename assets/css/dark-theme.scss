@@ -1,11 +1,13 @@
 @mixin dark-theme {
     body,
+    .card,
     .breadcrumb,
     .modal-content,
     .table,
     .box,
     .close,
-    .bg-white {
+    .bg-white,
+    .page-item:not(.active) .page-link {
         background-color: $gray-900 !important;
         color: white !important;
     }
@@ -14,12 +16,17 @@
         border-color: $gray-800 !important;
     }
 
+    .card,
     .modal-content {
         border: 1px solid white;
     }
 
     .table-secondary, .table-secondary > td, .table-secondary > th {
         background-color: darken($secondary, 15%) !important;
+    }
+
+    .text-dark {
+        color: white!important;
     }
 }
 

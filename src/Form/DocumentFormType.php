@@ -8,6 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Vich\UploaderBundle\Form\Type\VichFileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 class DocumentFormType extends AbstractType
 {
@@ -24,11 +25,13 @@ class DocumentFormType extends AbstractType
                     'class' => 'pr-2'
                 ]
             ])
+            ->add('fileName', HiddenType::class)
             ->add('documentFile', VichFileType::class, [
                 'label' => 'Fichier',
                 'required' => false,
                 'allow_delete' => true,
                 'download_uri' => true,
+                'download_label' => 'Télécharger',
                 'asset_helper' => true,
                 'label_attr' => [
                     'class' => 'pr-2'

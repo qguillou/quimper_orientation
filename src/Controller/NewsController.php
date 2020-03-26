@@ -10,9 +10,13 @@ use App\Entity\News;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
 use App\EventSubscriber\EntityMetadataSubscriber;
+use App\Repository\NewsRepository;
+use Symfony\Component\Security\Http\Util\TargetPathTrait;
 
 class NewsController extends AbstractController
 {
+    use TargetPathTrait;
+
     private $dispatcher;
 
     public function __construct(EventDispatcherInterface $dispatcher)
@@ -21,7 +25,7 @@ class NewsController extends AbstractController
     }
 
     /**
-     * @Route("/news", name="news")
+     * @Route("/news", name="app_news_list")
      */
     public function index()
     {
@@ -31,9 +35,30 @@ class NewsController extends AbstractController
     }
 
     /**
+     * @Route("/news/{news}", name="app_news_show")
+     */
+    public function show(News $news)
+    {
+        return $this->render('news/show.html.twig', [
+            'news' => $news,
+        ]);
+    }
+
+    /**
+     * @Route("/admin/news/list", name="admin_news_list")
+     */
+    public function admin(NewsRepository $newsRepository)
+    {
+        return $this->render('news/admin.html.twig', [
+            'fields' => ['title' => 'Titre'],
+            'entities' => $newsRepository->findAll()
+        ]);
+    }
+
+    /**
      * @Route("/admin/news/{news}", name="admin_news_form", requirements={"news"="\d+"})
      */
-    public function edit(Request $request, ?News $news = null)
+    public function form(Request $request, ?News $news = null)
     {
         $news = $news ?? new News();
         $form = $this->createForm(NewsFormType::class, $news);
@@ -51,5 +76,17 @@ class NewsController extends AbstractController
             'news' => $news,
             'newsForm' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/admin/news/{news}/delete", name="admin_news_delete", requirements={"news"="\d+"})
+     */
+    public function delete(News $news)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($news);
+        $entityManager->flush();
+
+        return $this->redirect($this->getTargetPath($this->get('session'), 'main'));
     }
 }

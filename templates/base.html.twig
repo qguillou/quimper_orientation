@@ -11,11 +11,17 @@
     </head>
     <body>
         {% include 'navbar_header.html.twig' %}
+
+        {% block content_header %}{% endblock %}
+
         <div class="container mw-100">
-            {% block body %}
-            {% endblock %}
+            {% block content_body %}{% endblock %}
         </div>
+
+        {% block content_footer %}{% endblock %}
+
         {% include 'navbar_footer.html.twig' %}
+        
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}

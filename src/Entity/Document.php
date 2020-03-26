@@ -23,23 +23,18 @@ class Document
     use AuthorTrait;
 
     /**
-     * @Vich\UploadableField(mapping="content_file", fileNameProperty="document")
+     * @Vich\UploadableField(mapping="content_file", fileNameProperty="filename")
      *
      * @var File|null
      */
     protected $documentFile;
 
     /**
-     * @ORM\Embedded(class="Vich\UploaderBundle\Entity\File")
+     * @ORM\Column(type="string")
      *
-     * @var EmbeddedFile
+     * @var string
      */
-    protected $document;
-
-    public function __construct()
-    {
-        $this->document = new EmbeddedFile();
-    }
+    protected $filename;
 
     public function setDocumentFile(?File $documentFile = null)
     {
@@ -51,13 +46,13 @@ class Document
         return $this->documentFile;
     }
 
-    public function setDocument(EmbeddedFile $document): void
+    public function setFilename(?string $filename): void
     {
-        $this->document = $document;
+        $this->filename = $filename;
     }
 
-    public function getDocument(): ?EmbeddedFile
+    public function getFilename(): ?string
     {
-        return $this->document;
+        dump($this->filename);return $this->filename;
     }
 }

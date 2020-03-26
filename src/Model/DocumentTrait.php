@@ -5,7 +5,7 @@ namespace App\Model;
 Trait DocumentTrait
 {
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Document")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Document", cascade={"persist"})
      */
     protected $files;
 

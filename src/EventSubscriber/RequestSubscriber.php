@@ -4,7 +4,7 @@ namespace App\EventSubscriber;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
-use Symfony\Component\HttpKernel\Event\RequestEvent;
+use Symfony\Component\HttpKernel\Event\ResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
 
@@ -19,7 +19,7 @@ class RequestSubscriber implements EventSubscriberInterface
         $this->session = $session;
     }
 
-    public function onKernelRequest(RequestEvent $event): void
+    public function onKernelResponse(ResponseEvent $event): void
     {
         $request = $event->getRequest();
         if (
@@ -36,7 +36,7 @@ class RequestSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return [
-            KernelEvents::REQUEST => ['onKernelRequest']
+            KernelEvents::RESPONSE => ['onKernelResponse']
         ];
     }
 }
