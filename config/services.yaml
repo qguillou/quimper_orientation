@@ -25,3 +25,12 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    block.link:
+        class: App\Block\LinkBlock
+        tags:
+            - { name: sonata.block }
+
+    block.menu:
+        class: App\Block\MenuBlock
+        tags:
+            - { name: sonata.block }

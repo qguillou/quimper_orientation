@@ -27,10 +27,10 @@ class NewsController extends AbstractController
     /**
      * @Route("/news", name="app_news_list")
      */
-    public function index()
+    public function list(NewsRepository $newsRepository)
     {
-        return $this->render('news/index.html.twig', [
-            'controller_name' => 'NewsController',
+        return $this->render('news/list.html.twig', [
+            'entities' => $newsRepository->findAll(),
         ]);
     }
 
@@ -39,6 +39,10 @@ class NewsController extends AbstractController
      */
     public function show(News $news)
     {
+        if (!$this->isGranted('view', $news)) {
+            return $this->redirect($this->getTargetPath($this->get('session'), 'main'));
+        }
+
         return $this->render('news/show.html.twig', [
             'news' => $news,
         ]);

@@ -27,7 +27,7 @@ class MapController extends AbstractController
     /**
      * @Route("/map", name="app_map_list")
      */
-    public function index(MapRepository $mapRepository)
+    public function list(MapRepository $mapRepository)
     {
         return $this->render('map/list.html.twig', [
             'entities' => $mapRepository->findAll()

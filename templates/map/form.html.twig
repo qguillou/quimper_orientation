@@ -40,7 +40,7 @@
         <div class="form-group form-check">
             {{ form_widget(mapForm.private, {'attr': {'class': mapForm.private.vars.errors|length > 0 ? 'form-check-input is-invalid' : 'form-check-input'}}) }}
 
-            <label class="form-check-label" for="map_form_private">Rendre cette actualité privée</label>
+            <label class="form-check-label" for="map_form_private">Rendre cette carte privée</label>
             <small>Visible uniquement par les licenciés du club</small>
             <div class="invalid-feedback">
                 {{ form_errors(mapForm.private) }}

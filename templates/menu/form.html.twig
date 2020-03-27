@@ -1,0 +1,44 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Administration des liens{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('collection') }}
+{% endblock %}
+
+{% block admin_content %}
+    <h1>{{ menu.id is not empty ? "Modification du menu" : "Ajout d'un menu" }}</h1>
+
+    {{ form_start(menuForm) }}
+        <div class="form-group">
+            <label for="menu_form_label" class="required"><i class="fa fa-heading"></i> Libellé</label>
+            {{ form_widget(menuForm.label, {'attr': {'class': menuForm.label.vars.errors|length > 0 ? 'form-control is-invalid' : 'form-control', 'autofocus': 'autofocus'}}) }}
+
+            <div class="invalid-feedback">
+                {{ form_errors(menuForm.label) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="menu_form_link" class="required"><i class="fa fa-link"></i> Lien</label>
+            {{ form_widget(menuForm.link, {'attr': {'class': menuForm.link.vars.errors|length > 0 ? 'form-control is-invalid' : 'form-control', 'autofocus': 'autofocus'}}) }}
+
+            <div class="invalid-feedback">
+                {{ form_errors(menuForm.link) }}
+            </div>
+        </div>
+
+        <div class="form-group form-check">
+            {{ form_widget(menuForm.private, {'attr': {'class': menuForm.private.vars.errors|length > 0 ? 'form-check-input is-invalid' : 'form-check-input'}}) }}
+
+            <label class="form-check-label" for="menu_form_private">Rendre ce menu privé</label>
+            <small>Visible uniquement par les licenciés du club</small>
+            <div class="invalid-feedback">
+                {{ form_errors(menuForm.private) }}
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Enregistrer le lien</button>
+    {{ form_end(menuForm) }}
+{% endblock %}

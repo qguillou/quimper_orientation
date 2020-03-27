@@ -1,0 +1,53 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Administration des liens{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('collection') }}
+{% endblock %}
+
+{% block admin_content %}
+    <h1>{{ link.id is not empty ? "Modification du lien" : "Ajout d'un lien" }}</h1>
+
+    {{ form_start(linkForm) }}
+        <div class="form-group">
+            <label for="link_form_label" class="required"><i class="fa fa-heading"></i> Libellé</label>
+            {{ form_widget(linkForm.label, {'attr': {'class': linkForm.label.vars.errors|length > 0 ? 'form-control is-invalid' : 'form-control', 'autofocus': 'autofocus'}}) }}
+
+            <div class="invalid-feedback">
+                {{ form_errors(linkForm.label) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="link_form_link" class="required"><i class="fa fa-link"></i> Lien</label>
+            {{ form_widget(linkForm.link, {'attr': {'class': linkForm.link.vars.errors|length > 0 ? 'form-control is-invalid' : 'form-control', 'autofocus': 'autofocus'}}) }}
+
+            <div class="invalid-feedback">
+                {{ form_errors(linkForm.link) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="link_form_description" class="required"><i class="fa fa-align-justify"></i> Description</label>
+            {{ form_widget(linkForm.description, {'attr': {'class': linkForm.description.vars.errors|length > 0 ? 'form-control is-invalid' : 'form-control', 'autofocus': 'autofocus'}}) }}
+
+            <div class="invalid-feedback">
+                {{ form_errors(linkForm.description) }}
+            </div>
+        </div>
+
+        <div class="form-group form-check">
+            {{ form_widget(linkForm.private, {'attr': {'class': linkForm.private.vars.errors|length > 0 ? 'form-check-input is-invalid' : 'form-check-input'}}) }}
+
+            <label class="form-check-label" for="link_form_private">Rendre ce lien privé</label>
+            <small>Visible uniquement par les licenciés du club</small>
+            <div class="invalid-feedback">
+                {{ form_errors(linkForm.private) }}
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Enregistrer le lien</button>
+    {{ form_end(linkForm) }}
+{% endblock %}
