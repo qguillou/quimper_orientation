@@ -20,6 +20,11 @@
         <!-- Delivery is disabled by default via "null://localhost" -->
         <env name="MAILER_URL" value="null://localhost"/>
         <!-- ###- symfony/swiftmailer-bundle ### -->
+
+        <!-- ###+ knplabs/knp-snappy-bundle ### -->
+        <env name="WKHTMLTOPDF_PATH" value="/usr/local/bin/wkhtmltopdf"/>
+        <env name="WKHTMLTOIMAGE_PATH" value="/usr/local/bin/wkhtmltoimage"/>
+        <!-- ###- knplabs/knp-snappy-bundle ### -->
     </php>
 
     <testsuites>

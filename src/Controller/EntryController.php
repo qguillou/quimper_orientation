@@ -11,14 +11,17 @@ use App\Repository\ClubRepository;
 use App\Entity\Event;
 use App\Entity\Club;
 use App\Service\Entry\EntryManager;
+use App\Service\Export\ExportManager;
 
 class EntryController extends AbstractController
 {
     private EntryManager $entryManager;
+    private ExportManager $exportManager;
 
-    public function __construct(EntryManager $entryManager)
+    public function __construct(EntryManager $entryManager, ExportManager $exportManager)
     {
         $this->entryManager = $entryManager;
+        $this->exportManager = $exportManager;
     }
 
     /**
@@ -37,5 +40,13 @@ class EntryController extends AbstractController
             'clubs' => $clubRepository->findAll(),
             'club' => $club
         ]);
+    }
+
+    /**
+     * @Route("/event/{id}/export/{mode}", name="app_event_export")
+     */
+    public function export(Event $event, string $mode): Response
+    {
+        return $this->exportManager->create($mode)->export($event);
     }
 }

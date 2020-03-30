@@ -28,4 +28,9 @@ class Circuit
      * @ORM\OneToMany(targetEntity="People", cascade={"persist", "remove"}, orphanRemoval=true, mappedBy="circuit")
      */
     protected $peoples;
+
+    public function getPeoples()
+    {
+        return $this->peoples;
+    }
 }
