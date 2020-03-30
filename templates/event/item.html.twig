@@ -1,0 +1,15 @@
+{% extends '@PiCRUD/items/item_default.html.twig' %}
+
+{% block item_title %}
+    <h1 class="d-inline-flex"><span class="badge badge-primary">{{ entity.dateBegin|date('d') }}</span></h1>
+    <h3 class="d-inline-flex">{{ entity.dateBegin|format_datetime(pattern='MMMM', locale='fr')|capitalize }}</h3>
+    <h3 class="d-inline-flex text-primary font-weight-bold">{{ entity.dateBegin|date('Y') }}</h3>
+    <h3 class="card-title">{{ entity.title }}</h3>
+{% endblock %}
+
+{% block item_content %}
+    <ul class="list-inline">
+        {% if entity.format is not empty %}<li class="list-inline-item"><i class="fa fa-tag text-primary" aria-hidden="true"></i> {{ entity.format.label }}</li>{% endif %}
+        {% if entity.locationTitle is not empty %}<li class="list-inline-item"><i class="fa fa-location-arrow text-primary" aria-hidden="true"></i> {{ entity.locationTitle }}</li>{% endif %}
+    </ul>
+{% endblock %}

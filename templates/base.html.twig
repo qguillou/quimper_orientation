@@ -7,6 +7,7 @@
         <title>{% block title %}{% endblock %} | {{ app_name }}</title>
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
+            {{ encore_entry_link_tags('list') }}
         {% endblock %}
     </head>
     <body>
@@ -21,9 +22,10 @@
         {% block content_footer %}{% endblock %}
 
         {% include 'navbar_footer.html.twig' %}
-        
+
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
+            {{ encore_entry_script_tags('list') }}
         {% endblock %}
     </body>
 </html>

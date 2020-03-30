@@ -15,7 +15,7 @@ abstract class ContentVoter extends Voter
     const EDIT = 'edit';
     const DELETE = 'delete';
 
-    private $security;
+    protected $security;
 
     public function __construct(Security $security)
     {
@@ -36,11 +36,6 @@ abstract class ContentVoter extends Voter
     {
         $user = $token->getUser();
 
-        if (!$user instanceof User) {
-            // the user must be logged in; if not, deny access
-            return false;
-        }
-
         switch ($attribute) {
             case self::VIEW:
                 return $this->canView($subject, $user);
@@ -53,16 +48,16 @@ abstract class ContentVoter extends Voter
         throw new \LogicException('This code should not be reached!');
     }
 
-    private function canView($post, User $user)
+    private function canView($entity, $user)
     {
-        if ($this->security->isGranted('ROLE_LICENCIE')) {
+        if ($this->security->isGranted('ROLE_MEMBER')) {
             return true;
         }
 
-        return !$post->isPrivate();
+        return !$entity->isPrivate();
     }
 
-    private function canEdit($post, User $user)
+    private function canEdit($entity, $user)
     {
         if ($this->security->isGranted('ROLE_WEBMASTER')) {
             return true;
@@ -71,7 +66,7 @@ abstract class ContentVoter extends Voter
         return false;
     }
 
-    private function canDelete($map, User $user)
+    private function canDelete($map, $user)
     {
         if ($this->security->isGranted('ROLE_WEBMASTER')) {
             return true;

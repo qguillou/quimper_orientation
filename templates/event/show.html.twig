@@ -1,0 +1,225 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ entity }}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('map') }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('map') }}
+{% endblock %}
+
+{% block content_header %}
+<div id="content-header" class="carousel border-bottom border-primary slide" data-ride="carousel">
+    <div class="carousel-inner bg-dark" role="list">
+        <div role="listitem" class="carousel-item active">
+            <img class="first-slide opacity-20" src="{{ asset(entity.image.name is not null ? 'images/' ~ entity.image.name : 'images/default.jpg') | imagine_filter('carousel_header') }}" alt="First slide">
+            <div class="container">
+                <div class="carousel-caption text-left content-header col-12 col-lg-10 offset-lg-1">
+                    <h1 class="display-2 d-inline-block"><span class="badge badge-primary">{{ entity.dateBegin|date('d') }}</span></h1>
+                    <h3 class="display-4 d-inline-block"><span class="badge">{{ entity.dateBegin|format_datetime(pattern='MMMM', locale='fr')|capitalize }}</span></h3>
+                    <h3 class="display-4 d-inline-block"><span class="badge text-primary">{{ entity.dateBegin|date('Y') }}</span></h3>
+                    <h1>{{ entity.title }}</h1>
+                    <div class="text-white font-italic d-none d-lg-block">
+                        Publié le {{ entity.createAt|format_datetime('full', 'medium', locale='fr') }}
+                        <br/>Modifié le {{ entity.updateAt|format_datetime('full', 'medium', locale='fr') }}
+                    </div>
+                    {% if entity.website %}
+                        <div class="my-4">
+                            <a target="_BLANK" href="{{ entity.website }}" class="btn btn-primary">Accéder au site de l'évènement</a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content_body %}
+<div class="row py-4">
+    {% if entity.content %}
+        <div class="col-12 col-lg-10 offset-lg-1">{{ entity.content|raw }}</div>
+    {% endif %}
+
+    <div class="col-12 col-lg-5 offset-lg-1">
+        <div class="mb-4">
+            <h2>Informations générales</h2>
+            <table>
+                <tr><td class="font-weight-bold pr-4">Date</td><td>{{ entity.dateBegin|format_datetime('full', 'medium', locale='fr')|capitalize }}</td></tr>
+                {% if entity.format is not empty %}<tr><td class="font-weight-bold pr-4">Type</td><td>{{ entity.format.label|capitalize }}</td></tr>{% endif %}
+                {% if entity.organizer %}<tr><td class="font-weight-bold pr-4">Organisateur</td><td>{{ entity.organizer|capitalize }}</td></tr>{% endif %}
+                {% if entity.website %}<tr><td class="font-weight-bold pr-4">Site Web</td><td><a target="_BLANK" href="{{ entity.website }}">{{ entity.website }}</a></td></tr>{% endif %}
+            </table>
+        </div>
+        {% if entity.locationTitle or entity.locationInformation or (entity.latitude and entity.longitude) %}
+            <div class="mb-4">
+                <h2>Emplacement</h2>
+                <b>{{ entity.locationTitle|capitalize }}</b>
+                {{ entity.locationInformation | raw }}
+                {% if entity.latitude is not empty and entity.longitude is not empty %}
+                    <div class="mt-4">
+                        <div id="map" data-lat="{{ entity.latitude }}" data-lon="{{ entity.longitude }}"></div>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+
+        {% if entity.files|length > 0 %}
+            <div class="mb-4">
+                <h2>Fichiers joints</h2>
+                {% for file in entity.files %}
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <a class="text-dark stretched-link" href="{{ asset('files/' ~ file.fileName) }}"><i class="fa fa-download"></i> {{ file }}</a><span class="d-none d-lg-block float-right">Télécharger le fichier</span>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="col-12 col-lg-5 mb-4 overflow-auto">
+        {% if entity.circuits|length > 0 %}
+            <h2>Circuits</h2>
+            <table id="event-entries" class="table table-striped">
+                <thead class="bg-primary text-white">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Libellé</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for circuit in entity.circuits %}
+                        <tr>
+                            <th scope="row">{{ loop.index }}</th>
+                            <td>{{ circuit.label }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+
+        <h2>Inscriptions</h2>
+        {% if not entity.allowEntries %}
+            Les inscriptions sont désactivées pour cet évènement.
+        {% else %}
+            <span class="font-weight-bold pr-4">Date limite d'inscription</span><span>{{ entity.dateEntries|format_datetime('full', 'medium', locale='fr')|capitalize }}</span>
+            <div class="my-2">
+                {% if is_granted('register', entity) %}
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            S'inscrire
+                        </button>
+                        <div class="dropdown-menu">
+                            {% if is_granted('ROLE_USER') and entity.numberPeopleByEntries is same as(1) %}
+                                <a class="dropdown-item" href="{{ path('app_event_entry', {'id': entity.id, 'mode': 'quick'}) }}">Inscription rapide</a>
+                            {% endif %}
+                            {% if entity.numberPeopleByEntries is same as(1) %}
+                                <a class="dropdown-item" href="{{ path('app_event_entry', {'id': entity.id, 'mode': 'club'}) }}">Inscription licencié</a>
+                                <a class="dropdown-item" href="{{ path('app_event_entry', {'id': entity.id, 'mode': 'open'}) }}">Inscription non licencié</a>
+                            {% else %}
+                                <a class="dropdown-item" href="{{ path('app_event_entry', {'id': entity.id, 'mode': 'team'}) }}">Inscription d'une équipe</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <a href="#" data-toggle="modal" data-target="#entry-help" class="text-info text-decoration-none mr-4">
+                        <i class="fa fa-question" aria-hidden="true"></i>
+                    </a>
+                    <div class="modal fade" id="entry-help" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h3>Aide à l'inscription</h3>
+                                </div>
+                                <div class="modal-body">
+                                    <p>
+                                        Il existe plusieurs modes d'inscription, disponibles selon le type de course et votre profil utilisateur.
+                                    </p>
+                                    <h5>Inscription rapide</h5>
+                                    <p>
+                                        Permet de vous inscrire à la course en utilisant les informations de votre compte :
+                                        <ul class="list-unstyled">
+                                            <li>- Avec votre numéro de licence FFCO (pour les licenciés)</li>
+                                            <li>- Avec votre nom et prénom (pour les non licenciés)</li>
+                                        </ul>
+                                    </p>
+                                    <h5>Inscription par club</h5>
+                                    <p>
+                                        Permet de visualiser l'ensemble des licenciés d'un club et de choisir qui inscrire
+                                    </p>
+                                    <h5>Inscription non licencié</h5>
+                                    <p>
+                                        Permet de vous inscrire à la course en renseignant votre nom et prénom
+                                    </p>
+                                    <h5>Inscription d'une équipe</h5>
+                                    <p>
+                                        Permet de vous inscrire votre équipe à la course en renseignant les différents équipiers, grâce à leurs numéro de licence ou directement en saissisant leurs noms et prénoms.
+                                    </p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-primary" data-dismiss="modal">Fermer</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <p>
+                        Les inscriptions à cet évènement sont terminées. Veuillez contacter l'organisateur de la course pour modifier ou supprimer votre inscription.
+                    </p>
+                {% endif %}
+
+                <div class="btn-group">
+                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Export
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="">Export au format CSV pour OE2003</a>
+                        <a class="dropdown-item" href="">Export au format CSV pour OE2010</a>
+                    </div>
+                </div>
+            </div>
+            {% if entity.teams|length > 0 or entity.peoples|length > 0 %}
+                <table id="event-entries" class="table">
+                    <thead class="bg-primary text-white">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Prénom</th>
+                            <th scope="col">Nom</th>
+                            {% if entity.circuits|length > 0 %}<th scope="col">Circuit</th>{% endif %}
+                            <th scope="col" class="d-none d-lg-block">Commentaire</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if entity.numberPeopleByEntries is same as(1) %}
+                            {% for people in entity.peoples %}
+                                <tr>
+                                    <td scope="col">{{ loop.index }}</td>
+                                    <td scope="col">{{ people.firstName }}</td>
+                                    <td scope="col">{{ people.lastName }}</td>
+                                    {% if entity.circuits|length > 0 %}<td scope="col">{{ people.circuit }}</td>{% endif %}
+                                    <td scope="col">{{ people.comment }}</td>
+                                    <td scope="col"></td>
+                                </tr>
+                            {% endfor %}
+                        {% else %}
+                            <a class="dropdown-item" href="{{ path('app_event_entry', {'id': entity.id, 'mode': 'team'}) }}">Inscription d'une équipe</a>
+                        {% endif %}
+                    </tbody>
+                </table>
+            {% else %}
+                <div>
+                    Aucun inscrit à cet événement
+                </div>
+            {% endif %}
+        {% endif %}
+
+    </div>
+</div>
+{% endblock %}

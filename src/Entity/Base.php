@@ -24,8 +24,7 @@ class Base
     protected $si;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Club")
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\ManyToOne(targetEntity="Club", inversedBy="members")
      */
     protected $club;
 

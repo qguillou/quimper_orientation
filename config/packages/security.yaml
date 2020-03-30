@@ -2,7 +2,11 @@ security:
     encoders:
         App\Entity\User:
             algorithm: auto
-
+    role_hierarchy:
+        ROLE_MEMBER:      ROLE_USER
+        ROLE_WEBMASTER:   ROLE_MEMBER
+        ROLE_ADMIN:       ROLE_WEBMASTER
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         # used to reload user from session & other features (e.g. switch_user)
@@ -41,3 +45,4 @@ security:
         # - { path: ^/profile, roles: ROLE_USER }
         - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin, role: ROLE_WEBMASTER }

@@ -13,6 +13,11 @@
     z-index: 10;
 }
 
+/** NAVBAR */
+li.dropdown:hover > .dropdown-menu {
+    display: block;
+}
+
 /** CHECKBOX */
 input[type="checkbox"] {
 	-webkit-appearance: none;

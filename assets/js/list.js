@@ -7,7 +7,7 @@ require('datatables.net-fixedheader-bs4');
 require('datatables.net-responsive-bs4');
 
 $(function() {
-    $('table').DataTable({
+    $('.table').DataTable({
         'searching': false,
         'pageLength': 50,
         'info': false,
@@ -16,7 +16,9 @@ $(function() {
             'paginate': {
               'previous': '< Précédente',
               'next': 'Suivante >'
-            }
-        }
+            },
+            'emptyTable': 'Aucune données disponibles'
+        },
+        'order': []
     });
 })

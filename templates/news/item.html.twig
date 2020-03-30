@@ -1,0 +1,16 @@
+{% if is_granted('view', entity) %}
+<div class="col-12 col-md-6 col-lg-4 mb-4">
+    <div class="card bg-transparent border-primary">
+        <img src="{{ asset(entity.image.name is not null ? 'images/' ~ entity.image.name : 'images/default.jpg') | imagine_filter('thumbnail') }}" class="card-img-top position-absolute opacity-20 h-100" alt="...">
+        <div class="card-body z-index-10">
+            <h5 class="card-title text-primary">{{ entity.title }}</h5>
+            <p>
+                Publié le {{ entity.createAt|format_datetime('full', 'full', locale='fr') }}
+                Modifié le {{ entity.updateAt|format_datetime('full', 'full', locale='fr') }}
+            </p>
+            <a href="{{ path('pi_crud_show', {'type': 'news', 'id': entity.id}) }}" class="btn btn-primary stretched-link">Lire l'actualité</a>
+            {% include '@PiCRUD/includes/admin_actions.html.twig' ignore missing %}
+        </div>
+    </div>
+</div>
+{% endif %}

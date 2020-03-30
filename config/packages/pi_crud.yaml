@@ -1,0 +1,128 @@
+pi_crud:
+    entities:
+        event:
+            label: "évènement"
+            class: 'App\Entity\Event'
+            formClass: 'App\Form\EventFormType'
+            fields:
+                - { id: 'title', label: 'Titre', list: true }
+                - { id: 'content', label: 'Contenu' }
+                - { id: 'imageFile', label: 'Image', icon: 'image' }
+                - { id: 'files', label: 'Fichier', icon: 'file' }
+                - { id: 'private', label: 'Privée' }
+                - { id: 'dateBegin', label: 'Date' }
+                - { id: 'organizer' }
+                - { id: 'website' }
+                - { id: 'locationTitle' }
+                - { id: 'locationInformation' }
+                - { id: 'latitude' }
+                - { id: 'longitude' }
+                - { id: 'allowEntries' }
+                - { id: 'dateEntries' }
+                - { id: 'numberPeopleByEntries' }
+                - { id: 'format' }
+                - { id: 'circuits' }
+            list:
+                title: "Listes des évènements"
+            add:
+                title: "Ajout d'un évènement"
+            edit:
+                title: "Modification de l'évènement"
+            actions:
+                add: "Ajouter un évènement"
+                save: "Enregistrer l'évènement"
+            templates:
+                item_default: 'event/item.html.twig'
+        format:
+            label: "type d'évènements"
+            class: 'App\Entity\Format'
+            fields:
+                - { id: 'label', label: 'Libellé', list: true }
+            list:
+                title: "Listes des types d'évènements"
+            add:
+                title: "Ajout d'un type d'évènement"
+            edit:
+                title: "Modification du type d'évènements"
+            actions:
+                add: "Ajouter un type d'évènements"
+                save: "Enregistrer le type d'évènements"
+        link:
+            label: "lien"
+            class: 'App\Entity\Link'
+            fields:
+                - { id: 'label', label: 'Libellé', icon: 'tag', list: true }
+                - { id: 'description', label: 'Description' }
+                - { id: 'link', label: 'Lien', icon: 'link' }
+                - { id: 'private', label: 'Privé' }
+            list:
+                title: "Listes des liens"
+            add:
+                title: "Ajout d'un lien"
+            edit:
+                title: "Modification du lien"
+            actions:
+                add: "Ajouter un lien"
+                save: "Enregistrer le lien"
+        map:
+            label: "carte"
+            class: 'App\Entity\Map'
+            formClass: 'App\Form\MapFormType'
+            fields:
+                - { id: 'title', label: 'Titre', list: true }
+                - { id: 'imageFile', label: 'Image', icon: 'image' }
+                - { id: 'file', label: 'Fichier', icon: 'file' }
+                - { id: 'private', label: 'Privée' }
+            list:
+                title: "Listes des cartes"
+            add:
+                title: "Ajout d'une carte"
+            edit:
+                title: "Modification de la carte"
+            actions:
+                add: "Ajouter une carte"
+                save: "Enregistrer la carte"
+            templates:
+                item_default: 'map/item.html.twig'
+        menu:
+            label: "menu"
+            class: 'App\Entity\Menu'
+            fields:
+                - { id: 'label', label: 'Libellé', icon: 'tag', list: true }
+                - { id: 'link', label: 'Lien', icon: 'link' }
+                - { id: 'private', label: 'Privé' }
+            list:
+                title: "Listes des menus"
+            add:
+                title: "Ajout d'un menu"
+            edit:
+                title: "Modification du menu"
+            actions:
+                add: "Ajouter un menu"
+                save: "Enregistrer le menu"
+        news:
+            label: "actualité"
+            class: 'App\Entity\News'
+            formClass: 'App\Form\NewsFormType'
+            fields:
+                - { id: 'title', label: 'Titre', list: true }
+                - { id: 'content', label: 'Contenu' }
+                - { id: 'imageFile', label: 'Image', icon: 'image' }
+                - { id: 'files', label: 'Fichier', icon: 'file' }
+                - { id: 'private', label: 'Privée' }
+                - { id: 'promote', label: 'Promue' }
+            list:
+                title: "Listes des actualités"
+            add:
+                title: "Ajout d'une actualité"
+            edit:
+                title: "Modification de l'actualité"
+            actions:
+                add: "Ajouter une actualité"
+                save: "Enregistrer l'actualité"
+    templates:
+        field_private: 'partials/fields/field_private.html.twig'
+        field_promote: 'partials/fields/field_promote.html.twig'
+        field_file: 'partials/fields/field_file.html.twig'
+        field_files: 'partials/fields/field_files.html.twig'
+        field_circuits: 'partials/fields/field_circuits.html.twig'

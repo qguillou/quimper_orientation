@@ -25,6 +25,16 @@ class Club
      */
     protected $name;
 
+    /**
+    * @ORM\OneToMany(targetEntity="Base", cascade={"persist", "remove"}, mappedBy="club")
+    */
+    protected $members;
+
+    public function __construct()
+    {
+        $this->members = new ArrayCollection();
+    }
+
     public function getId(): int
     {
         return $this->id;
@@ -45,6 +55,32 @@ class Club
     public function setName($name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getMembers()
+    {
+        return $this->members;
+    }
+
+    public function setMembers($members): self
+    {
+        $this->members = $members;
+
+        return $this;
+    }
+
+    public function addMember($member)
+    {
+        $this->members->add($member);
+
+        return $this;
+    }
+
+    public function removeMember($member)
+    {
+        $this->members->remove($member);
 
         return $this;
     }

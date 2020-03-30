@@ -53,6 +53,6 @@ class Document
 
     public function getFilename(): ?string
     {
-        dump($this->filename);return $this->filename;
+        return $this->filename;
     }
 }

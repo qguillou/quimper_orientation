@@ -1,5 +1,81 @@
 {% extends 'base.html.twig' %}
 
+{% block content_header %}
+<div id="news" class="carousel border-bottom border-primary slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        {% for new in news|slice(0, 6) %}
+            <li data-target="#news" data-slide-to="{{ loop.index0 }}" class="{{ loop.index0 == 0 ? 'active' }}"></li>
+        {% endfor %}
+    </ol>
+    <div class="carousel-inner bg-dark" role="list">
+        {% for new in news|slice(0, 6) %}
+            {{ sonata_block_render({ 'type': 'block.item' }, {
+                'type': 'news',
+                'mode': 'row',
+                'item': new,
+                'attr': {'class': (loop.index0 == 0) ? 'active' : ''}
+            }) }}
+        {% endfor %}
+    </div>
+    {% if news|length > 1 %}
+        <a class="carousel-control-prev" href="#news" role="button" data-slide="prev" aria-label="Précédent">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Précédent</span>
+        </a>
+        <a class="carousel-control-next" href="#news" role="button" data-slide="next" aria-label="Suivant">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Suivant</span>
+        </a>
+    {% endif %}
+</div>
+{% endblock %}
+
 {% block content_body %}
-  Ok
+    {% if events|length > 0 %}
+    <div class="row py-4 mx-0">
+        <div class="col-12 col-lg-10 offset-lg-1">
+            <div class="mb-4">
+                <a href="{{ path('pi_crud_list', {'type': 'event'}) }}" class="text-decoration-none border-bottom border-primary pl-4 text-right float-right">
+                    <strong>Tous les événements</strong>
+                </a>
+                <h2>Les prochains événements</h2>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-7 offset-lg-1">
+            <div class="row">
+                {% for event in events %}
+                    {{ sonata_block_render({ 'type': 'block.item' }, {
+                        'type': 'event',
+                        'mode': 'default',
+                        'item': event
+                    }) }}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-12 col-lg-3">
+            Calendar
+        </div>
+    </div>
+    {% endif %}
+
+    {% if news|length > 6 %}
+    <div class="row py-4 mx-0">
+        <div class="col-12 col-lg-10 offset-lg-1 mb-2">
+            <h2>Les anciennes actualités</h2>
+        </div>
+
+        <div class="col-12 col-lg-10 offset-lg-1">
+            <div class="row">
+                {% for new in news|slice(6, news|length) %}
+                    {{ sonata_block_render({ 'type': 'block.item' }, {
+                        'type': 'news',
+                        'mode': 'default',
+                        'item': new
+                    }) }}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
 {% endblock %}

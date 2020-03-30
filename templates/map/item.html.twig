@@ -1,12 +1,3 @@
-{% if is_granted('view', map) %}
-<div class="col-12 col-md-4 col-lg-3 mb-4">
-    <div class="card bg-dark border-primary h-100">
-        <img src="{{ asset(map.image.name is not null ? 'images/' ~ map.image.name : 'images/default.jpg') | imagine_filter('thumbnail') }}" class="card-img-top position-absolute opacity-20 h-100" alt="...">
-        <div class="card-body text-white z-index-10">
-            <h3 class="card-title">{{ map.title }}</h3>
-            <div class="mb-2">Modifié le {{ map.updateAt|date() }}</div>
-            <a href="{{ 'files/' ~ map.file.fileName }}" class="btn btn-primary stretched-link">Télécharger la carte</a>
-        </div>
-    </div>
-</div>
-{% endif %}
+{% extends '@PiCRUD/items/item_default.html.twig' %}
+
+{% block item_link %}<a href="{{ 'files/' ~ entity.file.fileName }}" class="btn btn-primary stretched-link">Télécharger la carte</a>{% endblock %}

@@ -1,0 +1,2 @@
+owp-crud-admin:
+    resource: "@PiCRUDBundle/Resources/config/routes.xml"

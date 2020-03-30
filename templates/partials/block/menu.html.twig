@@ -1,3 +1,5 @@
 {% for menu in menus %}
-    <li class="nav-item"><a href="{{ menu.link }}" class="nav-link">{{ menu.label }}</a></li>
+    {% if is_granted('view', menu) %}
+        <li class="nav-item"><a href="{{ menu.link }}" class="nav-link">{{ menu.label }}</a></li>
+    {% endif %}
 {% endfor %}

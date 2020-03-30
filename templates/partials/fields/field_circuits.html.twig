@@ -1,0 +1,23 @@
+<div class="form-group">
+    <label for="event_form_circuits" class="required"><i class="fa fa-file"></i> Circuits</label>
+    <ul class="list-unstyled mt-2 collections" data-delete="<button class='btn btn-outline-danger' type='button'><i class='fa fa-trash'></i> Supprimer ce circuit</button>" data-prototype="{{ form_widget(form.circuits.vars.prototype)|e('html_attr') }}">
+        {% for circuit in form.circuits %}
+            <li>
+                <div id="{{ circuit.vars.id }}" class="form-inline mb-4">
+                    <div class="form-group pr-4">
+                        <div class="form-group pr-4">
+                            {{ form_label(circuit.label) }}
+                            {{ form_widget(circuit.label) }}
+                        </div>
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+
+        <button type="button" class="collection-add btn btn-info"><i class="fa fa-file-alt"></i> Ajouter un circuit</button>
+    </ul>
+
+    <div class="invalid-feedback">
+        {{ form_errors(form.files) }}
+    </div>
+</div>

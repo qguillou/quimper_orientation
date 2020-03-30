@@ -13,6 +13,7 @@ use App\Model\PrivateTrait;
 use App\Model\PromoteTrait;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Vich\UploaderBundle\Entity\File as EmbeddedFile;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\NewsRepository")
@@ -33,6 +34,7 @@ class News
     public function __construct()
     {
         $this->setPromote(true);
+        $this->files = new ArrayCollection();
         $this->image = new EmbeddedFile();
     }
 }

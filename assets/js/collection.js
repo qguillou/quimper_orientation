@@ -1,26 +1,25 @@
 const $ = require('jquery');
 
 $(function() {
-    var $collectionHolder;
+    $('ul.collections').each(function() {
+        var $collectionHolder = $(this);
 
-    // Get the ul that holds the collection of files
-    $collectionHolder = $('ul.collections');
+        // Get the add button
+        var $addTagButton = $collectionHolder.find('button.collection-add');
 
-    // Get the add button
-    var $addTagButton = $collectionHolder.find('button.collection-add');
+        // add a delete link to all of the existing tag form li elements
+        $collectionHolder.find('li').children().each(function() {
+            addTagFormDeleteLink($collectionHolder, $(this));
+        });
 
-    // add a delete link to all of the existing tag form li elements
-    $collectionHolder.find('li').children().each(function() {
-        addTagFormDeleteLink($(this));
-    });
+        // count the current form inputs we have (e.g. 2), use that as the new
+        // index when inserting a new item (e.g. 2)
+        $collectionHolder.data('index', $collectionHolder.find(':input').length);
 
-    // count the current form inputs we have (e.g. 2), use that as the new
-    // index when inserting a new item (e.g. 2)
-    $collectionHolder.data('index', $collectionHolder.find(':input').length);
-
-    $addTagButton.on('click', function(e) {
-        // add a new tag form (see next code block)
-        addTagForm($collectionHolder, $addTagButton);
+        $addTagButton.on('click', function(e) {
+            // add a new tag form (see next code block)
+            addTagForm($collectionHolder, $addTagButton);
+        });
     });
 
     function addTagForm($collectionHolder, $addTagButton) {
@@ -50,9 +49,9 @@ $(function() {
         $newFormDiv.children().addClass('form-group pr-4');
 
         $addTagButton.before($newFormLi);
-        addTagFormDeleteLink($newFormDiv);
+        addTagFormDeleteLink($collectionHolder, $newFormDiv);
     }
-    function addTagFormDeleteLink($tagFormLi) {
+    function addTagFormDeleteLink($collectionHolder, $tagFormLi) {
         var $removeFormButton = $($collectionHolder.data('delete'));
         $tagFormLi.append($removeFormButton);
 
