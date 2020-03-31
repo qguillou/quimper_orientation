@@ -6,12 +6,16 @@ use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Vich\UploaderBundle\Entity\File as EmbeddedFile;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use PiWeb\PiCRUD\Annotation as PiCRUD;
 
 Trait ImageTrait
 {
     /**
      * @Vich\UploadableField(mapping="content_image", fileNameProperty="image.name", size="image.size", mimeType="image.mimeType", originalName="image.originalName", dimensions="image.dimensions")
-     *
+     * @PiCRUD\Property(
+     *      label="Image",
+     *      form={}
+     * )
      * @var File|null
      */
     protected $imageFile;

@@ -14,8 +14,12 @@ use App\Model\PromoteTrait;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Vich\UploaderBundle\Entity\File as EmbeddedFile;
 use Doctrine\Common\Collections\ArrayCollection;
+use PiWeb\PiCRUD\Annotation as PiCRUD;
 
 /**
+ * @PiCRUD\Entity(
+ *      name="news"
+ * )
  * @ORM\Entity(repositoryClass="App\Repository\NewsRepository")
  * @ORM\HasLifecycleCallbacks()
  * @Vich\Uploadable

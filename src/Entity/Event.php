@@ -17,8 +17,13 @@ use App\Model\EventLocationTrait;
 use App\Model\EventEntryTrait;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Vich\UploaderBundle\Entity\File as EmbeddedFile;
+use PiWeb\PiCRUD\Annotation as PiCRUD;
 
 /**
+ * @PiCRUD\Entity(
+ *      name="event",
+ *      show={}
+ * )
  * @ORM\Entity(repositoryClass="App\Repository\EventRepository")
  * @ORM\HasLifecycleCallbacks()
  * @Vich\Uploadable
@@ -37,31 +42,59 @@ class Event
 
     /**
      * @ORM\Column(type="datetime")
+     * @PiCRUD\Property(
+     *      label="Date de début",
+     *      type="datetime",
+     *      admin={"options": {"date": "short", "time": "short"}},
+     *      form={}
+     * )
      */
     protected $dateBegin;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @PiCRUD\Property(
+     *      label="Date de fin",
+     *      type="datetime",
+     *      form={}
+     * )
      */
     protected $dateEnd;
 
     /**
      * @ORM\ManyToOne(targetEntity="Format")
+     * @PiCRUD\Property(
+     *      label="Type d'évènements",
+     *      form={}
+     * )
      */
     protected $format;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @PiCRUD\Property(
+     *      label="Organisateur",
+     *      form={}
+     * )
      */
     protected $organizer;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @PiCRUD\Property(
+     *      label="Site web",
+     *      form={}
+     * )
      */
     protected $website;
 
     /**
      * @ORM\OneToMany(targetEntity="Circuit", cascade={"persist", "remove"}, orphanRemoval=true, mappedBy="event")
+     * @PiCRUD\Property(
+     *      label="Circuits",
+     *      type="circuits",
+     *      form={}
+     * )
      */
     protected $circuits;
 

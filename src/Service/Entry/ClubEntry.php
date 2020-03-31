@@ -4,6 +4,7 @@ namespace App\Service\Entry;
 
 use App\Annotation\Entry;
 use App\Entity\Base;
+use App\Entity\User;
 use App\Entity\Event;
 use App\Entity\Circuit;
 use App\Entity\People;
@@ -19,8 +20,12 @@ use Symfony\Component\HttpFoundation\Request;
  */
 final class ClubEntry extends AbstractEntry
 {
-    public function register(Event $event, ?array $entries): bool
+    public function register(Event $event, ?array $entries, ?User $user): bool
     {
+        if (empty($entries)) {
+            return false;
+        }
+
         $baseRepository = $this->em->getRepository(Base::class);
         $circuitRepository = $this->em->getRepository(Circuit::class);
 
@@ -44,9 +49,9 @@ final class ClubEntry extends AbstractEntry
 
                 $this->em->persist($people);
             }
-
-            $this->em->flush();
         }
+
+        $this->em->flush();
 
         return true;
     }

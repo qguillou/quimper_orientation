@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block content_body %}
+<div class="row py-4">
+    <div class="col-12 col-lg-10 offset-lg-1">
+        <h1>Inscription à <span class="text-primary">{{ event.title }}</span></h1>
+        <div class="mb-4">
+            <table>
+                <tr><td class="font-weight-bold pr-4">Date</td><td>{{ event.dateBegin|format_datetime('full', 'medium', locale='fr')|capitalize }}</td></tr>
+                {% if event.dateEntries is not empty %}<tr><td class="font-weight-bold pr-4">Date limite d'inscription</td><td>{{ event.dateEntries|format_datetime('full', 'medium', locale='fr')|capitalize }}</td></tr>{% endif %}
+                {% if event.format is not empty %}<tr><td class="font-weight-bold pr-4">Type</td><td>{{ event.format.label|capitalize }}</td></tr>{% endif %}
+                {% if event.organizer %}<tr><td class="font-weight-bold pr-4">Organisateur</td><td>{{ event.organizer|capitalize }}</td></tr>{% endif %}
+                {% if event.website %}<tr><td class="font-weight-bold pr-4">Site Web</td><td><a target="_BLANK" href="{{ event.website }}">{{ event.website }}</a></td></tr>{% endif %}
+            </table>
+        </div>
+        <div class="my-4">
+            <a href="{{ path('pi_crud_show', {'type': 'event', 'id': event.id}) }}" class="btn btn-primary">Retourner sur la page de l'évènement</a>
+        </div>
+
+        <h2>Inscription de <span class="text-primary">{{ app.user.firstName ~ ' ' ~ app.user.lastName }}</span></h2>
+        <p>Pour terminer votre inscription, veuillez compléter le formulaire ci-desous.</p>
+        <form name="entry_form" method="POST">
+            <div class="form-group">
+                <label>Sélection du circuit</label>
+                <select class="form-control" name="entry_form[circuit]">
+                    {% for circuit in event.circuits %}
+                        <option value="{{ circuit.id }}" {{ (loop.index0 == 0 ? 'selected')}}>{{ circuit.label }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Commentaire</label>
+                <textarea class="form-control" name="entry_form[comment]"></textarea>
+            </div>
+
+            <input class="btn btn-primary" type="submit" value="Enregistrer l'inscription" />
+        </form>
+    </div>
+</div>
+{% endblock content_body %}

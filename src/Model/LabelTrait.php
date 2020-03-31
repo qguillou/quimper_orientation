@@ -2,10 +2,17 @@
 
 namespace App\Model;
 
+use PiWeb\PiCRUD\Annotation as PiCRUD;
+
 Trait LabelTrait
 {
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @PiCRUD\Property(
+     *      label="Libellé",
+     *      admin={"class": "font-weight-bold"},
+     *      form={}
+     * )
      */
     protected $label;
 

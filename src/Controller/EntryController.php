@@ -29,7 +29,7 @@ class EntryController extends AbstractController
      */
     public function entry(Request $request, Event $event, string $mode, ?Club $club, ClubRepository $clubRepository): Response
     {
-        $status = $this->entryManager->create($mode)->add($event, $request->get('entry_form'));
+        $status = $this->entryManager->create($mode)->register($event, $request->get('entry_form'), $this->getUser());
 
         if ($status) {
             return $this->redirectToRoute('pi_crud_show', ['type' => 'event', 'id' => $event->getid()]);

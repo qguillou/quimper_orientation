@@ -3,28 +3,47 @@
 namespace App\Model;
 
 use App\Entity\User;
+use PiWeb\PiCRUD\Annotation as PiCRUD;
 
 Trait AuthorTrait
 {
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User")
      * @ORM\JoinColumn(nullable=true)
+     * @PiCRUD\Property(
+     *      label="Créé par",
+     *      admin={"class": "d-none d-lg-table-cell"}
+     * )
      */
     protected $createBy;
 
     /**
+    * @ORM\Column(type="datetime", nullable=true)
+    * @PiCRUD\Property(
+    *      label="Créé le",
+    *      type="datetime",
+    *      admin={"class": "d-none d-lg-table-cell", "options": {"date": "short", "time": "short"}}
+    * )
+    */
+    protected $createAt;
+
+    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User")
      * @ORM\JoinColumn(nullable=true)
+     * @PiCRUD\Property(
+     *      label="Modifié par",
+     *      admin={"class": "d-none d-lg-table-cell"}
+     * )
      */
     protected $updateBy;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
-     */
-    protected $createAt;
-
-    /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @PiCRUD\Property(
+     *      label="Modifié le",
+     *      type="datetime",
+     *      admin={"class": "d-none d-lg-table-cell", "options": {"date": "short", "time": "short"}}
+     * )
      */
     protected $updateAt;
 

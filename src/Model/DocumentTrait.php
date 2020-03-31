@@ -6,6 +6,11 @@ Trait DocumentTrait
 {
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Document", cascade={"persist"})
+     * @PiCRUD\Property(
+     *      label="Fichiers",
+     *      type="files",
+     *      form={}
+     * )
      */
     protected $files;
 

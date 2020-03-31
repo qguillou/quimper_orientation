@@ -7,18 +7,27 @@ require('datatables.net-fixedheader-bs4');
 require('datatables.net-responsive-bs4');
 
 $(function() {
-    $('.table').DataTable({
-        'searching': false,
-        'pageLength': 50,
-        'info': false,
-        'lengthChange': false,
-        'language': {
-            'paginate': {
-              'previous': '< Précédente',
-              'next': 'Suivante >'
+    $('.table').each(function(){
+        var table = $(this);
+
+        table.DataTable({
+            'searching': false,
+            'pageLength': 50,
+            'info': false,
+            'lengthChange': false,
+            'language': {
+                'paginate': {
+                  'previous': '< Précédente',
+                  'next': 'Suivante >'
+                },
+                'emptyTable': 'Aucune données disponibles'
             },
-            'emptyTable': 'Aucune données disponibles'
-        },
-        'order': []
-    });
+            'order': [],
+            'initComplete': function() {
+                if (this.api().page.info().pages === 1) {
+                    $('#' + table.attr('id') + '_paginate').hide();
+                }
+            }
+        });
+    })
 })

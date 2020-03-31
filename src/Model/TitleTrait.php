@@ -2,10 +2,17 @@
 
 namespace App\Model;
 
+use PiWeb\PiCRUD\Annotation as PiCRUD;
+
 Trait TitleTrait
 {
     /**
      * @ORM\Column(type="string", length=255)
+     * @PiCRUD\Property(
+     *      label="Titre",
+     *      admin={"class": "font-weight-bold"},
+     *      form={}
+     * )
      */
     protected $title;
 

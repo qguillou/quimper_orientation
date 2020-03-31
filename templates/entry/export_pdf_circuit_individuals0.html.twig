@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr" xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    </head>
+    <body>
+        <h1 class="text-primary">{{ event.title }}</h1>
+
+        {% set club = '' %}
+
+        {% for people in event.peoples|sort((a, b) => a.club <=> b.club) %}
+            {% if club != people.club %}
+                {% if club == '' %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% endif %}
+                {% set club = people.club %}
+                <div class="club">
+                    <h2>{{ people.club }}</h2>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nom</th>
+                                <th>Prénom</th>
+                                <th>N° puce SportIdent</th>
+                                <th>Circuit</th>
+                                <th>Commentaire</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+            {% endif %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ people.lastName }}</td>
+                <td>{{ people.firstName }}</td>
+                <td>{{ people.si }}</td>
+                <td>{{ people.circuit }}</td>
+                <td>{{ people.comment }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+        </div>
+    </body>
+</html>

@@ -6,6 +6,11 @@ Trait PromoteTrait
 {
     /**
      * @ORM\Column(name="promote", type="boolean", nullable=true)
+     * @PiCRUD\Property(
+     *      label="Promu",
+     *      type="checkbox",
+     *      form={}
+     * )
      */
     protected $promote;
 

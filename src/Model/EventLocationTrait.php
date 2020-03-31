@@ -6,21 +6,37 @@ Trait EventLocationTrait
 {
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @PiCRUD\Property(
+     *      label="Localisation",
+     *      form={}
+     * )
      */
     protected $locationTitle;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @PiCRUD\Property(
+     *      label="Détail de la localisation",
+     *      form={}
+     * )
      */
     protected $locationInformation;
 
     /**
      * @ORM\Column(type="decimal", nullable=true, precision=8, scale=6)
+     * @PiCRUD\Property(
+     *      label="Latitude",
+     *      form={}
+     * )
      */
     protected $latitude;
 
     /**
      * @ORM\Column(type="decimal", nullable=true, precision=8, scale=6)
+     * @PiCRUD\Property(
+     *      label="Longitude",
+     *      form={}
+     * )
      */
     protected $longitude;
 

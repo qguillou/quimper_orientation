@@ -7,8 +7,12 @@ use App\Model\IdTrait;
 use App\Model\LabelTrait;
 use App\Model\AuthorTrait;
 use App\Model\PrivateTrait;
+use PiWeb\PiCRUD\Annotation as PiCRUD;
 
 /**
+ * @PiCRUD\Entity(
+ *      name="link"
+ * )
  * @ORM\Entity(repositoryClass="App\Repository\LinkRepository")
  * @ORM\HasLifecycleCallbacks()
  */
@@ -21,11 +25,19 @@ class Link
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @PiCRUD\Property(
+     *      label="URL",
+     *      form={}
+     * )
      */
     protected $link;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @PiCRUD\Property(
+     *      label="Description",
+     *      form={}
+     * )
      */
     private $description;
 

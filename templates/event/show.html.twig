@@ -92,6 +92,7 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Libellé</th>
+                        <th scope="col">Nb inscrits</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -99,6 +100,7 @@
                         <tr>
                             <th scope="row">{{ loop.index }}</th>
                             <td>{{ circuit.label }}</td>
+                            <td>{{ circuit.peoples|length }}</td>
                         </tr>
                     {% endfor %}
                 </tbody>
@@ -182,14 +184,14 @@
                         {% if entity.numberPeopleByEntries is same as(1) %}
                             <a class="dropdown-item" href="{{ path('app_event_export', {'id': entity.id, 'mode': 'oe2003'}) }}">Export au format CSV pour OE2003</a>
                             <a class="dropdown-item" href="{{ path('app_event_export', {'id': entity.id, 'mode': 'oe2010'}) }}">Export au format CSV pour OE2010</a>
-                        {% else %}
+                        {% endif %}
                         <a class="dropdown-item" href="{{ path('app_event_export', {'id': entity.id, 'mode': 'pdf-club'}) }}">Export au format PDF par club</a>
                         {% if entity.circuits|length > 0 %}<a class="dropdown-item" href="{{ path('app_event_export', {'id': entity.id, 'mode': 'pdf-circuit'}) }}">Export au format PDF par circuit</a>{% endif %}
                     </div>
                 </div>
             </div>
             {% if entity.teams|length > 0 or entity.peoples|length > 0 %}
-                <table id="event-entries" class="table">
+                <table id="event-entries" class="table table-striped">
                     <thead class="bg-primary text-white">
                         <tr>
                             <th scope="col">#</th>

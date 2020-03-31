@@ -9,16 +9,30 @@ Trait EventEntryTrait
 {
     /**
      * @ORM\Column(type="boolean")
+     * @PiCRUD\Property(
+     *      label="Activé les inscriptions",
+     *      type="checkbox",
+     *      form={}
+     * )
      */
     protected $allowEntries;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @PiCRUD\Property(
+     *      label="Date de clôture des inscriptions",
+     *      type="datetime",
+     *      form={}
+     * )
      */
     protected $dateEntries;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @PiCRUD\Property(
+     *      label="DONT USE",
+     *      form={}
+     * )
      */
     protected $numberPeopleByEntries;
 

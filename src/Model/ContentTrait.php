@@ -2,10 +2,16 @@
 
 namespace App\Model;
 
+use PiWeb\PiCRUD\Annotation as PiCRUD;
+
 Trait ContentTrait
 {
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @PiCRUD\Property(
+     *      label="Contenu",
+     *      form={}
+     * )
      */
     protected $content;
 

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+    <file source-language="en" target-language="fr" datatype="plaintext" original="file.ext">
+        <body>
+            <!-- Menu d'administration -->
+            <trans-unit id="pi_crud.menu.entity.event">
+                <source>pi_crud.menu.entity</source>
+                <target>{entity_label, select,
+                    event {Administrer les évènements}
+                    format {Administrer les types d'évènements}
+                    link {Administrer le pied de page}
+                    map {Administrer les cartes}
+                    menu {Administrer les liens du menu}
+                    news {Administrer les actualités}
+                    other {Administrer entity_label}
+                }</target>
+            </trans-unit>
+
+            <!-- Liste -->
+            <trans-unit id="pi_crud.list.title">
+                <source>pi_crud.list.title</source>
+                <target>{entity_label, select,
+                    event {Liste des évènements}
+                    map {Les parcours permanents}
+                    news {Toutes les actualités}
+                    other {Liste entity_label}
+                }</target>
+            </trans-unit>
+
+            <!-- Formulaire -->
+            <trans-unit id="pi_crud.form.add.title">
+                <source>pi_crud.form.add.title</source>
+                <target>Ajout {entity_label, select,
+                    event {d'un évènement}
+                    format {d'un type d'évènements}
+                    link {d'un lien de pied de page}
+                    map {d'une carte}
+                    menu {d'un lien du menu}
+                    news {d'une actualité}
+                    other {entity_label}
+                }</target>
+            </trans-unit>
+            <trans-unit id="pi_crud.form.add.save">
+                <source>pi_crud.form.add.save</source>
+                <target>Créer {entity_label, select,
+                    event {l'évènement}
+                    format {le type d'évènements}
+                    link {le lien de pied de page}
+                    map {la carte}
+                    menu {le lien du menu}
+                    news {l'actualité}
+                    other {entity_label}
+                }</target>
+            </trans-unit>
+            <trans-unit id="pi_crud.form.edit.title">
+                <source>pi_crud.form.edit.title</source>
+                <target>Modification {entity_label, select,
+                    event {de l'évènement}
+                    format {du type d'évènements}
+                    link {du lien de pied de page}
+                    map {de la carte}
+                    menu {du lien du menu}
+                    news {de l'actualité}
+                    other {entity_label}
+                }</target>
+            </trans-unit>
+            <trans-unit id="pi_crud.form.edit.save">
+                <source>pi_crud.form.edit.save</source>
+                <target>Modifier {entity_label, select,
+                    event {l'évènement}
+                    format {le type d'évènements}
+                    link {le lien de pied de page}
+                    map {la carte}
+                    menu {le lien du menu}
+                    news {l'actualité}
+                    other {entity_label}
+                }</target>
+            </trans-unit>
+
+            <!-- Modal de suppression -->
+            <trans-unit id="pi_crud.delete.title">
+                <source>pi_crud.delete.title</source>
+                <target>Êtes vous sûr de vouloir supprimer {entity_label, select,
+                    event {l'évènement}
+                    format {le type d'évènements}
+                    link {le lien de pied de page}
+                    map {la carte}
+                    menu {le lien du menu}
+                    news {l'actualité}
+                    other {entity_label}
+                } ?</target>
+            </trans-unit>
+
+            <!-- Liste d'administration -->
+            <trans-unit id="pi_crud.admin.title">
+                <source>pi_crud.admin.title</source>
+                <target>Administration {entity_label, select,
+                    event {des évènements}
+                    format {des types d'évènements}
+                    link {des liens de pied de page}
+                    map {des cartes}
+                    menu {des liens du menu}
+                    news {des actualités}
+                    other {entity_label}
+                }</target>
+            </trans-unit>
+            <trans-unit id="pi_crud.admin.add">
+                <source>pi_crud.admin.add</source>
+                <target>Ajouter {entity_label, select,
+                    event {un évènement}
+                    format {un type d'évènements}
+                    link {un lien de pied de page}
+                    map {une carte}
+                    menu {un lien du menu}
+                    news {une actualité}
+                    other {entity_label}
+                }</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

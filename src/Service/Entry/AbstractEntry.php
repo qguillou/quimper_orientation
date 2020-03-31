@@ -16,13 +16,4 @@ abstract class AbstractEntry implements EntryInterface
     {
         $this->em = $em;
     }
-
-    public function add(Event $event, ?array $entries = array()): bool
-    {
-        if (empty($entries)) {
-            return false;
-        }
-
-        return $this->register($event, $entries);
-    }
 }

@@ -11,8 +11,12 @@ use App\Model\ContentTrait;
 use App\Model\AuthorTrait;
 use App\Model\PrivateTrait;
 use App\Model\ImageTrait;
+use PiWeb\PiCRUD\Annotation as PiCRUD;
 
 /**
+ * @PiCRUD\Entity(
+ *      name="map"
+ * )
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  * @Vich\Uploadable
@@ -27,6 +31,11 @@ class Map
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Document", cascade={"persist"})
+     * @PiCRUD\Property(
+     *      label="Fichier",
+     *      type="file",
+     *      form={}
+     * )
      */
     protected $file;
 
