@@ -11,7 +11,7 @@ Trait TitleTrait
      * @PiCRUD\Property(
      *      label="Titre",
      *      admin={"class": "font-weight-bold"},
-     *      form={}
+     *      form={"class": "order-1"}
      * )
      */
     protected $title;

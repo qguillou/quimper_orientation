@@ -9,7 +9,7 @@ Trait PromoteTrait
      * @PiCRUD\Property(
      *      label="Promu",
      *      type="checkbox",
-     *      form={}
+     *      form={"class": "order-12"}
      * )
      */
     protected $promote;

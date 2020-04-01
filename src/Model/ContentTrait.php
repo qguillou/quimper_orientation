@@ -10,7 +10,8 @@ Trait ContentTrait
      * @ORM\Column(type="text", nullable=true)
      * @PiCRUD\Property(
      *      label="Contenu",
-     *      form={}
+     *      type="ckeditor",
+     *      form={"class": "order-1"}
      * )
      */
     protected $content;

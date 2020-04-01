@@ -2,6 +2,8 @@
 
 namespace App\Model;
 
+use PiWeb\PiCRUD\Annotation as PiCRUD;
+
 Trait DocumentTrait
 {
     /**
@@ -9,7 +11,8 @@ Trait DocumentTrait
      * @PiCRUD\Property(
      *      label="Fichiers",
      *      type="files",
-     *      form={}
+     *      form={"class": "order-6"},
+     *      options={"entry_type": "App\Form\DocumentFormType"}
      * )
      */
     protected $files;

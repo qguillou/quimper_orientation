@@ -12,7 +12,47 @@
         </ul>
         <!-- Informations sur le compte utilisateur ou connexion -->
         {% if app.user %}
-            {{ sonata_block_render({ 'type': 'block.admin_menu' }, {}) }}
+            <ul class="navbar-nav mr-auto d-xl-none">
+                <li class="dropdown-divider"></li>
+                <li class="nav-item"><a href="{{ path('pi_crud_admin', {'type': 'news'}) }}" class="nav-link">Administrer les actualités</a></li>
+                <li class="nav-item"><a href="{{ path('pi_crud_admin', {'type': 'event'}) }}" class="nav-link">Administrer les évènements</a></li>
+                <li class="nav-item"><a href="{{ path('pi_crud_admin', {'type': 'map'}) }}" class="nav-link">Administrer les cartes</a></li>
+                <li class="nav-item"><a href="{{ path('pi_crud_admin', {'type': 'format'}) }}" class="nav-link">Administrer les types d'évèneents</a></li>
+                <li class="nav-item"><a href="{{ path('pi_crud_admin', {'type': 'menu'}) }}" class="nav-link">Administrer le menu</a></li>
+                <li class="nav-item"><a href="{{ path('pi_crud_admin', {'type': 'link'}) }}" class="nav-link">Administrer le pied de page</a></li>
+                <li class="nav-item"><a href="{{ path('pi_crud_admin', {'type': 'user'}) }}" class="nav-link">Administrer les utilisateurs</a></li>
+            </ul>
+            <ul class="navbar-nav nav-flex-icons d-none d-xl-block">
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle text-white" id="dropdown-user" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-cogs"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-default m-0" aria-labelledby="dropdown-user">
+                        <div class="col-lg-12">
+                            <span class="text-primary h1">A</span><span class="h3">dministration</span>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <div class="col-lg-12">
+                            <span class="h5">Contenus</span>
+                        </div>
+                        <a class="dropdown-item" href="{{ path('pi_crud_admin', {'type': 'news'}) }}">Actualités</a>
+                        <a class="dropdown-item" href="{{ path('pi_crud_admin', {'type': 'event'}) }}">Evènements</a>
+                        <div class="dropdown-divider"></div>
+                        <div class="col-lg-12">
+                            <span class="h5">Référentiels</span>
+                        </div>
+                        <a class="dropdown-item" href="{{ path('pi_crud_admin', {'type': 'map'}) }}">Cartes</a>
+                        <a class="dropdown-item" href="{{ path('pi_crud_admin', {'type': 'format'}) }}">Types d'évènements</a>
+                        <a class="dropdown-item" href="{{ path('pi_crud_admin', {'type': 'menu'}) }}">Menu</a>
+                        <a class="dropdown-item" href="{{ path('pi_crud_admin', {'type': 'link'}) }}">Pied de page</a>
+                        <div class="dropdown-divider"></div>
+                        <div class="col-lg-12">
+                            <span class="h5">Utilisateurs</span>
+                        </div>
+                        <a class="dropdown-item" href="{{ path('pi_crud_admin', {'type': 'user'}) }}">Rôles</a>
+                    </div>
+                </li>
+            </ul>
             <ul class="navbar-nav mr-auto d-xl-none">
                 <li class="dropdown-divider"></li>
                 <li class="nav-item"><a href="{{ path('app_profile') }}" class="nav-link">Mon espace personnel</a></li>

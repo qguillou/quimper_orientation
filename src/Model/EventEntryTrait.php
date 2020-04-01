@@ -12,7 +12,7 @@ Trait EventEntryTrait
      * @PiCRUD\Property(
      *      label="Activé les inscriptions",
      *      type="checkbox",
-     *      form={}
+     *      form={"class": "order-5"}
      * )
      */
     protected $allowEntries;
@@ -22,7 +22,7 @@ Trait EventEntryTrait
      * @PiCRUD\Property(
      *      label="Date de clôture des inscriptions",
      *      type="datetime",
-     *      form={}
+     *      form={"class": "order-5"}
      * )
      */
     protected $dateEntries;
@@ -30,8 +30,8 @@ Trait EventEntryTrait
     /**
      * @ORM\Column(type="integer", nullable=true)
      * @PiCRUD\Property(
-     *      label="DONT USE",
-     *      form={}
+     *      label="Nombre d'inscrit par équipe",
+     *      form={"class": "order-5"}
      * )
      */
     protected $numberPeopleByEntries;

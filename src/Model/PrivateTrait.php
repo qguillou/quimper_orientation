@@ -12,7 +12,7 @@ Trait PrivateTrait
      *      label="Privé",
      *      type="checkbox",
      *      admin={"class": "d-none d-md-table-cell"},
-     *      form={}
+     *      form={"class": "order-12"}
      * )
      */
     protected $private;

@@ -3,6 +3,10 @@
 @import "carousel.scss";
 @import "dark-theme.scss";
 
+.admin-link {
+    position: relative;
+}
+
 /** OPACITY */
 .opacity-20 {
     opacity: 0.2;

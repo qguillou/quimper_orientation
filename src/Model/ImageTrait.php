@@ -14,7 +14,8 @@ Trait ImageTrait
      * @Vich\UploadableField(mapping="content_image", fileNameProperty="image.name", size="image.size", mimeType="image.mimeType", originalName="image.originalName", dimensions="image.dimensions")
      * @PiCRUD\Property(
      *      label="Image",
-     *      form={}
+     *      type="image",
+     *      form={"class": "order-1"}
      * )
      * @var File|null
      */

@@ -8,7 +8,7 @@ Trait EventLocationTrait
      * @ORM\Column(type="string", length=255, nullable=true)
      * @PiCRUD\Property(
      *      label="Localisation",
-     *      form={}
+     *      form={"class": "order-4"}
      * )
      */
     protected $locationTitle;
@@ -17,7 +17,7 @@ Trait EventLocationTrait
      * @ORM\Column(type="text", nullable=true)
      * @PiCRUD\Property(
      *      label="Détail de la localisation",
-     *      form={}
+     *      form={"class": "order-4"}
      * )
      */
     protected $locationInformation;
@@ -26,7 +26,7 @@ Trait EventLocationTrait
      * @ORM\Column(type="decimal", nullable=true, precision=8, scale=6)
      * @PiCRUD\Property(
      *      label="Latitude",
-     *      form={}
+     *      form={"class": "order-4"}
      * )
      */
     protected $latitude;
@@ -35,7 +35,7 @@ Trait EventLocationTrait
      * @ORM\Column(type="decimal", nullable=true, precision=8, scale=6)
      * @PiCRUD\Property(
      *      label="Longitude",
-     *      form={}
+     *      form={"class": "order-4"}
      * )
      */
     protected $longitude;

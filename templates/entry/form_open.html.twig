@@ -42,44 +42,7 @@
         {% set input_comment = '<textarea class="form-control" name="entry_form[__ID__][comment]" rows="1"></textarea>' %}
 
         <form name="club_entry_form" method="POST">
-            <table class="table table-striped">
-                <thead class="bg-primary text-white">
-                    <tr>
-                        <th>#</th>
-                        <th>Nom</th>
-                        <th>Prénom</th>
-                        <th>N° puce SportIdent</th>
-                        {% if event.circuits|length %}<th>Circuit</th>{% endif %}
-                        <th>Commentaire</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for member in club.members %}
-                        <tr>
-                            <td class="form-check">
-                                <input type="checkbox" name="entry_form[{{ member.id }}][entry]" />
-                            </td>
-                            <td>
-                                {{ member.lastName }}
-                            </td>
-                            <td>
-                                {{ member.firstName }}
-                            </td>
-                            <td>
-                                <input class="form-control" type="text" value="{{ member.si }}" name="entry_form[{{ member.id }}][si]" />
-                            </td>
-                            {% if event.circuits|length %}
-                                <td>
-                                    {{ input_circuits|replace({'__ID__': member.id})|raw }}
-                                </td>
-                            {% endif %}
-                            <td>
-                                {{ input_comment|replace({'__ID__': member.id})|raw }}
-                            </td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+            
             <input class="btn btn-primary" type="submit" value="Enregistrer les inscriptions" />
         </form>
     </div>

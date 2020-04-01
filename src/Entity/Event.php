@@ -46,7 +46,7 @@ class Event
      *      label="Date de début",
      *      type="datetime",
      *      admin={"options": {"date": "short", "time": "short"}},
-     *      form={}
+     *      form={"class": "order-2"}
      * )
      */
     protected $dateBegin;
@@ -56,7 +56,7 @@ class Event
      * @PiCRUD\Property(
      *      label="Date de fin",
      *      type="datetime",
-     *      form={}
+     *      form={"class": "order-2"}
      * )
      */
     protected $dateEnd;
@@ -65,7 +65,7 @@ class Event
      * @ORM\ManyToOne(targetEntity="Format")
      * @PiCRUD\Property(
      *      label="Type d'évènements",
-     *      form={}
+     *      form={"class": "order-3"}
      * )
      */
     protected $format;
@@ -74,7 +74,7 @@ class Event
      * @ORM\Column(type="string", length=255, nullable=true)
      * @PiCRUD\Property(
      *      label="Organisateur",
-     *      form={}
+     *      form={"class": "order-3"}
      * )
      */
     protected $organizer;
@@ -83,7 +83,7 @@ class Event
      * @ORM\Column(type="string", length=255, nullable=true)
      * @PiCRUD\Property(
      *      label="Site web",
-     *      form={}
+     *      form={"class": "order-3"}
      * )
      */
     protected $website;
@@ -93,7 +93,8 @@ class Event
      * @PiCRUD\Property(
      *      label="Circuits",
      *      type="circuits",
-     *      form={}
+     *      form={"class": "order-5"},
+     *      options={"entry_type": "App\Form\CircuitFormType"}
      * )
      */
     protected $circuits;

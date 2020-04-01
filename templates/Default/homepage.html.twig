@@ -48,7 +48,8 @@
                     {{ sonata_block_render({ 'type': 'block.item' }, {
                         'type': 'event',
                         'mode': 'default',
-                        'item': event
+                        'item': event,
+                        'attr': {'class': 'col-12 col-md-6 col-lg-6'}
                     }) }}
                 {% endfor %}
             </div>

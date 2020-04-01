@@ -34,7 +34,8 @@ class Map
      * @PiCRUD\Property(
      *      label="Fichier",
      *      type="file",
-     *      form={}
+     *      form={},
+     *      options={"entry_type": "App\Form\DocumentFormType"}
      * )
      */
     protected $file;
